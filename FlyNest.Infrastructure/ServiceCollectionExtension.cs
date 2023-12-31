@@ -20,8 +20,8 @@ public static class ServiceCollectionExtension
     {
         services.AddSingleton(configuration);
 
-
         services.AddScoped<AuditableEntitySaveChangesInterceptor>();
+
         services.AddDbContext<FlyNestDbContext>(
             (serviceProvider, builder) =>
             {

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
-using FlyNest.Application.Helpers;
-using FlyNest.Infrastructure.Interfaces;
+using FlyNest.Application.Repositories.Helpers;
+using FlyNest.Infrastructure.Interfaces.BaseRepo;
+using FlyNest.Infrastructure.Interfaces.Helpers;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,12 +17,12 @@ public static class ServiceCollectionExtension
         services.Scan(
             scan => scan.FromAssemblyOf<IApplication>()
                 .AddClasses(classes => classes.AssignableTo<IApplication>())
+                .AddClasses(classes => classes.AssignableTo(typeof(IBaseRepository<>)))
                 .AsSelfWithInterfaces()
                 .WithScopedLifetime());
 
         services.AddScoped<IUserResolverService, UserResolverService>();
-        services.AddTransient<IEmailSender, EmailSender>();
-
+        services.AddScoped<IEmailSender, EmailSender>();
 
         services.AddValidatorsFromAssembly(typeof(IApplication).Assembly);
         services.AddAutoMapper(x => x.AddMaps(typeof(IApplication).Assembly));

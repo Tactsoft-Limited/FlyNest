@@ -1,8 +1,8 @@
-﻿using FlyNest.Infrastructure.Interfaces;
+﻿using FlyNest.Infrastructure.Interfaces.Helpers;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
-namespace FlyNest.Application.Helpers;
+namespace FlyNest.Application.Repositories.Helpers;
 
 public class UserResolverService(IHttpContextAccessor httpContextAccessor) : IUserResolverService
 {

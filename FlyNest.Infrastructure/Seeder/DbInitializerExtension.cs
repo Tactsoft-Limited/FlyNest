@@ -18,7 +18,7 @@ public static class DbInitializerExtension
             var userManager = services.GetRequiredService<UserManager<User>>();
             var roleManager = services.GetRequiredService<RoleManager<Role>>();
             await DbInitializer.SeedRoleAsync(userManager, roleManager);
-            await DbInitializer.SeedBasicUserAsync(userManager, roleManager);
+            await DbInitializer.SeedBasicUserAsync(userManager);
             await DbInitializer.SeedSuperAdminAsync(userManager, roleManager);
         } catch(Exception ex)
         {

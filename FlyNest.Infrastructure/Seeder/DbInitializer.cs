@@ -14,7 +14,7 @@ public static class DbInitializer
         await roleManager.CreateAsync(new Role(Roles.Basic.ToString()));
     }
 
-    public static async Task SeedBasicUserAsync(UserManager<User> userManager, RoleManager<Role> roleManager)
+    public static async Task SeedBasicUserAsync(UserManager<User> userManager)
     {
         var defaultUser = new User
         {

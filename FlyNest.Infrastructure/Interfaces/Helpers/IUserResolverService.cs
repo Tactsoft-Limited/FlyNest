@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace FlyNest.Infrastructure.Interfaces;
+namespace FlyNest.Infrastructure.Interfaces.Helpers;
 
 public interface IUserResolverService
 {

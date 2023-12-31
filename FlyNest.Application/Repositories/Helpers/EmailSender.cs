@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Mail;
 
-namespace FlyNest.Application.Helpers;
+namespace FlyNest.Application.Repositories.Helpers;
 
 public class EmailSender : IEmailSender
 {
