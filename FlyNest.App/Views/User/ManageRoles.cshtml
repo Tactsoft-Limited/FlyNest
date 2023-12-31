@@ -1,0 +1,73 @@
+﻿@using FlyNest.Application.ViewModels.RolePermission;
+@model ManageUserRolesViewModel
+
+@{
+    ViewData["Title"] = "Roles";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Blank Page</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">Blank Page</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <form method="post" asp-action="ManageRoles" class="d-inline">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="card-title">Manage Roles for User: <span class="badge badge-success">@Model.UserName</span></h3>
+                <a asp-action="Index" class="btn btn-link">See All Users</a>
+            </div>
+
+            <div class="card-body">
+                <input asp-for="@Model.UserId" type="hidden" />
+                <input asp-for="@Model.UserName" type="hidden" />
+                <table class="table table-striped table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th> Role  </th>
+                            <th> Description  </th>
+                            <th> Status  </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 0; i < Model.ManageRolesViewModel.Count(); i++)
+                        {
+                            <tr>
+                                <td>
+                                    <input asp-for="@Model.ManageRolesViewModel[i].Name" type="hidden" />
+                                    @Model.ManageRolesViewModel[i].Name
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.ManageRolesViewModel[i].Description" type="hidden" />
+                                    @Model.ManageRolesViewModel[i].Description
+                                </td>
+                                <td>
+
+                                    <div class="form-check m-1">
+                                        <input asp-for="@Model.ManageRolesViewModel[i].Checked" class="form-check-input" />
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer d-flex justify-content-end">
+                <button type="submit" id="save" class="btn btn-primary btn-sm">
+                    <i class="fa fa-save"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

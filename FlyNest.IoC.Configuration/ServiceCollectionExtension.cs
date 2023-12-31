@@ -15,6 +15,8 @@ public static class ServiceCollectionExtension
 
         services.InfrastructureServices(configuration);
         services.ApplicationServices(configuration);
+        services.AddAuthorizationBuilder().AddPolicy("DebugPolicy", policy => policy.RequireAssertion(context => true));
+
 
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(

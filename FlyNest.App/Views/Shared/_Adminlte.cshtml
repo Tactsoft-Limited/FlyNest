@@ -15,129 +15,23 @@
     <title>@ViewData["Title"]-EstateEase</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-
-    <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/lib/admin-lte/css/adminlte.min.css" rel="stylesheet" />
-
-    <link href="~/lib/overlayscrollbars/css/OverlayScrollbars.min.css" rel="stylesheet" />
-    <link href="~/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
-    <link href="~/css/site.css" rel="stylesheet" />
+    @await Html.PartialAsync("Backend/_AdminlteStyles.cshtml")
 
     @RenderSection("Styles", required: false)
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper" style="font-size:14px;">
-        @*<partial name="_AdminlteMainHeader" model="appUser" />
-            <partial name="_AdminlteMainSidebar" model="appUser" />*@
         <partial name="Backend/_AdminlteMainHeader" model="appUser" />
         <partial name="Backend/_AdminlteMainSidebar" />
         <div class="content-wrapper">
             @RenderBody()
         </div>
-        @*<partial name="~/Views/UIComponents/_MediumModal.cshtml" />
-            <partial name="~/Views/UIComponents/_BigModal.cshtml" />*@
         <partial name="Backend/_AdminlteFooter" />
     </div>
 
-
-
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-        $(function () {
-            var currentRoute = window.location.href;
-            var currentRouteSplit = currentRoute.split("/");
-            //console.log(currentRouteSplit)
-
-            // for single sidebar menu
-            $('ul.nav-sidebar a').filter(function () {
-                var allRoute = this.href;
-                var allRouteSplit = this.href.split('/')
-                if (currentRouteSplit.length > 3) {
-                    return currentRouteSplit[3] == allRouteSplit[3]
-                }
-                return currentRoute == allRoute;
-            }).addClass('active');
-
-            // for sidebar menu and treeview
-            $('ul.nav-treeview a').filter(function () {
-                var allRoute = this.href;
-                var allRouteSplit = this.href.split('/')
-                if (currentRouteSplit.length > 3) {
-                    return currentRouteSplit[3] == allRouteSplit[3]
-                }
-            }).parentsUntil(".nav-sidebar > .nav-treeview")
-                .css({ 'display': 'block' })
-                .addClass('menu-open').prev('a')
-                .addClass('active');
-        });
-    </script>
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/overlayscrollbars/js/OverlayScrollbars.min.js"></script>
-    <script src="~/lib/admin-lte/js/adminlte.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/select2/js/select2.min.js"></script>
-    <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
-    <script>
-        function confirmAndDelete(element) {
-            var itemId = element.getAttribute("asp-route-id");
-            var confirmationMessage = 'Are you sure you want to delete item ?';
-
-            Swal.fire({
-                title: 'Confirmation',
-                text: confirmationMessage,
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    toastr.success('Item will be deleted shortly.');
-                    deleteItem(element);
-                }
-            });
-
-            return false;
-        }
-
-        function deleteItem(element) {
-            var deleteUrl = element.getAttribute("href");
-            window.location.href = deleteUrl;
-        }
-    </script>
-    <script>
-        var toastMixin = Swal.mixin({
-            toast: true,
-            icon: 'success',
-            title: 'General Title',
-            animation: true,
-            position: 'top-right',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        });
-    </script>
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <script>
-        toastMixin.fire({
-            title: '@TempData["SuccessMessage"]'
-        });
-        </script>
-    }
+    @await Html.PartialAsync("Backend/_AdminlteScripts.cshtml")
     <script src="~/js/site.js"></script>
-
-
 
     @RenderSection("Scripts", required: false)
 

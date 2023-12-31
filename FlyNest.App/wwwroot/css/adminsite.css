@@ -1,0 +1,34 @@
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="datetime"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+select {
+    border-radius: inherit !important;
+    height: calc(2rem + 2px) !important;
+    padding: 0rem 0.75rem !important;
+}
+
+.input-group-text {
+    border-radius: inherit !important;
+    height: calc(2rem + 2px);
+    padding: 0rem 0.75rem;
+}
+
+.nav-sidebar > .nav-item > .nav-link,
+.nav-sidebar > .nav-item > .nav-link.active,
+.nav-sidebar > .nav-item > .nav-link.active:hover {
+    border-radius: inherit;
+}
+
+.nav-treeview > .nav-item > .nav-link,
+.nav-treeview > .nav-item > .nav-link.active,
+.nav-treeview > .nav-item > .nav-link.active:hover {
+    border-radius: inherit;
+}
+
+.btn-group-sm > .btn, .btn-sm {
+    border-radius: 0px;
+}
