@@ -10,6 +10,7 @@ public class MapperProfile : Profile
     public MapperProfile()
     {
         CreateMap<Airport, VmAirport>().ReverseMap();
+        CreateMap<Airline, VmAirline>().ReverseMap();
 
 
         AllowNullCollections = true;
