@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Adminlte.cshtml";
+    int idno = 1;
 }
 
 <section class="content-header">
@@ -26,7 +27,7 @@
         <div class="card-header">
             <h3 class="card-title">Airport List</h3>
             <div class="card-tools">
-                <a asp-action="Create">Create New</a>
+                <a asp-action="AddEdit" asp-controller="Airport" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Airport</a>
             </div>
         </div>
         <div class="card-body">
@@ -56,6 +57,9 @@
                     {
                         <tr>
                             <td>
+                               @idno
+                            </td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.Name)
                             </td>
                             <td>
@@ -67,15 +71,21 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.CityName)
                             </td>
+                           
                             <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                @* @Html.ActionLink("Edit", "AddEdit", new { id = item.Id }) |
+                     
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) *@
+
+                               <a asp-action="AddEdit" asp-controller="Airport" asp-route-id="@item.Id" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i> Edit </a>
+                                <a asp-action="Delete" asp-controller="Airport" asp-route-id="@item.Id"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete </a>
+                             
                             </td>
                         </tr>
+                        idno++;
+
                     }
                 </tbody>
             </table>
