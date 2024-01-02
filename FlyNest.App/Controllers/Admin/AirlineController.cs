@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Infrastructure.Interfaces.Entities;
 using FlyNest.SharedKernel.Entities;
@@ -24,12 +25,12 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
         return id switch
         {
             0 => View(new VmAirline()),
-            _ => View(await airlineRepository.FirstOrDefaultAsync(id))
+            _ => View(mapper.Map<VmAirline>(await airlineRepository.FirstOrDefaultAsync(id)))
         };
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddEdit(int id, VmAirline airline)
+    public async Task<IActionResult> AddEdit(int id, VmAirline airline, IFormFile pictureFile)
     {
         switch (id)
         {
@@ -38,14 +39,26 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
                 {
                     if (ModelState.IsValid)
                     {
+                        if (pictureFile != null && pictureFile.Length > 0)
+                        {
+                            var path = Path.Combine(
+                                Directory.GetCurrentDirectory(),
+                                "wwwroot/images/airline",
+                                pictureFile.FileName);
+                            await using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                pictureFile.CopyTo(stream);
+                            }
+                            airline.Logo = $"{pictureFile.FileName}";
+                        }
                         await airlineRepository.InsertAsync(mapper.Map<Airline>(airline));
-                        TempData["SuccessMessage"] = $" Contractor '{airline.AirlineName}' added successfully.";
+                        TempData["SuccessMessage"] = $" Airline added successfully.";
                         return RedirectToAction("Index");
                     }
                 }
                 catch (Exception ex)
                 {
-                    TempData["ErrorMessage"] = $"Error adding Contractor '{airline.AirlineName}': {ex.Message}";
+                    TempData["ErrorMessage"] = $"Error adding Airline : {ex.Message}";
                 }
 
                 break;
@@ -54,18 +67,35 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
                 {
                     if (ModelState.IsValid)
                     {
-                        await airlineRepository.UpdateAsync( mapper.Map<Airline>(airline));
-                        TempData["SuccessMessage"] = $" Contractor '{airline.AirlineName}' update successfully.";
+                        if (pictureFile != null && pictureFile.Length > 0)
+                        {
+                            var path = Path.Combine(
+                                Directory.GetCurrentDirectory(),
+                                "wwwroot/images/airline",
+                                pictureFile.FileName);
+                            await using (var stream = new FileStream(path, FileMode.Create))
+                            {
+                                pictureFile.CopyTo(stream);
+                            }
+                            airline.Logo = $"{pictureFile.FileName}";
+                        }
+
+                        await airlineRepository.UpdateAsync(mapper.Map<Airline>(airline));
+                        TempData["SuccessMessage"] = $" Airline update successfully.";
                         return RedirectToAction("Index");
                     }
                 }
                 catch (Exception ex)
                 {
-                    TempData["ErrorMessage"] = $"Error updating Contractor '{airline.AirlineName}': {ex.Message}";
+                    TempData["ErrorMessage"] = $"Error updating Airline : {ex.Message}";
                 }
                 break;
+
+
         }
+
         
+
         return View(new VmAirline());
     }
 
