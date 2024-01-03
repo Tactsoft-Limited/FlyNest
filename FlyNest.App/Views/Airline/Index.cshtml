@@ -1,0 +1,107 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmAirline>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+    int idno = 1;
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Airline</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Airline</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Airline List</h3>
+            <div class="card-tools">
+                <a asp-action="AddEdit" asp-controller="Airline" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Airline</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AirlineName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContactInfo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Website)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Logo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EstablishedDate)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @idno
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AirlineName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContactInfo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Website)
+                            </td>
+                            <td>
+                                <img class="img-thumbnail" width="40" src="~/images/airline/@Html.DisplayFor(modelItem => item.Logo)" alt="Image" />
+                               
+                                   
+                                
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EstablishedDate)
+                            </td>
+
+                            <td>
+                                <a asp-action="AddEdit" asp-controller="Airline" asp-route-id="@item.Id" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i> Edit </a>
+                                <a asp-action="Delete" asp-controller="Airline" asp-route-id="@item.Id"
+                                   class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                        idno++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</section>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+   
+}
+

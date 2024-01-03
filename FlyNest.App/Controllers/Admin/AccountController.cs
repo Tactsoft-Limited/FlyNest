@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using static FlyNest.SharedKernel.Entities.Identities.IdentityModel;
 
-namespace FlyNest.App.Controllers;
+namespace FlyNest.App.Controllers.Admin;
 
 [Authorize]
 [Route("[controller]/[action]")]
@@ -47,7 +47,7 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(VmLogin model, string returnUrl = null)
     {
-        if(ModelState.IsValid)
+        if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(
                 model.Email,
@@ -55,7 +55,7 @@ public class AccountController : Controller
                 model.RememberMe,
                 lockoutOnFailure: true);
 
-            switch(result.Succeeded)
+            switch (result.Succeeded)
             {
                 case true:
                     ViewBag.IsLoginSucceeded = true;
@@ -98,7 +98,7 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> LoginWith2fa(VmLoginWith2fa model, bool rememberMe, string returnUrl = null)
     {
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return View(model);
         }
@@ -112,7 +112,7 @@ public class AccountController : Controller
             rememberMe,
             model.RememberMachine);
 
-        switch(result.Succeeded)
+        switch (result.Succeeded)
         {
             case true:
                 _logger.LogInformation("User with ID {UserId} logged in with 2fa.", user.Id);
@@ -146,7 +146,7 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> LoginWithRecoveryCode(VmLoginWithRecoveryCode model, string returnUrl = null)
     {
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return View(model);
         }
@@ -158,7 +158,7 @@ public class AccountController : Controller
 
         var result = await _signInManager.TwoFactorRecoveryCodeSignInAsync(recoveryCode);
 
-        switch(result.Succeeded)
+        switch (result.Succeeded)
         {
             case true:
                 _logger.LogInformation("User with ID {UserId} logged in with a recovery code.", user.Id);
@@ -203,13 +203,13 @@ public class AccountController : Controller
     [AllowAnonymous]
     public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
     {
-        if(remoteError != null)
+        if (remoteError != null)
         {
             ErrorMessage = $"Error from external provider: {remoteError}";
             return RedirectToAction(nameof(Login));
         }
         var info = await _signInManager.GetExternalLoginInfoAsync();
-        switch(info)
+        switch (info)
         {
             case null:
                 return RedirectToAction(nameof(Login));
@@ -222,7 +222,7 @@ public class AccountController : Controller
             isPersistent: false,
             bypassTwoFactor: true);
 
-        switch(result.Succeeded)
+        switch (result.Succeeded)
         {
             case true:
                 _logger.LogInformation("User logged in with {Name} provider.", info.LoginProvider);
@@ -245,17 +245,17 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ExternalLoginConfirmation(VmExternalLogin model, string returnUrl = null)
     {
-        if(ModelState.IsValid)
+        if (ModelState.IsValid)
         {
             // Get the information about the user from the external login provider
             var info = await _signInManager.GetExternalLoginInfoAsync() ??
                 throw new ApplicationException("Error loading external login information during confirmation.");
             var user = new User { UserName = model.Email, Email = model.Email };
             var result = await _userManager.CreateAsync(user);
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 result = await _userManager.AddLoginAsync(user, info);
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created an account using {Name} provider.", info.LoginProvider);
@@ -273,12 +273,12 @@ public class AccountController : Controller
     [AllowAnonymous]
     public async Task<IActionResult> ConfirmEmail(string userId, string code)
     {
-        if(userId == null || code == null)
+        if (userId == null || code == null)
         {
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
         var user = await _userManager.FindByIdAsync(userId);
-        if(user == null)
+        if (user == null)
         {
             throw new ApplicationException($"Unable to load user with ID '{userId}'.");
         }
@@ -295,10 +295,10 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ForgotPassword(VmForgotPassword model)
     {
-        if(ModelState.IsValid)
+        if (ModelState.IsValid)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
-            if(user == null || !await _userManager.IsEmailConfirmedAsync(user))
+            if (user == null || !await _userManager.IsEmailConfirmedAsync(user))
             {
                 return RedirectToAction(nameof(ForgotPasswordConfirmation));
             }
@@ -321,7 +321,7 @@ public class AccountController : Controller
     [AllowAnonymous]
     public IActionResult ResetPassword(string code = null)
     {
-        switch(code)
+        switch (code)
         {
             case null:
                 throw new ApplicationException("A code must be supplied for password reset.");
@@ -335,19 +335,19 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> ResetPassword(VmResetPassword model)
     {
-        if(!ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             return View(model);
         }
         var user = await _userManager.FindByEmailAsync(model.Email);
-        switch(user)
+        switch (user)
         {
             case null:
                 // Don't reveal that the user does not exist
                 return RedirectToAction(nameof(ResetPasswordConfirmation));
         }
         var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
-        if(result.Succeeded)
+        if (result.Succeeded)
         {
             return RedirectToAction(nameof(ResetPasswordConfirmation));
         }
@@ -366,7 +366,7 @@ public class AccountController : Controller
     #region Helpers
     private void AddErrors(IdentityResult result)
     {
-        foreach(var error in result.Errors)
+        foreach (var error in result.Errors)
         {
             ModelState.AddModelError(string.Empty, error.Description);
         }
