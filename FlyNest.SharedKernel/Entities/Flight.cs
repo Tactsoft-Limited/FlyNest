@@ -5,7 +5,7 @@ namespace FlyNest.SharedKernel.Entities;
 public class Flight:AuditableEntity
 {
     public long AirlineId { get; set; }
-
+    public Airline Airline { get; set; }
     public string DepartureAirport { get; set; }
 
     public DateOnly DepartureDate { get; set; }
@@ -25,7 +25,6 @@ public class Flight:AuditableEntity
     public string FlightDuration { get; set; }
 
     public string FlightType { get; set; }
-    public long StoppieId { get; set; }
-    public  Airline Airline { get; set; }
+    public long StoppieId { get; set; }   
     public  Stoppies  Stoppies { get; set; }
 }

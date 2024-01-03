@@ -10,6 +10,7 @@ public class StoppiesRepository(FlyNestDbContext context) : BaseRepository<Stopp
 {
     public IEnumerable<SelectListItem> Dropdown()
     {
-        return context.Set<Stoppies>().Where(x => !x.IsDelete).Select(x => new SelectListItem { Text = x.Airport.Name, Value = x.Id.ToString() });
+        return context.Set<Stoppies>().Where(x => !x.IsDelete).Select(x => new SelectListItem { Text = x.Airport.Name, Value = x.AirportId
+            .ToString() });
     }
 }

@@ -12,6 +12,7 @@ public class MapperProfile : Profile
     {
         CreateMap<Airport, VmAirport>().ReverseMap();
         CreateMap<Airline, VmAirline>().ReverseMap();
+        CreateMap<Flight,VmFlight>().ReverseMap();
         CreateMap<VmStoppies,Stoppies>().ReverseMap().ForMember(x=>x.AirportName,x=>x.MapFrom(x=>x.Airport!=null?x.Airport.Name:""));
 
 

@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Infrastructure.Interfaces.Entities;
+using FlyNest.SharedKernel.Core.Collections;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlyNest.App.Controllers.Admin;
 
-public class FlightController(IFlightRepository flightRepository, IMapper mapper,IAirlineRepository airlineRepository,IStoppiesRepository stoppiesRepository) : Controller
+public class FlightController(IFlightRepository flightRepository, IMapper mapper,IAirlineRepository airlineRepository,IAirportRepository airportRepository) : Controller
 {
     [HttpGet]
     public async Task<IActionResult> Index()
@@ -17,8 +18,10 @@ public class FlightController(IFlightRepository flightRepository, IMapper mapper
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
-        ViewData["StoppiId"] = stoppiesRepository.Dropdown();
+        //ViewData["StoppiId"] = stoppiesRepository.Dropdown();
+       
         ViewData["AirlineId"] = airlineRepository.Dropdown();
+        ViewData["StoppiId"] = airportRepository.Dropdown();
 
         return id switch
         {
