@@ -9,7 +9,7 @@ builder.Services.ServiceRegistation(builder.Configuration);
 
 var app = builder.Build();
 
-await app.UseItToSeedSqlServerAsync();
+app.MigrateAndSeed();
 
 // Configure the HTTP request pipeline.
 if(!app.Environment.IsDevelopment())

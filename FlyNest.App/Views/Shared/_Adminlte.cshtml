@@ -15,7 +15,7 @@
     <title>@ViewData["Title"]-EstateEase</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    @await Html.PartialAsync("Backend/_AdminlteStyles.cshtml")
 
     <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
     <link href="~/lib/font-awesome/css/all.min.css" rel="stylesheet" />
@@ -33,15 +33,11 @@
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper" style="font-size:14px;">
-        @*<partial name="_AdminlteMainHeader" model="appUser" />
-            <partial name="_AdminlteMainSidebar" model="appUser" />*@
         <partial name="Backend/_AdminlteMainHeader" model="appUser" />
         <partial name="Backend/_AdminlteMainSidebar" />
         <div class="content-wrapper">
             @RenderBody()
         </div>
-        @*<partial name="~/Views/UIComponents/_MediumModal.cshtml" />
-            <partial name="~/Views/UIComponents/_BigModal.cshtml" />*@
         <partial name="Backend/_AdminlteFooter" />
     </div>
 
@@ -141,8 +137,6 @@
         </script>
     }
     <script src="~/js/site.js"></script>
-
-
 
     @RenderSection("Scripts", required: false)
 
