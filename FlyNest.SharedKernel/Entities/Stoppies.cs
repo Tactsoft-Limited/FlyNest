@@ -7,4 +7,5 @@ public class Stoppies : AuditableEntity
     public string Duration { get; set; }
     public long AirportId { get; set; }
     public Airport Airport { get; set; }
+    public ICollection<Flight> Flights { get; set; } = new HashSet<Flight>();
 }
