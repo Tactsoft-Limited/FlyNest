@@ -1,4 +1,4 @@
-﻿using FlyNest.Infrastructure.Interfaces;
+﻿using FlyNest.Infrastructure.Interfaces.Helpers;
 using FlyNest.SharedKernel.Entities.Audit;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 using Microsoft.EntityFrameworkCore;

@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\Shared\Frontend\" />
+	  <Folder Include="wwwroot\images\airline\" />
 	</ItemGroup>
 
 </Project>
