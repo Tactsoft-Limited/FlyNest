@@ -24,16 +24,14 @@
         <div class="card-header">
             <h3 class="card-title">Create Airline  </h3>
             <div class="card-body">
-                <form asp-action="AddEdit"  role="form" enctype="multipart/form-data">
+                <form asp-action="AddEdit" asp-controller="Airline" role="form" enctype="multipart/form-data">
                     <div class="modal-body form-horizontal">
                         <div class="row">
-
                             <div class="col-md-6">
                                 <label class="col-form-label">Airline Name </label>
                                 <input asp-for="AirlineName" class="form-control" />
                                 <span asp-validation-for="AirlineName" class="text-danger"></span>
                             </div>
-
                             <div class="col-md-6">
                                 <label class=" col-form-label">Contact</label>
                                 <input asp-for="ContactInfo" class="form-control" />
@@ -45,19 +43,18 @@
                                 <span asp-validation-for="Website" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
+                                <label class=" col-form-label">Established Date</label>
+                                <input asp-for="EstablishedDate" type="date" class="form-control" />
+                                <span asp-validation-for="EstablishedDate" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
                                 <label class=" col-form-label">Logo</label>
                                 <input type="file" asp-for="Logo" class="form-control" name="pictureFile" accept="image/*" id="FileUpload" onchange="PreviewImage()" />
                                 <span asp-validation-for="Logo" class="text-danger"></span>
                                 <div class="mt-3" style="text-align: end;">
                                     <img src="~/images/airline/@Model.Logo" alt="img" id="UploadFile" class="img-thumbnail" style="width:120px;" />
                                 </div>
-
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class=" col-form-label">Established Date</label>
-                            <input asp-for="EstablishedDate" type="date" class="form-control" />
-                            <span asp-validation-for="EstablishedDate" class="text-danger"></span>
                         </div>
                         <div class="form-group mt-2">
                             <button type="submit" class="btn btn-sm btn-info"><i class="bi bi-save"></i> Save</button>
@@ -85,6 +82,5 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
     </script>
 }
