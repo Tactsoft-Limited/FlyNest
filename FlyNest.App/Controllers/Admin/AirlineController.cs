@@ -30,6 +30,7 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddEdit(int id, VmAirline airline, IFormFile pictureFile)
     {
         switch (id)
