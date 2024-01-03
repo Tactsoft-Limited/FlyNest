@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using static FlyNest.SharedKernel.Entities.Identities.IdentityModel;
 
-namespace FlyNest.App.Controllers.Admin;
+namespace FlyNest.App.Controllers;
 
 [Authorize]
 [Route("[controller]/[action]")]

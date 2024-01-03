@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Infrastructure.Interfaces.Entities;
 using FlyNest.SharedKernel.Entities;
@@ -30,6 +29,7 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
     }
 
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddEdit(int id, VmAirline airline, IFormFile pictureFile)
     {
         switch (id)
@@ -99,7 +99,7 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
         return View(new VmAirline());
     }
 
-
+    
     public async Task<IActionResult> Delete(long id)
     {
         if (id > 0)

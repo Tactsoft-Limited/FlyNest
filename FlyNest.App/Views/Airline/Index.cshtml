@@ -83,7 +83,7 @@
 
                             <td>
                                 <a asp-action="AddEdit" asp-controller="Airline" asp-route-id="@item.Id" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i> Edit </a>
-                                <a asp-action="Delete" asp-controller="Airline" asp-route-id="@item.Id"
+                                <a onclick="return confirm('Are you sure you want to delete this item?');" asp-action="Delete" asp-controller="Airline" asp-route-id="@item.Id"
                                    class="btn btn-danger btn-sm">
                                     <i class="bi bi-trash"></i> Delete
                                 </a>

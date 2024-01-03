@@ -3,20 +3,17 @@ using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Infrastructure.Interfaces.Entities;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.Contracts;
 
 namespace FlyNest.App.Controllers.Admin;
 
 public class AirportController(IAirportRepository airportRepository, IMapper mapper) : Controller
 {
-
-
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         var list = await airportRepository.GetAllAsync();
         return View(mapper.Map<List<VmAirport>>(list));
     }
-
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
@@ -27,8 +24,8 @@ public class AirportController(IAirportRepository airportRepository, IMapper map
             _ => View(mapper.Map<VmAirport>(await airportRepository.FirstOrDefaultAsync(id)))
         };
     }
-
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddEdit(int id, VmAirport airport)
     {
         switch (id)
@@ -69,7 +66,7 @@ public class AirportController(IAirportRepository airportRepository, IMapper map
        
         return View(new VmAirport());
     }
-    
+   
     public async Task<IActionResult> Delete(long id)
     {
         if (id > 0)
@@ -81,5 +78,4 @@ public class AirportController(IAirportRepository airportRepository, IMapper map
         TempData["ErrorMessage"] = $"Error delete : Item not found";
         return RedirectToAction("Index");
     }
-
 }
