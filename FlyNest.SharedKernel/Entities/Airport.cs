@@ -11,4 +11,5 @@ public class Airport : AuditableEntity
     public string CountryName { get; set; }
 
     public string CityName { get; set; }
+    public ICollection<Stoppies> Stoppies = new HashSet<Stoppies>();
 }

@@ -13,5 +13,6 @@ public class VmStoppies: BaseEntity
     [DisplayName("Airport Name")]
     public long AirportId { get; set; }
     [NotMapped]
+    [DisplayName("Airport Name")]
     public string AirportName { get; set; }
 }
