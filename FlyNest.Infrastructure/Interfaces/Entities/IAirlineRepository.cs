@@ -1,13 +1,10 @@
 ﻿using FlyNest.Infrastructure.Interfaces.BaseRepo;
 using FlyNest.SharedKernel.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FlyNest.Infrastructure.Interfaces.Entities;
 
 public interface IAirlineRepository : IBaseRepository<Airline>
 {
+    public IEnumerable<SelectListItem> Dropdown();
 }

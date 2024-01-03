@@ -1,0 +1,142 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmFlight
+@{
+    ViewData["Title"] = "AddEdit";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Flight</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="YourControllerName" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Create Flight</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Create Flight</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddEdit" asp-controller="YourControllerName" method="post" role="form" enctype="multipart/form-data">
+                <div class="modal-body form-horizontal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AirlineId" class="col-form-label">Airline</label>
+                                <select asp-for="AirlineId" asp-items="@ViewBag.AirlineId" class="form-control">
+                                    <option value="">--Select Airline--</option>
+                                </select>
+                                <span asp-validation-for="AirlineId" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="DepartureAirport" class="col-form-label">Departure Airport</label>
+                                <input asp-for="DepartureAirport" class="form-control" />
+                                <span asp-validation-for="DepartureAirport" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="DepartureDate" class="col-form-label">Departure Date</label>
+                                <input asp-for="DepartureDate" type="date" class="form-control" />
+                                <span asp-validation-for="DepartureDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="ArrivalAirportCode" class="col-form-label">Arrival Airport Code</label>
+                                <input asp-for="ArrivalAirportCode" class="form-control" />
+                                <span asp-validation-for="ArrivalAirportCode" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="ArrivalTime" class="col-form-label">Arrival Time</label>
+                                <input asp-for="ArrivalTime" type="time" class="form-control" />
+                                <span asp-validation-for="ArrivalTime" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Price" class="col-form-label">Price</label>
+                                <input asp-for="Price" class="form-control" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AvailableSeats" class="col-form-label">Available Seats</label>
+                                <input asp-for="AvailableSeats" class="form-control" />
+                                <span asp-validation-for="AvailableSeats" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="TotalSeats" class="col-form-label">Total Seats</label>
+                                <input asp-for="TotalSeats" class="form-control" />
+                                <span asp-validation-for="TotalSeats" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="AircraftType" class="col-form-label">Aircraft Type</label>
+                                <input asp-for="AircraftType" class="form-control" />
+                                <span asp-validation-for="AircraftType" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FlightDuration" class="col-form-label">Flight Duration</label>
+                                <input asp-for="FlightDuration" class="form-control" />
+                                <span asp-validation-for="FlightDuration" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FlightType" class="col-form-label">Flight Type</label>
+                                <input asp-for="FlightType" class="form-control" />
+                                <span asp-validation-for="FlightType" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="StoppiId" class="col-form-label">Stoppies Name</label>
+                                <select asp-for="StoppiId" asp-items="@ViewBag.StoppiId" class="form-control">
+                                    <option value="">--Select Stoppies Name--</option>
+                                </select>
+                                <span asp-validation-for="StoppiId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-sm btn-info"><i class="bi bi-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
