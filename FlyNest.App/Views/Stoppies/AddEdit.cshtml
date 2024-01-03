@@ -1,0 +1,58 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmStoppies
+@{
+    ViewData["Title"] = "AddEdit";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Airport </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Airport" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active"> Create Airport</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content ">
+    <div class="card w-4 ">
+        <div class="card-header">
+            <h3 class="card-title">Create Airport  </h3>
+            <div class="card-body">
+                <form asp-action="AddEdit" asp-controller="Stoppies" role="form" enctype="post">
+                    <div class="modal-body form-horizontal">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label asp-for="AirportId" class="col-form-label"></label>
+                                <select asp-for="AirportId" asp-items="@ViewBag.AirportId" class="form-control">
+                                    <option value="">--Airport Name--</option>
+                                </select>
+                                <span asp-validation-for="AirportId" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Duration" class=" col-form-label"></label>
+                                <input asp-for="Duration" class="form-control" />
+                                <span asp-validation-for="Duration" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="submit" class="btn btn-sm btn-info"><i class="bi bi-save"></i> Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
