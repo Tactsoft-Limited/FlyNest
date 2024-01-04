@@ -4,6 +4,7 @@ using FlyNest.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyNest.Infrastructure.Migrations
 {
     [DbContext(typeof(FlyNestDbContext))]
-    partial class FlyNestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240103105436_CreatehotelTable")]
+    partial class CreatehotelTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,6 +150,9 @@ namespace FlyNest.Infrastructure.Migrations
                     b.Property<int>("Discount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Images")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
@@ -171,45 +177,6 @@ namespace FlyNest.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hotel", (string)null);
-                });
-
-            modelBuilder.Entity("FlyNest.SharedKernel.Entities.HotelImages", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long>("HotelId")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("HotelImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDelete")
-                        .HasColumnType("bit");
-
-                    b.Property<long?>("ModifiedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("ModifiedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("UpdateNo")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HotelId");
-
-                    b.ToTable("HotelImages", (string)null);
                 });
 
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Identities.IdentityModel+Role", b =>
@@ -487,17 +454,6 @@ namespace FlyNest.Infrastructure.Migrations
                     b.ToTable("Stoppies", (string)null);
                 });
 
-            modelBuilder.Entity("FlyNest.SharedKernel.Entities.HotelImages", b =>
-                {
-                    b.HasOne("FlyNest.SharedKernel.Entities.Hotel", "Hotel")
-                        .WithMany("HotelImages")
-                        .HasForeignKey("HotelId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Hotel");
-                });
-
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Identities.IdentityModel+RoleClaim", b =>
                 {
                     b.HasOne("FlyNest.SharedKernel.Entities.Identities.IdentityModel+Role", null)
@@ -563,11 +519,6 @@ namespace FlyNest.Infrastructure.Migrations
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Airport", b =>
                 {
                     b.Navigation("Stoppies");
-                });
-
-            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Hotel", b =>
-                {
-                    b.Navigation("HotelImages");
                 });
 #pragma warning restore 612, 618
         }
