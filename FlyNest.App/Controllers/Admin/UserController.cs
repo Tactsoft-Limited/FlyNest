@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 using static FlyNest.SharedKernel.Entities.Identities.IdentityModel;
 
 namespace FlyNest.App.Controllers.Admin;

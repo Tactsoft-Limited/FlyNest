@@ -1,5 +1,4 @@
 ﻿using FlyNest.SharedKernel.Entities.BaseEntities;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace FlyNest.Application.ViewModels.VmEntities;

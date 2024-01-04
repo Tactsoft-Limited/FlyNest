@@ -6,10 +6,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FlyNest.Application.Repositories.Entities;
 
-public class AirportRepository(FlyNestDbContext context) : BaseRepository<Airport>(context: context), IAirportRepository, IApplication
+public class AirportRepository(FlyNestDbContext context) : BaseRepository<Airport>(context), IAirportRepository, IApplication
 {
+    private readonly FlyNestDbContext _dbContext = context;
+
     public IEnumerable<SelectListItem> Dropdown()
     {
-        return context.Set<Airport>().Where(x=>!x.IsDelete).Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
+        return _dbContext.Set<Airport>()
+            .Where(x => !x.IsDelete)
+            .Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
     }
 }

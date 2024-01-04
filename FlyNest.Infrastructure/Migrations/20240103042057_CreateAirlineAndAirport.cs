@@ -1,22 +1,20 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace FlyNest.Infrastructure.Migrations
 {
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public partial class CreateAirlineAndAirport : Migration
     {
-        /// <inheritdoc />
+        /// <inheritdoc/>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "Airline",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<long>(type: "bigint", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     AirlineName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     ContactInfo = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Website = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
@@ -29,17 +27,13 @@ namespace FlyNest.Infrastructure.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     UpdateNo = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Airline", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Airline", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "Airport",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<long>(type: "bigint", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(85)", maxLength: 85, nullable: true),
                     Code = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     CountryName = table.Column<string>(type: "nvarchar(85)", maxLength: 85, nullable: true),
@@ -51,17 +45,13 @@ namespace FlyNest.Infrastructure.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     UpdateNo = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Airport", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Airport", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "Role",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<long>(type: "bigint", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     StatusId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
@@ -72,17 +62,13 @@ namespace FlyNest.Infrastructure.Migrations
                     NormalizedName = table.Column<string>(type: "nvarchar(85)", maxLength: 85, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Role", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Role", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<long>(type: "bigint", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
                     CreatedDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     ModifiedBy = table.Column<long>(type: "bigint", nullable: true),
@@ -102,17 +88,13 @@ namespace FlyNest.Infrastructure.Migrations
                     LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_User", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "RoleClaim",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     RoleId = table.Column<long>(type: "bigint", nullable: false),
                     ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -132,8 +114,7 @@ namespace FlyNest.Infrastructure.Migrations
                 name: "UserClaim",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false).Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<long>(type: "bigint", nullable: false),
                     ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
@@ -220,15 +201,9 @@ namespace FlyNest.Infrastructure.Migrations
                 unique: true,
                 filter: "[NormalizedName] IS NOT NULL");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_RoleClaim_RoleId",
-                table: "RoleClaim",
-                column: "RoleId");
+            migrationBuilder.CreateIndex(name: "IX_RoleClaim_RoleId", table: "RoleClaim", column: "RoleId");
 
-            migrationBuilder.CreateIndex(
-                name: "EmailIndex",
-                table: "User",
-                column: "NormalizedEmail");
+            migrationBuilder.CreateIndex(name: "EmailIndex", table: "User", column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -237,51 +212,33 @@ namespace FlyNest.Infrastructure.Migrations
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_UserClaim_UserId",
-                table: "UserClaim",
-                column: "UserId");
+            migrationBuilder.CreateIndex(name: "IX_UserClaim_UserId", table: "UserClaim", column: "UserId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_UserLogin_UserId",
-                table: "UserLogin",
-                column: "UserId");
+            migrationBuilder.CreateIndex(name: "IX_UserLogin_UserId", table: "UserLogin", column: "UserId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_UserRole_RoleId",
-                table: "UserRole",
-                column: "RoleId");
+            migrationBuilder.CreateIndex(name: "IX_UserRole_RoleId", table: "UserRole", column: "RoleId");
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Airline");
+            migrationBuilder.DropTable(name: "Airline");
 
-            migrationBuilder.DropTable(
-                name: "Airport");
+            migrationBuilder.DropTable(name: "Airport");
 
-            migrationBuilder.DropTable(
-                name: "RoleClaim");
+            migrationBuilder.DropTable(name: "RoleClaim");
 
-            migrationBuilder.DropTable(
-                name: "UserClaim");
+            migrationBuilder.DropTable(name: "UserClaim");
 
-            migrationBuilder.DropTable(
-                name: "UserLogin");
+            migrationBuilder.DropTable(name: "UserLogin");
 
-            migrationBuilder.DropTable(
-                name: "UserRole");
+            migrationBuilder.DropTable(name: "UserRole");
 
-            migrationBuilder.DropTable(
-                name: "UserToken");
+            migrationBuilder.DropTable(name: "UserToken");
 
-            migrationBuilder.DropTable(
-                name: "Role");
+            migrationBuilder.DropTable(name: "Role");
 
-            migrationBuilder.DropTable(
-                name: "User");
+            migrationBuilder.DropTable(name: "User");
         }
     }
 }
