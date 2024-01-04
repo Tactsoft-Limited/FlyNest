@@ -12,5 +12,6 @@ public class Hotel:AuditableEntity
     public int Discount { get; set; }
     public string locationMap { get; set; }
     public ICollection<HotelImages> HotelImages { get; set; } = new List<HotelImages>();
+    public ICollection<Room> Rooms = new HashSet<Room>();
 
 }

@@ -16,6 +16,9 @@ public class MapperProfile : Profile
 
         CreateMap<HotelImages, VmHotelImages>().ReverseMap();
         CreateMap<Hotel, VmHotel>().ReverseMap();
+
+        CreateMap<RoomImages, VmRoomImages>().ReverseMap();
+        CreateMap<Room, VmRoom>().ReverseMap();
         AllowNullCollections = true;
     }
 }
