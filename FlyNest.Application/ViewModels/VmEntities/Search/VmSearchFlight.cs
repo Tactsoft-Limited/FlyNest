@@ -5,7 +5,7 @@ namespace FlyNest.Application.ViewModels.VmEntities.Search;
 
 public class VmSearchFlight
 {
-    public VmSearchFlight() { DepatureDate = DateOnly.FromDateTime(DateTime.Now); }
+    public  VmSearchFlight() { DepatureDate = DateOnly.FromDateTime(DateTime.Now); }
     [Required]
     [Display(Name = "Select Depature Airport")]
     public long DepatureAirportId { get; set; }

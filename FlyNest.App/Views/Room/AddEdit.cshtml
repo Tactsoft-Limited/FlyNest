@@ -88,4 +88,27 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        function PreviewImages() {
+            var previewContainer = $("#ImagePreviewContainer");
+            previewContainer.empty();
+            var filesInput = $('input[type="file"]');
+            var files = filesInput[0].files;
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                
+                if (file.type.match('image.*')) {
+                    var img = $("<img>").addClass("img-thumbnail").attr({
+                        "src": URL.createObjectURL(file),
+                        "style": "width: 170px; display: inline-block;" 
+                    });
+                    previewContainer.append(img);
+                }
+            }
+        }
+        $(document).ready(function () {
+            $('input[type="file"]').unbind('change', PreviewImages);
+            $('input[type="file"]').bind('change', PreviewImages);
+        });
+    </script>
 }
