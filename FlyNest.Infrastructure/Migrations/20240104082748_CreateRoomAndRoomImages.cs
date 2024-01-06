@@ -12,7 +12,7 @@ namespace FlyNest.Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameColumn(
-                name: "locationMap",
+                name: "LocationMap",
                 table: "Hotel",
                 newName: "LocationMap");
 
@@ -94,7 +94,7 @@ namespace FlyNest.Infrastructure.Migrations
             migrationBuilder.RenameColumn(
                 name: "LocationMap",
                 table: "Hotel",
-                newName: "locationMap");
+                newName: "LocationMap");
         }
     }
 }

@@ -6,5 +6,5 @@ namespace FlyNest.Infrastructure.Interfaces.Entities;
 
 public interface IHotelRepository:IBaseRepository<Hotel>
 {
-    public IEnumerable<SelectListItem> Dropdown();
+    public Task<IEnumerable<SelectListItem>> DropdownAsync();
 }

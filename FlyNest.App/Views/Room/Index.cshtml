@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmRoomImages>
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmRoom>
 
 @{
     ViewData["Title"] = "Index";
@@ -34,11 +34,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>@Html.DisplayNameFor(x => x.Room.Hotel.Name)</th>
-                        <th>@Html.DisplayNameFor(x => x.Room.Name)</th>
-                        <th>@Html.DisplayNameFor(x => x.Room.Facilities)</th>
-                        <th>@Html.DisplayNameFor(x => x.Room.Benefits)</th>
-                        <th>@Html.DisplayNameFor(x => x.Room.PriceParNight)</th>
+                        <th>@Html.DisplayNameFor(x => x.HotelName)</th>
+                        <th>@Html.DisplayNameFor(x => x.Name)</th>
+                        <th>@Html.DisplayNameFor(x => x.Facilities)</th>
+                        <th>@Html.DisplayNameFor(x => x.Benefits)</th>
+                        <th>@Html.DisplayNameFor(x => x.PriceParNight)</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -47,16 +47,16 @@
                     {
                         <tr>
                             <td>@ino</td>
-                            <td>@Html.DisplayFor(modelItem => item.Room.Hotel.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Room.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Room.Facilities)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Room.Benefits)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Room.PriceParNight)</td>
-                            <td>
+                            <td>@Html.DisplayFor(modelItem => item.HotelName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Facilities)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Benefits)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PriceParNight)</td>
+                           @*  <td>
                                
                                     <img class="img-thumbnail" width="40" src="~/images/room/@item.RoomImage" alt="Image" />
                                
-                            </td>
+                            </td> *@
                             <td>
                                 <a asp-action="AddEdit" asp-controller="Room" asp-route-id="@item.Id" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i> Edit </a>
                                 <a onclick="return confirm('Are you sure you want to delete this item?');" asp-action="Delete" asp-controller="Room" asp-route-id="@item.Id"

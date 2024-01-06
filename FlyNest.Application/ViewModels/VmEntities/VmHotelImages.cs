@@ -1,12 +1,14 @@
-﻿using FlyNest.SharedKernel.Entities;
+﻿using System.ComponentModel;
+using FlyNest.SharedKernel.Entities;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 
 namespace FlyNest.Application.ViewModels.VmEntities;
 
 public class VmHotelImages:BaseEntity
 {
+    [DisplayName("Hotel Image")]
     public string HotelImage { get; set; }
     public long HotelId { get; set; }
-    public Hotel Hotel { get; set; }
+    public VmHotel Hotel { get; set; }
     
 }

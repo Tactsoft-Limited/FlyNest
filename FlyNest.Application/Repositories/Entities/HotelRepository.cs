@@ -8,9 +8,12 @@ namespace FlyNest.Application.Repositories.Entities;
 
 public class HotelRepository(FlyNestDbContext context) : BaseRepository<Hotel>(context), IHotelRepository, IApplication
 {
-    public IEnumerable<SelectListItem> Dropdown()
+    public async Task<IEnumerable<SelectListItem>> DropdownAsync()
     {
-        return context.Set<Hotel>().Where(x => x.IsDelete==true)
-            .Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
+        var list = await GetAllAsync();
+        return list.Select(x=> new SelectListItem
+        {
+            Text = x.Name, Value = x.Id.ToString()
+        });
     }
 }

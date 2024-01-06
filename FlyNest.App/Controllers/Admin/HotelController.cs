@@ -10,104 +10,125 @@ public class HotelController(IHotelRepository hotelRepository, IHotelImagesRepos
 {
     [HttpGet]
     public async Task<IActionResult> Index()
+    
     {
-        var list = await hotelImagesRepository.GetAllAsync(x=>x.Hotel);
-        return View(mapper.Map<List<VmHotelImages>>(list));
+        var list = await hotelRepository.GetAllAsync(x=>x.HotelImages);
+         return View(mapper.Map<List<VmHotel>>(list));
     }
     [HttpGet]
-    public async Task<IActionResult> AddEdit(string id)
+    public async Task<IActionResult> AddEdit(long id)
     {
-        if (!string.IsNullOrEmpty(id) && long.TryParse(id, out long hotelId))
+        switch (id)
         {
-            var viewModel = await hotelImagesRepository.FirstOrDefaultAsync(hotelId,x=>x.Hotel);
-
-            if (viewModel != null)
+            case 0:
+                return View(new VmHotel());
+            default:
             {
-                var mappedViewModel = mapper.Map<VmHotelImages>(viewModel);
-                return View(mappedViewModel);
+                var data = await hotelRepository.FirstOrDefaultAsync(id, x => x.HotelImages);
+                return View(mapper.Map<VmHotel>(data));
             }
         }
-
-        return View(new VmHotelImages());
     }
-
-
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddEdit( VmHotelImages viewModel, List<IFormFile> hotelImages)
+    public async Task<IActionResult> AddEdit(VmHotel viewModel)
     {
-        if (viewModel.Id==0)
+        switch (viewModel.Id)
         {
-            if (ModelState.IsValid)
+            case 0:
             {
-                var hotel = mapper.Map<Hotel>(viewModel.Hotel);
-                await hotelRepository.InsertAsync(hotel);
-                foreach (var file in hotelImages)
+                switch (ModelState.IsValid)
                 {
-                    if (file != null && file.Length > 0)
+                    case true:
                     {
-                        var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/hotel");
-                        var fileName = $"{hotel.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
-                        var filePath = Path.Combine(uploads, fileName);
+                        var hotel = mapper.Map<Hotel>(viewModel);
+                        await hotelRepository.InsertAsync(hotel);
 
-                        await using (var stream = new FileStream(filePath, FileMode.Create))
+                        if (viewModel.File != null)
                         {
-                            await file.CopyToAsync(stream);
+                            foreach (var file in viewModel.File)
+                            {
+                                if (file != null && file.Length > 0)
+                                {
+                                    var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/hotel");
+                                    var fileName = $"{hotel.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
+                                    var filePath = Path.Combine(uploads, fileName);
+
+                                    await using (var stream = new FileStream(filePath, FileMode.Create))
+                                    {
+                                        await file.CopyToAsync(stream);
+                                    }
+                                    var hotelImage = new HotelImages
+                                    {
+                                        HotelId = hotel.Id,
+                                        HotelImage = fileName
+                                    };
+                                    await hotelImagesRepository.InsertAsync(hotelImage);
+                                    TempData["SuccessMessage"] = $" Airport '{hotelImage.Hotel.Name}' added successfully.";
+                                }
+                            }
                         }
-                        var hotelImage = new HotelImages
-                        {
-                            HotelId = hotel.Id,
-                            HotelImage = fileName
-                        };
-                        await hotelImagesRepository.InsertAsync(hotelImage);
-                        TempData["SuccessMessage"] = $" Airport '{hotelImage.Hotel.Name}' added successfully.";
+              
+                        return RedirectToAction(nameof(Index));
                     }
                 }
-                return RedirectToAction(nameof(Index));
+
+                break;
             }
-        }
-        else
-        {
-            if (ModelState.IsValid)
+            default:
             {
-                var hotel = mapper.Map<Hotel>(viewModel.Hotel);
-                await hotelRepository.UpdateAsync(hotel);
-                foreach (var file in hotelImages)
+                switch (ModelState.IsValid)
                 {
-                    if (file != null && file.Length > 0)
+                    case true:
                     {
-                        var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/hotel");
-                        var fileName = $"{hotel.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
-                        var filePath = Path.Combine(uploads, fileName);
-                        await using (var stream = new FileStream(filePath, FileMode.Create))
+                        var hotel = mapper.Map<Hotel>(viewModel);
+                        await hotelRepository.UpdateAsync(hotel);
+                        if (viewModel.File != null)
                         {
-                            await file.CopyToAsync(stream);
+                            foreach (var file in viewModel.File)
+                            {
+                                if (file != null && file.Length > 0)
+                                {
+                                    var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/hotel");
+                                    var fileName = $"{hotel.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
+                                    var filePath = Path.Combine(uploads, fileName);
+                                    await using (var stream = new FileStream(filePath, FileMode.Create))
+                                    {
+                                        await file.CopyToAsync(stream);
+                                    }
+                                    var hotelImage = new HotelImages
+                                    {
+                                        HotelId = hotel.Id,
+                                        HotelImage = fileName
+                                    };
+                                    await hotelImagesRepository.UpdateAsync(hotelImage);
+                                    TempData["SuccessMessage"] = $" Airport '{hotelImage.Hotel.Name}' update successfully.";
+                                }
+                            }
                         }
-                        var hotelImage = new HotelImages
-                        {
-                            HotelId = hotel.Id,
-                            HotelImage = fileName
-                        };
-                        await hotelImagesRepository.UpdateAsync(hotelImage);
-                        TempData["SuccessMessage"] = $" Airport '{hotelImage.Hotel.Name}' update successfully.";
+                        return RedirectToAction(nameof(Index));
                     }
                 }
-                return RedirectToAction(nameof(Index));
+
+                break;
             }
         }
+
         return View(viewModel);
     }
 
 
     public async Task<IActionResult> Delete(long id)
     {
-        if (id > 0)
+        switch (id)
         {
-            await hotelImagesRepository.DeleteAsync(id);
-            TempData["SuccessMessage"] = $" Item remove successfully";
-            return RedirectToAction("Index");
+            case > 0:
+                await hotelRepository.DeleteAsync(id);
+                TempData["SuccessMessage"] = $" Item remove successfully";
+                return RedirectToAction("Index");
+            default:
+                TempData["ErrorMessage"] = $"Error delete : Item not found";
+                return RedirectToAction("Index");
         }
-        TempData["ErrorMessage"] = $"Error delete : Item not found";
-        return RedirectToAction("Index");
     }
 }

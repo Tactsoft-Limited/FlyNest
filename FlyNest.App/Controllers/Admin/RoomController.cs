@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Infrastructure.Interfaces.Entities;
 using FlyNest.SharedKernel.Entities;
@@ -13,113 +14,126 @@ public class RoomController(
     IWebHostEnvironment webHostEnvironment,IHotelRepository hotelRepository)
     : Controller
 {
-
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var list = await imagesRepository.GetAllAsync(x => x.Room, x => x.Room.Hotel);
-        return View(mapper.Map<List<VmRoomImages>>(list));
-    } 
+        var list = await roomRepository.GetAllAsync(x => x.RoomImages,x=>x.Hotel);
+        return View(mapper.Map<List<VmRoom>>(list));
+    }
     [HttpGet]
-public async Task<IActionResult> AddEdit(long id)
-{
-    ViewData["HotelId"] = hotelRepository.Dropdown();
-    if (id > 0)
+    public async Task<IActionResult> AddEdit(long id)
     {
-        var viewModel = await imagesRepository.FirstOrDefaultAsync(id, x => x.Room, x => x.Room.Hotel);
-
-        if (viewModel != null)
+        ViewData["HotelId"] = await hotelRepository.DropdownAsync();
+        switch (id)
         {
-            var mappedViewModel = mapper.Map<VmRoomImages>(viewModel);
-            return View(mappedViewModel);
+            case 0:
+                return View(new VmRoom());
+            default:
+            {
+                var data = await roomRepository.FirstOrDefaultAsync(id, x => x.RoomImages);
+                return View(mapper.Map<VmRoom>(data));
+            }
         }
     }
 
-    return View(new VmRoomImages());
-}
+
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddEdit(VmRoomImages viewModel, List<IFormFile> roomImages)
+    public async Task<IActionResult> AddEdit(VmRoom viewModel)
     {
-        try
+        switch (viewModel.Id)
         {
-            if (ModelState.IsValid)
+            case 0:
             {
-                // Map the ViewModel to Room entity
-                var room = mapper.Map<Room>(viewModel.Room);
-
-                if (viewModel.Id == 0)
+                switch (ModelState.IsValid)
                 {
-                    // Insert Data
-                    await roomRepository.InsertAsync(room);
-                }
-                else
-                {
-                    // Update Data
-                   await roomRepository.UpdateAsync(room);
-
-                    // Delete existing room images
-                    var existingRoomImages = await imagesRepository
-                        .GetAllAsync(x => x.RoomId == room.Id);
-
-                    foreach (var existingImage in existingRoomImages)
+                    case true:
                     {
-                        await imagesRepository.DeleteAsync(existingImage.Id);
-                    }
-                }
-
-                // Upload and insert new room images
-                foreach (var file in roomImages)
-                {
-                    if (file != null && file.Length > 0)
-                    {
-                        var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/room");
-                        var fileName = $"{room.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
-                        var filePath = Path.Combine(uploads, fileName);
-
-                        await using (var stream = new FileStream(filePath, FileMode.Create))
+                        var room = mapper.Map<Room>(viewModel);
+                        await roomRepository.InsertAsync(room);
+                        foreach (var file in viewModel.Files)
                         {
-                            await file.CopyToAsync(stream);
+                            if (file != null && file.Length > 0)
+                            {
+                                var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/room");
+                                var fileName = $"{room.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
+                                var filePath = Path.Combine(uploads, fileName);
+
+                                await using (var stream = new FileStream(filePath, FileMode.Create))
+                                {
+                                    await file.CopyToAsync(stream);
+                                }
+                                var hotelImage = new RoomImages()
+                                {
+                                    RoomId = room.Id,
+                                    RoomImage = fileName
+                                };
+                                await imagesRepository.InsertAsync(hotelImage);
+                                TempData["SuccessMessage"] = $" Airport '{room.Name}' added successfully.";
+                            }
                         }
-
-                        // Map the image details to RoomImages entity
-                        var roomImage = new RoomImages
-                        {
-                            RoomId = room.Id,
-                            RoomImage = fileName
-                        };
-
-                        // Insert new room image
-                        await imagesRepository.InsertAsync(roomImage);
+                        return RedirectToAction(nameof(Index));
                     }
                 }
 
-                TempData["SuccessMessage"] = $" Room '{room.Name}' {(viewModel.Id == 0 ? "added" : "updated")} successfully.";
-                return RedirectToAction(nameof(Index));
+                break;
+            }
+            default:
+            {
+                switch (ModelState.IsValid)
+                {
+                    case true:
+                    {
+                        var room = mapper.Map<Room>(viewModel);
+                        await roomRepository.UpdateAsync(room);
+                        foreach (var file in viewModel.Files)
+                        {
+                            if (file != null && file.Length > 0)
+                            {
+                                var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/room");
+                                var fileName = $"{room.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
+                                var filePath = Path.Combine(uploads, fileName);
+                                await using (var stream = new FileStream(filePath, FileMode.Create))
+                                {
+                                    await file.CopyToAsync(stream);
+                                }
+                                var hotelImage = new RoomImages()
+                                {
+                                    RoomId = room.Id,
+                                    RoomImage = fileName
+                                };
+                                await imagesRepository.UpdateAsync(hotelImage);
+                                TempData["SuccessMessage"] = $" Airport '{room.Name}' update successfully.";
+                            }
+                        }
+                        return RedirectToAction(nameof(Index));
+                    }
+                }
+
+                break;
             }
         }
-        catch (Exception ex)
-        {
-            // Log or handle the exception
-            TempData["ErrorMessage"] = $"An error occurred: {ex.Message}";
-        }
-
-        // If there's an error, redisplay the form with the ViewModel
-        ViewData["HotelId"] = hotelRepository.Dropdown();
+        ViewData["HotelId"] = await hotelRepository.DropdownAsync();
         return View(viewModel);
     }
 
 
-
     public async Task<IActionResult> Delete(long id)
     {
-        if (id > 0)
+        switch (id)
         {
-            await imagesRepository.DeleteAsync(id);
-            TempData["SuccessMessage"] = $" Item remove successfully";
-            return RedirectToAction("Index");
+            case > 0:
+                await hotelRepository.DeleteAsync(id);
+                TempData["SuccessMessage"] = $" Item remove successfully";
+                return RedirectToAction("Index");
+            default:
+                TempData["ErrorMessage"] = $"Error delete : Item not found";
+                return RedirectToAction("Index");
         }
-        TempData["ErrorMessage"] = $"Error delete : Item not found";
-        return RedirectToAction("Index");
     }
+
+
+
+
+
 }

@@ -1,4 +1,4 @@
-﻿@model FlyNest.Application.ViewModels.VmEntities.VmRoomImages
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmRoom
 
 @{
     ViewData["Title"] = "AddEdit";
@@ -31,47 +31,45 @@
                 <div class="modal-body form-horizontal">
                     <div class="row">
                         <div class="col-md-6">
-                            <label class="col-form-label">Hotel Name</label>
-                            <select asp-for="Room.HotelId" asp-items="@(ViewBag.HotelId)" class="form-control select2">
-                                <option value="">--Select Project--</option>
+                            <label class="col-form-label">Hotel Name <span class=" text-danger ">*</span></label>
+                            <select asp-for="HotelId" asp-items="@(ViewBag.HotelId)" class="form-control select2">
+                                <option value="">--Select Hotel Name--</option>
                             </select>
-                            <span asp-validation-for="Room.HotelId" class="text-danger"></span>
+                            <span asp-validation-for="HotelId" class="text-danger"></span>
                         </div>
-                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-form-label">Room Name <span class=" text-danger ">*</span></label>
+                                <input asp-for="Name" class="form-control"/>
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-form-label">Room Benefits <span class=" text-danger ">*</span></label>
+                                <input asp-for="Benefits" class="form-control"/>
+                                <span asp-validation-for="Benefits" class="text-danger"></span>
+                            </div>
+                        </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label">Room Name</label>
-                                <input asp-for="Room.Name" class="form-control"/>
-                                <span asp-validation-for="Room.Name" class="text-danger"></span>
+                                <label class="col-form-label">Room Facilities <span class=" text-danger ">*</span></label>
+                                <input asp-for="Facilities" class="form-control"/>
+                                <span asp-validation-for="Facilities" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-form-label">Room Benefits</label>
-                                <input asp-for="Room.Benefits" class="form-control"/>
-                                <span asp-validation-for="Room.Benefits" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label">Room Facilities</label>
-                                <input asp-for="Room.Facilities" class="form-control"/>
-                                <span asp-validation-for="Room.Facilities" class="text-danger"></span>
+                                <label class="col-form-label">Price Par Night <span class=" text-danger ">*</span></label>
+                                <input asp-for="PriceParNight" class="form-control"/>
+                                <span asp-validation-for="PriceParNight" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="col-form-label">Price Par Night</label>
-                                <input asp-for="Room.PriceParNight" class="form-control"/>
-                                <span asp-validation-for="Room.PriceParNight" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label asp-for="RoomImage" class="col-form-label">Images</label>
-                            <input type="file" asp-for="RoomImage" class="form-control" name="roomImages" accept="image/*" multiple onchange="PreviewImages()"/>
-                            <span asp-validation-for="RoomImage" class="text-danger"></span>
+                            <label asp-for="Files" class="col-form-label">Images</label>
+                            <input type="file" asp-for="Files" class="form-control" name="Files" accept="image/*" multiple onchange="PreviewImages()" />
+                            <span asp-validation-for="Files" class="text-danger"></span>
                             <div class="mt-3" style="text-align: end;">
                                 <div id="ImagePreviewContainer" class="row"></div>
                             </div>

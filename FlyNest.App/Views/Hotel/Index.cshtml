@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmHotelImages>
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmHotel>
 
 @{
     ViewData["Title"] = "Index";
@@ -34,14 +34,14 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>@Html.DisplayNameFor(x=>x.Hotel.Name)</th>
-                        <th>@Html.DisplayNameFor(x=>x.Hotel.Address)</th>
-                        <th>@Html.DisplayNameFor(x => x.Hotel.CountryName)</th>
-                        <th>@Html.DisplayNameFor(x => x.Hotel.CityName)</th>
-                        <th>@Html.DisplayNameFor(x => x.Hotel.PriceStartFrom)</th>
-                        <th>@Html.DisplayNameFor(x => x.Hotel.Discount)</th>
-                        <th>@Html.DisplayNameFor(x => x.Hotel.locationMap)</th>
-                        <th>@Html.DisplayNameFor(x => x.HotelImage)</th>
+                        <th>@Html.DisplayNameFor(x=>x.Name)</th>
+                        <th>@Html.DisplayNameFor(x=>x.Address)</th>
+                        <th>@Html.DisplayNameFor(x => x.CountryName)</th>
+                        <th>@Html.DisplayNameFor(x => x.CityName)</th>
+                        <th>@Html.DisplayNameFor(x => x.PriceStartFrom)</th>
+                        <th>@Html.DisplayNameFor(x => x.Discount)</th>
+                        <th>@Html.DisplayNameFor(x => x.LocationMap)</th>
+                        <th>@Html.DisplayNameFor(x => x.Image)</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -50,15 +50,15 @@
                     {
                         <tr>
                             <td>@ino</td>
-                            <td>@Html.DisplayFor(modelItem => item.Hotel.Name)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Hotel.Address)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Hotel.CountryName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Hotel.CityName)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Hotel.PriceStartFrom)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Hotel.Discount)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Hotel.locationMap)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CountryName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CityName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PriceStartFrom)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Discount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.LocationMap)</td>
                             <td>
-                                <img class="img-thumbnail" width="40" src="~/images/hotel/@Html.DisplayFor(modelItem => item.HotelImage)" alt="Image" />
+                                <img class="img-thumbnail" width="40" src="~/images/hotel/@Html.DisplayFor(modelItem => item.HotelImages)" alt="Image" />
                             </td>
                             <td>
                                 <a asp-action="AddEdit" asp-controller="Hotel" asp-route-id="@item.Id" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i> Edit </a>
