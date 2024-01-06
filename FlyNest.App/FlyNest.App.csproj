@@ -21,8 +21,8 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\Shared\Frontend\" />
-	  <Folder Include="wwwroot\images\airline\" />
 	  <Folder Include="wwwroot\images\hotel\" />
+	  <Folder Include="wwwroot\images\airline\" />
 	  <Folder Include="wwwroot\images\room\" />
 	</ItemGroup>
 

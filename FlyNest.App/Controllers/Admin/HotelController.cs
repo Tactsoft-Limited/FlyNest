@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Infrastructure.Interfaces.Entities;
 using FlyNest.SharedKernel.Entities;
@@ -10,10 +11,10 @@ public class HotelController(IHotelRepository hotelRepository, IHotelImagesRepos
 {
     [HttpGet]
     public async Task<IActionResult> Index()
-    
+
     {
-        var list = await hotelRepository.GetAllAsync(x=>x.HotelImages);
-         return View(mapper.Map<List<VmHotel>>(list));
+        var list = await hotelRepository.GetAllAsync();
+        return View(mapper.Map<List<VmHotel>>(list));
     }
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
