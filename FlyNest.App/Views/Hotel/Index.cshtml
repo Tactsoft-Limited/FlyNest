@@ -1,0 +1,81 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmHotel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+    int ino = 1;
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Hotels</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Hotels</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Hotel List</h3>
+            <div class="card-tools">
+                <a asp-action="AddEdit" asp-controller="Hotel" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Hotel</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>@Html.DisplayNameFor(x=>x.Name)</th>
+                        <th>@Html.DisplayNameFor(x=>x.Address)</th>
+                        <th>@Html.DisplayNameFor(x => x.CountryName)</th>
+                        <th>@Html.DisplayNameFor(x => x.CityName)</th>
+                        <th>@Html.DisplayNameFor(x => x.PriceStartFrom)</th>
+                        <th>@Html.DisplayNameFor(x => x.Discount)</th>
+                        <th>@Html.DisplayNameFor(x => x.LocationMap)</th>
+                        
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@ino</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CountryName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CityName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PriceStartFrom)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Discount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.LocationMap)</td>
+                           
+                            <td>
+                                <a asp-action="AddEdit" asp-controller="Hotel" asp-route-id="@item.Id" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i> Edit </a>
+                                <a onclick="return confirm('Are you sure you want to delete this item?');" asp-action="Delete" asp-controller="Hotel" asp-route-id="@item.Id"
+                                   class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                        ino++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

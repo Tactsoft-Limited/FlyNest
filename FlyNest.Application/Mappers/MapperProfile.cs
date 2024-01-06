@@ -30,7 +30,10 @@ public class MapperProfile : Profile
 
         CreateMap<Stopover, VmStopover>().ReverseMap();
 
-
+        CreateMap<HotelImages, VmHotelImages>().ReverseMap();
+        CreateMap<VmHotel, Hotel>().ReverseMap();
+        CreateMap<RoomImages, VmRoomImages>().ReverseMap();
+        CreateMap<VmRoom, Room >().ReverseMap().ForMember(x=>x.HotelName,x=>x.MapFrom(x=>x.Hotel!=null?x.Hotel.Name:""));
         AllowNullCollections = true;
     }
 }

@@ -799,6 +799,17 @@ namespace FlyNest.Infrastructure.Migrations
                     b.Navigation("DepatureFlight");
                 });
 
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.HotelImages", b =>
+                {
+                    b.HasOne("FlyNest.SharedKernel.Entities.Hotel", "Hotel")
+                        .WithMany("HotelImages")
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+                });
+
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Identities.IdentityModel+RoleClaim", b =>
                 {
                     b.HasOne("FlyNest.SharedKernel.Entities.Identities.IdentityModel+Role", null)
@@ -886,6 +897,18 @@ namespace FlyNest.Infrastructure.Migrations
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Flight", b =>
                 {
                     b.Navigation("Stopovers");
+                });
+
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Hotel", b =>
+                {
+                    b.Navigation("HotelImages");
+
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Room", b =>
+                {
+                    b.Navigation("RoomImages");
                 });
 #pragma warning restore 612, 618
         }
