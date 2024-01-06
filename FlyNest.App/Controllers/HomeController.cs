@@ -11,10 +11,12 @@ namespace FlyNest.App.Controllers
     public class HomeController(
         ILogger<HomeController> logger,
         IAirportRepository airportRepository,
-        IFlightRepository flightRepository) : Controller
+        IFlightRepository flightRepository,
+        IHotelRepository hotelRepository) : Controller
     {
         private readonly IAirportRepository _airportRepository = airportRepository;
         private readonly IFlightRepository _flightRepository = flightRepository;
+        private readonly IHotelRepository _hotelRepository = hotelRepository;
         private readonly ILogger<HomeController> _logger = logger;
 
         public async Task<IActionResult> Index()
@@ -23,6 +25,7 @@ namespace FlyNest.App.Controllers
             {
                 DepatureAirportDropdown = await _airportRepository.DropdownAsync(),
                 ArrivalAirportDropdown = await _airportRepository.DropdownAsync(),
+                HotelDropdown = await _hotelRepository.DropdownAsync(),
             };
 
             return View(list);
@@ -34,10 +37,10 @@ namespace FlyNest.App.Controllers
             {
                 if(ModelState.IsValid)
                 {
-                    var data = await _flightRepository.SearchFlightAsync(vmSearch);
-                    if(data != null)
+                    vmSearch.FlightList = await _flightRepository.SearchFlightAsync(vmSearch);
+                    if(vmSearch.FlightList != null)
                     {
-                        return View(data);
+                        return View(vmSearch.FlightList);
                     }
                 }
             } catch(Exception exception)
@@ -47,6 +50,27 @@ namespace FlyNest.App.Controllers
 
             vmSearch.DepatureAirportDropdown = await _airportRepository.DropdownAsync();
             vmSearch.ArrivalAirportDropdown = await _airportRepository.DropdownAsync();
+            return View(vmSearch);
+        }
+
+        public async Task<IActionResult> SearchHotel(VmSearchFlight vmSearch)
+        {
+            try
+            {
+                if(ModelState.IsValid)
+                {
+                    vmSearch.HotelList = await _hotelRepository.SearchHotelAsync(vmSearch);
+                    if(vmSearch.HotelList != null)
+                    {
+                        return View(vmSearch.HotelList);
+                    }
+                }
+            } catch(Exception exception)
+            {
+                TempData["ErrorMessage"] = $"Error get flight: {exception.Message}";
+            }
+
+            vmSearch.HotelDropdown = await _hotelRepository.DropdownAsync();
             return View(vmSearch);
         }
 
