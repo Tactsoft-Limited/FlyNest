@@ -13,4 +13,6 @@ public class Airline : AuditableEntity
     public string Logo { get; set; }
 
     public DateOnly EstablishedDate { get; set; }
+
+    public ICollection<Flight> Flights { get; set; } = new HashSet<Flight>();
 }

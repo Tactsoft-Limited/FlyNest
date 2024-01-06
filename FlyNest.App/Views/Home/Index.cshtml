@@ -1,8 +1,1012 @@
-﻿@{
+﻿@model FlyNest.Application.ViewModels.VmEntities.Search.VmSearchFlight
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@section Styles{
+    <style>
+        .select2-container .select2-selection--single {
+            height: 45px !important;
+        }
+        span.select2-selection__choice__remove {
+            display: none;
+        }
+        .selection{
+            display:block !important;
+        }
+        .airport-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: small;
+        }
+
+        .left-side {
+            width: 20%; /* Adjust the width as needed */
+            color: blue;
+            display: flex;
+            align-items: center;
+        }
+
+        .right-side {
+            width: 80%; /* Adjust the width as needed */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .upper-part {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+        }
+        .upper-part span{
+            display:block;
+        }
+
+        .lower-part {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 0px;
+            overflow:hidden;
+        }
+
+    </style>
+
+}
+
+<!-- =========== Hero Section Start =========== -->
+<div class="hero-section-slider">
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" id="carousel-item1">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
+                                <h1>Welcome to myFlyte!</h1>
+                            </div>
+                            <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
+                                <h3>Find Flights, Visa, Hotels and Holidays</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" id="carousel-item2">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
+                                <h1>Welcome to myFlyte!</h1>
+                            </div>
+                            <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
+                                <h3>Find Flights, Visa, Hotels and Holidays</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" id="carousel-item3">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
+                                <h1>Welcome to myFlyte!</h1>
+                            </div>
+                            <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
+                                <h3>Find Flights, Visa, Hotels and Holidays</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- =========== Hero Section End =========== -->
+<!-- =========== Search Area Start =========== -->
+<div class="search-area">
+    <div class="search-trip-type">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="flight-tab" data-bs-toggle="tab"
+                        data-bs-target="#flight-tab-pane" type="button" role="tab" aria-controls="flight-tab-pane"
+                        aria-selected="true">
+                    <i class="bi bi-airplane-engines"></i> Flight
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="hotel-tab" data-bs-toggle="tab" data-bs-target="#hotel-tab-pane"
+                        type="button" role="tab" aria-controls="hotel-tab-pane" aria-selected="false">
+                    <i class="bi bi-buildings"></i> Hotel
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="holiday-tab" data-bs-toggle="tab" data-bs-target="#holiday-tab-pane"
+                        type="button" role="tab" aria-controls="holiday-tab-pane" aria-selected="false">
+                    <i class="bi bi-tree"></i> Holiday
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="visa-tab" data-bs-toggle="tab" data-bs-target="#visa-tab-pane"
+                        type="button" role="tab" aria-controls="visa-tab-pane" aria-selected="false">
+                    <i class="bi bi-clipboard"></i> Visa
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="flight-tab-pane" role="tabpanel" aria-labelledby="flight-tab"
+             tabindex="0">
+            <div class="d-flex justify-content-between">
+                <div class="trip-type">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                                    aria-selected="true">
+                                One Way
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profile" type="button" role="tab"
+                                    aria-controls="pills-profile" aria-selected="false">
+                                Round Trip
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-contact" type="button" role="tab"
+                                    aria-controls="pills-contact" aria-selected="false">
+                                Multy City
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex gap-2 dropdown">
+                    <div>
+                        <select asp-for="Traveler" class="form-select form-select-sm" aria-label="Small select example">
+                            <option value="1">1 Traveller</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select class="form-select form-select-sm" aria-label="Small select example">
+                            <option value="1">Economy</option>
+                            <option value="2">Premium Economy</option>
+                            <option value="3">Business</option>
+                            <option value="3">First Class</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                     aria-labelledby="pills-home-tab" tabindex="0">
+                    <form asp-action="SearchFlight" asp-controller="Home" method="post">
+                        <div class="row g-2 mt-2">
+                            <div class="col-lg-11 col-md-12 col-sm-12">
+                                <div class="row g-2">
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="DepatureAirportId">@Html.DisplayNameFor(model => model.DepatureAirportId)</label>
+                                            <select asp-for="DepatureAirportId" class="form-control-lg js-select2" style="width: 100%">
+                                                @foreach (var airport in Model.DepatureAirportDropdown)
+                                                {
+                                                    <option value="@airport.Value">@airport.Text</option>
+                                                }
+                                            </select>
+                                            <span asp-validation-for="DepatureAirportId" class="text-danger"></span>
+                                        </div>
+                                        @*<input type="text" class="form-control" placeholder="From (Ex.  DHA)">*@
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="ArrivalAirportId">@Html.DisplayNameFor(model => model.ArrivalAirportId)</label>
+                                            <select asp-for="ArrivalAirportId" class="form-control js-select2" style="width: 100%">
+                                                @foreach (var airport in Model.ArrivalAirportDropdown)
+                                                {
+                                                    <option value="@airport.Value">@airport.Text</option>
+                                                }
+                                            </select>
+
+                                            <span asp-validation-for="ArrivalAirportId" class="text-danger"></span>
+                                        </div>
+                                        @*<input type="text" class="form-control" placeholder="To (Ex.  COX)">*@
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <div class="form-group">
+                                            <label asp-for="DepatureDate"></label>
+                                            <input asp-for="DepatureDate" class="form-control js-autocomplete">
+                                            <span asp-validation-for="DepatureDate" class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 col-sm-12">
+                                <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                     tabindex="0">
+                    <form action="">
+                        <div class="row g-2 mt-2">
+                            <div class="col-lg-11 col-md-12 col-sm-12">
+                                <div class="row g-2">
+                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="From (Ex.  DHA)">
+                                    </div>
+                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="To (Ex.  COX)">
+                                    </div>
+                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="col-lg-3 col-md-12 col-sm-12">
+                                        <input type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 col-sm-12">
+                                <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
+                     tabindex="0">
+                    <form action="">
+                        <div class="row g-2 mt-2">
+                            <div class="col-lg-11 col-md-12 col-sm-12">
+                                <div class="row g-2">
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="From (Ex.  DHA)">
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="To (Ex.  COX)">
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <input type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 col-sm-12">
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </div>
+                            <div class="col-lg-11 col-md-12 col-sm-12">
+                                <div class="row g-2">
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="From (Ex.  DHA)">
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <input type="text" class="form-control" placeholder="To (Ex.  COX)">
+                                    </div>
+                                    <div class="col-lg-4 col-md-12 col-sm-12">
+                                        <input type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-12 col-sm-12">
+                                <button type="submit" class="btn btn-secondary">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+                                <div>
+                                    <button type="button" id="addMoreFlight">
+                                        <i class="bi bi-plus-lg"></i> Add more
+                                        Flight
+                                    </button>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-warning">
+                                        <i class="bi bi-search"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="hotel-tab-pane" role="tabpanel" aria-labelledby="hotel-tab" tabindex="0">
+            <form action="">
+                <div class="row g-2 mt-2">
+                    <div class="col-lg-11 col-md-12 col-sm-12">
+                        <div class="row g-2">
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Location (Ex.  Cox's Bazar)">
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Guest (Ex.  2)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-12 col-sm-12">
+                        <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="holiday-tab-pane" role="tabpanel" aria-labelledby="holiday-tab" tabindex="0">
+            <form action="">
+                <div class="row g-2 mt-2">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="row g-2">
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <input type="text" class="form-control"
+                                       placeholder="Destination (Ex.  Cox's Bazar)">
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <div>
+                            <button type="button" id="addMoreFlight">
+                                <i class="bi bi-plus-lg"></i> Add more
+                                Flight
+                            </button>
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-warning">
+                                <i class="bi bi-search"></i>
+                                Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="visa-tab-pane" role="tabpanel" aria-labelledby="visa-tab" tabindex="0">
+            <form action="">
+                <div class="row g-2 mt-2">
+                    <div class="col-lg-11 col-md-12 col-sm-12">
+                        <div class="row g-2">
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Location (Ex.  Cox's Bazar)">
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <input type="text" class="form-control" placeholder="Traveller (Ex.  2)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-12 col-sm-12">
+                        <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<!-- =========== Search Area End =========== -->
+<!-- =========== Why Choose us Area Start =========== -->
+<div class="choose-renaissance-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-12">
+                <h1 class="fw-bold">
+                    Why Choose
+                    Renaissance
+                    Holidays?
+                </h1>
+                <p class="mt-3">
+                    Indulge in luxurious tour packages that offer exceptional value for
+                    your money, tailored exclusively for you. Revel in the opulence of
+                    our curated luxury tour packages, where flights are seamlessly
+                    integrated with specially designed holiday experiences. <br>
+                    Unlock exclusive privileges with the signature experience reserved
+                    solely for Renaissance Holidays customers. Enjoy special discount-
+                    ed prices bundled with flights as part of our meticulously crafted
+                    holiday packages. <br>
+                    Accurate visa processing by our expert team ensures maximum
+                    visa success for our valued clients. <br>
+                    Experience the convenience of our user-friendly e-commerce plat-
+                    form, simplifying the booking process. Additionally, delight in the
+                    dedicated desk catering specifically to ensure a seamless and per-
+                    sonalized service for Renaissance Holidays customers
+                </p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class=" mt-20 photo"></div>
+            </div>
+        </div>
+        <div class="row g-5 mt-5 do-we-do">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h1 class="fw-bold">
+                    What Do
+                    We Do?
+                </h1>
+                <p class="mt-3">
+                    We specialize in tour planning, designing tour packages
+                    for destinations worldwide. Additionally, we assist with air
+                    tickets, hotel bookings, city tours, and airport pickups and
+                    drop-offs in any country you're visiting.
+                </p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h1 class="fw-bold">
+                    What Sets Us
+                    Apart?
+                </h1>
+                <p class="mt-3">
+                    Renaissance Holidays is more than a travel company; we're
+                    dream builders. We offer superior services at accessible
+                    terms and affordable rates.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =========== Why Choose us Area End =========== -->
+<!-- =========== Service Area Start =========== -->
+<div class="service-area">
+    <div class="container">
+        <div class="heading">
+            <h2>Our Services</h2>
+        </div>
+        <p class="mt-2">
+            At Renaissance Holidays, we transcend being a mere travel company; we're dream builders, experience creators, and
+            soulful explorers. We delve into the essence of travel, infusing every itinerary with passion and expertise. Our team com-
+            prises experienced adventurers and enthusiastic explorers dedicated to crafting exceptional experiences.
+        </p>
+        <div class="row g-4 mt-4">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <a href="#" class="d-block">
+                    <div class="card">
+                        <div class="card-body d-flex gap-4 align-items-center">
+                            <div class="icon">
+                                <i class="bi bi-clipboard"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Tourist Visa Processing</h6>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="d-block">
+                    <div class="card mt-2">
+                        <div class="card-body d-flex gap-4 align-items-center">
+                            <div class="icon">
+                                <i class="bi bi-clipboard"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Tour Package</h6>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="d-block">
+                    <div class="card mt-2">
+                        <div class="card-body d-flex gap-4 align-items-center">
+                            <div class="icon">
+                                <i class="bi bi-airplane"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Air Ticket Booking</h6>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="d-block">
+                    <div class="card mt-2">
+                        <div class="card-body d-flex gap-4 align-items-center">
+                            <div class="icon">
+                                <i class="bi bi-buildings-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Hotel Booking</h6>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="d-block">
+                    <div class="card mt-2">
+                        <div class="card-body d-flex gap-4 align-items-center">
+                            <div class="icon">
+                                <i class="bi bi-clipboard"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold">Hajj & Umrah</h6>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="photo"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =========== Service Area End =========== -->
+<!-- =========== Exclusive Offer Start =========== -->
+<div class="container exclusive-offer">
+    <div class="heading">
+        <h2>Exclusive Offers</h2>
+    </div>
+    <p class="mt-2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae vel laborum, voluptas, commodi
+        sit, nesciunt labore libero totam cumque itaque possimus! Cumque, nesciunt at libero facere ullam sit
+        reiciendis corrupti.
+    </p>
+    <div class="row mt-4" id="exclusive-offer">
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="offer-card">
+                <a href="#">
+                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                </a>
+                <div class="overlay">
+                    <div class="content">
+                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
+                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="offer-card">
+                <a href="#">
+                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                </a>
+                <div class="overlay">
+                    <div class="content">
+                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
+                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="offer-card">
+                <a href="#">
+                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                </a>
+                <div class="overlay">
+                    <div class="content">
+                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
+                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="offer-card">
+                <a href="#">
+                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                </a>
+                <div class="overlay">
+                    <div class="content">
+                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
+                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="offer-card">
+                <a href="#">
+                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                </a>
+                <div class="overlay">
+                    <div class="content">
+                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
+                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <a href="#">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- =========== Exclusive Offer End =========== -->
+<!-- =========== Tourist Visa Processing Start =========== -->
+<div class="tourist-visa-processing">
+    <div class="container">
+        <div class="heading">
+            <h2>Tourist Visa Processing</h2>
+        </div>
+        <p class="mt-2">
+            Renaissance Holidays provides worldwide visa services. Our expert guidance will help you navigate the complexities of visa applica-
+            tions, ensuring a seamless travel experience. We offer a wide range of visas, including tourist visas, business visas, medical visas and
+            student visas. We provide guaranteed visas for certain countries and we can process visas for many other countries as well.
+        </p>
+        <div class="row g-4 mt-4 justify-content-center">
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/usa.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">USA</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/australia.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Australia</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/canada.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Canada</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/uk.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">UK</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/dubai.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Dubai</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/thailand.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Thailand</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/singapore.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Singapore</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/malaysia.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Malaysia</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/china.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">China</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/tourist-visa/vietnam.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Vietnam</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =========== Tourist Visa Processing End =========== -->
+<!-- =========== Tour Package Start =========== -->
+<div class="container tour-package">
+    <div class="heading">
+        <h2>Tour Package</h2>
+    </div>
+    <p class="mt-2">
+        Renaissance Holidays arranges attractive tour packages worldwide. We take people to the most historical places in the
+        world. We provide national and international budget tour packages as well as luxury tour packages. Privae, Group and
+        customized tour packages are available at Renaissance Holidays.
+    </p>
+    <h5 class="fw-bold mt-4">Our Tour Package Service Includes:</h5>
+    <div class="row g-4 mt-4 justify-content-center">
+        <div class="col-lg-3 col-md-4">
+            <div class="card">
+                <div class="photo">
+                    <a href="#">
+                        <img src="~/images/cc-2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="text-white text-center fw-bold w-100">Round Air Ticket</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+            <div class="card">
+                <div class="photo">
+                    <a href="#">
+                        <img src="~/images/tour-package/hotel.jpg" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="text-white text-center fw-bold w-100">Hotel Reservation</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+            <div class="card">
+                <div class="photo">
+                    <a href="#">
+                        <img src="~/images/tour-package/at.jpg" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="text-white text-center fw-bold w-100">Airport Transfer</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+            <div class="card">
+                <div class="photo">
+                    <a href="#">
+                        <img src="~/images/tour-package/ss.jpg" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="text-white text-center fw-bold w-100">Sightseeing</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+            <div class="card">
+                <div class="photo">
+                    <a href="#">
+                        <img src="~/images/tour-package/vp.jpg" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="text-white text-center fw-bold w-100">Visa Processing</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+            <div class="card">
+                <div class="photo">
+                    <a href="#">
+                        <img src="~/images/tour-package/b-f.jpg" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="text-white text-center fw-bold w-100">Breakfast</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+            <div class="card">
+                <div class="photo">
+                    <a href="#">
+                        <img src="~/images/tour-package/tg.jpg" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="text-white text-center fw-bold w-100">Tour Guide</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4">
+            <div class="card">
+                <div class="photo">
+                    <a href="#">
+                        <img src="~/images/tour-package/dt.jpg" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="text-white text-center fw-bold w-100">Day Tour</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========== Tour Package End =========== -->
+<!-- =========== Popular Destination Start =========== -->
+<div class="popular-destination">
+    <div class="container">
+        <div class="heading">
+            <h2>Popular Destination</h2>
+        </div>
+        <p class="mt-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam tempora at expedita cum
+            dignissimos molestiae aperiam pariatur natus maiores dolores perspiciatis cumque exercitationem, omnis
+            aspernatur dolorum earum, ea velit perferendis.
+        </p>
+        <div class="row mt-4" id="popular-destination">
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Chittagong</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/pd-2.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Rajshahi</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/pd-3.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Chittagong</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/pd-4.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Dhaka</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/pd-3.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Chittagong</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =========== Popular Destination End =========== -->
+<!-- In your layout or view header -->
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.js-select2').select2({
+                placeholder: 'This is my placeholder',
+                width: 'element', // Automatically sets the width
+                height:'element',
+                templateResult: formatAirport, // Custom formatting function
+                templateSelection: formatAirport, // Use the same formatting function for selection
+                escapeMarkup: function (markup) {
+                    return markup;
+                }
+            });
+
+            function formatAirport(airport) {
+                if (!airport.id) {
+                    return airport.text;
+                }
+
+                var airportInfo = airport.text.split('-');
+                var formattedText = '<div class="col-md-12 airport-info">' +
+                    '<div class="left-side">' +
+                    '<span>' + airportInfo[0] + '</span>' +
+                    '</div>' +
+                    '<div class="right-side">' +
+                    '<div class="upper-part">' +
+                    '<span>' + airportInfo[1] + '</span>' +
+                    '</div>' +
+                    '<div class="lower-part badge">' +
+                    '<span class="text-muted truncate">' + airportInfo[2] +', ' +airportInfo[3] + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                return $(formattedText);
+
+
+                //var formattedText = '<div class="col-md-12">' +
+                //    '<span>' + airportInfo[0] + '</span>' +
+                //    '<span>' + airportInfo[1] + '</span>' +
+                //    '<span class="text-muted">' + airportInfo[2] + '</span>' +
+                //    '<span class="text-muted">' + airportInfo[3] + '</span>' +
+                //    '</div>';
+
+                //return $(formattedText);
+            }
+
+            function formatAirportSelection(airport) {
+                return airport.text;
+            }
+        });
+    </script>
+}

@@ -20,7 +20,7 @@ public class FlyNestDbContext(
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        base.OnConfiguring(optionsBuilder);
+        //base.OnConfiguring(optionsBuilder);
         optionsBuilder.AddInterceptors(_auditableEntitySaveChangesInterceptor);
         optionsBuilder.UseLoggerFactory(_loggerFactory);
     }

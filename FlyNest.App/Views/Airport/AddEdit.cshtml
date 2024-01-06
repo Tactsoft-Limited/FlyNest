@@ -24,28 +24,28 @@
         <div class="card-header">
             <h3 class="card-title">Create Airport  </h3>
             <div class="card-body">
-                <form asp-action="AddEdit" asp-controller="Airport" role="form" enctype="post">
+                <form asp-action="AddEdit" asp-controller="Airport" role="form" method="post">
                     <div class="modal-body form-horizontal">
                         <div class="row">
 
                             <div class="col-md-6">
-                                <label class="col-form-label">Name </label>
+                                <label asp-for="Name" class="col-form-label"></label>
                                 <input asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-6">
-                                <label class=" col-form-label">Code</label>
+                                <label asp-for="Code" class=" col-form-label"></label>
                                 <input asp-for="Code" class="form-control" />
                                 <span asp-validation-for="Code" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
-                                <label class=" col-form-label">Country Name</label>
+                                <label asp-for="CountryName" class=" col-form-label"></label>
                                 <input asp-for="CountryName" class="form-control" />
                                 <span asp-validation-for="CountryName" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
-                                <label class=" col-form-label">City Name</label>
+                                <label asp-for="CityName" class=" col-form-label"></label>
                                 <input asp-for="CityName" class="form-control" />
                                 <span asp-validation-for="CityName" class="text-danger"></span>
                             </div>

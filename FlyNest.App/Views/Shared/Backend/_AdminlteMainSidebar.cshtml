@@ -14,16 +14,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a asp-action="Index" asp-controller="Project" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Project" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class="nav-icon fas fa-project-diagram"></i>
-                        <p>Project</p>
+                    <a asp-action="Index" asp-controller="Airline" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Airline" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-paper-plane"></i>
+                        <p>Airline</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a asp-action="Index" asp-controller="Contractor" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Contractor" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Contractor</p>
+                    <a asp-action="Index" asp-controller="Airport" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Airport" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-plane"></i>
+                        <p>Airport</p>
                     </a>
                 </li>
                 <li class="nav-item">

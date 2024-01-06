@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using FlyNest.Application.Interfaces.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
-using FlyNest.Infrastructure.Interfaces.Entities;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +8,6 @@ namespace FlyNest.App.Controllers.Admin;
 
 public class AirlineController(IAirlineRepository airlineRepository, IMapper mapper) : Controller
 {
-
-
     [HttpGet]
     public async Task<IActionResult> Index()
     {
@@ -20,7 +18,6 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
-       
         return id switch
         {
             0 => View(new VmAirline()),
@@ -30,22 +27,22 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddEdit(int id, VmAirline airline, IFormFile pictureFile)
+    public async Task<IActionResult> AddEdit(long id, VmAirline airline, IFormFile pictureFile)
     {
-        switch (id)
+        switch(id)
         {
             case 0:
                 try
                 {
-                    if (ModelState.IsValid)
+                    if(ModelState.IsValid)
                     {
-                        if (pictureFile != null && pictureFile.Length > 0)
+                        if(pictureFile != null && pictureFile.Length > 0)
                         {
                             var path = Path.Combine(
                                 Directory.GetCurrentDirectory(),
                                 "wwwroot/images/airline",
                                 pictureFile.FileName);
-                            await using (var stream = new FileStream(path, FileMode.Create))
+                            await using(var stream = new FileStream(path, FileMode.Create))
                             {
                                 pictureFile.CopyTo(stream);
                             }
@@ -55,8 +52,7 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
                         TempData["SuccessMessage"] = $" Airline added successfully.";
                         return RedirectToAction("Index");
                     }
-                }
-                catch (Exception ex)
+                } catch(Exception ex)
                 {
                     TempData["ErrorMessage"] = $"Error adding Airline : {ex.Message}";
                 }
@@ -65,15 +61,15 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
             default:
                 try
                 {
-                    if (ModelState.IsValid)
+                    if(ModelState.IsValid)
                     {
-                        if (pictureFile != null && pictureFile.Length > 0)
+                        if(pictureFile != null && pictureFile.Length > 0)
                         {
                             var path = Path.Combine(
                                 Directory.GetCurrentDirectory(),
                                 "wwwroot/images/airline",
                                 pictureFile.FileName);
-                            await using (var stream = new FileStream(path, FileMode.Create))
+                            await using(var stream = new FileStream(path, FileMode.Create))
                             {
                                 pictureFile.CopyTo(stream);
                             }
@@ -84,25 +80,21 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
                         TempData["SuccessMessage"] = $" Airline update successfully.";
                         return RedirectToAction("Index");
                     }
-                }
-                catch (Exception ex)
+                } catch(Exception ex)
                 {
                     TempData["ErrorMessage"] = $"Error updating Airline : {ex.Message}";
                 }
                 break;
-
-
         }
 
-        
 
         return View(new VmAirline());
     }
 
-    
+
     public async Task<IActionResult> Delete(long id)
     {
-        if (id > 0)
+        if(id > 0)
         {
             await airlineRepository.DeleteAsync(id);
             TempData["SuccessMessage"] = $" Item remove successfully";

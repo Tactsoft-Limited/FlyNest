@@ -1,0 +1,126 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmFlight>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Flight</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Flight</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Flight List</h3>
+            <div class="card-tools">
+                <a asp-action="Create" asp-controller="Flight" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Flight</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FlightNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AirlineName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DepatureAirportName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DepatureDate)
+                            @Html.DisplayNameFor(model => model.DepatureTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ArrivalAirportName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ArrivalDate)
+                            @Html.DisplayNameFor(model => model.ArrivalTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AircraftType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FlightDuration)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FlightType)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var (item, index) in Model.Select((value, i) => (value, i)))
+                    {
+                        <tr>
+                            <td>
+                                @(index + 1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FlightNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AirlineName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepatureAirportName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepatureDate)
+                                @Html.DisplayFor(modelItem => item.DepatureTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ArrivalAirportName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ArrivalDate)
+                                @Html.DisplayFor(modelItem => item.ArrivalTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AircraftType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FlightDuration)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FlightType)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

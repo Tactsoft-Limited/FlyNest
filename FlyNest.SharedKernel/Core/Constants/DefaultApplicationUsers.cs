@@ -8,8 +8,8 @@ public class DefaultApplicationUsers
     {
         var defaultUser = new User
         {
-            UserName = "SuperAdmin",
-            Email = "admin@localhost.com",
+            UserName = "superadmin@localhost.com",
+            Email = "superadmin@localhost.com",
             EmailConfirmed = true,
             PhoneNumberConfirmed = true,
         };

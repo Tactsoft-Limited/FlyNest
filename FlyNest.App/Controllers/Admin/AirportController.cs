@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using FlyNest.Application.Interfaces.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
-using FlyNest.Infrastructure.Interfaces.Entities;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,10 +14,10 @@ public class AirportController(IAirportRepository airportRepository, IMapper map
         var list = await airportRepository.GetAllAsync();
         return View(mapper.Map<List<VmAirport>>(list));
     }
+
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
-       
         return id switch
         {
             0 => View(new VmAirport()),
@@ -26,50 +26,48 @@ public class AirportController(IAirportRepository airportRepository, IMapper map
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddEdit(int id, VmAirport airport)
+    public async Task<IActionResult> AddEdit(long id, VmAirport airport)
     {
-        switch (id)
+        switch(id)
         {
             case 0:
                 try
                 {
-                    if (ModelState.IsValid)
+                    if(ModelState.IsValid)
                     {
                         await airportRepository.InsertAsync(mapper.Map<Airport>(airport));
-                        TempData["SuccessMessage"] = $" Airport '{airport.Name}' added successfully.";
+                        TempData["SuccessMessage"] = $" Airport <b>{airport.Name}</b> added successfully.";
                         return RedirectToAction("Index");
                     }
-                }
-                catch (Exception ex)
+                } catch(Exception ex)
                 {
-                    TempData["ErrorMessage"] = $"Error adding Airport '{airport.Name}': {ex.Message}";
+                    TempData["ErrorMessage"] = $"Error adding Airport <b>{airport.Name}</b>: {ex.Message}";
                 }
 
                 break;
             default:
                 try
                 {
-                    if (ModelState.IsValid)
+                    if(ModelState.IsValid)
                     {
                         //await airportRepository.UpdateAsync(id, mapper.Map<Airport>(airport));
                         await airportRepository.UpdateAsync(mapper.Map<Airport>(airport));
-                        TempData["SuccessMessage"] = $" Airport '{airport.Name}' update successfully.";
+                        TempData["SuccessMessage"] = $" Airport <b>{airport.Name}</b> update successfully.";
                         return RedirectToAction("Index");
                     }
-                }
-                catch (Exception ex)
+                } catch(Exception ex)
                 {
-                    TempData["ErrorMessage"] = $"Error updating Airport '{airport.Name}': {ex.Message}";
+                    TempData["ErrorMessage"] = $"Error updating Airport <b>{airport.Name}</b>: {ex.Message}";
                 }
                 break;
         }
-       
+
         return View(new VmAirport());
     }
-   
+
     public async Task<IActionResult> Delete(long id)
     {
-        if (id > 0)
+        if(id > 0)
         {
             await airportRepository.DeleteAsync(id);
             TempData["SuccessMessage"] = $" Item remove successfully";
@@ -78,4 +76,6 @@ public class AirportController(IAirportRepository airportRepository, IMapper map
         TempData["ErrorMessage"] = $"Error delete : Item not found";
         return RedirectToAction("Index");
     }
+
+    public async Task<JsonResult> IsCodeExist(string code) { return Json(await airportRepository.IsCodeExists(code)); }
 }

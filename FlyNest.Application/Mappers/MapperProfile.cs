@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.SharedKernel.Entities;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 
 namespace FlyNest.Application.Mappers;
@@ -12,7 +11,24 @@ public class MapperProfile : Profile
     {
         CreateMap<Airport, VmAirport>().ReverseMap();
         CreateMap<Airline, VmAirline>().ReverseMap();
-        CreateMap<VmStoppies,Stoppies>().ReverseMap().ForMember(x=>x.AirportName,x=>x.MapFrom(x=>x.Airport!=null?x.Airport.Name:""));
+
+        CreateMap<VmFlight, Flight>()
+            .ForMember(d => d.DepatureFlight, opts => opts.Ignore())
+            .ForMember(d => d.ArrivalFlight, opts => opts.Ignore())
+            .ForMember(d => d.Airline, opts => opts.Ignore())
+            .ForMember(d => d.Stopovers, opts => opts.Ignore());
+        CreateMap<Flight, VmFlight>()
+            .ForMember(d => d.AirlineDropdown, opts => opts.Ignore())
+            .ForMember(d => d.AirportDropdown, opts => opts.Ignore())
+            .ForMember(d => d.Stopovers, opts => opts.Ignore())
+            .ForMember(d => d.DepatureAirportName, opts => opts.MapFrom(src => src.DepatureFlight.Name))
+            .ForMember(d => d.DepatureAirportCode, opts => opts.MapFrom(src => src.DepatureFlight.Code))
+            .ForMember(d => d.ArrivalAirportName, opts => opts.MapFrom(src => src.ArrivalFlight.Name))
+            .ForMember(d => d.ArrivalAirportCode, opts => opts.MapFrom(src => src.ArrivalFlight.Code))
+            .ForMember(d => d.AirlineName, opts => opts.MapFrom(src => src.Airline.AirlineName))
+            .ForMember(d => d.AirlineLogo, opts => opts.MapFrom(src => src.Airline.Logo));
+
+        CreateMap<Stopover, VmStopover>().ReverseMap();
 
 
         AllowNullCollections = true;

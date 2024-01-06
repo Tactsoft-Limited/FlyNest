@@ -1,0 +1,234 @@
+@media only screen and (max-width: 992px) {
+
+    /*
+    Navbar Start
+    --------------------------------*/
+    .desktop-navigation {
+        display: none;
+    }
+
+    .mobile-navigation {
+        display: block;
+    }
+
+    /*
+        Search Area Start
+    --------------------------------*/*/
+    .search-area .dropdown {
+        display: none !important;
+    }
+
+    .search-area .tab-content .tab-pane form input {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+    }
+
+    .search-area .tab-content .tab-pane form button {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 12px;
+    }
+
+
+
+
+
+}
+
+
+
+@media only screen and (max-width: 768px) {
+
+    /*
+    Navbar Start
+    --------------------------------*/
+    .desktop-navigation {
+        display: none;
+    }
+
+    .mobile-navigation {
+        display: block;
+    }
+
+    .mobile-navigation .navbar {
+        background-color: var(--color-white);
+    }
+
+    /*
+      Hero Section Start
+    --------------------------------*/
+    .hero-section-slider .carousel-inner {
+        height: 40vh;
+    }
+
+    .hero-section-slider .carousel-inner .carousel-item h1 {
+        text-align: center;
+        font-size: var(--size-lg);
+    }
+
+    .hero-section-slider .carousel-inner .carousel-item h3 {
+        text-align: center;
+    }
+
+    /*
+        Search Area Start
+    --------------------------------*/
+    .search-area {
+        width: 95%;
+        padding: 10% 5%;
+    }
+
+    .search-trip-type ul {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-trip-type .nav-tabs .nav-item .nav-link {
+        font-size: var(--size-sm);
+        margin-right: 6px;
+        margin-bottom: 10px;
+    }
+
+    .search-trip-type .nav-tabs .nav-item .nav-link i {
+        font-size: var(--size-sm);
+        padding-right: 4px;
+    }
+
+    .search-area .dropdown {
+        display: none !important;
+    }
+
+    .search-area .trip-type {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .search-area .trip-type .nav-pills .nav-item .nav-link {
+        font-size: var(--size-sm);
+        margin-right: 6px;
+        padding-right: 12px;
+        padding-left: 12px;
+        margin-bottom: 6px;
+    }
+
+    .search-area .tab-content .tab-pane form input {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+    }
+
+    .search-area .tab-content .tab-pane form input::placeholder {
+        font-size: var(--size-md);
+    }
+
+    .search-area .tab-content .tab-pane form button {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+    }
+
+      /*
+        About Area Start
+    --------------------------------*/
+    .choose-renaissance-area .photo{
+        display: none;
+    }
+    .choose-renaissance-area .do-we-do{
+        margin-top: 10px!important;
+    }
+
+
+    /*
+        Exclusive Offer Start
+    --------------------------------*/
+    .exclusive-offer .heading h2 {
+        text-align: center;
+    }
+
+    .exclusive-offer p {
+        text-align: center;
+    }
+
+    /*
+        Explore BD Start
+    --------------------------------*/
+    .explore-bd .heading h2 {
+        text-align: center;
+    }
+
+    .explore-bd p {
+        text-align: center;
+    }
+
+
+     /*
+        About Area Start
+    --------------------------------*/
+    .about-area .photo{
+        text-align: center!important;
+    }
+
+      /*
+        Mission Area Start
+    --------------------------------*/
+    .mission-area .photo{
+        text-align: center!important;
+    }
+
+      /*
+        Vision Area Start
+    --------------------------------*/
+    .vision-area .photo{
+        text-align: center!important;
+    }
+
+    /*
+    Management Message Area Start
+    --------------------------------*/
+    .m-message-area .card {
+        padding: 5px 5px;
+        height: auto;
+    }
+    .m-message-area .card .card-body .photo{
+    width: 85px;
+    height: 85px;
+}
+    .m-message-area .card .card-body h5{
+    font-size: var(--size-md);
+}
+    .m-message-area .card .card-body span{
+    font-size: var(--size-sm);
+}
+  .m-message-area .card .card-body p{
+    font-size: var(--size-sm);
+}
+
+
+
+
+}
+
+
+
+
+@media only screen and (max-width: 480px) {
+
+    /*
+    Navbar Start
+    --------------------------------*/
+    .desktop-navigation {
+        display: none;
+    }
+
+    .mobile-navigation {
+        display: block;
+    }
+
+
+
+}

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmFlight>
+
+@{
+    ViewData["Title"] = "SearchFlight";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>SearchFlight</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AirlineId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AirlineName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepatureAirportId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepatureAirportName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArrivalAirportId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArrivalAirportName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AircraftType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AirlineId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AirlineName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepatureAirportId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepatureAirportName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalAirportId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalAirportName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AircraftType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightDuration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

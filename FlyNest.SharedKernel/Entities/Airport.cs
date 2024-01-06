@@ -11,5 +11,10 @@ public class Airport : AuditableEntity
     public string CountryName { get; set; }
 
     public string CityName { get; set; }
-    public ICollection<Stoppies> Stoppies = new HashSet<Stoppies>();
+
+    public ICollection<Flight> DepatureAirport { get; set; } = new HashSet<Flight>();
+
+    public ICollection<Flight> ArrivalAirport { get; set; } = new HashSet<Flight>();
+
+    public ICollection<Stopover> Stopovers { get; set; } = new HashSet<Stopover>();
 }

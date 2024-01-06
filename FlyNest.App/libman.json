@@ -67,6 +67,49 @@
         "webfonts/fa-v4compatibility.ttf",
         "webfonts/fa-v4compatibility.woff2"
       ]
+    },
+    {
+      "library": "bootstrap-icons@1.11.3",
+      "destination": "wwwroot/lib/bootstrap-icons/",
+      "files": [
+        "bootstrap-icons.svg",
+        "font/fonts/bootstrap-icons.woff",
+        "font/fonts/bootstrap-icons.woff2",
+        "font/bootstrap-icons.css",
+        "font/bootstrap-icons.json",
+        "font/bootstrap-icons.min.css"
+      ]
+    },
+    {
+      "library": "OwlCarousel2@2.3.4",
+      "destination": "wwwroot/lib/OwlCarousel2/"
+    },
+    {
+      "library": "slick-carousel@1.8.1",
+      "destination": "wwwroot/lib/slick-carousel/",
+      "files": [
+        "slick.min.js",
+        "ajax-loader.gif",
+        "slick-theme.css",
+        "slick-theme.min.css",
+        "slick-theme.min.css.map",
+        "slick.css",
+        "slick.js",
+        "slick.min.css",
+        "slick.min.css.map",
+        "fonts/slick.woff",
+        "fonts/slick.ttf",
+        "fonts/slick.svg",
+        "fonts/slick.eot"
+      ]
+    },
+    {
+      "library": "aos@2.3.4",
+      "destination": "wwwroot/lib/aos/"
+    },
+    {
+      "library": "magnific-popup.js@1.1.0",
+      "destination": "wwwroot/lib/magnific-popup.js/"
     }
   ]
 }

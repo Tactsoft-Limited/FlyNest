@@ -32,4 +32,28 @@ public class Permissions
         public const string Delete = "Permissions.Roles.Delete";
         public const string ManageClaims = "Permissions.Roles.ManageClaims";
     }
+
+    public static class Airport
+    {
+        public const string View = "Permissions.Airport.View";
+        public const string Create = "Permissions.Airport.Create";
+        public const string Edit = "Permissions.Airport.Edit";
+        public const string Delete = "Permissions.Airport.Delete";
+    }
+
+    public static class Airline
+    {
+        public const string View = "Permissions.Airline.View";
+        public const string Create = "Permissions.Airline.Create";
+        public const string Edit = "Permissions.Airline.Edit";
+        public const string Delete = "Permissions.Airline.Delete";
+    }
+
+    public static class Flight
+    {
+        public const string View = "Permissions.Flight.View";
+        public const string Create = "Permissions.Flight.Create";
+        public const string Edit = "Permissions.Flight.Edit";
+        public const string Delete = "Permissions.Flight.Delete";
+    }
 }
