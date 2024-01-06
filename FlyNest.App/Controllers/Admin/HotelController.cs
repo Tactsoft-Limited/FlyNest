@@ -1,13 +1,17 @@
 ﻿using AutoMapper;
+using FlyNest.Application.Interfaces.Entities;
 using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
-using FlyNest.Infrastructure.Interfaces.Entities;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlyNest.App.Controllers.Admin;
 
-public class HotelController(IHotelRepository hotelRepository, IHotelImagesRepository hotelImagesRepository, IWebHostEnvironment webHostEnvironment, IMapper mapper) : Controller
+public class HotelController(
+    IHotelRepository hotelRepository,
+    IHotelImagesRepository hotelImagesRepository,
+    IWebHostEnvironment webHostEnvironment,
+    IMapper mapper) : Controller
 {
     [HttpGet]
     public async Task<IActionResult> Index()
@@ -16,103 +20,87 @@ public class HotelController(IHotelRepository hotelRepository, IHotelImagesRepos
         var list = await hotelRepository.GetAllAsync();
         return View(mapper.Map<List<VmHotel>>(list));
     }
+
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
-        switch (id)
+        switch(id)
         {
             case 0:
                 return View(new VmHotel());
             default:
-            {
                 var data = await hotelRepository.FirstOrDefaultAsync(id, x => x.HotelImages);
                 return View(mapper.Map<VmHotel>(data));
-            }
         }
     }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddEdit(VmHotel viewModel)
     {
-        switch (viewModel.Id)
+        switch(viewModel.Id)
         {
             case 0:
-            {
-                switch (ModelState.IsValid)
+                switch(ModelState.IsValid)
                 {
                     case true:
-                    {
                         var hotel = mapper.Map<Hotel>(viewModel);
                         await hotelRepository.InsertAsync(hotel);
 
-                        if (viewModel.File != null)
+                        if(viewModel.File != null)
                         {
-                            foreach (var file in viewModel.File)
+                            foreach(var file in viewModel.File)
                             {
-                                if (file != null && file.Length > 0)
+                                if(file != null && file.Length > 0)
                                 {
                                     var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/hotel");
                                     var fileName = $"{hotel.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
                                     var filePath = Path.Combine(uploads, fileName);
 
-                                    await using (var stream = new FileStream(filePath, FileMode.Create))
+                                    await using(var stream = new FileStream(filePath, FileMode.Create))
                                     {
                                         await file.CopyToAsync(stream);
                                     }
-                                    var hotelImage = new HotelImages
-                                    {
-                                        HotelId = hotel.Id,
-                                        HotelImage = fileName
-                                    };
+                                    var hotelImage = new HotelImages { HotelId = hotel.Id, HotelImage = fileName };
                                     await hotelImagesRepository.InsertAsync(hotelImage);
                                     TempData["SuccessMessage"] = $" Airport '{hotelImage.Hotel.Name}' added successfully.";
                                 }
                             }
                         }
-              
+
                         return RedirectToAction(nameof(Index));
-                    }
                 }
 
                 break;
-            }
             default:
-            {
-                switch (ModelState.IsValid)
+                switch(ModelState.IsValid)
                 {
                     case true:
-                    {
                         var hotel = mapper.Map<Hotel>(viewModel);
                         await hotelRepository.UpdateAsync(hotel);
-                        if (viewModel.File != null)
+                        if(viewModel.File != null)
                         {
-                            foreach (var file in viewModel.File)
+                            foreach(var file in viewModel.File)
                             {
-                                if (file != null && file.Length > 0)
+                                if(file != null && file.Length > 0)
                                 {
                                     var uploads = Path.Combine(webHostEnvironment.WebRootPath, "images/hotel");
                                     var fileName = $"{hotel.Id}_{Path.GetRandomFileName()}_{Path.GetFileName(file.FileName)}";
                                     var filePath = Path.Combine(uploads, fileName);
-                                    await using (var stream = new FileStream(filePath, FileMode.Create))
+                                    await using(var stream = new FileStream(filePath, FileMode.Create))
                                     {
                                         await file.CopyToAsync(stream);
                                     }
-                                    var hotelImage = new HotelImages
-                                    {
-                                        HotelId = hotel.Id,
-                                        HotelImage = fileName
-                                    };
+                                    var hotelImage = new HotelImages { HotelId = hotel.Id, HotelImage = fileName };
                                     await hotelImagesRepository.UpdateAsync(hotelImage);
                                     TempData["SuccessMessage"] = $" Airport '{hotelImage.Hotel.Name}' update successfully.";
                                 }
                             }
                         }
                         return RedirectToAction(nameof(Index));
-                    }
                 }
 
                 break;
-            }
         }
 
         return View(viewModel);
@@ -121,7 +109,7 @@ public class HotelController(IHotelRepository hotelRepository, IHotelImagesRepos
 
     public async Task<IActionResult> Delete(long id)
     {
-        switch (id)
+        switch(id)
         {
             case > 0:
                 await hotelRepository.DeleteAsync(id);
