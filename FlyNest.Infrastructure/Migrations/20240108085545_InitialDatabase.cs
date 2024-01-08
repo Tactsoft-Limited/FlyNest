@@ -3,26 +3,24 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace FlyNest.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class updatehotelImagesTable : Migration
+    public partial class InitialDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Images",
-                table: "Hotel");
-
             migrationBuilder.CreateTable(
-                name: "HotelImages",
+                name: "Policy",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    HotelImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HotelId = table.Column<long>(type: "bigint", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FlightId = table.Column<long>(type: "bigint", nullable: false),
                     CreatedDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
                     ModifiedDate = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -32,32 +30,26 @@ namespace FlyNest.Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HotelImages", x => x.Id);
+                    table.PrimaryKey("PK_Policy", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_HotelImages_Hotel_HotelId",
-                        column: x => x.HotelId,
-                        principalTable: "Hotel",
+                        name: "FK_Policy_Flight_FlightId",
+                        column: x => x.FlightId,
+                        principalTable: "Flight",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
             migrationBuilder.CreateIndex(
-                name: "IX_HotelImages_HotelId",
-                table: "HotelImages",
-                column: "HotelId");
+                name: "IX_Policy_FlightId",
+                table: "Policy",
+                column: "FlightId");
+
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "HotelImages");
-
-            migrationBuilder.AddColumn<string>(
-                name: "Images",
-                table: "Hotel",
-                type: "nvarchar(max)",
-                nullable: true);
+                name: "Policy");
         }
     }
 }
