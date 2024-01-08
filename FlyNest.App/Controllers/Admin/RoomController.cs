@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FlyNest.Application.Interfaces.Entities;
-using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +14,7 @@ public class RoomController(
     : Controller
 {
     [HttpGet]
-    public async Task<IActionResult> Index()
-    {
-        var list = await roomRepository.GetAllAsync(x => x.RoomImages,x=>x.Hotel);
-        return View(mapper.Map<List<VmRoom>>(list));
-    }
+    public async Task<IActionResult> Index()=> View(mapper.Map<List<VmRoom>>(await roomRepository.GetAllAsync(x => x.RoomImages, x => x.Hotel)));
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
@@ -35,8 +30,6 @@ public class RoomController(
             }
         }
     }
-
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddEdit(VmRoom viewModel)
@@ -68,7 +61,6 @@ public class RoomController(
                         TempData["SuccessMessage"] = $" Room '{room.Name}' added successfully.";
                     }
                 }
-
                 return RedirectToAction(nameof(Index));
             }
         }
@@ -97,19 +89,16 @@ public class RoomController(
                             RoomImage = fileName
                         };
                         await imagesRepository.UpdateAsync(hotelImage);
-                        TempData["SuccessMessage"] = $" Airport '{room.Name}' update successfully.";
+                        TempData["SuccessMessage"] = $" Room '{room.Name}' update successfully.";
                     }
                 }
             }
 
             return RedirectToAction(nameof(Index));
         }
-
         ViewData["HotelId"] = await hotelRepository.DropdownAsync();
         return View(viewModel);
     }
-
-
     public async Task<IActionResult> Delete(long id)
     {
         if (id > 0)
@@ -122,9 +111,4 @@ public class RoomController(
         TempData["ErrorMessage"] = $"Error delete : Item not found";
         return RedirectToAction("Index");
     }
-
-
-
-
-
 }

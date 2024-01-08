@@ -4,7 +4,6 @@
     ViewData["Title"] = "AddEdit";
     Layout = "~/Views/Shared/_Adminlte.cshtml";
 }
-
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -20,7 +19,6 @@
         </div>
     </div>
 </section>
-
 <section class="content">
     <div class="card ">
         <div class="card-header">
@@ -32,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label  class="col-form-label">Hotel Name <span class=" text-danger ">*</span></label>
+                                <label class="col-form-label">Hotel Name <span class=" text-danger ">*</span></label>
                                 <input asp-for="Name" class="form-control" />
                                 <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
@@ -103,37 +101,49 @@
 </section>
 
 @section Scripts {
-        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 
     <script>
         function PreviewImages() {
             var previewContainer = $("#ImagePreviewContainer");
             previewContainer.empty();
-            var filesInput = $('input[type="file"]');
-            var files = filesInput[0].files;
         @foreach (var item in Model.HotelImages)
         {
-                    <img src="~/images/hotel/@item.HotelImage" alt = "img" class="img-thumbnail" style = "width:170px;" />
-        }
+            <text>
+                var imageUrl = '@Url.Content("~/images/hotel/")' + '@item.HotelImage';
+                previewContainer.append('<img class="img-thumbnail" data-filename="@item.HotelImage" src="' + imageUrl + '" alt="img" style="width:170px; margin-right: 10px;">');
+            </text>
+        }             
+            var filesInput = $('input[type="file"]');
+            var files = filesInput[0].files;
 
-                    for (var i = 0; i < files.length; i++) {
+            for (var i = 0; i < files.length; i++) {
                 var file = files[i];
 
                 if (file.type.match('image.*')) {
-                    var img = $("<img>").addClass("img-thumbnail").attr({
-                        "src": URL.createObjectURL(file),
-                        "style": "width: 170px; margin-right: 10px;" // Adjust margin if needed
+                    var img = $('<img>').addClass('img-thumbnail').attr({
+                        'src': URL.createObjectURL(file),
+                        'style': 'width: 170px; margin-right: 10px;'
                     });
                     previewContainer.append(img);
                 }
             }
+            previewContainer.find('img[data-filename]').each(function () {
+                var dataFilename = $(this).data('filename');
+                var completeUrl = '@Url.Content("~/images/hotel/")' + dataFilename;
+                $(this).attr('src', completeUrl);
+            });
         }
-
         $(document).ready(function () {
-            $('input[type="file"]').unbind('change', PreviewImages);
-            $('input[type="file"]').bind('change', PreviewImages);
+            PreviewImages();
+            $('input[type="file"]').on('change', PreviewImages);
         });
     </script>
-
 }
+
+
+
+
 
