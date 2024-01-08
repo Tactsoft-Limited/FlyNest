@@ -8,12 +8,19 @@
         .select2-container .select2-selection--single {
             height: 45px !important;
         }
+
         span.select2-selection__choice__remove {
             display: none;
         }
-        .selection{
-            display:block !important;
+
+        .select2-container {
+            display: block !important;
         }
+
+        .selection {
+            display: block !important;
+        }
+
         .airport-info {
             display: flex;
             justify-content: space-between;
@@ -38,9 +45,10 @@
             display: flex;
             align-items: flex-start;
         }
-        .upper-part span{
-            display:block;
-        }
+
+            .upper-part span {
+                display: block;
+            }
 
         .lower-part {
             flex: 1;
@@ -48,9 +56,8 @@
             flex-direction: column;
             align-items: flex-start;
             padding-left: 0px;
-            overflow:hidden;
+            overflow: hidden;
         }
-
     </style>
 
 }
@@ -325,23 +332,46 @@
             </div>
         </div>
 
-
         <div class="tab-pane fade" id="hotel-tab-pane" role="tabpanel" aria-labelledby="hotel-tab" tabindex="0">
-            <form action="">
+            <form asp-action="SearchHotel" asp-controller="Home" method="post">
                 <div class="row g-2 mt-2">
                     <div class="col-lg-11 col-md-12 col-sm-12">
                         <div class="row g-2">
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="text" class="form-control" placeholder="Location (Ex.  Cox's Bazar)">
+                                <div class="form-group">
+                                    <label asp-for="HotelId"></label>
+                                    <select asp-for="HotelId" class="form-control-lg hotel-js-select2" style="width: 100%">
+                                        @foreach (var hotel in Model.HotelDropdown)
+                                        {
+                                            <option value="@hotel.Value">@hotel.Text</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="HotelId" class="text-danger"></span>
+                                </div>
+                                @*<input type="text" class="form-control" placeholder="Location (Ex.  Cox's Bazar)">*@
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="date" class="form-control">
+                                <div class="form-group">
+                                    <label asp-for="CheckInDate"></label>
+                                    <input asp-for="CheckInDate" class="form-control js-autocomplete">
+                                    <span asp-validation-for="CheckInDate" class="text-danger"></span>
+                                </div>
+                                @*<input type="date" class="form-control">*@
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="date" class="form-control">
+                                <div class="form-group">
+                                    <label asp-for="CheckOutDate"></label>
+                                    <input asp-for="CheckOutDate" class="form-control js-autocomplete">
+                                    <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+                                </div>
+                                @* <input type="date" class="form-control">*@
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="text" class="form-control" placeholder="Guest (Ex.  2)">
+                                <div class="form-group">
+                                    <label asp-for="NumberOfGuest"></label>
+                                    <input asp-for="NumberOfGuest" class="form-control js-autocomplete">
+                                    <span asp-validation-for="NumberOfGuest" class="text-danger"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -384,11 +414,12 @@
             </form>
         </div>
         <div class="tab-pane fade" id="visa-tab-pane" role="tabpanel" aria-labelledby="visa-tab" tabindex="0">
-            <form action="">
+            <form>
                 <div class="row g-2 mt-2">
                     <div class="col-lg-11 col-md-12 col-sm-12">
                         <div class="row g-2">
                             <div class="col-lg-3 col-md-12 col-sm-12">
+
                                 <input type="text" class="form-control" placeholder="Location (Ex.  Cox's Bazar)">
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
@@ -413,146 +444,6 @@
 </div>
 
 <!-- =========== Search Area End =========== -->
-<!-- =========== Why Choose us Area Start =========== -->
-<div class="choose-renaissance-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-6 col-sm-12">
-                <h1 class="fw-bold">
-                    Why Choose
-                    Renaissance
-                    Holidays?
-                </h1>
-                <p class="mt-3">
-                    Indulge in luxurious tour packages that offer exceptional value for
-                    your money, tailored exclusively for you. Revel in the opulence of
-                    our curated luxury tour packages, where flights are seamlessly
-                    integrated with specially designed holiday experiences. <br>
-                    Unlock exclusive privileges with the signature experience reserved
-                    solely for Renaissance Holidays customers. Enjoy special discount-
-                    ed prices bundled with flights as part of our meticulously crafted
-                    holiday packages. <br>
-                    Accurate visa processing by our expert team ensures maximum
-                    visa success for our valued clients. <br>
-                    Experience the convenience of our user-friendly e-commerce plat-
-                    form, simplifying the booking process. Additionally, delight in the
-                    dedicated desk catering specifically to ensure a seamless and per-
-                    sonalized service for Renaissance Holidays customers
-                </p>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class=" mt-20 photo"></div>
-            </div>
-        </div>
-        <div class="row g-5 mt-5 do-we-do">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <h1 class="fw-bold">
-                    What Do
-                    We Do?
-                </h1>
-                <p class="mt-3">
-                    We specialize in tour planning, designing tour packages
-                    for destinations worldwide. Additionally, we assist with air
-                    tickets, hotel bookings, city tours, and airport pickups and
-                    drop-offs in any country you're visiting.
-                </p>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <h1 class="fw-bold">
-                    What Sets Us
-                    Apart?
-                </h1>
-                <p class="mt-3">
-                    Renaissance Holidays is more than a travel company; we're
-                    dream builders. We offer superior services at accessible
-                    terms and affordable rates.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- =========== Why Choose us Area End =========== -->
-<!-- =========== Service Area Start =========== -->
-<div class="service-area">
-    <div class="container">
-        <div class="heading">
-            <h2>Our Services</h2>
-        </div>
-        <p class="mt-2">
-            At Renaissance Holidays, we transcend being a mere travel company; we're dream builders, experience creators, and
-            soulful explorers. We delve into the essence of travel, infusing every itinerary with passion and expertise. Our team com-
-            prises experienced adventurers and enthusiastic explorers dedicated to crafting exceptional experiences.
-        </p>
-        <div class="row g-4 mt-4">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <a href="#" class="d-block">
-                    <div class="card">
-                        <div class="card-body d-flex gap-4 align-items-center">
-                            <div class="icon">
-                                <i class="bi bi-clipboard"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold">Tourist Visa Processing</h6>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="d-block">
-                    <div class="card mt-2">
-                        <div class="card-body d-flex gap-4 align-items-center">
-                            <div class="icon">
-                                <i class="bi bi-clipboard"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold">Tour Package</h6>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="d-block">
-                    <div class="card mt-2">
-                        <div class="card-body d-flex gap-4 align-items-center">
-                            <div class="icon">
-                                <i class="bi bi-airplane"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold">Air Ticket Booking</h6>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="d-block">
-                    <div class="card mt-2">
-                        <div class="card-body d-flex gap-4 align-items-center">
-                            <div class="icon">
-                                <i class="bi bi-buildings-fill"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold">Hotel Booking</h6>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="#" class="d-block">
-                    <div class="card mt-2">
-                        <div class="card-body d-flex gap-4 align-items-center">
-                            <div class="icon">
-                                <i class="bi bi-clipboard"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-bold">Hajj & Umrah</h6>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="photo"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- =========== Service Area End =========== -->
 <!-- =========== Exclusive Offer Start =========== -->
 <div class="container exclusive-offer">
     <div class="heading">
@@ -567,12 +458,12 @@
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="offer-card">
                 <a href="#">
-                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                    <img src="~/images/exclusive-offer/india.jpg" alt="">
                 </a>
                 <div class="overlay">
                     <div class="content">
-                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
-                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <h5 class="fw-bold">Golden Triangle</h5>
+                        <p class="mt-2 mb-2">Delhi, Agra, Ajmer, Aaipur <br>5 night,6 days only 49,900/-</p>
                         <a href="#">View Details</a>
                     </div>
                 </div>
@@ -581,12 +472,12 @@
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="offer-card">
                 <a href="#">
-                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                    <img src="~/images/exclusive-offer/malaysia.jpg" alt="">
                 </a>
                 <div class="overlay">
                     <div class="content">
-                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
-                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <h5 class="fw-bold">Malaysia Tourist Visa</h5>
+                        <p class="mt-2 mb-2">Visa Price Only 5000/-</p>
                         <a href="#">View Details</a>
                     </div>
                 </div>
@@ -595,12 +486,12 @@
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="offer-card">
                 <a href="#">
-                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                    <img src="~/images/exclusive-offer/canada.jpg" alt="">
                 </a>
                 <div class="overlay">
                     <div class="content">
-                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
-                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <h5 class="fw-bold">Tourist Visa </h5>
+                        <p class="mt-2 mb-2">Canada</p>
                         <a href="#">View Details</a>
                     </div>
                 </div>
@@ -609,12 +500,12 @@
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="offer-card">
                 <a href="#">
-                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                    <img src="~/images/exclusive-offer/nepal.jpg" alt="">
                 </a>
                 <div class="overlay">
                     <div class="content">
-                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
-                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <h5 class="fw-bold">Kathmandu Nagarkot tour</h5>
+                        <p class="mt-2 mb-2">3 Nights 4 Days <br> 44,500/-</p>
                         <a href="#">View Details</a>
                     </div>
                 </div>
@@ -623,12 +514,12 @@
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="offer-card">
                 <a href="#">
-                    <img src="~/images/exclusive-offer/offer-1.PNG" alt="">
+                    <img src="~/images/exclusive-offer/dubai_aza.jpg" alt="">
                 </a>
                 <div class="overlay">
                     <div class="content">
-                        <h5 class="fw-bold">Upto 30% flight tickets</h5>
-                        <p class="mt-2 mb-2">Lorem ipsum dolor sit amet consectetur adipisicing...</p>
+                        <h5 class="fw-bold">Visit 2 countries</h5>
+                        <p class="mt-2 mb-2">Dubai &  Azerbaijan <br> Only 1,49,900/-</p>
                         <a href="#">View Details</a>
                     </div>
                 </div>
@@ -638,6 +529,883 @@
     </div>
 </div>
 <!-- =========== Exclusive Offer End =========== -->
+<!-- =========== Explore Bangladesh Start =========== -->
+<div class="explore-bd">
+    <div class="container">
+        <div class="heading">
+            <h2>Explore Bangladesh</h2>
+        </div>
+        <p class="mt-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Enim quibusdam praesentium,
+            quisquam at expedita! Eos illum corporis dolor, vero id quisquam ipsa explicabo sunt repellendus,
+            accusantium suscipit fugiat amet ex alias! Eos cum eligendi non qui quam quae obcaecati, laboriosam!
+        </p>
+        <div class="row g-4 mt-4" id="explore-bd">
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/inbound/kuakata.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Kuakata</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/inbound/bandarbans.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Bandarbans</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/inbound/saint-martin.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Saint Martin</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/inbound/sajek-valley.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Sajek Valley</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/inbound/rangamati.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Rangamati</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/inbound/cox-b.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Cox's Bazar</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/inbound/sundarbans.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Sundarbans</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =========== Explore Bangladesh End =========== -->
+<!-- =========== Search Airlines Start =========== -->
+<div class="s-airlines">
+    <div class="container">
+        <div class="heading">
+            <h2>Search Top Airlines</h2>
+        </div>
+        <p class="mt-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Enim quibusdam praesentium,
+            quisquam at expedita! Eos illum corporis dolor, vero id quisquam ipsa explicabo sunt repellendus,
+            accusantium suscipit fugiat amet ex alias! Eos cum eligendi non qui quam quae obcaecati, laboriosam!
+        </p>
+        <div class="row g-2 mt-4">
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/biman-bangladesh.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Air Astra</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">US-Bangla Airlines</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">NOVOAIR</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Biman Bangladesh Airlines</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Qatar Airways</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Turkish Airlines</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Singapore Airlines</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Emirates</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Malaysia Airlines</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Vistara</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Etihad Airways</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div class="d-flex gap-3 align-items-center">
+                                <div class="logo">
+                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
+                                    <i class="bi bi-airplane-engines"></i>
+                                </div>
+                                <div class="name">
+                                    <h6 class="fw-bold">Cathay Pacific Airways</h6>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="bi bi-chevron-right fw-bold"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- =========== Search Airlines Start =========== -->
+<!-- =========== Popular Destination Start =========== -->
+<div class="p-destination">
+    <div class="container">
+        <div class="heading">
+            <h2>Outbound</h2>
+        </div>
+        <p class="mt-2">
+            Embark on a journey beyond Bangladesh's borders to explore diverse cultures and enchanting landscapes in neighboring countries and beyond. Our expertise lies in arranging worldwide tour packages, with a specialization in destinations
+            like Dubai, Qatar, Saudi Arabia, Maldives, Sri Lanka, Nepal, India, Uzbekistan, Thailand, Singapore, Malaysia, Cambodia,
+            Vietnam, China, Indonesia, and the Philippines. Additionally, we provide packages to European countries including
+            Turkey, Italy, Switzerland, France, Germany, Belgium, and also offer comprehensive USA tour packages
+        </p>
+        <div class="row g-4 mt-4" id="popular-destination">
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/dubai.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Dubai</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/qatar.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Qatar</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/saudia.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Saudi Arabia</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/maldives.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Maldives</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/nepal.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">Nepal</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a href="#">
+                        <img src="~/images/popular-destination/india.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">India</h6>
+                        <span class="text-white">10 Hotels Available</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- =========== Popular Destiantion End =========== -->
+<!-- =========== Best Hotels Start =========== -->
+<div class="b-hotels">
+    <div class="container">
+        <div class="heading">
+            <h2>Best Hotels for Your Next Trip</h2>
+        </div>
+        <p class="mt-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Enim quibusdam praesentium,
+            quisquam at expedita! Eos illum corporis dolor, vero id quisquam ipsa explicabo sunt repellendus,
+            accusantium suscipit fugiat amet ex alias! Eos cum eligendi non qui quam quae obcaecati, laboriosam!
+        </p>
+        <div class="row g-2 mt-4" id="b-hotels">
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                        <div class="card-body">
+                            <h6 class="fw-bold">Dubai</h6>
+                            <div class="mt-1">
+                                <span><i class="bi bi-star-fill"></i></span>
+                                <span class="fw-bold">5</span>
+                                <span>(100 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                        <div class="card-body">
+                            <h6 class="fw-bold">Dubai</h6>
+                            <div class="mt-1">
+                                <span><i class="bi bi-star-fill"></i></span>
+                                <span class="fw-bold">5</span>
+                                <span>(100 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                        <div class="card-body">
+                            <h6 class="fw-bold">Dubai</h6>
+                            <div class="mt-1">
+                                <span><i class="bi bi-star-fill"></i></span>
+                                <span class="fw-bold">5</span>
+                                <span>(100 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                        <div class="card-body">
+                            <h6 class="fw-bold">Dubai</h6>
+                            <div class="mt-1">
+                                <span><i class="bi bi-star-fill"></i></span>
+                                <span class="fw-bold">5</span>
+                                <span>(100 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                        <div class="card-body">
+                            <h6 class="fw-bold">Dubai</h6>
+                            <div class="mt-1">
+                                <span><i class="bi bi-star-fill"></i></span>
+                                <span class="fw-bold">5</span>
+                                <span>(100 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Single -->
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <a href="#">
+                    <div class="card">
+                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                        <div class="card-body">
+                            <h6 class="fw-bold">Dubai</h6>
+                            <div class="mt-1">
+                                <span><i class="bi bi-star-fill"></i></span>
+                                <span class="fw-bold">5</span>
+                                <span>(100 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- =========== Best Hotels End =========== -->
+<!-- =========== Top Routes Start =========== -->
+<div class="top-routes">
+    <div class="container">
+        <div class="heading">
+            <h2 class="text-center">Top Domestic & International Routes</h2>
+        </div>
+        <p class="mt-2 text-center">
+            Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Enim quibusdam
+            praesentium, quisquam at expedita! Eos illum corporis dolor, vero id quisquam ipsa explicabo sunt
+            repellendus, accusantium suscipit fugiat amet ex alias! Eos cum eligendi non qui quam quae obcaecati,
+            laboriosam!
+        </p>
+
+        <div class="mt-4">
+            <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active rounded-start-pill" id="pills-domestics-tab"
+                            data-bs-toggle="pill" data-bs-target="#pills-domestics" type="button" role="tab"
+                            aria-controls="pills-domestics" aria-selected="true">
+                        Domestic
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link rounded-end-pill" id="pills-international-tab" data-bs-toggle="pill"
+                            data-bs-target="#pills-international" type="button" role="tab"
+                            aria-controls="pills-international" aria-selected="false">
+                        International
+                    </button>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-domestics" role="tabpanel"
+                     aria-labelledby="pills-domestics-tab" tabindex="0">
+                    <div class="row g-2 mt-4">
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Cox's Bazar</h6>
+                                            <span>Cox's Bazar Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Cox's Bazar</h6>
+                                            <span>Cox's Bazar Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Cox's Bazar</h6>
+                                            <span>Cox's Bazar Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Cox's Bazar</h6>
+                                            <span>Cox's Bazar Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Cox's Bazar</h6>
+                                            <span>Cox's Bazar Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Sylhet</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-international" role="tabpanel"
+                     aria-labelledby="pills-international-tab" tabindex="0">
+                    <div class="row g-2 mt-4">
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Sylhet</h6>
+                                            <span>Sylhet Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Sylhet</h6>
+                                            <span>Sylhet Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Sylhet</h6>
+                                            <span>Sylhet Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Sylhet</h6>
+                                            <span>Sylhet Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Sylhet</h6>
+                                            <span>Sylhet Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="#">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div>
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div>
+                                            <h6>Sylhet</h6>
+                                            <span>Sylhet Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- =========== Top Routes End =========== -->
 <!-- =========== Tourist Visa Processing Start =========== -->
 <div class="tourist-visa-processing">
     <div class="container">
@@ -645,9 +1413,12 @@
             <h2>Tourist Visa Processing</h2>
         </div>
         <p class="mt-2">
-            Renaissance Holidays provides worldwide visa services. Our expert guidance will help you navigate the complexities of visa applica-
-            tions, ensuring a seamless travel experience. We offer a wide range of visas, including tourist visas, business visas, medical visas and
-            student visas. We provide guaranteed visas for certain countries and we can process visas for many other countries as well.
+            Renaissance Holidays provides worldwide visa services. Our expert guidance will help you
+            navigate the complexities of visa applica-
+            tions, ensuring a seamless travel experience. We offer a wide range of visas, including tourist visas,
+            business visas, medical visas and
+            student visas. We provide guaranteed visas for certain countries and we can process visas for many other
+            countries as well.
         </p>
         <div class="row g-4 mt-4 justify-content-center">
             <div class="col-lg-3 col-md-4 col-sm-12">
@@ -770,8 +1541,10 @@
         <h2>Tour Package</h2>
     </div>
     <p class="mt-2">
-        Renaissance Holidays arranges attractive tour packages worldwide. We take people to the most historical places in the
-        world. We provide national and international budget tour packages as well as luxury tour packages. Privae, Group and
+        Renaissance Holidays arranges attractive tour packages worldwide. We take people to the most
+        historical places in the
+        world. We provide national and international budget tour packages as well as luxury tour packages. Privae,
+        Group and
         customized tour packages are available at Renaissance Holidays.
     </p>
     <h5 class="fw-bold mt-4">Our Tour Package Service Includes:</h5>
@@ -876,82 +1649,6 @@
 </div>
 
 <!-- =========== Tour Package End =========== -->
-<!-- =========== Popular Destination Start =========== -->
-<div class="popular-destination">
-    <div class="container">
-        <div class="heading">
-            <h2>Popular Destination</h2>
-        </div>
-        <p class="mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam tempora at expedita cum
-            dignissimos molestiae aperiam pariatur natus maiores dolores perspiciatis cumque exercitationem, omnis
-            aspernatur dolorum earum, ea velit perferendis.
-        </p>
-        <div class="row mt-4" id="popular-destination">
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="#">
-                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Chittagong</h6>
-                        <span class="text-white">10 Hotels Available</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="#">
-                        <img src="~/images/popular-destination/pd-2.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Rajshahi</h6>
-                        <span class="text-white">10 Hotels Available</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="#">
-                        <img src="~/images/popular-destination/pd-3.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Chittagong</h6>
-                        <span class="text-white">10 Hotels Available</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="#">
-                        <img src="~/images/popular-destination/pd-4.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Dhaka</h6>
-                        <span class="text-white">10 Hotels Available</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="#">
-                        <img src="~/images/popular-destination/pd-3.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Chittagong</h6>
-                        <span class="text-white">10 Hotels Available</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- =========== Popular Destination End =========== -->
 <!-- In your layout or view header -->
 
 @section Scripts {
@@ -964,7 +1661,7 @@
             $('.js-select2').select2({
                 placeholder: 'This is my placeholder',
                 width: 'element', // Automatically sets the width
-                height:'element',
+                height: 'element',
                 templateResult: formatAirport, // Custom formatting function
                 templateSelection: formatAirport, // Use the same formatting function for selection
                 escapeMarkup: function (markup) {
@@ -987,7 +1684,7 @@
                     '<span>' + airportInfo[1] + '</span>' +
                     '</div>' +
                     '<div class="lower-part badge">' +
-                    '<span class="text-muted truncate">' + airportInfo[2] +', ' +airportInfo[3] + '</span>' +
+                    '<span class="text-muted truncate">' + airportInfo[2] + ', ' + airportInfo[3] + '</span>' +
                     '</div>' +
                     '</div>' +
                     '</div>';
@@ -1006,6 +1703,46 @@
 
             function formatAirportSelection(airport) {
                 return airport.text;
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.hotel-js-select2').select2({
+                placeholder: 'This is my placeholder',
+                width: 'element', // Automatically sets the width
+                height: 'element',
+                templateResult: formatHotel, // Custom formatting function
+                templateSelection: formatHotel, // Use the same formatting function for selection
+                escapeMarkup: function (markup) {
+                    return markup;
+                }
+            });
+
+            function formatHotel(hotel) {
+                if (!hotel.id) {
+                    return hotel.text;
+                }
+
+                var hotelInfo = hotel.text.split('-');
+                var formattedText = '<div class="col-md-12 airport-info">' +
+                    '<div class="left-side">' +
+                    '<i class="fas fa-hotel"></i>' +
+                    '</div>' +
+                    '<div class="right-side">' +
+                    '<div class="upper-part">' +
+                    '<span>' + hotelInfo[0] + '</span>' +
+                    '</div>' +
+                    '<div class="lower-part badge">' +
+                    '<span class="text-muted truncate">' + hotelInfo[1] + ', ' + hotelInfo[2] + '</span>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                return $(formattedText);
+            }
+
+            function formatAirportSelection(hotel) {
+                return hotel.text;
             }
         });
     </script>
