@@ -1,4 +1,11 @@
+
 ﻿using FlyNest.SharedKernel.Entities.BaseEntities;
+
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using FlyNest.SharedKernel.Entities.BaseEntities;
+
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel;

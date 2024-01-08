@@ -1,11 +1,11 @@
-﻿using FlyNest.Infrastructure.Interfaces.Helpers;
-using FlyNest.SharedKernel.Entities.Audit;
+﻿using FlyNest.SharedKernel.Entities.Audit;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel.DataAnnotations;
+using FlyNest.Infrastructure.Interfaces.Helpers;
 
 namespace FlyNest.Infrastructure.Persistence.Interceptors;
 
