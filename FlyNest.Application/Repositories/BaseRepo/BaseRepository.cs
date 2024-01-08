@@ -1,8 +1,8 @@
-﻿using FlyNest.Infrastructure.Interfaces.BaseRepo;
-using FlyNest.Infrastructure.Persistence;
+﻿using FlyNest.Infrastructure.Persistence;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using FlyNest.Infrastructure.Interfaces.BaseRepo;
 
 namespace FlyNest.Application.Repositories.BaseRepo;
 

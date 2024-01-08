@@ -1,6 +1,6 @@
-﻿using FlyNest.Infrastructure.Interfaces.Helpers;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
+using FlyNest.Infrastructure.Interfaces.Helpers;
 
 namespace FlyNest.Application.Repositories.Helpers;
 

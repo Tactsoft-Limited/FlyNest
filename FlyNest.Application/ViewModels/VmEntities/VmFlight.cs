@@ -69,6 +69,8 @@ public class VmFlight : BaseEntity
     [Display(Name = "Flight Type")]
     public string FlightType { get; set; }
 
+    public VmAirline VmAirline { get; set; }
+
     public ICollection<VmStopover> Stopovers { get; set; } = new HashSet<VmStopover>();
 
     public IEnumerable<SelectListItem> AirlineDropdown { get; set; } = new List<SelectListItem>();

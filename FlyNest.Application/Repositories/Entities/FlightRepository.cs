@@ -5,6 +5,7 @@ using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Application.ViewModels.VmEntities.Search;
 using FlyNest.Infrastructure.Persistence;
 using FlyNest.SharedKernel.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlyNest.Application.Repositories.Entities;
@@ -23,5 +24,11 @@ public class FlightRepository(FlyNestDbContext context, IMapper mapper) : BaseRe
             .ToListAsync();
 
         return _mapper.Map<List<VmFlight>>(results);
+    }
+
+    public async Task<IEnumerable<SelectListItem>> DropdownAsync()
+    {
+        var data = await GetAllAsync();
+        return  data.Select(x => new SelectListItem { Text = x.FlightNo, Value = x.Id.ToString() });
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using FlyNest.SharedKernel.Entities;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 
 namespace FlyNest.Application.ViewModels.VmEntities;

@@ -2,9 +2,5 @@
 using FlyNest.Application.Repositories.BaseRepo;
 using FlyNest.Infrastructure.Persistence;
 using FlyNest.SharedKernel.Entities;
-
 namespace FlyNest.Application.Repositories.Entities;
-
-public class RoomImagesRepository(FlyNestDbContext context) : BaseRepository<RoomImages>(context), IRoomImagesRepository, IApplication
-{
-}
+public class BaggageRepository(FlyNestDbContext context) : BaseRepository<Baggage>(context),IBaggageRepository,IApplication;

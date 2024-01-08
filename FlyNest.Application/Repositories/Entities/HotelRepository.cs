@@ -4,7 +4,6 @@ using FlyNest.Application.Repositories.BaseRepo;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Application.ViewModels.VmEntities.Search;
 using FlyNest.Infrastructure.Persistence;
-using FlyNest.SharedKernel.DbViewModel;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;

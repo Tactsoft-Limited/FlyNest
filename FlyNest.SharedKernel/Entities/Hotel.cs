@@ -11,7 +11,7 @@ public class Hotel:AuditableEntity
     public double PriceStartFrom { get; set; }
     public int Discount { get; set; }
     public string LocationMap { get; set; }
-    public ICollection<HotelImages> HotelImages { get; set; } = new List<HotelImages>();
-    public ICollection<Room> Rooms = new HashSet<Room>();
+    public ICollection<HotelImages> HotelImages { get; set; } = new HashSet<HotelImages>();
+    public ICollection<Room> Rooms { get; set; } = new HashSet<Room>();
 
 }
