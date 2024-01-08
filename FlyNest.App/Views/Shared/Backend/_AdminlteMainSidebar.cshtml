@@ -37,7 +37,22 @@
                         <p>Room</p>
                     </a>
                 </li>
-              <li class="nav-header text-uppercase">Permission Management</li>
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Baggage" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class=" nav-icon fas fa-suitcase"></i>
+                        <p>Baggage</p>
+                    </a>
+                </li>
+                
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Policy" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-shield-alt"></i>
+                        <p>Policy</p>
+                    </a>
+                </li>
+
+                <li class="nav-header text-uppercase">Permission Management</li>
                 <li class="nav-item">
                     <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-users-cog"></i>
