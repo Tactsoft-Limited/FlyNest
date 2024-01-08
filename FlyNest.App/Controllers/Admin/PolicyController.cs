@@ -18,7 +18,7 @@ public class PolicyController(IPolicyRepository policyRepository, IMapper mapper
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
-        ViewData["FlightId"] = await flightRepository.d();
+        ViewData["FlightId"] = await flightRepository.DropdownAsync();
 
         return id switch
         {
