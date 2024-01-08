@@ -3,6 +3,6 @@ using FlyNest.SharedKernel.Entities;
 
 namespace FlyNest.Application.Interfaces.Entities;
 
-public interface IRoomImagesRepository : IBaseRepository<RoomImages>
+public interface IBaggageRepository: IBaseRepository<Baggage>
 {
 }

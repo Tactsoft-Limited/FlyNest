@@ -37,6 +37,5 @@ public class Flight : AuditableEntity
     
 
     public ICollection<Stopover> Stopovers { get; set; } = new HashSet<Stopover>();
-
-    public ICollection<Policy> Policies { get; set; } = new HashSet<Policy>();
+    public ICollection<Baggage> Baggages { get; set; } = new HashSet<Baggage>();
 }

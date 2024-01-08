@@ -1,7 +1,6 @@
 ﻿using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Application.ViewModels.VmEntities.Search;
 using FlyNest.Infrastructure.Interfaces.BaseRepo;
-using FlyNest.SharedKernel.DbViewModel;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
