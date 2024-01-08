@@ -1,5 +1,4 @@
-﻿using FlyNest.SharedKernel.Entities;
-using FlyNest.SharedKernel.Entities.BaseEntities;
+﻿using FlyNest.SharedKernel.Entities.BaseEntities;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;

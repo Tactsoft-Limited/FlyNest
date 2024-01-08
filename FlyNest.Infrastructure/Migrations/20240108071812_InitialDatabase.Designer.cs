@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyNest.Infrastructure.Migrations
 {
     [DbContext(typeof(FlyNestDbContext))]
-    [Migration("20240106064232_UpdateRoomTable")]
-    partial class UpdateRoomTable
+    [Migration("20240108071812_InitialDatabase")]
+    partial class InitialDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,14 +34,12 @@ namespace FlyNest.Infrastructure.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("AirlineName")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(85)
+                        .HasColumnType("nvarchar(85)");
 
                     b.Property<string>("ContactInfo")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<long>("CreatedBy")
                         .HasColumnType("bigint");
@@ -68,13 +66,62 @@ namespace FlyNest.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Website")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Airline", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AirlineName = "Biman Bangladesh Airlines",
+                            ContactInfo = "Balaka Bhaban Kurmitola, Dhaka, Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(2533), new TimeSpan(0, 6, 0, 0, 0)),
+                            EstablishedDate = new DateOnly(1, 1, 1),
+                            IsDelete = false,
+                            UpdateNo = 0,
+                            Website = "http://biman-airlines.com"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            AirlineName = "US-Bangla Airlines",
+                            ContactInfo = "77 Sohrawardi Avenue, Baridhara Diplomatic Zone, Dhaka, Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(2571), new TimeSpan(0, 6, 0, 0, 0)),
+                            EstablishedDate = new DateOnly(1, 1, 1),
+                            IsDelete = false,
+                            UpdateNo = 0,
+                            Website = "https://usbair.com"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            AirlineName = "Novoair",
+                            ContactInfo = "House-50, Road-11, Block-F, Banani, Dhaka, Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(2574), new TimeSpan(0, 6, 0, 0, 0)),
+                            EstablishedDate = new DateOnly(1, 1, 1),
+                            IsDelete = false,
+                            UpdateNo = 0,
+                            Website = "https://www.flynovoair.com"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            AirlineName = "Regent Airways",
+                            ContactInfo = "Balaka Bhaban Kurmitola, Dhaka, Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(2576), new TimeSpan(0, 6, 0, 0, 0)),
+                            EstablishedDate = new DateOnly(1, 1, 1),
+                            IsDelete = false,
+                            UpdateNo = 0,
+                            Website = "http://biman-airlines.com"
+                        });
                 });
 
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Airport", b =>
@@ -122,6 +169,370 @@ namespace FlyNest.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Airport", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CityName = "Dhaka",
+                            Code = "DAC",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6127), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Hazrat Shahjalal International Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            CityName = "Chattogram",
+                            Code = "CGP",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6140), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Shah Amanat International Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            CityName = "Jashore",
+                            Code = "JSR",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6143), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Jashore Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            CityName = "Sylhet",
+                            Code = "ZYL",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6146), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Osmany International Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            CityName = "Comilla",
+                            Code = "CLA",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6148), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Comilla Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            CityName = "Ishurdi",
+                            Code = "IRD",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6151), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Ishurdi Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            CityName = "Cox's Bazar",
+                            Code = "CXB",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6153), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Cox's Bazar Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            CityName = "Saidpur",
+                            Code = "SPD",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6156), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Saidpur Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 9L,
+                            CityName = "Rajshahi",
+                            Code = "RJH",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6159), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Shah Makhdum Airport",
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 10L,
+                            CityName = "Barishal",
+                            Code = "BZL",
+                            CountryName = "Bangladesh",
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 373, DateTimeKind.Unspecified).AddTicks(6161), new TimeSpan(0, 6, 0, 0, 0)),
+                            IsDelete = false,
+                            Name = "Barishal Airport",
+                            UpdateNo = 0
+                        });
+                });
+
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Baggage", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("FlightClass")
+                        .HasMaxLength(70)
+                        .HasColumnType("nvarchar(70)");
+
+                    b.Property<long>("FlightId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<double>("LuggageWeight")
+                        .HasColumnType("float");
+
+                    b.Property<long?>("ModifiedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("ModifiedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("UpdateNo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlightId");
+
+                    b.ToTable("Baggage", (string)null);
+                });
+
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Flight", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("AircraftType")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<long>("AirlineId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ArrivalAirportId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateOnly>("ArrivalDate")
+                        .HasColumnType("date");
+
+                    b.Property<TimeOnly>("ArrivalTime")
+                        .HasColumnType("time");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<long>("DepatureAirportId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateOnly>("DepatureDate")
+                        .HasColumnType("date");
+
+                    b.Property<TimeOnly>("DepatureTime")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("FlightDuration")
+                        .HasMaxLength(30)
+                        .HasColumnType("time");
+
+                    b.Property<string>("FlightNo")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("FlightType")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<long?>("ModifiedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("ModifiedDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("UpdateNo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AirlineId");
+
+                    b.HasIndex("ArrivalAirportId");
+
+                    b.HasIndex("DepatureAirportId");
+
+                    b.ToTable("Flight", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AircraftType = "B 787-8 Dreamliner",
+                            AirlineId = 1L,
+                            ArrivalAirportId = 7L,
+                            ArrivalDate = new DateOnly(2024, 1, 1),
+                            ArrivalTime = new TimeOnly(14, 0, 0),
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 378, DateTimeKind.Unspecified).AddTicks(6405), new TimeSpan(0, 6, 0, 0, 0)),
+                            DepatureAirportId = 1L,
+                            DepatureDate = new DateOnly(2024, 1, 1),
+                            DepatureTime = new TimeOnly(11, 0, 0),
+                            FlightDuration = new TimeSpan(0, 3, 0, 0, 0),
+                            FlightNo = "BG433",
+                            FlightType = "Non-Stop",
+                            IsDelete = false,
+                            Price = 5600.0,
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            AircraftType = "B 787-8 Dreamliner",
+                            AirlineId = 2L,
+                            ArrivalAirportId = 7L,
+                            ArrivalDate = new DateOnly(2024, 1, 1),
+                            ArrivalTime = new TimeOnly(14, 0, 0),
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 378, DateTimeKind.Unspecified).AddTicks(6448), new TimeSpan(0, 6, 0, 0, 0)),
+                            DepatureAirportId = 1L,
+                            DepatureDate = new DateOnly(2024, 1, 1),
+                            DepatureTime = new TimeOnly(11, 0, 0),
+                            FlightDuration = new TimeSpan(0, 3, 0, 0, 0),
+                            FlightNo = "BS141",
+                            FlightType = "Non-Stop",
+                            IsDelete = false,
+                            Price = 5600.0,
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            AircraftType = "B 787-8 Dreamliner",
+                            AirlineId = 3L,
+                            ArrivalAirportId = 7L,
+                            ArrivalDate = new DateOnly(2024, 1, 1),
+                            ArrivalTime = new TimeOnly(13, 30, 0),
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 378, DateTimeKind.Unspecified).AddTicks(6453), new TimeSpan(0, 6, 0, 0, 0)),
+                            DepatureAirportId = 1L,
+                            DepatureDate = new DateOnly(2024, 1, 1),
+                            DepatureTime = new TimeOnly(11, 0, 0),
+                            FlightDuration = new TimeSpan(0, 2, 30, 0, 0),
+                            FlightNo = "VQ927",
+                            FlightType = "Non-Stop",
+                            IsDelete = false,
+                            Price = 5600.0,
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            AircraftType = "B 787-8 Dreamliner",
+                            AirlineId = 3L,
+                            ArrivalAirportId = 1L,
+                            ArrivalDate = new DateOnly(2024, 1, 1),
+                            ArrivalTime = new TimeOnly(19, 0, 0),
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 378, DateTimeKind.Unspecified).AddTicks(6458), new TimeSpan(0, 6, 0, 0, 0)),
+                            DepatureAirportId = 7L,
+                            DepatureDate = new DateOnly(2024, 1, 5),
+                            DepatureTime = new TimeOnly(16, 30, 0),
+                            FlightDuration = new TimeSpan(0, 2, 30, 0, 0),
+                            FlightNo = "VQ729",
+                            FlightType = "Non-Stop",
+                            IsDelete = false,
+                            Price = 5600.0,
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            AircraftType = "B 787-8 Dreamliner",
+                            AirlineId = 2L,
+                            ArrivalAirportId = 1L,
+                            ArrivalDate = new DateOnly(2024, 1, 1),
+                            ArrivalTime = new TimeOnly(19, 0, 0),
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 378, DateTimeKind.Unspecified).AddTicks(6463), new TimeSpan(0, 6, 0, 0, 0)),
+                            DepatureAirportId = 7L,
+                            DepatureDate = new DateOnly(2024, 1, 5),
+                            DepatureTime = new TimeOnly(16, 30, 0),
+                            FlightDuration = new TimeSpan(0, 3, 0, 0, 0),
+                            FlightNo = "BS241",
+                            FlightType = "Non-Stop",
+                            IsDelete = false,
+                            Price = 5600.0,
+                            UpdateNo = 0
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            AircraftType = "B 787-8 Dreamliner",
+                            AirlineId = 1L,
+                            ArrivalAirportId = 1L,
+                            ArrivalDate = new DateOnly(2024, 1, 1),
+                            ArrivalTime = new TimeOnly(19, 0, 0),
+                            CreatedBy = 1L,
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 8, 13, 18, 11, 378, DateTimeKind.Unspecified).AddTicks(6467), new TimeSpan(0, 6, 0, 0, 0)),
+                            DepatureAirportId = 7L,
+                            DepatureDate = new DateOnly(2024, 1, 5),
+                            DepatureTime = new TimeOnly(16, 30, 0),
+                            FlightDuration = new TimeSpan(0, 3, 0, 0, 0),
+                            FlightNo = "BG333",
+                            FlightType = "Non-Stop",
+                            IsDelete = false,
+                            Price = 5600.0,
+                            UpdateNo = 0
+                        });
                 });
 
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Hotel", b =>
@@ -551,7 +962,7 @@ namespace FlyNest.Infrastructure.Migrations
                     b.ToTable("RoomImages", (string)null);
                 });
 
-            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Stoppies", b =>
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Stopover", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -568,8 +979,8 @@ namespace FlyNest.Infrastructure.Migrations
                     b.Property<DateTimeOffset>("CreatedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Duration")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<long>("FlightId")
+                        .HasColumnType("bigint");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
@@ -580,6 +991,12 @@ namespace FlyNest.Infrastructure.Migrations
                     b.Property<DateTimeOffset?>("ModifiedDate")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<DateOnly>("StopoverDate")
+                        .HasColumnType("date");
+
+                    b.Property<TimeOnly>("StopoverTime")
+                        .HasColumnType("time");
+
                     b.Property<int>("UpdateNo")
                         .HasColumnType("int");
 
@@ -587,7 +1004,47 @@ namespace FlyNest.Infrastructure.Migrations
 
                     b.HasIndex("AirportId");
 
-                    b.ToTable("Stoppies", (string)null);
+                    b.HasIndex("FlightId");
+
+                    b.ToTable("Stopover", (string)null);
+                });
+
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Baggage", b =>
+                {
+                    b.HasOne("FlyNest.SharedKernel.Entities.Flight", "Flight")
+                        .WithMany("Baggages")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Flight");
+                });
+
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Flight", b =>
+                {
+                    b.HasOne("FlyNest.SharedKernel.Entities.Airline", "Airline")
+                        .WithMany("Flights")
+                        .HasForeignKey("AirlineId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FlyNest.SharedKernel.Entities.Airport", "ArrivalFlight")
+                        .WithMany("ArrivalAirport")
+                        .HasForeignKey("ArrivalAirportId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FlyNest.SharedKernel.Entities.Airport", "DepatureFlight")
+                        .WithMany("DepatureAirport")
+                        .HasForeignKey("DepatureAirportId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Airline");
+
+                    b.Navigation("ArrivalFlight");
+
+                    b.Navigation("DepatureFlight");
                 });
 
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.HotelImages", b =>
@@ -674,20 +1131,44 @@ namespace FlyNest.Infrastructure.Migrations
                     b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Stoppies", b =>
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Stopover", b =>
                 {
-                    b.HasOne("FlyNest.SharedKernel.Entities.Airport", "Airport")
-                        .WithMany("Stoppies")
+                    b.HasOne("FlyNest.SharedKernel.Entities.Airport", "StopoverAirport")
+                        .WithMany("Stopovers")
                         .HasForeignKey("AirportId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Airport");
+                    b.HasOne("FlyNest.SharedKernel.Entities.Flight", "Flight")
+                        .WithMany("Stopovers")
+                        .HasForeignKey("FlightId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Flight");
+
+                    b.Navigation("StopoverAirport");
+                });
+
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Airline", b =>
+                {
+                    b.Navigation("Flights");
                 });
 
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Airport", b =>
                 {
-                    b.Navigation("Stoppies");
+                    b.Navigation("ArrivalAirport");
+
+                    b.Navigation("DepatureAirport");
+
+                    b.Navigation("Stopovers");
+                });
+
+            modelBuilder.Entity("FlyNest.SharedKernel.Entities.Flight", b =>
+                {
+                    b.Navigation("Baggages");
+
+                    b.Navigation("Stopovers");
                 });
 
             modelBuilder.Entity("FlyNest.SharedKernel.Entities.Hotel", b =>

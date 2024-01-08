@@ -1,8 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using AutoMapper;
-using FlyNest.SharedKernel.Entities;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Http;

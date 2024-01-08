@@ -1,0 +1,82 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmBaggage>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+    int idno = 1;
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Baggage</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Baggage</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Baggage List</h3>
+            <div class="card-tools">
+                <a asp-action="AddEdit" asp-controller="Baggage" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Baggage</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Flight.FlightNo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FlightClass)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LuggageWeight)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @idno
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Flight.FlightNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FlightClass)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LuggageWeight)
+                            </td>
+                            <td>
+                                <a asp-action="AddEdit" asp-controller="Baggage" asp-route-id="@item.Id" class="btn btn-info btn-sm"><i class="bi bi-pencil-square"></i> Edit </a>
+                                <a onclick="return confirm('Are you sure you want to delete this item?');" asp-action="Delete" asp-controller="Baggage" asp-route-id="@item.Id"
+                                   class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                        idno++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

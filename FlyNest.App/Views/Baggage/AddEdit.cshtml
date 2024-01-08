@@ -1,0 +1,63 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmBaggage
+@{
+    ViewData["Title"] = "AddEdit";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Baggage </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active"> Create Airline</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content ">
+    <div class="card w-4 ">
+        <div class="card-header">
+            <h3 class="card-title">Baggage Airline  </h3>
+            <div class="card-body">
+                <form asp-action="AddEdit" asp-controller="Baggage" role="form" enctype="multipart/form-data">
+                    <div class="modal-body form-horizontal">
+                        <div class="row">
+                            
+                            <div class="col-md-6">
+                                <label class="col-form-label">Flight No  <span class=" text-danger ">*</span></label>
+                                <select asp-for="FlightId" asp-items="@(ViewBag.FlightId)" class="form-control select2">
+                                    <option value="">--Select Flight No--</option>
+                                </select>
+                                <span asp-validation-for="FlightId" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="col-form-label">Flight Class</label>
+                                <input asp-for="FlightClass" class="form-control"/>
+                                <span asp-validation-for="FlightClass" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label class=" col-form-label">Luggage Weight</label>
+                                <input asp-for="LuggageWeight" class="form-control"/>
+                                <span asp-validation-for="LuggageWeight" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="submit" class="btn btn-sm btn-info"><i class="bi bi-save"></i> Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
