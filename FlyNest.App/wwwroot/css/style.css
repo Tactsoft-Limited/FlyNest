@@ -396,21 +396,21 @@ Bacic Setup End
     }
 
 #carousel-item1 {
-    background-image: url('../../assets/images/slider/slider-3.jpg');
+    background-image: url('../images/slider/slider-3.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #carousel-item2 {
-    background-image: url('../../assets/images/slider/slider-2.jpg');
+    background-image: url('../images/slider/slider-2.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #carousel-item3 {
-    background-image: url('../../assets/images/slider/slider-1.jpg');
+    background-image: url('../images/slider/slider-1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -562,7 +562,7 @@ Bacic Setup End
     .choose-renaissance-area .photo {
         width: 300px;
         height: 400px;
-        background-image: url('../../assets/images/choose-us.PNG');
+        background-image: url('../images/choose-us.PNG');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -626,7 +626,7 @@ Bacic Setup End
     .service-area .photo {
         width: 100%;
         height: 400px;
-        background-image: url('../../assets/images/cc-1.jpg');
+        background-image: url('../images/cc-1.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -1377,7 +1377,7 @@ Bacic Setup End
     width: 100%;
     height: 250px;
     border: none;
-    background-image: url('../../assets/images/slider/slider-2.jpg');
+    background-image: url('../images/slider/slider-2.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

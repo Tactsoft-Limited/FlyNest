@@ -5,7 +5,318 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>SearchFlight</h1>
+
+<!-- =========== Hotel Search Area Start =========== -->
+<div class="hotel-search pt-80 pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 col-sm-12">
+                <div class="sidebar">
+                    <div class="filter d-flex justify-content-between mb-4">
+                        <span>Filter</span>
+                        <button type="reset"
+                                class="btn btn-info fw-bold text-uppercase text-white rounded">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="price-range mb-4">
+                        <div class="sb-title mb-3">
+                            <h6>Price Range</h6>
+                        </div>
+                        <div class="slider-container">
+                            <div class="text-end">
+                                <span class="d-block mb-2">Price</span>
+                                <span id="sliderValue">10000</span>
+                                <span>Tk</span>
+                            </div>
+                            <input type="range" id="myRange" min="2000" max="20000" value="10000" class="slider">
+                        </div>
+                    </div>
+
+                    <div class="s-hotel mb-4">
+                        <div class="sb-title mb-3">
+                            <h6>Search Hotel</h6>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hotelName" class="form-label">Enter Hotel Name</label>
+                            <form class="d-flex" role="search">
+                                <input class="form-control" type="search" placeholder="i,e- Grand President"
+                                       aria-label="Search">
+                                <button class="btn btn-info" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="location-range mb-4">
+                        <div class="sb-title mb-3">
+                            <h6>Location Range</h6>
+                        </div>
+                        <div class="slider-container">
+                            <div class="text-end">
+                                <span class="d-block mb-2">Distance from the city centre</span>
+                                <span id="rangeValue">25</span>
+                                <span>KM</span>
+                            </div>
+                            <input type="range" id="kmRange" min="0" max="25" value="25" class="slider">
+                        </div>
+                    </div>
+
+                    <div class="property-rating mb-4">
+                        <div class="sb-title mb-3">
+                            <h6>Property Rating</h6>
+                        </div>
+                        <div class="rating">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="one-star">
+                                <label class="form-check-label" for="one-star">
+                                    <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="two-star">
+                                <label class="form-check-label" for="two-star">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="three-star">
+                                <label class="form-check-label" for="three-star">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="four-star">
+                                <label class="form-check-label" for="four-star">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="five-star">
+                                <label class="form-check-label" for="five-star">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="meal-system mb-4">
+                        <div class="sb-title mb-3">
+                            <h6>Meal</h6>
+                        </div>
+                        <div class="meal">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="breakfast">
+                                <label class="form-check-label" for="breakfast">
+                                    Breakfast
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="half-board">
+                                <label class="form-check-label" for="half-board">
+                                    Half Board
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="full-board">
+                                <label class="form-check-label" for="full-board">
+                                    Full Board
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="all-inclusive">
+                                <label class="form-check-label" for="all-inclusive">
+                                    All Inclusive
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="property-type mb-4">
+                        <div class="sb-title mb-3">
+                            <h6>Property Type</h6>
+                        </div>
+                        <div class="meal">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="hotel">
+                                <label class="form-check-label" for="hotel">
+                                    Hotel
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="hostels">
+                                <label class="form-check-label" for="hostels">
+                                    Hostels
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="apartment">
+                                <label class="form-check-label" for="apartment">
+                                    Apartment
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="guest-houses">
+                                <label class="form-check-label" for="guest-houses">
+                                    Guest Houses
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-type mb-4">
+                        <div class="sb-title mb-3">
+                            <h6>Property Type</h6>
+                        </div>
+                        <div class="meal">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="hotel">
+                                <label class="form-check-label" for="hotel">
+                                    Hotel
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="hostels">
+                                <label class="form-check-label" for="hostels">
+                                    Hostels
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="apartment">
+                                <label class="form-check-label" for="apartment">
+                                    Apartment
+                                </label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="guest-houses">
+                                <label class="form-check-label" for="guest-houses">
+                                    Guest Houses
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 col-sm-12">
+                <div class="content">
+                    <div class="s-result d-flex justify-content-between align-items-center">
+                        <h6>20 <span>Available Flights</span></h6>
+                        <span>*Price includes VAT & Tax</span>
+                    </div>
+                    <div class="tab-content mt-3" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                             aria-labelledby="pills-home-tab" tabindex="0">
+                            @foreach (var item in Model)
+                            {
+                                <!-- Single -->
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                                <div class="photo">
+                                                    <img src="~/images/@item.AirlineLogo" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-12 h-details">
+                                                <div class="h-name">
+                                                    <a href="#">Grand Syhlet Hotel & Resort</a>
+                                                </div>
+                                                <div class="rating">
+                                                    <span><i class="bi bi-star-fill"></i></span>
+                                                    <span><i class="bi bi-star-fill"></i></span>
+                                                    <span><i class="bi bi-star-fill"></i></span>
+                                                    <span><i class="bi bi-star-fill"></i></span>
+                                                    <span><i class="bi bi-star-fill"></i></span>
+                                                </div>
+                                                <div class="h-location d-flex align-items-center gap-2">
+                                                    <span><i class="bi bi-geo-alt-fill"></i></span>
+                                                    <a href="#">Boroshola, Airport Road, Sylhet</a>
+                                                </div>
+                                                <div class="h-component d-flex gap-4">
+                                                    <div class="d-flex gap-2">
+                                                        <div class="icon">
+                                                            <i class="bi bi-currency-rupee"></i>
+                                                        </div>
+                                                        <span>500</span>
+                                                    </div>
+                                                    <div class="d-flex gap-2">
+                                                        <div class="icon">
+                                                            <i class="bi bi-arrow-return-right"></i>
+                                                        </div>
+                                                        <span>20</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                                <div class="h-price-area text-end mt-3">
+                                                    <span class="d-block mb-2">Start From</span>
+                                                    <span class="discount mb-2">30% OFF</span>
+                                                    <span class="t-discount"><del>BDT 3,100</del>/Night</span>
+                                                    <h6 class="fw-bold price mb-2">
+                                                        BDT 10,100 <sup>/Night</sup>
+                                                    </h6>
+                                                    <p class="vat-tax mb-2">*Price includes VAT & Tax</p>
+                                                    <a href="#"
+                                                       class="text-uppercase btn btn-info text-white fw-bold">
+                                                        Book
+                                                        Now
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            <!-- Pagination Start -->
+                            <div class="pagination-area d-flex justify-content-end align-items-center gap-3 mt-5">
+                                <h6>
+                                    Showing Results 1 - 9 of 11
+                                </h6>
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Pagination End -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =========== Hotel Search Area End =========== -->
+
+
+
+@*<h1>SearchFlight</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -53,50 +364,51 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlightNo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AirlineId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AirlineName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepatureAirportId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepatureAirportName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArrivalAirportId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArrivalAirportName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AircraftType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlightDuration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlightType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AirlineId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AirlineName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepatureAirportId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepatureAirportName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArrivalAirportId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArrivalAirportName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AircraftType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
     </tbody>
-</table>
+</table>*@
