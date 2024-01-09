@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FlyNest.Application.Interfaces.Entities;
-using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -14,13 +13,7 @@ public class HotelController(
     IMapper mapper) : Controller
 {
     [HttpGet]
-    public async Task<IActionResult> Index()
-
-    {
-        var list = await hotelRepository.GetAllAsync();
-        return View(mapper.Map<List<VmHotel>>(list));
-    }
-
+    public async Task<IActionResult> Index()=> View(mapper.Map<List<VmHotel>>(await hotelRepository.GetAllAsync()));
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
@@ -33,7 +26,6 @@ public class HotelController(
                 return View(mapper.Map<VmHotel>(data));
         }
     }
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddEdit(VmHotel viewModel)
@@ -63,14 +55,12 @@ public class HotelController(
                                     }
                                     var hotelImage = new HotelImages { HotelId = hotel.Id, HotelImage = fileName };
                                     await hotelImagesRepository.InsertAsync(hotelImage);
-                                    TempData["SuccessMessage"] = $" Airport '{hotelImage.Hotel.Name}' added successfully.";
+                                    TempData["SuccessMessage"] = $" Hotel '{hotelImage.Hotel.Name}' added successfully.";
                                 }
                             }
                         }
-
                         return RedirectToAction(nameof(Index));
                 }
-
                 break;
             default:
                 switch(ModelState.IsValid)
@@ -93,7 +83,7 @@ public class HotelController(
                                     }
                                     var hotelImage = new HotelImages { HotelId = hotel.Id, HotelImage = fileName };
                                     await hotelImagesRepository.UpdateAsync(hotelImage);
-                                    TempData["SuccessMessage"] = $" Airport '{hotelImage.Hotel.Name}' update successfully.";
+                                    TempData["SuccessMessage"] = $" Hotel '{hotelImage.Hotel.Name}' update successfully.";
                                 }
                             }
                         }
@@ -105,8 +95,6 @@ public class HotelController(
 
         return View(viewModel);
     }
-
-
     public async Task<IActionResult> Delete(long id)
     {
         switch(id)

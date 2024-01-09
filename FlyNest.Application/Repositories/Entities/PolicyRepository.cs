@@ -5,6 +5,5 @@ using FlyNest.SharedKernel.Entities;
 
 namespace FlyNest.Application.Repositories.Entities;
 
-public class RoomImagesRepository(FlyNestDbContext context) : BaseRepository<RoomImages>(context), IRoomImagesRepository, IApplication
-{
-}
+public class PolicyRepository(FlyNestDbContext context)
+    : BaseRepository<Policy>(context), IPolicyRepository, IApplication;

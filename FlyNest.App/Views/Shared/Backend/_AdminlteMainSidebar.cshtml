@@ -19,7 +19,6 @@
                         <p>Airline</p>
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a asp-action="Index" asp-controller="Airport" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Airport" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                         <i class="nav-icon fas fa-plane"></i>
@@ -27,34 +26,33 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a asp-action="Index" asp-controller="ContractorPayment" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "ContractorPayment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Contractor Payment</p>
+                    <a asp-action="Index" asp-controller="Hotel" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "ContractorPayment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-hotel"></i>
+                        <p>Hotel</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Room" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-bed"></i>
+                        <p>Room</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Baggage" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class=" nav-icon fas fa-suitcase"></i>
+                        <p>Baggage</p>
+                    </a>
+                </li>
+                
 
                 <li class="nav-item">
-                    <a asp-action="Index" asp-controller="Investment" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Investment</p>
+                    <a asp-action="Index" asp-controller="Policy" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-shield-alt"></i>
+                        <p>Policy</p>
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a asp-action="Index" asp-controller="Material" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Material" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Material</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a asp-action="Index" asp-controller="Partner" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Partner" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class="nav-icon fas fa-users"></i>  <p>Partner</p>
-                    </a>
-                </li>
-
-              <li class="nav-header text-uppercase">Permission Management</li>
-
+                <li class="nav-header text-uppercase">Permission Management</li>
                 <li class="nav-item">
                     <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-users-cog"></i>
@@ -117,17 +115,6 @@
                         </li>
                     </ul>
                 </li>
-
-
-
-
-
-
-
-
-
-
-
                 <li class="nav-item">
                     <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-users-cog"></i>
@@ -152,12 +139,6 @@
                                 <p>Unit Type</p>
                             </a>
                         </li>
-
-
-
-
-
-
                     </ul>
                 </li>
                 @* start report *@
@@ -179,7 +160,7 @@
                     </ul>
                 </li>
 
-                @* end report *@
+                
 
 
             </ul>

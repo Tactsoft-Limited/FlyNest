@@ -30,6 +30,8 @@ public class MapperProfile : Profile
 
         CreateMap<Stopover, VmStopover>().ReverseMap();
 
+        CreateMap<VmBaggage, Baggage>().ReverseMap().ForMember(x=>x.AirlineName,x=>x.MapFrom(x=>x.Flight.Airline!=null?x.Flight.Airline.AirlineName:""));
+
         CreateMap<HotelImages, VmHotelImages>().ReverseMap();
         CreateMap<VmHotel, Hotel>().ReverseMap();
         CreateMap<RoomImages, VmRoomImages>().ReverseMap();

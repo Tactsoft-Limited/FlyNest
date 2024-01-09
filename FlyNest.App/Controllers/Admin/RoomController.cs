@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FlyNest.Application.Interfaces.Entities;
-using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +14,13 @@ public class RoomController(
     IHotelRepository hotelRepository) : Controller
 {
     [HttpGet]
+
     public async Task<IActionResult> Index()
     {
         var list = await roomRepository.GetAllAsync(x => x.RoomImages, x => x.Hotel);
         return View(mapper.Map<List<VmRoom>>(list));
     }
+
 
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
@@ -34,8 +35,6 @@ public class RoomController(
                 return View(mapper.Map<VmRoom>(data));
         }
     }
-
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddEdit(VmRoom viewModel)
@@ -63,7 +62,6 @@ public class RoomController(
                         TempData["SuccessMessage"] = $" Room '{room.Name}' added successfully.";
                     }
                 }
-
                 return RedirectToAction(nameof(Index));
             }
         } else if(ModelState.IsValid)
@@ -87,19 +85,17 @@ public class RoomController(
 
                         var hotelImage = new RoomImages() { RoomId = room.Id, RoomImage = fileName };
                         await imagesRepository.UpdateAsync(hotelImage);
-                        TempData["SuccessMessage"] = $" Airport '{room.Name}' update successfully.";
+                        TempData["SuccessMessage"] = $" Room '{room.Name}' update successfully.";
                     }
                 }
             }
 
             return RedirectToAction(nameof(Index));
         }
-
         ViewData["HotelId"] = await hotelRepository.GetDropdownAsync();
+
         return View(viewModel);
     }
-
-
     public async Task<IActionResult> Delete(long id)
     {
         if(id > 0)
