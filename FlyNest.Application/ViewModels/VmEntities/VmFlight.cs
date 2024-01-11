@@ -69,7 +69,14 @@ public class VmFlight : BaseEntity
     [Display(Name = "Flight Type")]
     public string FlightType { get; set; }
 
-    public VmAirline VmAirline { get; set; }
+    [Display(Name = "Select Luggage Weight")]
+    [Required]
+    public long BaggageId { get; set; }
+
+    [Display(Name = "Luggage Weight Per Person")]
+    public string BaggageWeight { get; set; }
+
+    public ICollection<VmBaggage> Baggages { get; set; } = new HashSet<VmBaggage>();
 
     public ICollection<VmStopover> Stopovers { get; set; } = new HashSet<VmStopover>();
 

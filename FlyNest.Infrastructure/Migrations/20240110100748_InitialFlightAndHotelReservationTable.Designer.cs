@@ -4,6 +4,7 @@ using FlyNest.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyNest.Infrastructure.Migrations
 {
     [DbContext(typeof(FlyNestDbContext))]
-    partial class FlyNestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240110100748_InitialFlightAndHotelReservationTable")]
+    partial class InitialFlightAndHotelReservationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,7 +80,7 @@ namespace FlyNest.Infrastructure.Migrations
                             AirlineName = "Biman Bangladesh Airlines",
                             ContactInfo = "Balaka Bhaban Kurmitola, Dhaka, Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(762), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(1762), new TimeSpan(0, 6, 0, 0, 0)),
                             EstablishedDate = new DateOnly(1, 1, 1),
                             IsDelete = false,
                             UpdateNo = 0,
@@ -89,7 +92,7 @@ namespace FlyNest.Infrastructure.Migrations
                             AirlineName = "US-Bangla Airlines",
                             ContactInfo = "77 Sohrawardi Avenue, Baridhara Diplomatic Zone, Dhaka, Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(1153), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(1802), new TimeSpan(0, 6, 0, 0, 0)),
                             EstablishedDate = new DateOnly(1, 1, 1),
                             IsDelete = false,
                             UpdateNo = 0,
@@ -101,7 +104,7 @@ namespace FlyNest.Infrastructure.Migrations
                             AirlineName = "Novoair",
                             ContactInfo = "House-50, Road-11, Block-F, Banani, Dhaka, Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(1155), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(1803), new TimeSpan(0, 6, 0, 0, 0)),
                             EstablishedDate = new DateOnly(1, 1, 1),
                             IsDelete = false,
                             UpdateNo = 0,
@@ -113,7 +116,7 @@ namespace FlyNest.Infrastructure.Migrations
                             AirlineName = "Regent Airways",
                             ContactInfo = "Balaka Bhaban Kurmitola, Dhaka, Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(1158), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(1805), new TimeSpan(0, 6, 0, 0, 0)),
                             EstablishedDate = new DateOnly(1, 1, 1),
                             IsDelete = false,
                             UpdateNo = 0,
@@ -175,7 +178,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "DAC",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8468), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5612), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Hazrat Shahjalal International Airport",
                             UpdateNo = 0
@@ -187,7 +190,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "CGP",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8500), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5633), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Shah Amanat International Airport",
                             UpdateNo = 0
@@ -199,7 +202,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "JSR",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8503), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5676), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Jashore Airport",
                             UpdateNo = 0
@@ -211,7 +214,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "ZYL",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8505), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5678), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Osmany International Airport",
                             UpdateNo = 0
@@ -223,7 +226,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "CLA",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8507), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5680), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Comilla Airport",
                             UpdateNo = 0
@@ -235,7 +238,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "IRD",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8509), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5682), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Ishurdi Airport",
                             UpdateNo = 0
@@ -247,7 +250,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "CXB",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8511), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5685), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Cox's Bazar Airport",
                             UpdateNo = 0
@@ -259,7 +262,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "SPD",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8513), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5687), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Saidpur Airport",
                             UpdateNo = 0
@@ -271,7 +274,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "RJH",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8515), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5689), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Shah Makhdum Airport",
                             UpdateNo = 0
@@ -283,7 +286,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "BZL",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 689, DateTimeKind.Unspecified).AddTicks(8518), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 64, DateTimeKind.Unspecified).AddTicks(5691), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Barishal Airport",
                             UpdateNo = 0
@@ -432,7 +435,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(14, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 693, DateTimeKind.Unspecified).AddTicks(9731), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 68, DateTimeKind.Unspecified).AddTicks(3684), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 1L,
                             DepatureDate = new DateOnly(2024, 1, 1),
                             DepatureTime = new TimeOnly(11, 0, 0),
@@ -453,7 +456,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(14, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 693, DateTimeKind.Unspecified).AddTicks(9779), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 68, DateTimeKind.Unspecified).AddTicks(3721), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 1L,
                             DepatureDate = new DateOnly(2024, 1, 1),
                             DepatureTime = new TimeOnly(11, 0, 0),
@@ -474,7 +477,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(13, 30, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 693, DateTimeKind.Unspecified).AddTicks(9811), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 68, DateTimeKind.Unspecified).AddTicks(3725), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 1L,
                             DepatureDate = new DateOnly(2024, 1, 1),
                             DepatureTime = new TimeOnly(11, 0, 0),
@@ -495,7 +498,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(19, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 693, DateTimeKind.Unspecified).AddTicks(9814), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 68, DateTimeKind.Unspecified).AddTicks(3728), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 7L,
                             DepatureDate = new DateOnly(2024, 1, 5),
                             DepatureTime = new TimeOnly(16, 30, 0),
@@ -516,7 +519,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(19, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 693, DateTimeKind.Unspecified).AddTicks(9818), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 68, DateTimeKind.Unspecified).AddTicks(3732), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 7L,
                             DepatureDate = new DateOnly(2024, 1, 5),
                             DepatureTime = new TimeOnly(16, 30, 0),
@@ -537,7 +540,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(19, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 11, 12, 2, 34, 693, DateTimeKind.Unspecified).AddTicks(9822), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 1, 10, 16, 7, 46, 68, DateTimeKind.Unspecified).AddTicks(3735), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 7L,
                             DepatureDate = new DateOnly(2024, 1, 5),
                             DepatureTime = new TimeOnly(16, 30, 0),
@@ -569,7 +572,7 @@ namespace FlyNest.Infrastructure.Migrations
                         .HasMaxLength(85)
                         .HasColumnType("nvarchar(85)");
 
-                    b.Property<int?>("Child")
+                    b.Property<int>("Child")
                         .HasColumnType("int");
 
                     b.Property<string>("ClientName")
@@ -605,7 +608,7 @@ namespace FlyNest.Infrastructure.Migrations
                     b.Property<DateOnly>("FromDate")
                         .HasColumnType("date");
 
-                    b.Property<int?>("Infants")
+                    b.Property<int>("Infants")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDelete")
@@ -617,7 +620,7 @@ namespace FlyNest.Infrastructure.Migrations
                     b.Property<DateTimeOffset?>("ModifiedDate")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<DateOnly?>("ToDate")
+                    b.Property<DateOnly>("ToDate")
                         .HasColumnType("date");
 
                     b.Property<int>("UpdateNo")
@@ -744,7 +747,7 @@ namespace FlyNest.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int?>("Child")
+                    b.Property<int>("Child")
                         .HasColumnType("int");
 
                     b.Property<string>("CityName")

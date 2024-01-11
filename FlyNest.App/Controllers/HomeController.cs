@@ -1,6 +1,9 @@
+using AutoMapper;
 using FlyNest.App.Models;
 using FlyNest.Application.Interfaces.Entities;
+using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Application.ViewModels.VmEntities.Search;
+using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -12,25 +15,53 @@ namespace FlyNest.App.Controllers
         ILogger<HomeController> logger,
         IAirportRepository airportRepository,
         IFlightRepository flightRepository,
-        IHotelRepository hotelRepository) : Controller
+        IHotelRepository hotelRepository,
+        IFlightReservationRepository flightReservationRepository,
+        IMapper mapper,
+        IHotelReservationRepository hotelReservationRepository) : Controller
     {
+        private readonly IFlightReservationRepository _flightReservationRepository = flightReservationRepository;
+        private readonly IHotelReservationRepository _hotelReservationRepository = hotelReservationRepository;
         private readonly IAirportRepository _airportRepository = airportRepository;
         private readonly IFlightRepository _flightRepository = flightRepository;
         private readonly IHotelRepository _hotelRepository = hotelRepository;
         private readonly ILogger<HomeController> _logger = logger;
+        private readonly IMapper _mapper = mapper;
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var list = new VmSearchFlight
-            {
-                DepatureAirportDropdown = await _airportRepository.DropdownAsync(),
-                ArrivalAirportDropdown = await _airportRepository.DropdownAsync(),
-                HotelDropdown = await _hotelRepository.DropdownAsync(),
-            };
-
-            return View(list);
+            var viewModel = new VmReservation(); // Initialize ViewModel
+            return View(viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateFlightReservation(VmReservation viewModel)
+        {
+            if(ModelState.IsValid)
+            {
+                await _flightReservationRepository.InsertAsync(
+                    _mapper.Map<FlightReservation>(viewModel.FlightReservation));
+                TempData["SuccessMessage"] = $" Flight booking successfully completed.";
+                return RedirectToAction("Index");
+            }
+            return View("Index", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateHotelReservation(VmReservation viewModel)
+        {
+            if(ModelState.IsValid)
+            {
+                await _hotelReservationRepository.InsertAsync(_mapper.Map<HotelReservation>(viewModel.HotelReservation));
+                TempData["SuccessMessage"] = $" Hotel booking successfully completed.";
+                return RedirectToAction("Index");
+            }
+            return View("Index", viewModel);
+        }
+
+        [HttpPost]
         public async Task<IActionResult> SearchFlight(VmSearchFlight vmSearch)
         {
             try
@@ -53,6 +84,7 @@ namespace FlyNest.App.Controllers
             return View(vmSearch);
         }
 
+        [HttpPost]
         public async Task<IActionResult> SearchHotel(VmSearchFlight vmSearch)
         {
             try

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmFlightReservation>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Flight Reservation</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Flight Reservation</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Flight Reservation List</h3>
+            <div class="card-tools">
+                <a asp-action="AddEdit" asp-controller="Hotel" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Hotel</a>
+            </div>
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FlightType)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DepartureCity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ArrivalCity)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FlightClass)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Adult)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Child)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Infants)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClientName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EmailAddress)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ContactNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AlternativeContact)
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FlightType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DepartureCity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ArrivalCity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FlightClass)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Adult)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Child)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Infants)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClientName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmailAddress)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContactNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AlternativeContact)
+                            </td>
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

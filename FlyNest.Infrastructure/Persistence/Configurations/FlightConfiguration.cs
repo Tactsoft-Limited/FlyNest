@@ -13,6 +13,8 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
         builder.HasOne(x => x.Airline).WithMany(x => x.Flights).HasForeignKey(x => x.AirlineId);
         builder.HasOne(x => x.DepatureFlight).WithMany(x => x.DepatureAirport).HasForeignKey(x => x.DepatureAirportId);
         builder.HasOne(x => x.ArrivalFlight).WithMany(x => x.ArrivalAirport).HasForeignKey(x => x.ArrivalAirportId);
+        builder.HasOne(x => x.Baggage).WithMany(x => x.Flights).HasForeignKey(x => x.BaggageId);
+
         builder.Property(x => x.FlightNo).HasMaxLength(20);
         builder.Property(x => x.AircraftType).HasMaxLength(50);
         builder.Property(x => x.FlightDuration).HasMaxLength(30);
@@ -33,6 +35,7 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
                 AircraftType = "B 787-8 Dreamliner",
                 FlightDuration = new TimeSpan(3, 0, 0),
                 FlightType = "Non-Stop",
+                BaggageId = 1,
                 CreatedBy = 1,
                 CreatedDate = DateTimeOffset.Now,
             },
@@ -51,6 +54,7 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
                 AircraftType = "B 787-8 Dreamliner",
                 FlightDuration = new TimeSpan(3, 0, 0),
                 FlightType = "Non-Stop",
+                BaggageId = 1,
                 CreatedBy = 1,
                 CreatedDate = DateTimeOffset.Now,
             },
@@ -69,6 +73,7 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
                 AircraftType = "B 787-8 Dreamliner",
                 FlightDuration = new TimeSpan(2, 30, 0),
                 FlightType = "Non-Stop",
+                BaggageId = 1,
                 CreatedBy = 1,
                 CreatedDate = DateTimeOffset.Now,
             },
@@ -87,6 +92,7 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
                 AircraftType = "B 787-8 Dreamliner",
                 FlightDuration = new TimeSpan(2, 30, 0),
                 FlightType = "Non-Stop",
+                BaggageId = 1,
                 CreatedBy = 1,
                 CreatedDate = DateTimeOffset.Now,
             },
@@ -105,6 +111,7 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
                 AircraftType = "B 787-8 Dreamliner",
                 FlightDuration = new TimeSpan(3, 0, 0),
                 FlightType = "Non-Stop",
+                BaggageId = 1,
                 CreatedBy = 1,
                 CreatedDate = DateTimeOffset.Now,
             },
@@ -123,6 +130,7 @@ public class FlightConfiguration : IEntityTypeConfiguration<Flight>
                 AircraftType = "B 787-8 Dreamliner",
                 FlightDuration = new TimeSpan(3, 0, 0),
                 FlightType = "Non-Stop",
+                BaggageId = 1,
                 CreatedBy = 1,
                 CreatedDate = DateTimeOffset.Now,
             });

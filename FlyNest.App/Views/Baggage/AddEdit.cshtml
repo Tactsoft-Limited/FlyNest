@@ -27,14 +27,6 @@
                 <form asp-action="AddEdit" asp-controller="Baggage" role="form" enctype="multipart/form-data">
                     <div class="modal-body form-horizontal">
                         <div class="row">
-                            
-                            <div class="col-md-6">
-                                <label class="col-form-label">Flight No  <span class=" text-danger ">*</span></label>
-                                <select asp-for="FlightId" asp-items="@(ViewBag.FlightId)" class="form-control select2">
-                                    <option value="">--Select Flight No--</option>
-                                </select>
-                                <span asp-validation-for="FlightId" class="text-danger"></span>
-                            </div>
                             <div class="col-md-6">
                                 <label class="col-form-label">Flight Class</label>
                                 <input asp-for="FlightClass" class="form-control"/>

@@ -1,66 +1,13 @@
-﻿@model FlyNest.Application.ViewModels.VmEntities.Search.VmSearchFlight
+﻿@model FlyNest.Application.ViewModels.VmEntities.Search.VmReservation
 @{
     ViewData["Title"] = "Home Page";
 }
 
-@section Styles{
-    <style>
-        .select2-container .select2-selection--single {
-            height: 45px !important;
-        }
-
-        span.select2-selection__choice__remove {
-            display: none;
-        }
-
-        .select2-container {
-            display: block !important;
-        }
-
-        .selection {
-            display: block !important;
-        }
-
-        .airport-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: small;
-        }
-
-        .left-side {
-            width: 20%; /* Adjust the width as needed */
-            color: blue;
-            display: flex;
-            align-items: center;
-        }
-
-        .right-side {
-            width: 80%; /* Adjust the width as needed */
-            display: flex;
-            flex-direction: column;
-        }
-
-        .upper-part {
-            flex: 1;
-            display: flex;
-            align-items: flex-start;
-        }
-
-            .upper-part span {
-                display: block;
-            }
-
-        .lower-part {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding-left: 0px;
-            overflow: hidden;
-        }
-    </style>
-
-}
+<style>
+    .fs-7 {
+        font-size: .8rem !important
+    }
+</style>
 
 <!-- =========== Hero Section Start =========== -->
 <div class="hero-section-slider">
@@ -72,7 +19,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
-                                <h1>Welcome to myFlyte!</h1>
+                                <h1>Welcome to Renaissance.</h1>
                             </div>
                             <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
                                 <h3>Find Flights, Visa, Hotels and Holidays</h3>
@@ -87,7 +34,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
-                                <h1>Welcome to myFlyte!</h1>
+                                <h1>Welcome to Renaissance!</h1>
                             </div>
                             <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
                                 <h3>Find Flights, Visa, Hotels and Holidays</h3>
@@ -102,7 +49,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
-                                <h1>Welcome to myFlyte!</h1>
+                                <h1>Welcome to Renaissance!</h1>
                             </div>
                             <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
                                 <h3>Find Flights, Visa, Hotels and Holidays</h3>
@@ -150,236 +97,233 @@
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="flight-tab-pane" role="tabpanel" aria-labelledby="flight-tab"
              tabindex="0">
-            <div class="d-flex justify-content-between">
-                <div class="trip-type">
-                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">
-                                One Way
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-profile" type="button" role="tab"
-                                    aria-controls="pills-profile" aria-selected="false">
-                                Round Trip
-                            </button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-contact" type="button" role="tab"
-                                    aria-controls="pills-contact" aria-selected="false">
-                                Multy City
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="d-flex gap-2 dropdown">
-                    <div>
-                        <select asp-for="Traveler" class="form-select form-select-sm" aria-label="Small select example">
-                            <option value="1">1 Traveller</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div>
-                        <select class="form-select form-select-sm" aria-label="Small select example">
-                            <option value="1">Economy</option>
-                            <option value="2">Premium Economy</option>
-                            <option value="3">Business</option>
-                            <option value="3">First Class</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                      aria-labelledby="pills-home-tab" tabindex="0">
-                    <form asp-action="SearchFlight" asp-controller="Home" method="post">
-                        <div class="row g-2 mt-2">
-                            <div class="col-lg-11 col-md-12 col-sm-12">
-                                <div class="row g-2">
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            <label asp-for="DepatureAirportId">@Html.DisplayNameFor(model => model.DepatureAirportId)</label>
-                                            <select asp-for="DepatureAirportId" class="form-control-lg js-select2" style="width: 100%">
-                                                @foreach (var airport in Model.DepatureAirportDropdown)
-                                                {
-                                                    <option value="@airport.Value">@airport.Text</option>
-                                                }
-                                            </select>
-                                            <span asp-validation-for="DepatureAirportId" class="text-danger"></span>
-                                        </div>
-                                        @*<input type="text" class="form-control" placeholder="From (Ex.  DHA)">*@
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            <label asp-for="ArrivalAirportId">@Html.DisplayNameFor(model => model.ArrivalAirportId)</label>
-                                            <select asp-for="ArrivalAirportId" class="form-control js-select2" style="width: 100%">
-                                                @foreach (var airport in Model.ArrivalAirportDropdown)
-                                                {
-                                                    <option value="@airport.Value">@airport.Text</option>
-                                                }
-                                            </select>
 
-                                            <span asp-validation-for="ArrivalAirportId" class="text-danger"></span>
-                                        </div>
-                                        @*<input type="text" class="form-control" placeholder="To (Ex.  COX)">*@
-                                    </div>
+                    @using (Html.BeginForm("CreateFlightReservation", "Home", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
 
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <div class="form-group">
-                                            <label asp-for="DepatureDate"></label>
-                                            <input asp-for="DepatureDate" class="form-control js-autocomplete">
-                                            <span asp-validation-for="DepatureDate" class="text-danger"></span>
-                                        </div>
+                        <div class="row g-2">
 
-                                    </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.DepartureCity" class="form-control " placeholder="">
+                                    <label asp-for="FlightReservation.DepartureCity"></label>
+                                    <span asp-validation-for="FlightReservation.DepartureCity" class="text-danger fs-7"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 col-sm-12">
-                                <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
-                     tabindex="0">
-                    <form action="">
-                        <div class="row g-2 mt-2">
-                            <div class="col-lg-11 col-md-12 col-sm-12">
-                                <div class="row g-2">
-                                    <div class="col-lg-3 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" placeholder="From (Ex.  DHA)">
-                                    </div>
-                                    <div class="col-lg-3 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" placeholder="To (Ex.  COX)">
-                                    </div>
-                                    <div class="col-lg-3 col-md-12 col-sm-12">
-                                        <input type="date" class="form-control">
-                                    </div>
-                                    <div class="col-lg-3 col-md-12 col-sm-12">
-                                        <input type="date" class="form-control">
-                                    </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.ArrivalCity" class="form-control " placeholder="">
+                                    <label asp-for="FlightReservation.ArrivalCity"></label>
+                                    <span asp-validation-for="FlightReservation.ArrivalCity" class="text-danger fs-7"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 col-sm-12">
-                                <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"
-                     tabindex="0">
-                    <form action="">
-                        <div class="row g-2 mt-2">
-                            <div class="col-lg-11 col-md-12 col-sm-12">
-                                <div class="row g-2">
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" placeholder="From (Ex.  DHA)">
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" placeholder="To (Ex.  COX)">
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <input type="date" class="form-control">
-                                    </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.FromDate" class="form-control " placeholder="">
+                                    <label asp-for="FlightReservation.FromDate"></label>
+                                    <span asp-validation-for="FlightReservation.FromDate" class="text-danger fs-7"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-1 col-md-12 col-sm-12">
-                                <button type="submit" class="btn btn-secondary">
-                                    <i class="bi bi-x-circle"></i>
-                                </button>
-                            </div>
-                            <div class="col-lg-11 col-md-12 col-sm-12">
-                                <div class="row g-2">
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" placeholder="From (Ex.  DHA)">
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <input type="text" class="form-control" placeholder="To (Ex.  COX)">
-                                    </div>
-                                    <div class="col-lg-4 col-md-12 col-sm-12">
-                                        <input type="date" class="form-control">
-                                    </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.ToDate" class="form-control " placeholder="">
+                                    <label asp-for="FlightReservation.ToDate"></label>
+                                    <span asp-validation-for="FlightReservation.ToDate" class="text-danger fs-7"></span>
                                 </div>
-                            </div>
-                            <div class="col-lg-1 col-md-12 col-sm-12">
-                                <button type="submit" class="btn btn-secondary">
-                                    <i class="bi bi-x-circle"></i>
-                                </button>
                             </div>
 
-                            <div class="d-flex justify-content-between mt-4">
-                                <div>
-                                    <button type="button" id="addMoreFlight">
-                                        <i class="bi bi-plus-lg"></i> Add more
-                                        Flight
-                                    </button>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <select asp-for="FlightReservation.FlightClass" class="form-control floating-control">
+                                        <option value="Economy">Economy</option>
+                                        <option value="Premium Economy">Premium Economy</option>
+                                        <option value="Business">Business</option>
+                                        <option value="First">First</option>
+                                    </select>
+                                    <label asp-for="FlightReservation.FlightClass"></label>
+                                    <span asp-validation-for="FlightReservation.FlightClass" class="text-danger fs-7"></span>
                                 </div>
-                                <div>
-                                    <button type="submit" class="btn btn-warning">
-                                        <i class="bi bi-search"></i>
-                                        Search
-                                    </button>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.FlightType" class="form-control " placeholder="">
+                                    <label asp-for="FlightReservation.FlightType"></label>
+                                    <span asp-validation-for="FlightReservation.FlightType" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.Adult" class="form-control " placeholder="">
+                                    <label asp-for="FlightReservation.Adult"></label>
+                                    <span asp-validation-for="FlightReservation.Adult" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.Child" class="form-control " placeholder="">
+                                    <label asp-for="FlightReservation.Child"></label>
+                                    <span asp-validation-for="FlightReservation.Child" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.Infants" class="form-control " placeholder="">
+                                    <label asp-for="FlightReservation.Infants"></label>
+                                    <span asp-validation-for="FlightReservation.Infants" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.ClientName" class="form-control " placeholder="Your name">
+                                    <label asp-for="FlightReservation.ClientName"></label>
+                                    <span asp-validation-for="FlightReservation.ClientName" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.EmailAddress" class="form-control " placeholder="Email address">
+                                    <label asp-for="FlightReservation.EmailAddress"></label>
+                                    <span asp-validation-for="FlightReservation.EmailAddress" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <input asp-for="FlightReservation.ContactNumber" class="form-control " placeholder="Mobile Number">
+                                    <label asp-for="FlightReservation.ContactNumber"></label>
+                                    <span asp-validation-for="FlightReservation.ContactNumber" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-floating">
+
+                                        <input asp-for="FlightReservation.AlternativeContact" class="form-control " placeholder="Alternative Number">
+                                        <label asp-for="FlightReservation.AlternativeContact"></label>
+                                    </div>
+                                    <span asp-validation-for="FlightReservation.AlternativeContact" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="form-group col-md-2">
+                                    <label></label>
+                                    <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-save"></i> Book A Flight</button>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    }
                 </div>
             </div>
         </div>
 
         <div class="tab-pane fade" id="hotel-tab-pane" role="tabpanel" aria-labelledby="hotel-tab" tabindex="0">
-            <form asp-action="SearchHotel" asp-controller="Home" method="post">
-                <div class="row g-2 mt-2">
-                    <div class="col-lg-11 col-md-12 col-sm-12">
-                        <div class="row g-2">
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label asp-for="HotelId"></label>
-                                    <select asp-for="HotelId" class="form-control-lg hotel-js-select2" style="width: 100%">
-                                        @foreach (var hotel in Model.HotelDropdown)
-                                        {
-                                            <option value="@hotel.Value">@hotel.Text</option>
-                                        }
-                                    </select>
-                                    <span asp-validation-for="HotelId" class="text-danger"></span>
-                                </div>
-                                @*<input type="text" class="form-control" placeholder="Location (Ex.  Cox's Bazar)">*@
+            @using (Html.BeginForm("CreateHotelReservation", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row g-2">
+
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input asp-for="HotelReservation.CityName" class="form-control" placeholder="">
+                                <label asp-for="HotelReservation.CityName"></label>
                             </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label asp-for="CheckInDate"></label>
-                                    <input asp-for="CheckInDate" class="form-control js-autocomplete">
-                                    <span asp-validation-for="CheckInDate" class="text-danger"></span>
-                                </div>
-                                @*<input type="date" class="form-control">*@
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label asp-for="CheckOutDate"></label>
-                                    <input asp-for="CheckOutDate" class="form-control js-autocomplete">
-                                    <span asp-validation-for="CheckOutDate" class="text-danger"></span>
-                                </div>
-                                @* <input type="date" class="form-control">*@
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label asp-for="NumberOfGuest"></label>
-                                    <input asp-for="NumberOfGuest" class="form-control js-autocomplete">
-                                    <span asp-validation-for="NumberOfGuest" class="text-danger"></span>
-                                </div>
-                            </div>
+                            <span asp-validation-for="HotelReservation.CityName" class="text-danger fs-7"></span>
                         </div>
                     </div>
-                    <div class="col-lg-1 col-md-12 col-sm-12">
-                        <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i></button>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input asp-for="HotelReservation.PreferenceHotel" class="form-control" placeholder="">
+                                <label asp-for="HotelReservation.PreferenceHotel"></label>
+                            </div>
+                            <span asp-validation-for="HotelReservation.PreferenceHotel" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="form-floating">
+                                <input asp-for="HotelReservation.FromDate" class="form-control" placeholder="">
+                                <label asp-for="HotelReservation.FromDate"></label>
+                            </div>
+                            <span asp-validation-for="HotelReservation.FromDate" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-floating">
+                            <input asp-for="HotelReservation.ToDate" class="form-control" placeholder="">
+                            <label asp-for="HotelReservation.ToDate"></label>
+                            <span asp-validation-for="HotelReservation.ToDate" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-floating">
+                            <input asp-for="HotelReservation.Adult" class="form-control" placeholder="">
+                            <label asp-for="HotelReservation.Adult"></label>
+                            <span asp-validation-for="HotelReservation.Adult" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-floating">
+                            <input asp-for="HotelReservation.Child" class="form-control" placeholder="">
+                            <label asp-for="HotelReservation.Child"></label>
+                            <span asp-validation-for="HotelReservation.Child" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+
+                    </div>
+
+
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-floating">
+                            <input asp-for="HotelReservation.ClientName" class="form-control form-control-sm" placeholder="Your name">
+                            <label asp-for="HotelReservation.ClientName"></label>
+                            <span asp-validation-for="HotelReservation.ClientName" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-floating">
+                            <input asp-for="HotelReservation.EmailAddress" class="form-control form-control-sm" placeholder="Email address">
+                            <label asp-for="HotelReservation.EmailAddress"></label>
+                            <span asp-validation-for="HotelReservation.EmailAddress" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-floating">
+                            <input asp-for="HotelReservation.ContactNumber" class="form-control form-control-sm" placeholder="Mobile Number">
+                            <label asp-for="HotelReservation.ContactNumber"></label>
+                            <span asp-validation-for="HotelReservation.ContactNumber" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-floating">
+                            <input asp-for="HotelReservation.AlternativeContact" class="form-control form-control-sm" placeholder="Alternative Number">
+                            <label asp-for="HotelReservation.AlternativeContact"></label>
+                            <span asp-validation-for="HotelReservation.AlternativeContact" class="text-danger fs-7"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label></label>
+                            <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-save"></i> Book A Hotel</button>
+                        </div>
                     </div>
                 </div>
-            </form>
+            }
         </div>
         <div class="tab-pane fade" id="holiday-tab-pane" role="tabpanel" aria-labelledby="holiday-tab" tabindex="0">
             <form action="">
@@ -449,11 +393,6 @@
     <div class="heading">
         <h2>Exclusive Offers</h2>
     </div>
-    <p class="mt-2">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae vel laborum, voluptas, commodi
-        sit, nesciunt labore libero totam cumque itaque possimus! Cumque, nesciunt at libero facere ullam sit
-        reiciendis corrupti.
-    </p>
     <div class="row mt-4" id="exclusive-offer">
         <div class="col-lg-3 col-md-4 col-sm-12">
             <div class="offer-card">
@@ -536,9 +475,7 @@
             <h2>Explore Bangladesh</h2>
         </div>
         <p class="mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Enim quibusdam praesentium,
-            quisquam at expedita! Eos illum corporis dolor, vero id quisquam ipsa explicabo sunt repellendus,
-            accusantium suscipit fugiat amet ex alias! Eos cum eligendi non qui quam quae obcaecati, laboriosam!
+            Prepare to experience Bangladesh's rich culture and explore the majestic beauties of Cox’s Bazar, Sylhet, Bandarban, Sajek Valley, Rangamati etc. Plan your trip now!
         </p>
         <div class="row g-4 mt-4" id="explore-bd">
             <!-- Single -->
@@ -643,9 +580,7 @@
             <h2>Search Top Airlines</h2>
         </div>
         <p class="mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Enim quibusdam praesentium,
-            quisquam at expedita! Eos illum corporis dolor, vero id quisquam ipsa explicabo sunt repellendus,
-            accusantium suscipit fugiat amet ex alias! Eos cum eligendi non qui quam quae obcaecati, laboriosam!
+            Renaissance user-friendly platform connects you to top airlines instantly. Enjoy a comfortable and hassle-free journey on any destination and get tickets of top airlines easily
         </p>
         <div class="row g-2 mt-4">
             <!-- Single -->
@@ -1010,9 +945,7 @@
             <h2>Best Hotels for Your Next Trip</h2>
         </div>
         <p class="mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Enim quibusdam praesentium,
-            quisquam at expedita! Eos illum corporis dolor, vero id quisquam ipsa explicabo sunt repellendus,
-            accusantium suscipit fugiat amet ex alias! Eos cum eligendi non qui quam quae obcaecati, laboriosam!
+            Luxurious or budget-friendly hotels, villas or resorts, browse accommodations at ShareTrip that meet the need. Book Long-term or short-term accommodation from our hotel deals.
         </p>
         <div class="row g-2 mt-4" id="b-hotels">
             <!-- Single -->
@@ -1651,11 +1584,7 @@
 <!-- =========== Tour Package End =========== -->
 <!-- In your layout or view header -->
 
-@section Scripts {
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-
+@*@section Scripts {
     <script>
         $(document).ready(function () {
             $('.js-select2').select2({
@@ -1746,4 +1675,4 @@
             }
         });
     </script>
-}
+}*@

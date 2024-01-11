@@ -13,7 +13,7 @@
 
     /*
         Search Area Start
-    --------------------------------*/*/
+    --------------------------------*/
     .search-area .dropdown {
         display: none !important;
     }
@@ -29,11 +29,6 @@
         padding-bottom: 10px;
         margin-bottom: 12px;
     }
-
-
-
-
-
 }
 
 
@@ -51,9 +46,9 @@
         display: block;
     }
 
-    .mobile-navigation .navbar {
-        background-color: var(--color-white);
-    }
+        .mobile-navigation .navbar {
+            background-color: var(--color-white);
+        }
 
     /*
       Hero Section Start
@@ -62,14 +57,14 @@
         height: 40vh;
     }
 
-    .hero-section-slider .carousel-inner .carousel-item h1 {
-        text-align: center;
-        font-size: var(--size-lg);
-    }
+        .hero-section-slider .carousel-inner .carousel-item h1 {
+            text-align: center;
+            font-size: var(--size-lg);
+        }
 
-    .hero-section-slider .carousel-inner .carousel-item h3 {
-        text-align: center;
-    }
+        .hero-section-slider .carousel-inner .carousel-item h3 {
+            text-align: center;
+        }
 
     /*
         Search Area Start
@@ -92,10 +87,10 @@
         margin-bottom: 10px;
     }
 
-    .search-trip-type .nav-tabs .nav-item .nav-link i {
-        font-size: var(--size-sm);
-        padding-right: 4px;
-    }
+        .search-trip-type .nav-tabs .nav-item .nav-link i {
+            font-size: var(--size-sm);
+            padding-right: 4px;
+        }
 
     .search-area .dropdown {
         display: none !important;
@@ -108,23 +103,23 @@
         width: 100%;
     }
 
-    .search-area .trip-type .nav-pills .nav-item .nav-link {
-        font-size: var(--size-sm);
-        margin-right: 6px;
-        padding-right: 12px;
-        padding-left: 12px;
-        margin-bottom: 6px;
-    }
+        .search-area .trip-type .nav-pills .nav-item .nav-link {
+            font-size: var(--size-sm);
+            margin-right: 6px;
+            padding-right: 12px;
+            padding-left: 12px;
+            margin-bottom: 6px;
+        }
 
     .search-area .tab-content .tab-pane form input {
-        padding-top: 8px;
-        padding-bottom: 8px;
-        margin-bottom: 8px;
+        padding-top: 15px;
+        padding-bottom: 0px;
+        margin-bottom: 0px;
     }
 
-    .search-area .tab-content .tab-pane form input::placeholder {
-        font-size: var(--size-md);
-    }
+        .search-area .tab-content .tab-pane form input::placeholder {
+            font-size: var(--size-md);
+        }
 
     .search-area .tab-content .tab-pane form button {
         padding-top: 8px;
@@ -132,14 +127,15 @@
         margin-bottom: 8px;
     }
 
-      /*
+    /*
         About Area Start
     --------------------------------*/
-    .choose-renaissance-area .photo{
+    .choose-renaissance-area .photo {
         display: none;
     }
-    .choose-renaissance-area .do-we-do{
-        margin-top: 10px!important;
+
+    .choose-renaissance-area .do-we-do {
+        margin-top: 10px !important;
     }
 
 
@@ -166,25 +162,25 @@
     }
 
 
-     /*
+    /*
         About Area Start
     --------------------------------*/
-    .about-area .photo{
-        text-align: center!important;
+    .about-area .photo {
+        text-align: center !important;
     }
 
-      /*
+    /*
         Mission Area Start
     --------------------------------*/
-    .mission-area .photo{
-        text-align: center!important;
+    .mission-area .photo {
+        text-align: center !important;
     }
 
-      /*
+    /*
         Vision Area Start
     --------------------------------*/
-    .vision-area .photo{
-        text-align: center!important;
+    .vision-area .photo {
+        text-align: center !important;
     }
 
     /*
@@ -194,23 +190,23 @@
         padding: 5px 5px;
         height: auto;
     }
-    .m-message-area .card .card-body .photo{
-    width: 85px;
-    height: 85px;
-}
-    .m-message-area .card .card-body h5{
-    font-size: var(--size-md);
-}
-    .m-message-area .card .card-body span{
-    font-size: var(--size-sm);
-}
-  .m-message-area .card .card-body p{
-    font-size: var(--size-sm);
-}
 
+        .m-message-area .card .card-body .photo {
+            width: 85px;
+            height: 85px;
+        }
 
+        .m-message-area .card .card-body h5 {
+            font-size: var(--size-md);
+        }
 
+        .m-message-area .card .card-body span {
+            font-size: var(--size-sm);
+        }
 
+        .m-message-area .card .card-body p {
+            font-size: var(--size-sm);
+        }
 }
 
 
@@ -228,7 +224,4 @@
     .mobile-navigation {
         display: block;
     }
-
-
-
 }
