@@ -458,21 +458,21 @@ Bacic Setup End
     }
 
 #carousel-item1 {
-    background-image: url('../images/slider/slider-3.jpg');
+    background-image: url('../images/slider/slide-5.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #carousel-item2 {
-    background-image: url('../images/slider/slider-2.jpg');
+    background-image: url('../images/slider/slider-4.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 #carousel-item3 {
-    background-image: url('../images/slider/slider-1.jpg');
+    background-image: url('../images/slider/slide-6.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
