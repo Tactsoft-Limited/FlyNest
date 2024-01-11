@@ -56,6 +56,9 @@
                         <th>
                             @Html.DisplayNameFor(model => model.AlternativeContact)
                         </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
                         <th></th>
                     </tr>
                 </thead>
@@ -86,6 +89,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.AlternativeContact)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

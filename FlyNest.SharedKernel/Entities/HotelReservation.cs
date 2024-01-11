@@ -25,5 +25,5 @@ public class HotelReservation : AuditableEntity
 
     public string AlternativeContact { get; set; }
 
-    //public string Status { get; set; }
+    public string Status { get; set; }
 }

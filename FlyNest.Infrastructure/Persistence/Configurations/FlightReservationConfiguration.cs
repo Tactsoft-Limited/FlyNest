@@ -20,5 +20,6 @@ public class FlightReservationConfiguration : IEntityTypeConfiguration<FlightRes
         builder.Property(x => x.AlternativeContact).HasMaxLength(85);
         builder.Property(x => x.DepartureCity).HasMaxLength(85);
         builder.Property(x => x.DepartureCity).HasMaxLength(85);
+        builder.Property(x => x.Status).HasMaxLength(35);
     }
 }

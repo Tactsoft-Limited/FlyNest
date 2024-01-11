@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
-                                <h1>Welcome to Renaissance.</h1>
+                                <h1>Welcome to Renaissance Holidays.</h1>
                             </div>
                             <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
                                 <h3>Find Flights, Visa, Hotels and Holidays</h3>
@@ -106,7 +106,28 @@
                         @Html.AntiForgeryToken()
 
                         <div class="row g-2">
-
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <select asp-for="FlightReservation.FlightType" class="form-control floating-control">
+                                        <option value="One-Way">One-Way</option>
+                                        <option value="Round-Trip">Round-Trip</option>
+                                    </select>
+                                    <label asp-for="FlightReservation.FlightType"></label>
+                                    <span asp-validation-for="FlightReservation.FlightType" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="form-floating">
+                                    <select asp-for="FlightReservation.FlightClass" class="form-control floating-control">
+                                        <option value="Economy">Economy</option>
+                                        <option value="Premium Economy">Premium Economy</option>
+                                        <option value="Business">Business</option>
+                                        <option value="First">First</option>
+                                    </select>
+                                    <label asp-for="FlightReservation.FlightClass"></label>
+                                    <span asp-validation-for="FlightReservation.FlightClass" class="text-danger fs-7"></span>
+                                </div>
+                            </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
                                 <div class="form-floating">
                                     <input asp-for="FlightReservation.DepartureCity" class="form-control " placeholder="">
@@ -133,26 +154,6 @@
                                     <input asp-for="FlightReservation.ToDate" class="form-control " placeholder="">
                                     <label asp-for="FlightReservation.ToDate"></label>
                                     <span asp-validation-for="FlightReservation.ToDate" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <select asp-for="FlightReservation.FlightClass" class="form-control floating-control">
-                                        <option value="Economy">Economy</option>
-                                        <option value="Premium Economy">Premium Economy</option>
-                                        <option value="Business">Business</option>
-                                        <option value="First">First</option>
-                                    </select>
-                                    <label asp-for="FlightReservation.FlightClass"></label>
-                                    <span asp-validation-for="FlightReservation.FlightClass" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.FlightType" class="form-control " placeholder="">
-                                    <label asp-for="FlightReservation.FlightType"></label>
-                                    <span asp-validation-for="FlightReservation.FlightType" class="text-danger fs-7"></span>
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-12 col-sm-12">
@@ -203,13 +204,14 @@
                             <div class="col-lg-3 col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <div class="form-floating">
-
-                                        <input asp-for="FlightReservation.AlternativeContact" class="form-control " placeholder="Alternative Number">
+                                        <input asp-for="FlightReservation.AlternativeContact" class="form-control " placeholder="">
                                         <label asp-for="FlightReservation.AlternativeContact"></label>
                                     </div>
                                     <span asp-validation-for="FlightReservation.AlternativeContact" class="text-danger fs-7"></span>
                                 </div>
+                                <input hidden asp-for="FlightReservation.Status" value="Pending">
                             </div>
+
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group col-md-2">
                                     <label></label>
@@ -314,6 +316,7 @@
                             <label asp-for="HotelReservation.AlternativeContact"></label>
                             <span asp-validation-for="HotelReservation.AlternativeContact" class="text-danger fs-7"></span>
                         </div>
+                        <input hidden asp-for="HotelReservation.Status" value="Pending">
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -1583,96 +1586,95 @@
 
 <!-- =========== Tour Package End =========== -->
 <!-- In your layout or view header -->
-
 @*@section Scripts {
-    <script>
-        $(document).ready(function () {
-            $('.js-select2').select2({
-                placeholder: 'This is my placeholder',
-                width: 'element', // Automatically sets the width
-                height: 'element',
-                templateResult: formatAirport, // Custom formatting function
-                templateSelection: formatAirport, // Use the same formatting function for selection
-                escapeMarkup: function (markup) {
-                    return markup;
-                }
-            });
+        <script>
+            $(document).ready(function () {
+                $('.js-select2').select2({
+                    placeholder: 'This is my placeholder',
+                    width: 'element', // Automatically sets the width
+                    height: 'element',
+                    templateResult: formatAirport, // Custom formatting function
+                    templateSelection: formatAirport, // Use the same formatting function for selection
+                    escapeMarkup: function (markup) {
+                        return markup;
+                    }
+                });
 
-            function formatAirport(airport) {
-                if (!airport.id) {
+                function formatAirport(airport) {
+                    if (!airport.id) {
+                        return airport.text;
+                    }
+
+                    var airportInfo = airport.text.split('-');
+                    var formattedText = '<div class="col-md-12 airport-info">' +
+                        '<div class="left-side">' +
+                        '<span>' + airportInfo[0] + '</span>' +
+                        '</div>' +
+                        '<div class="right-side">' +
+                        '<div class="upper-part">' +
+                        '<span>' + airportInfo[1] + '</span>' +
+                        '</div>' +
+                        '<div class="lower-part badge">' +
+                        '<span class="text-muted truncate">' + airportInfo[2] + ', ' + airportInfo[3] + '</span>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                    return $(formattedText);
+
+
+                    //var formattedText = '<div class="col-md-12">' +
+                    //    '<span>' + airportInfo[0] + '</span>' +
+                    //    '<span>' + airportInfo[1] + '</span>' +
+                    //    '<span class="text-muted">' + airportInfo[2] + '</span>' +
+                    //    '<span class="text-muted">' + airportInfo[3] + '</span>' +
+                    //    '</div>';
+
+                    //return $(formattedText);
+                }
+
+                function formatAirportSelection(airport) {
                     return airport.text;
                 }
-
-                var airportInfo = airport.text.split('-');
-                var formattedText = '<div class="col-md-12 airport-info">' +
-                    '<div class="left-side">' +
-                    '<span>' + airportInfo[0] + '</span>' +
-                    '</div>' +
-                    '<div class="right-side">' +
-                    '<div class="upper-part">' +
-                    '<span>' + airportInfo[1] + '</span>' +
-                    '</div>' +
-                    '<div class="lower-part badge">' +
-                    '<span class="text-muted truncate">' + airportInfo[2] + ', ' + airportInfo[3] + '</span>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-                return $(formattedText);
-
-
-                //var formattedText = '<div class="col-md-12">' +
-                //    '<span>' + airportInfo[0] + '</span>' +
-                //    '<span>' + airportInfo[1] + '</span>' +
-                //    '<span class="text-muted">' + airportInfo[2] + '</span>' +
-                //    '<span class="text-muted">' + airportInfo[3] + '</span>' +
-                //    '</div>';
-
-                //return $(formattedText);
-            }
-
-            function formatAirportSelection(airport) {
-                return airport.text;
-            }
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('.hotel-js-select2').select2({
-                placeholder: 'This is my placeholder',
-                width: 'element', // Automatically sets the width
-                height: 'element',
-                templateResult: formatHotel, // Custom formatting function
-                templateSelection: formatHotel, // Use the same formatting function for selection
-                escapeMarkup: function (markup) {
-                    return markup;
-                }
             });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('.hotel-js-select2').select2({
+                    placeholder: 'This is my placeholder',
+                    width: 'element', // Automatically sets the width
+                    height: 'element',
+                    templateResult: formatHotel, // Custom formatting function
+                    templateSelection: formatHotel, // Use the same formatting function for selection
+                    escapeMarkup: function (markup) {
+                        return markup;
+                    }
+                });
 
-            function formatHotel(hotel) {
-                if (!hotel.id) {
+                function formatHotel(hotel) {
+                    if (!hotel.id) {
+                        return hotel.text;
+                    }
+
+                    var hotelInfo = hotel.text.split('-');
+                    var formattedText = '<div class="col-md-12 airport-info">' +
+                        '<div class="left-side">' +
+                        '<i class="fas fa-hotel"></i>' +
+                        '</div>' +
+                        '<div class="right-side">' +
+                        '<div class="upper-part">' +
+                        '<span>' + hotelInfo[0] + '</span>' +
+                        '</div>' +
+                        '<div class="lower-part badge">' +
+                        '<span class="text-muted truncate">' + hotelInfo[1] + ', ' + hotelInfo[2] + '</span>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                    return $(formattedText);
+                }
+
+                function formatAirportSelection(hotel) {
                     return hotel.text;
                 }
-
-                var hotelInfo = hotel.text.split('-');
-                var formattedText = '<div class="col-md-12 airport-info">' +
-                    '<div class="left-side">' +
-                    '<i class="fas fa-hotel"></i>' +
-                    '</div>' +
-                    '<div class="right-side">' +
-                    '<div class="upper-part">' +
-                    '<span>' + hotelInfo[0] + '</span>' +
-                    '</div>' +
-                    '<div class="lower-part badge">' +
-                    '<span class="text-muted truncate">' + hotelInfo[1] + ', ' + hotelInfo[2] + '</span>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-                return $(formattedText);
-            }
-
-            function formatAirportSelection(hotel) {
-                return hotel.text;
-            }
-        });
-    </script>
-}*@
+            });
+        </script>
+    }*@

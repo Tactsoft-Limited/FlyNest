@@ -57,5 +57,7 @@ public class VmHotelReservation : BaseEntity
     [Display(Name = "Phone")]
     [DataType(DataType.PhoneNumber)]
     public string AlternativeContact { get; set; }
+
+    public string Status { get; set; }
 }
 

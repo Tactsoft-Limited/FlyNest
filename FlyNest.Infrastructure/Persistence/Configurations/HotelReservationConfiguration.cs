@@ -16,5 +16,6 @@ public class HotelReservationConfiguration : IEntityTypeConfiguration<HotelReser
         builder.Property(x => x.EmailAddress).HasMaxLength(50);
         builder.Property(x => x.ContactNumber).HasMaxLength(20);
         builder.Property(x => x.AlternativeContact).HasMaxLength(20);
+        builder.Property(x => x.Status).HasMaxLength(35);
     }
 }

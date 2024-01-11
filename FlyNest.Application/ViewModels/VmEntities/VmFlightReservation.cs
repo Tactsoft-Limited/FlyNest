@@ -31,7 +31,7 @@ public class VmFlightReservation : BaseEntity
     [DataType(DataType.Date)]
     public DateOnly FromDate { get; set; }
 
-    [Display(Name = "To Date")]
+    [Display(Name = "Return Date")]
     [DataType(DataType.Date)]
     public DateOnly? ToDate { get; set; }
 
@@ -64,4 +64,6 @@ public class VmFlightReservation : BaseEntity
     [Display(Name = "Phone")]
     [DataType(DataType.PhoneNumber)]
     public string AlternativeContact { get; set; }
+
+    public string Status { get; set; }
 }
