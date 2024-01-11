@@ -1,0 +1,149 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmFlightReservation
+
+@{
+    ViewData["Title"] = "AddEdit";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Hotel</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Create Hotel</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card ">
+        <div class="card-header">
+            <h3 class="card-title">Create Hotel</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddEdit" asp-controller="FlightReservation" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row g-2">
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="FlightType" class="control-label"></label>
+                            <input asp-for="FlightType" class="form-control" />
+                            <span asp-validation-for="FlightType" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="FlightClass" class="control-label"></label>
+                            <input asp-for="FlightClass" class="form-control" />
+                            <span asp-validation-for="FlightClass" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="DepartureCity" class="control-label"></label>
+                            <input asp-for="DepartureCity" class="form-control" />
+                            <span asp-validation-for="DepartureCity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="ArrivalCity" class="control-label"></label>
+                            <input asp-for="ArrivalCity" class="form-control" />
+                            <span asp-validation-for="ArrivalCity" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="FromDate" class="control-label"></label>
+                            <input asp-for="FromDate" class="form-control" />
+                            <span asp-validation-for="FromDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="ToDate" class="control-label"></label>
+                            <input asp-for="ToDate" class="form-control" />
+                            <span asp-validation-for="ToDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Adult" class="control-label"></label>
+                            <input asp-for="Adult" class="form-control" />
+                            <span asp-validation-for="Adult" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Child" class="control-label"></label>
+                            <input asp-for="Child" class="form-control" />
+                            <span asp-validation-for="Child" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Infants" class="control-label"></label>
+                            <input asp-for="Infants" class="form-control" />
+                            <span asp-validation-for="Infants" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="ClientName" class="control-label"></label>
+                            <input asp-for="ClientName" class="form-control" />
+                            <span asp-validation-for="ClientName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="EmailAddress" class="control-label"></label>
+                            <input asp-for="EmailAddress" class="form-control" />
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="ContactNumber" class="control-label"></label>
+                            <input asp-for="ContactNumber" class="form-control" />
+                            <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="AlternativeContact" class="control-label"></label>
+                            <input asp-for="AlternativeContact" class="form-control" />
+                            <span asp-validation-for="AlternativeContact" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label asp-for="Status" class="control-label"></label>
+                            <select asp-for="Status" class="form-control">
+                                <option value="Pending">Pending</option>
+                                <option value="Processing">Processing</option>
+                                <option value="Confirmed">Confirmed</option>
+                                <option value="Cancel">Cancel</option>
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
