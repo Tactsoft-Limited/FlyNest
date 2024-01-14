@@ -1443,7 +1443,7 @@ Bacic Setup End
     width: 100%;
     height: 250px;
     border: none;
-    background-image: url('../images/slider/slider-2.jpg');
+    background-image: url('../images/slider/slide-5.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1456,7 +1456,7 @@ Bacic Setup End
         width: 100%;
         height: 100%;
         background-color: var(--secondary-color);
-        opacity: .8;
+        opacity: .5;
     }
 
     .bredcumb-section .bredcumb-text h3 {
