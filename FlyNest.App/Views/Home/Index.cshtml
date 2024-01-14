@@ -142,80 +142,85 @@
                                     <span asp-validation-for="FlightReservation.ArrivalCity" class="text-danger fs-7"></span>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.FromDate" class="form-control " placeholder="">
-                                    <label asp-for="FlightReservation.FromDate"></label>
-                                    <span asp-validation-for="FlightReservation.FromDate" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.ToDate" class="form-control " placeholder="">
-                                    <label asp-for="FlightReservation.ToDate"></label>
-                                    <span asp-validation-for="FlightReservation.ToDate" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.Adult" class="form-control " placeholder="">
-                                    <label asp-for="FlightReservation.Adult"></label>
-                                    <span asp-validation-for="FlightReservation.Adult" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.Child" class="form-control " placeholder="">
-                                    <label asp-for="FlightReservation.Child"></label>
-                                    <span asp-validation-for="FlightReservation.Child" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.Infants" class="form-control " placeholder="">
-                                    <label asp-for="FlightReservation.Infants"></label>
-                                    <span asp-validation-for="FlightReservation.Infants" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
+                        </div>
 
-
-
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.ClientName" class="form-control " placeholder="Your name">
-                                    <label asp-for="FlightReservation.ClientName"></label>
-                                    <span asp-validation-for="FlightReservation.ClientName" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.EmailAddress" class="form-control " placeholder="Email address">
-                                    <label asp-for="FlightReservation.EmailAddress"></label>
-                                    <span asp-validation-for="FlightReservation.EmailAddress" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.ContactNumber" class="form-control " placeholder="Mobile Number">
-                                    <label asp-for="FlightReservation.ContactNumber"></label>
-                                    <span asp-validation-for="FlightReservation.ContactNumber" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-group">
+                        <div id="show_input" style="display: none;">
+                            <div class="row g-2">
+                                <div class="col-lg-3 col-md-12 col-sm-12">
                                     <div class="form-floating">
-                                        <input asp-for="FlightReservation.AlternativeContact" class="form-control " placeholder="">
-                                        <label asp-for="FlightReservation.AlternativeContact"></label>
+                                        <input asp-for="FlightReservation.FromDate" class="form-control " placeholder="">
+                                        <label asp-for="FlightReservation.FromDate"></label>
+                                        <span asp-validation-for="FlightReservation.FromDate" class="text-danger fs-7"></span>
                                     </div>
-                                    <span asp-validation-for="FlightReservation.AlternativeContact" class="text-danger fs-7"></span>
                                 </div>
-                                <input hidden asp-for="FlightReservation.Status" value="Pending">
-                            </div>
+                                <div class="col-lg-3 col-md-12 col-sm-12">
+                                    <div class="form-floating">
+                                        <input asp-for="FlightReservation.ToDate" class="form-control " placeholder="">
+                                        <label asp-for="FlightReservation.ToDate"></label>
+                                        <span asp-validation-for="FlightReservation.ToDate" class="text-danger fs-7"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-12 col-sm-12">
+                                    <div class="form-floating">
+                                        <input asp-for="FlightReservation.Adult" class="form-control " placeholder="">
+                                        <label asp-for="FlightReservation.Adult"></label>
+                                        <span asp-validation-for="FlightReservation.Adult" class="text-danger fs-7"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-12 col-sm-12">
+                                    <div class="form-floating">
+                                        <input asp-for="FlightReservation.Child" class="form-control " placeholder="">
+                                        <label asp-for="FlightReservation.Child"></label>
+                                        <span asp-validation-for="FlightReservation.Child" class="text-danger fs-7"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-12 col-sm-12">
+                                    <div class="form-floating">
+                                        <input asp-for="FlightReservation.Infants" class="form-control " placeholder="">
+                                        <label asp-for="FlightReservation.Infants"></label>
+                                        <span asp-validation-for="FlightReservation.Infants" class="text-danger fs-7"></span>
+                                    </div>
+                                </div>
 
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label></label>
-                                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-ticket me-2"></i> Book A Flight</button>
+
+
+                                <div class="col-lg-3 col-md-12 col-sm-12">
+                                    <div class="form-floating">
+                                        <input asp-for="FlightReservation.ClientName" class="form-control " placeholder="Your name">
+                                        <label asp-for="FlightReservation.ClientName"></label>
+                                        <span asp-validation-for="FlightReservation.ClientName" class="text-danger fs-7"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-sm-12">
+                                    <div class="form-floating">
+                                        <input asp-for="FlightReservation.EmailAddress" class="form-control " placeholder="Email address">
+                                        <label asp-for="FlightReservation.EmailAddress"></label>
+                                        <span asp-validation-for="FlightReservation.EmailAddress" class="text-danger fs-7"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-sm-12">
+                                    <div class="form-floating">
+                                        <input asp-for="FlightReservation.ContactNumber" class="form-control " placeholder="Mobile Number">
+                                        <label asp-for="FlightReservation.ContactNumber"></label>
+                                        <span asp-validation-for="FlightReservation.ContactNumber" class="text-danger fs-7"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <div class="form-floating">
+                                            <input asp-for="FlightReservation.AlternativeContact" class="form-control " placeholder="">
+                                            <label asp-for="FlightReservation.AlternativeContact"></label>
+                                        </div>
+                                        <span asp-validation-for="FlightReservation.AlternativeContact" class="text-danger fs-7"></span>
+                                    </div>
+                                    <input hidden asp-for="FlightReservation.Status" value="Pending">
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label></label>
+                                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-ticket me-2"></i> Book A Flight</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1583,6 +1588,23 @@
         </div>
     </div>
 </div>
+
+
+
+<script>
+    document.getElementById('FlightReservation_FlightType').onchange = function () {
+        var nextInputGroup = document.getElementById('show_input');
+            nextInputGroup.style.display = this.value ? 'block' : 'none';
+        };
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var flightTabLink = document.getElementById('flight-tab');
+        var showInput = document.getElementById('show_input');
+        flightTabLink.addEventListener('click', function () {
+            showInput.style.display = 'none';
+        });
+    });
+    </script>
 
 <!-- =========== Tour Package End =========== -->
 <!-- In your layout or view header -->
