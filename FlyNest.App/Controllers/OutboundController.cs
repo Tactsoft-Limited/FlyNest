@@ -23,7 +23,13 @@ public class OutboundController : Controller
     {
         return View();
     }
+
     public IActionResult India()
+{
+   return View();
+}
+    public IActionResult SaudiArabia()
+
     {
         return View();
     }

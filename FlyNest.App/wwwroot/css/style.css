@@ -1460,6 +1460,9 @@ Bacic Setup End
 .india-breadcrumb {
     background-image: url('../images/outbound/india.jpg');
 }
+.saudi-breadcrumb {
+    background-image: url('../images/outbound/saudi-image.jpeg');
+}
 
 .bredcumb-section .overlay {
     position: absolute;
