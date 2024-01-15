@@ -1443,21 +1443,26 @@ Bacic Setup End
     width: 100%;
     height: 250px;
     border: none;
-    background-image: url('../images/slider/slide-5.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
 }
+.about-bredcumb {
+    background-image: url('../images/slider/slide-5.jpeg');
+}
+.nepal-breadcrumb {
+    background-image: url('../images/outbound/nepal.webp');
+}
 
-    .bredcumb-section .overlay {
-        position: absolute;
-        border: none;
-        width: 100%;
-        height: 100%;
-        background-color: var(--secondary-color);
-        opacity: .5;
-    }
+.bredcumb-section .overlay {
+    position: absolute;
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-color);
+    opacity: .5;
+}
 
     .bredcumb-section .bredcumb-text h3 {
         font-size: var(--size-xl);
