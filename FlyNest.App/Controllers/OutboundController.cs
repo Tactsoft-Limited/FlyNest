@@ -15,4 +15,12 @@ public class OutboundController : Controller
     {
         return View();
     }
+    public IActionResult Dubai()
+    {
+        return View();
+    }
+    public IActionResult Qatar()
+    {
+        return View();
+    }
 }

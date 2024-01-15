@@ -1454,6 +1454,9 @@ Bacic Setup End
 .nepal-breadcrumb {
     background-image: url('../images/outbound/nepal.webp');
 }
+.dubai-breadcrumb {
+    background-image: url('../images/outbound/dubai-image.jpg');
+}
 
 .bredcumb-section .overlay {
     position: absolute;
