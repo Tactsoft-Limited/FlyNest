@@ -1448,15 +1448,23 @@ Bacic Setup End
     background-size: cover;
     position: relative;
 }
+
 .about-bredcumb {
     background-image: url('../images/slider/slide-5.jpeg');
 }
+
 .nepal-breadcrumb {
     background-image: url('../images/outbound/nepal.webp');
 }
+
 .dubai-breadcrumb {
     background-image: url('../images/outbound/dubai-image.jpg');
 }
+
+.india-breadcrumb {
+    background-image: url('../images/outbound/india.jpg');
+}
+
 .saudi-breadcrumb {
     background-image: url('../images/outbound/saudi-image.jpeg');
 }
@@ -1470,29 +1478,29 @@ Bacic Setup End
     opacity: .5;
 }
 
-    .bredcumb-section .bredcumb-text h3 {
-        font-size: var(--size-xl);
-        color: var(--color-white);
-    }
+.bredcumb-section .bredcumb-text h3 {
+    font-size: var(--size-xl);
+    color: var(--color-white);
+}
 
-    .bredcumb-section .bredcumb-text a {
-        text-decoration: underline;
+.bredcumb-section .bredcumb-text a {
+    text-decoration: underline;
+    font-size: var(--size-md);
+    font-weight: var(--text-normal);
+    color: var(--primary-color);
+    font-weight: var(--text-bold);
+}
+
+.bredcumb-section .bredcumb-text span {
+    font-size: var(--size-md);
+    font-weight: var(--text-normal);
+    color: var(--color-white);
+}
+
+    .bredcumb-section .bredcumb-text span i {
         font-size: var(--size-md);
         font-weight: var(--text-normal);
-        color: var(--primary-color);
-        font-weight: var(--text-bold);
     }
-
-    .bredcumb-section .bredcumb-text span {
-        font-size: var(--size-md);
-        font-weight: var(--text-normal);
-        color: var(--color-white);
-    }
-
-        .bredcumb-section .bredcumb-text span i {
-            font-size: var(--size-md);
-            font-weight: var(--text-normal);
-        }
 
 /*
    Breadcumb Area End

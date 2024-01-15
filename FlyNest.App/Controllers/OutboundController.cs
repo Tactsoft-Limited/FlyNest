@@ -27,4 +27,8 @@ public class OutboundController : Controller
     {
         return View();
     }
+    public IActionResult India()
+    {
+        return View();
+    }
 }
