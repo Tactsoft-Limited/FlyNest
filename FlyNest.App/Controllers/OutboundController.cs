@@ -31,4 +31,8 @@ public class OutboundController : Controller
     {
         return View();
     }
+    public IActionResult Maldives()
+    {
+        return View();
+    }
 }
