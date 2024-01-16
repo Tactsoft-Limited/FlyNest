@@ -1448,7 +1448,9 @@ Bacic Setup End
     background-size: cover;
     position: relative;
 }
-
+.management-breadcrumb {
+    background-image: url('../images/management/management.jpg');
+}
 .about-bredcumb {
     background-image: url('../images/slider/slide-5.jpeg');
 }
