@@ -1448,9 +1448,11 @@ Bacic Setup End
     background-size: cover;
     position: relative;
 }
+
 .management-breadcrumb {
     background-image: url('../images/management/management.jpg');
 }
+
 .about-bredcumb {
     background-image: url('../images/slider/slide-5.jpeg');
 }
@@ -1462,6 +1464,7 @@ Bacic Setup End
 .dubai-breadcrumb {
     background-image: url('../images/outbound/dubai-image.jpg');
 }
+
 .maldives-breadcrumb {
     background-image: url('../images/outbound/maldives.jpg');
 }
@@ -2135,6 +2138,10 @@ Bacic Setup End
 
         .main-footer .footer-widgets-single .footer-social a.twitter {
             background-color: #00acee;
+        }
+
+        .main-footer .footer-widgets-single .footer-social a.youtube {
+            background-color: #FE0000 !important;
         }
 
         .main-footer .footer-widgets-single .footer-social a.instagram {
