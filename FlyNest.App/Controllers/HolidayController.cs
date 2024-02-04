@@ -17,6 +17,10 @@ namespace FlyNest.App.Controllers
         public IActionResult Nepal()
         {
             return View();
+        }        
+        public IActionResult Maldives()
+        {
+            return View();
         }
     }
 }
