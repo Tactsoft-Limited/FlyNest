@@ -2198,12 +2198,14 @@ Bacic Setup End
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 #hotel-carousel-item2 {
     background-image: url('../images/hotel/hotel-banner-1.jpeg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 #hotel-carousel-item3 {
     background-image: url('../images/hotel/hotel-banner-2.jpeg');
     background-position: center;
@@ -2217,7 +2219,8 @@ Bacic Setup End
     overflow: hidden;
     border-radius: 4px;
 }
-.hotel-component .card{
+
+.hotel-component .card {
     margin: 25px 0;
 }
 
@@ -2278,6 +2281,44 @@ Bacic Setup End
 }
 /*
    Hotel Page area End
+=================================*/
+
+
+/*
+   International Hotel area start
+=================================*/
+
+.all-country-area .single-image img {
+    height: 185px;
+}
+/*
+   International Hotel area End
+=================================*/
+/*
+   International Page area start
+=================================*/
+#international-carousel-item1 {
+    background-image: url('../images/outbound/maldives.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#international-carousel-item2 {
+    background-image: url('../images/popular-destination/maldives.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#international-carousel-item3 {
+    background-image: url('../images/outbound/abudubai.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*
+   International Page area end
 =================================*/
 /*
    Pagination Start
@@ -2580,7 +2621,9 @@ Bacic Setup End
     .hotel-component .flex-img {
         display: flex;
     }
-
+    .all-country-area .single-image img {
+        height: auto;
+    }
 }
 
 
