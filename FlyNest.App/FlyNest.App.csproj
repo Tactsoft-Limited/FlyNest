@@ -30,6 +30,7 @@
 	  <Folder Include="wwwroot\images\outbound\srilanka\" />
 	  <Folder Include="wwwroot\images\outbound\qatar\" />
 	  <Folder Include="wwwroot\images\outbound\uzbekistan\" />
+	  <Folder Include="wwwroot\images\outbound\maldives\" />
 	</ItemGroup>
 
 </Project>
