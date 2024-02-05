@@ -27,4 +27,11 @@
 	  <Folder Include="wwwroot\images\hotel\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Content Update="wwwroot\images\popular-destination\thailand.jpg">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+
 </Project>
