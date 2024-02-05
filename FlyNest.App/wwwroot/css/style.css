@@ -1591,6 +1591,22 @@ Bacic Setup End
     background-image: url('../images/outbound/india.jpg');
 }
 
+.thailand-breadcrumb {
+    background-image: url('../images/popular-destination/thailand.jpg')
+}
+.malaysia-breadcrumb {
+    background-image: url('../images/popular-destination/Malaysia.jpg')
+}
+.singapore-breadcrumb {
+    background-image: url('../images/popular-destination/Singapore.jpg')
+}
+.vietnam-breadcrumb {
+    background-image: url('../images/popular-destination/vietnam.jpeg')
+}
+.turkey-breadcrumb {
+    background-image: url('../images/popular-destination/turkey.jpg')
+}
+
 .saudi-breadcrumb {
     background-image: url('../images/outbound/saudi-image.jpeg');
 }
