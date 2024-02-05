@@ -1595,6 +1595,22 @@ Bacic Setup End
     background-image: url('../images/outbound/saudi-image.jpeg');
 }
 
+.qatar-breadcrumb {
+    background-image: url('../images/outbound/qatar-image.jpg');
+}
+
+.srilanka-breadcrumb {
+    background-image: url('../images/outbound/srilanka-image.jpg');
+}
+
+.abudhabi-breadcrumb {
+    background-image: url('../images/outbound/abudhabi-image.jpg');
+}
+
+.uzbekistan-breadcrumb {
+    background-image: url('../images/outbound/uzbekistan-image.jpg');
+}
+
 .bredcumb-section .overlay {
     position: absolute;
     border: none;
