@@ -1639,6 +1639,14 @@ Bacic Setup End
     background-image: url('../images/outbound/uzbekistan-image.jpg');
 }
 
+.uuce-breadcrumb {
+    background-image: url('../images/outbound/UUCE/uuce-bg.jpg');
+}
+
+.europe-breadcrumb {
+    background-image: url('../images/outbound/europe/europe-bg.jpg');
+}
+
 .bredcumb-section .overlay {
     position: absolute;
     border: none;
@@ -2522,10 +2530,7 @@ Bacic Setup End
                 opacity: .6;
             }
 
-.payment-way img {
-    height: 60px;
-    width: 100%;
-}
+
 
 /*
    Footer End
