@@ -2507,8 +2507,8 @@ Bacic Setup End
     }
 
     .main-footer .footer-bottom {
-        padding: 30px 0px;
-        margin-top: 40px;
+        padding: 20px 0px;
+        margin-top: 20px;
         border-top: 1px solid #6F6F6F;
     }
 
@@ -2523,9 +2523,8 @@ Bacic Setup End
             }
 
 .payment-way img {
-    height: 100px;
+    height: 60px;
     width: 100%;
-   
 }
 
 /*
