@@ -1595,6 +1595,14 @@ Bacic Setup End
     background-image: url('../images/outbound/saudi-image.jpeg');
 }
 
+.uuce-breadcrumb {
+    background-image: url('../images/outbound/UUCE/uuce-bg.jpg');
+}
+
+.europe-breadcrumb {
+    background-image: url('../images/outbound/europe/europe-bg.jpg');
+}
+
 .bredcumb-section .overlay {
     position: absolute;
     border: none;
@@ -2621,6 +2629,7 @@ Bacic Setup End
     .hotel-component .flex-img {
         display: flex;
     }
+
     .all-country-area .single-image img {
         height: auto;
     }
