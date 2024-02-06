@@ -20,7 +20,7 @@
                         <a class="nav-link" asp-action="Index" asp-controller="Home">Flight</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  asp-action="Index" asp-controller="Hotels" >Hotel</a>
+                        <a class="nav-link" asp-action="Index" asp-controller="Hotels">Hotel</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -57,8 +57,8 @@
                             </li>
                         </ul>
                     </li>
-                   @*  <li class="nav-item">
-                        <a class="nav-link" href="#">Medical</a>
+                    @*  <li class="nav-item">
+                    <a class="nav-link" href="#">Medical</a>
                     </li> *@
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.facebook.com/profile.php?id=100075962064953">
@@ -91,6 +91,9 @@
                             </li>
                             <li>
                                 <a class="dropdown-item" href="#">FAQ & support </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Gallery </a>
                             </li>
                         </ul>
                     </li>
@@ -134,21 +137,24 @@
                     <div class="mobile-navigation-menu">
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="flight.html">Flight</a>
+                                <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="hotel.html">Hotel</a>
+                                <a class="nav-link" asp-action="Index" asp-controller="Home">Flight</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-action="Index" asp-controller="Hotels">Hotel</a>
                             </li>
 
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#">Holiday</a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu menu1" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <a class="dropdown-item" href="#">Easy Visa Destination</a>
+                                        <a class="dropdown-item" asp-action="International" asp-controller="Holiday">International </a>
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Popular Attraction</a></li>
-                                    <li><a class="dropdown-item" href="#">Umrah</a></li>
+                                    <li><a class="dropdown-item" href="#"> Umrah</a></li>
+                                    <li><a class="dropdown-item" href="#">Explore BD </a></li>
                                 </ul>
                             </li>
 
@@ -161,11 +167,11 @@
                                     <li><a class="dropdown-item" href="visa-guide.html">Visa Guide</a></li>
                                 </ul>
                             </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="medical.html">Medical</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Renaissance Mart</a>
+                                <a class="nav-link" href="https://www.facebook.com/profile.php?id=100075962064953">
+                                    Renessa Mart
+                                </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#">Others</a>
