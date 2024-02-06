@@ -30,5 +30,49 @@ namespace FlyNest.App.Controllers
         {
             return View();
         }
+        public IActionResult Dubai()
+        {
+            return View();
+        }
+        public IActionResult Uzbekistan()
+        {
+            return View();
+        }
+        public IActionResult Qatar()
+        {
+            return View();
+        }
+        public IActionResult Abudhabi()
+        {
+            return View();
+        }
+        public IActionResult Srilanka()
+        {
+            return View();
+        }
+        public IActionResult Thailand()
+        {
+            return View();
+        }
+        public IActionResult Singapore()
+        {
+            return View();
+        }
+        public IActionResult Malaysia()
+        {
+            return View();
+        }
+        public IActionResult Vietnam()
+        {
+            return View();
+        }
+        public IActionResult India()
+        {
+            return View();
+        }
+        public IActionResult Turkey()
+        {
+            return View();
+        }
     }
 }

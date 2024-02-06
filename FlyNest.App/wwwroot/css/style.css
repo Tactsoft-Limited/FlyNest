@@ -1574,7 +1574,12 @@ Bacic Setup End
 .about-bredcumb {
     background-image: url('../images/slider/slide-5.jpeg');
 }
-
+.refund-bredcumb {
+    background-image: url('../images/refund.png');
+}
+.terms-and-condition-bredcumb {
+    background-image: url('../images/terms-and-condition.jpg');
+}
 .nepal-breadcrumb {
     background-image: url('../images/outbound/nepal.webp');
 }
@@ -1591,8 +1596,40 @@ Bacic Setup End
     background-image: url('../images/outbound/india.jpg');
 }
 
+.thailand-breadcrumb {
+    background-image: url('../images/popular-destination/thailand.jpg')
+}
+.malaysia-breadcrumb {
+    background-image: url('../images/popular-destination/Malaysia.jpg')
+}
+.singapore-breadcrumb {
+    background-image: url('../images/popular-destination/Singapore.jpg')
+}
+.vietnam-breadcrumb {
+    background-image: url('../images/popular-destination/vietnam.jpeg')
+}
+.turkey-breadcrumb {
+    background-image: url('../images/popular-destination/turkey.jpg')
+}
+
 .saudi-breadcrumb {
     background-image: url('../images/outbound/saudi-image.jpeg');
+}
+
+.qatar-breadcrumb {
+    background-image: url('../images/outbound/qatar-image.jpg');
+}
+
+.srilanka-breadcrumb {
+    background-image: url('../images/outbound/srilanka-image.jpg');
+}
+
+.abudhabi-breadcrumb {
+    background-image: url('../images/outbound/abudhabi-image.jpg');
+}
+
+.uzbekistan-breadcrumb {
+    background-image: url('../images/outbound/uzbekistan-image.jpg');
 }
 
 .uuce-breadcrumb {

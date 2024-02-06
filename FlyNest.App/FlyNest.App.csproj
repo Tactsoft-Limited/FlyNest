@@ -25,7 +25,19 @@
 	<ItemGroup>
 	  <Folder Include="Views\Shared\Frontend\" />
 	  <Folder Include="wwwroot\images\hotel\" />
+	  <Folder Include="wwwroot\images\outbound\dubai\" />
+	  <Folder Include="wwwroot\images\outbound\abudhabi\" />
+	  <Folder Include="wwwroot\images\outbound\srilanka\" />
+	  <Folder Include="wwwroot\images\outbound\qatar\" />
+	  <Folder Include="wwwroot\images\outbound\uzbekistan\" />
 	  <Folder Include="wwwroot\images\outbound\maldives\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="wwwroot\images\popular-destination\thailand.jpg">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
 	</ItemGroup>
 
 </Project>

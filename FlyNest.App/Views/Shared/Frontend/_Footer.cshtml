@@ -15,6 +15,13 @@
                             </span>
                         </div>
                         <div class="d-flex gap-2 mb-3">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>
+                                <b>CORPORATE OFFICE:</b> L-8, A,R Tower , Kamal Ataturk Ave , Banani ,Dhaka 1213
+
+                            </span>
+                        </div>
+                        <div class="d-flex gap-2 mb-3">
                             <i class="bi bi-telephone-fill"></i>
                             <span>
                                 01958-618221
@@ -60,12 +67,14 @@
                     <h4>Explore</h4>
                     <ul class="footer-menu">
                         <li><a asp-action="AboutUs" asp-controller="Home">About Us</a></li>
-                        <li><a href="#">Term & Conditions</a></li>
-                        <li><a href="#">Faq</a></li>
+                        <li><a asp-action="TermsAndConditions" asp-controller="Policy">Term & Conditions</a></li>
+                        <li><a asp-action="PrivacyPolicy" asp-controller="Policy">Privacy Policy</a></li>
+                        <li><a asp-action="ReturnAndRefund" asp-controller="Policy">Return and Refund Policy</a></li>
+                        @*                         <li><a href="#">Faq</a></li>
                         <li><a href="#">Hotel Sitemap</a></li>
                         <li><a href="#">Customer Service</a></li>
                         <li><a asp-action="OurMission" asp-controller="Home">Our Mission</a></li>
-                        <li><a asp-action="OurVision" asp-controller="Home">Our Vision</a></li>
+                        <li><a asp-action="OurVision" asp-controller="Home">Our Vision</a></li> *@
                     </ul>
                 </div>
             </div>
@@ -85,13 +94,18 @@
             <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="footer-widgets-single">
-                    <h4>Useful Links</h4>
-                    <ul class="footer-menu">
-                        <li><a href="#">Travel Guide</a></li>
-                        <li><a href="#">Travel Advisory</a></li>
-                        <li><a href="#">Visa Guide</a></li>
-                        <li><a href="#">Visa Application</a></li>
-                    </ul>
+                    <h4> Company Information </h4>
+                    <p>
+                        Registered Name: Renaissance Holidays
+                    </p>
+                    <p> Trade License Number: TRAD/DNCC/017166/2023 </p>
+
+                    @*  <ul class="footer-menu">
+                    <li><a href="#">Travel Guide</a></li>
+                    <li><a href="#">Travel Advisory</a></li>
+                    <li><a href="#">Visa Guide</a></li>
+                    <li><a href="#">Visa Application</a></li>
+                    </ul> *@
                 </div>
             </div>
         </div>
