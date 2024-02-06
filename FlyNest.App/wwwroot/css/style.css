@@ -1574,7 +1574,12 @@ Bacic Setup End
 .about-bredcumb {
     background-image: url('../images/slider/slide-5.jpeg');
 }
-
+.refund-bredcumb {
+    background-image: url('../images/refund.png');
+}
+.terms-and-condition-bredcumb {
+    background-image: url('../images/terms-and-condition.jpg');
+}
 .nepal-breadcrumb {
     background-image: url('../images/outbound/nepal.webp');
 }
