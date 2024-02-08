@@ -48,6 +48,9 @@ public class MapperProfile : Profile
         CreateMap<HotelReservation, VmHotelReservation>();
         CreateMap<VmHotelReservation, HotelReservation>();
 
+        CreateMap<VmTourPackage, TourPackage>().ReverseMap();
+
+
         AllowNullCollections = true;
     }
 }
