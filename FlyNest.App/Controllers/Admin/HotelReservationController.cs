@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using FlyNest.Application.Interfaces.Entities;
-using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +27,7 @@ public class HotelReservationController(IHotelReservationRepository hotelReserva
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
-        switch(id)
+        switch (id)
         {
             case 0:
                 return View(new VmHotelReservation());
@@ -42,10 +41,10 @@ public class HotelReservationController(IHotelReservationRepository hotelReserva
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> AddEdit(VmHotelReservation viewModel)
     {
-        switch(viewModel.Id)
+        switch (viewModel.Id)
         {
             case 0:
-                switch(ModelState.IsValid)
+                switch (ModelState.IsValid)
                 {
                     case true:
                         var hotel = _mapper.Map<HotelReservation>(viewModel);
@@ -55,7 +54,7 @@ public class HotelReservationController(IHotelReservationRepository hotelReserva
 
                 break;
             default:
-                switch(ModelState.IsValid)
+                switch (ModelState.IsValid)
                 {
                     case true:
                         var hotel = _mapper.Map<HotelReservation>(viewModel);

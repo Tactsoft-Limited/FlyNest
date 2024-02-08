@@ -1,5 +1,4 @@
 ﻿using FlyNest.SharedKernel.Entities.BaseEntities;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FlyNest.SharedKernel.Entities;
 

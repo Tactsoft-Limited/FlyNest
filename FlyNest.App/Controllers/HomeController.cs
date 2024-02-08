@@ -1,7 +1,6 @@
 using AutoMapper;
 using FlyNest.App.Models;
 using FlyNest.Application.Interfaces.Entities;
-using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Application.ViewModels.VmEntities.Search;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -38,7 +37,7 @@ namespace FlyNest.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateFlightReservation(VmReservation viewModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 await _flightReservationRepository.InsertAsync(
                     _mapper.Map<FlightReservation>(viewModel.FlightReservation));
@@ -52,7 +51,7 @@ namespace FlyNest.App.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateHotelReservation(VmReservation viewModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 await _hotelReservationRepository.InsertAsync(_mapper.Map<HotelReservation>(viewModel.HotelReservation));
                 TempData["SuccessMessage"] = $" Hotel booking successfully completed.";
@@ -66,15 +65,16 @@ namespace FlyNest.App.Controllers
         {
             try
             {
-                if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     vmSearch.FlightList = await _flightRepository.SearchFlightAsync(vmSearch);
-                    if(vmSearch.FlightList != null)
+                    if (vmSearch.FlightList != null)
                     {
                         return View(vmSearch.FlightList);
                     }
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 TempData["ErrorMessage"] = $"Error get flight: {exception.Message}";
             }
@@ -89,15 +89,16 @@ namespace FlyNest.App.Controllers
         {
             try
             {
-                if(ModelState.IsValid)
+                if (ModelState.IsValid)
                 {
                     vmSearch.HotelList = await _hotelRepository.SearchHotelAsync(vmSearch);
-                    if(vmSearch.HotelList != null)
+                    if (vmSearch.HotelList != null)
                     {
                         return View(vmSearch.HotelList);
                     }
                 }
-            } catch(Exception exception)
+            }
+            catch (Exception exception)
             {
                 TempData["ErrorMessage"] = $"Error get flight: {exception.Message}";
             }

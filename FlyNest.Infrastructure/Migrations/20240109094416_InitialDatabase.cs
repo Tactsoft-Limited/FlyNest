@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -31,10 +30,7 @@ namespace FlyNest.Infrastructure.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     UpdateNo = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Airline", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Airline", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "Airport",
@@ -53,10 +49,7 @@ namespace FlyNest.Infrastructure.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     UpdateNo = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Airport", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Airport", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "Baggage",
@@ -73,10 +66,7 @@ namespace FlyNest.Infrastructure.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     UpdateNo = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Baggage", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Baggage", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "Hotel",
@@ -98,10 +88,7 @@ namespace FlyNest.Infrastructure.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     UpdateNo = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Hotel", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Hotel", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "Role",
@@ -119,10 +106,7 @@ namespace FlyNest.Infrastructure.Migrations
                     NormalizedName = table.Column<string>(type: "nvarchar(85)", maxLength: 85, nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Role", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_Role", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "User",
@@ -149,10 +133,7 @@ namespace FlyNest.Infrastructure.Migrations
                     LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_User", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "Flight",

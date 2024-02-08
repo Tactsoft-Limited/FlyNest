@@ -26,6 +26,7 @@ public interface IBaseRepository<T> where T : class
     Task InsertRangeAsync(List<T> entities);
 
     Task UpdateAsync(T entity);
+    Task UpdateAsync(object id, T entity);
 
     Task UpdateRangeAsync(List<T> entities);
 

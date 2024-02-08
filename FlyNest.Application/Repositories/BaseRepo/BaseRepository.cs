@@ -1,8 +1,10 @@
-﻿using FlyNest.Infrastructure.Persistence;
+﻿using FlyNest.Infrastructure.Interfaces.BaseRepo;
+using FlyNest.Infrastructure.Persistence;
+using FlyNest.SharedKernel.Core.Default;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq.Expressions;
-using FlyNest.Infrastructure.Interfaces.BaseRepo;
 
 namespace FlyNest.Application.Repositories.BaseRepo;
 
@@ -81,6 +83,17 @@ public class BaseRepository<T> : IBaseRepository<T> where T : AuditableEntity
         await _context.SaveChangesAsync();
     }
 
+    public async Task UpdateAsync(object id, T entity)
+    {
+        var data = await _context.Set<T>().FindAsync(id);
+        if (data != null)
+        {
+            entity.CopyPropertiesTo(data);
+            _context.Set<T>().Update(data);
+            await _context.SaveChangesAsync();
+        }
+    }
+
     public async Task UpdateRangeAsync(List<T> entities)
     {
         _context.Set<T>().UpdateRange(entities);
@@ -90,7 +103,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : AuditableEntity
     public async Task<T> DeleteAsync(object id)
     {
         var entity = await _context.Set<T>().FindAsync(id);
-        if(entity != null)
+        if (entity != null)
         {
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();

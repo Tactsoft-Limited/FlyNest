@@ -1,0 +1,145 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmTourPackage
+@using FlyNest.SharedKernel.Core.Default
+@{
+    ViewData["Title"] = "AddEdit";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Toure Package </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Toure Package</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content ">
+    <div class="card w-4 ">
+        <div class="card-header">
+            <h3 class="card-title">Create Toure Package </h3>
+            <div class="card-body">
+                <form asp-action="AddEdit" asp-controller="TourPackage" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Id" type="hidden"  />
+                    <div class="modal-body form-horizontal">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Title" class="control-label"></label>
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="TourDescription" class="control-label"></label>
+                                    <textarea asp-for="TourDescription" class="form-control"></textarea>
+                                    <span asp-validation-for="TourDescription" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label"></label>
+                                    <textarea asp-for="Description" class="form-control"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="HotelDetails" class="control-label"></label>
+                                    <textarea asp-for="HotelDetails" class="form-control"></textarea>
+                                    <span asp-validation-for="HotelDetails" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Inclusion" class="control-label"></label>
+                                    <textarea asp-for="Inclusion" class="form-control"></textarea>
+                                    <span asp-validation-for="Inclusion" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Exclusion" class="control-label"></label>
+                                    <textarea asp-for="Exclusion" class="form-control"></textarea>
+                                    <span asp-validation-for="Exclusion" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PackagePrice" class="control-label"></label>
+                                    <input asp-for="PackagePrice" class="form-control" />
+                                    <span asp-validation-for="PackagePrice" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Countries" class="control-label"></label>
+                                    <input asp-for="Countries" class="form-control" />
+                                    <span asp-validation-for="Countries" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PackageType" class="control-label"></label>
+                                    <select asp-for="PackageType" class="form-control">
+                                        <option>Choose an option</option>
+                                        @foreach (var packageType in Enum.GetValues(typeof(PackageType)))
+                                        {
+                                            <option value="@packageType">@packageType</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="PackageType" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row py-4">
+                            <div class="form-group col-md-4">
+                                <label asp-for="ImageOneFile" class="control-label"></label>
+                                <input asp-for="ImageOneFile" class="form-control" type="file" onchange="previewImage(this, 'imageOnePreview')" />
+                                <span asp-validation-for="ImageOneFile" class="text-danger"></span>
+                                <img class="mt-4" id="imageOnePreview" src="#" alt="Image One Preview" style="display: none; width: 100%; max-height: 150px;" />
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label asp-for="ImageTwoFile" class="control-label"></label>
+                                <input asp-for="ImageTwoFile" class="form-control" type="file" onchange="previewImage(this, 'imageTwoPreview')" />
+                                <span asp-validation-for="ImageTwoFile" class="text-danger"></span>
+                                <img class="mt-4" id="imageTwoPreview" src="#" alt="Image Two Preview" style="display: none; width: 100%; max-height: 150px;" />
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label asp-for="ImageThreeFile" class="control-label"></label>
+                                <input asp-for="ImageThreeFile" class="form-control" type="file" onchange="previewImage(this, 'imageThreePreview')" />
+                                <span asp-validation-for="ImageThreeFile" class="text-danger"></span>
+                                <img class="mt-4" id="imageThreePreview" src="#" alt="Image Three Preview" style="display: none; width: 100%; max-height: 150px;" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        function previewImage(input, previewId) {
+            var preview = document.getElementById(previewId);
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        }
+    </script>
+}
+
+

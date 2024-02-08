@@ -1,5 +1,6 @@
 ﻿using FlyNest.Application;
 using FlyNest.Infrastructure;
+using FlyNest.SharedKernel.Core.FileExtentions;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +18,7 @@ public static class ServiceCollectionExtension
         services.ApplicationServices(configuration);
         services.AddAuthorizationBuilder().AddPolicy("DebugPolicy", policy => policy.RequireAssertion(context => true));
 
-
+        services.AddScoped<IFileStorageService, FileStorageService>();
         services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(
                 options =>

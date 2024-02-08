@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -36,10 +35,7 @@ namespace FlyNest.Infrastructure.Migrations
                     IsDelete = table.Column<bool>(type: "bit", nullable: false),
                     UpdateNo = table.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TourPackage", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_TourPackage", x => x.Id));
 
             migrationBuilder.UpdateData(
                 table: "Airline",
