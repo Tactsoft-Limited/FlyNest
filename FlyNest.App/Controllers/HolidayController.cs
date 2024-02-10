@@ -74,5 +74,13 @@ namespace FlyNest.App.Controllers
         {
             return View();
         }
+        public IActionResult Details()
+        {
+            return View();
+        }
+        public IActionResult Booking()
+        {
+            return View();
+        }
     }
 }

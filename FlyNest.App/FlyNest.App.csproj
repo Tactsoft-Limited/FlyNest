@@ -25,6 +25,7 @@
 	<ItemGroup>
 	  <Folder Include="Views\Shared\Frontend\" />
 	  <Folder Include="wwwroot\images\hotel\" />
+	  <Folder Include="wwwroot\images\payment\" />
 	  <Folder Include="wwwroot\images\outbound\dubai\" />
 	  <Folder Include="wwwroot\images\outbound\abudhabi\" />
 	  <Folder Include="wwwroot\images\outbound\srilanka\" />

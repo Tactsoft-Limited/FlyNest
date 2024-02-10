@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="my-3">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header p-3">
+                    <h5>
+                        Select your preferred method to Pay
+                    </h5>
+                    <br />
+                    <p>
+                        Convenience Fee may vary depending on the payment method
+                    </p>
+
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="single-payment">
+                                <img class="img-fluid payment-method" src="~/images/payment/small-bkash.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment">
+                                <img class="img-fluid payment-method" src="~/images/payment/small-nagad.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment">
+                                <img class="img-fluid payment-method" src="~/images/payment/dbbl.jpg" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment">
+                                <img class="img-fluid payment-method" src="~/images/payment/small-brb.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment">
+                                <img class="img-fluid payment-method" src="~/images/payment/small-mastercard.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment">
+                                <img class="img-fluid payment-method" src="~/images/payment/small-upay.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var paymentMethodImages = document.querySelectorAll('.single-payment');
+
+        paymentMethodImages.forEach(function (image) {
+            image.addEventListener('click', function () {
+                paymentMethodImages.forEach(function (img) {
+                    img.classList.remove('selected-payment');
+                });
+                this.classList.add('selected-payment');
+            });
+        });
+    });
+</script>
