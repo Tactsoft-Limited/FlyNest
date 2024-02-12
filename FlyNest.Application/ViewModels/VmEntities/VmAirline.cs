@@ -1,4 +1,5 @@
 ﻿using FlyNest.SharedKernel.Entities.BaseEntities;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 namespace FlyNest.Application.ViewModels.VmEntities;
@@ -17,6 +18,8 @@ public class VmAirline : BaseEntity
     public string Website { get; set; }
 
     public string Logo { get; set; }
+
+    public IFormFile LogoFile { get; set; }
 
     [Display(Name = "Established Date")]
     public DateOnly EstablishedDate { get; set; }

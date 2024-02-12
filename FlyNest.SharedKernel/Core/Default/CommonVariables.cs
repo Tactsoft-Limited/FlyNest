@@ -5,7 +5,6 @@ public class CommonVariables
     public const int pageIndex = 0;
     public const int pageSize = 10;
     public const int DropdownSize = 15;
-    public const string PictureLocation = "images/profiles";
-    public const string TourPackageImageLocation = "images/tourPackage";
-    public const string DocumentsLocation = "documents";
+    public static string PictureLocation { get; set; } = "images";
+    public static string DocumentsLocation { get; set; } = "documents";
 }

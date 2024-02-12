@@ -1,11 +1,11 @@
-﻿using FlyNest.SharedKernel.Entities.Audit;
+﻿using FlyNest.Infrastructure.Interfaces.Helpers;
+using FlyNest.SharedKernel.Entities.Audit;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel.DataAnnotations;
-using FlyNest.Infrastructure.Interfaces.Helpers;
 
 namespace FlyNest.Infrastructure.Persistence.Interceptors;
 
@@ -15,7 +15,7 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
 
     public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {
-        if(_userResolverService.IsUserAuthorized())
+        if (_userResolverService.IsUserAuthorized())
         {
             EntitySaveChanges(eventData.Context);
             AuditTrail(eventData.Context);
@@ -29,7 +29,7 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
         InterceptionResult<int> result,
         CancellationToken cancellationToken = default)
     {
-        if(_userResolverService.IsUserAuthorized())
+        if (_userResolverService.IsUserAuthorized())
         {
             EntitySaveChanges(eventData.Context);
             AuditTrail(eventData.Context);
@@ -40,7 +40,7 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
 
     private void EntitySaveChanges(DbContext context)
     {
-        if(context == null)
+        if (context == null)
             return;
 
         var now = DateTimeOffset.UtcNow;
@@ -49,11 +49,11 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
         var entries = context.ChangeTracker
             .Entries<AuditableEntity>()
             .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
-        foreach(var entry in entries)
+        foreach (var entry in entries)
         {
-            if(entry.Entity is AuditableEntity trackable)
+            if (entry.Entity is AuditableEntity trackable)
             {
-                switch(entry.State)
+                switch (entry.State)
                 {
                     case EntityState.Modified:
 
@@ -77,7 +77,7 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
 
     private void AuditTrail(DbContext context)
     {
-        if(context == null)
+        if (context == null)
             return;
 
         long userId = _userResolverService.CurentUserId;
@@ -85,9 +85,9 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
         context.ChangeTracker.DetectChanges();
 
         var auditEntries = new List<AuditEntry>();
-        foreach(var entry in context.ChangeTracker.Entries())
+        foreach (var entry in context.ChangeTracker.Entries())
         {
-            if(entry.Entity is BaseEntity ||
+            if (entry.Entity is BaseEntity ||
                 entry.Entity is AuditLog ||
                 entry.State == EntityState.Detached ||
                 entry.State == EntityState.Unchanged)
@@ -95,15 +95,15 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
 
             var auditEntry = new AuditEntry(entry) { TableName = entry.Entity.GetType().Name, UserId = userId };
             auditEntries.Add(auditEntry);
-            foreach(var property in entry.Properties)
+            foreach (var property in entry.Properties)
             {
                 string propertyName = property.Metadata.Name;
-                if(property.Metadata.IsPrimaryKey())
+                if (property.Metadata.IsPrimaryKey())
                 {
                     auditEntry.KeyValues[propertyName] = property.CurrentValue;
                     continue;
                 }
-                switch(entry.State)
+                switch (entry.State)
                 {
                     case EntityState.Added:
                         auditEntry.AuditType = AuditType.Create;
@@ -114,7 +114,7 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
                         auditEntry.OldValues[propertyName] = property.OriginalValue;
                         break;
                     case EntityState.Modified:
-                        if(property.IsModified)
+                        if (property.IsModified)
                         {
                             auditEntry.ChangedColumns.Add(propertyName);
                             auditEntry.AuditType = AuditType.Update;
@@ -125,7 +125,7 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
                 }
             }
         }
-        foreach(var auditEntry in auditEntries)
+        foreach (var auditEntry in auditEntries)
         {
             context.AddAsync(auditEntry.ToAuditLog());
         }
@@ -136,15 +136,15 @@ public class AuditableEntitySaveChangesInterceptor(IUserResolverService userReso
         var serviceProvider = context.GetInfrastructure().GetService<IServiceProvider>();
         var items = new Dictionary<object, object>();
 
-        foreach(var result in from entry in context.ChangeTracker.Entries()
-            where entry.State == EntityState.Added || entry.State == EntityState.Modified
-            let entity = entry.Entity
-            let validationContext = new ValidationContext(entity, serviceProvider, items)
-            let results = new List<ValidationResult>()
-            where Validator.TryValidateObject(entity, validationContext, results, true) == false
-            from result in results
-            where result != ValidationResult.Success
-            select result)
+        foreach (var result in from entry in context.ChangeTracker.Entries()
+                               where entry.State == EntityState.Added || entry.State == EntityState.Modified
+                               let entity = entry.Entity
+                               let validationContext = new ValidationContext(entity, serviceProvider, items)
+                               let results = new List<ValidationResult>()
+                               where Validator.TryValidateObject(entity, validationContext, results, true) == false
+                               from result in results
+                               where result != ValidationResult.Success
+                               select result)
         {
             throw new ValidationException(result.ErrorMessage);
         }

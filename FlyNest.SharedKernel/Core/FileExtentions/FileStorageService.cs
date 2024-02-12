@@ -11,7 +11,7 @@ public class FileStorageService : IFileStorageService
 
     public FileStorageService(IWebHostEnvironment webHostEnvironment)
     {
-        _imagesPath = Path.Combine(webHostEnvironment.WebRootPath, CommonVariables.TourPackageImageLocation);
+        _imagesPath = Path.Combine(webHostEnvironment.WebRootPath, CommonVariables.PictureLocation);
         _documentsPath = Path.Combine(webHostEnvironment.WebRootPath, CommonVariables.DocumentsLocation);
         EnsureDirectoryExists(_imagesPath);
         EnsureDirectoryExists(_documentsPath);
@@ -55,18 +55,15 @@ public class FileStorageService : IFileStorageService
         }
         if (existingFileName != null)
         {
-            // Delete the existing file
             DeleteFile(existingFileName, folderPath);
         }
-        // Save the new file
+
         return await SaveFileAsync(newFile, folderPath);
     }
 
-    // Helper method to generate a unique file name
     private string GenerateUniqueFileName(IFormFile file)
     { return $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}"; }
 
-    // Helper method to delete a file
     private void DeleteFile(string fileName, string folderPath)
     {
         var filePath = Path.Combine(folderPath, fileName);

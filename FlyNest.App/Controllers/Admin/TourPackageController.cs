@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FlyNest.Application.Interfaces.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
+using FlyNest.SharedKernel.Core.Default;
 using FlyNest.SharedKernel.Core.FileExtentions;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -9,11 +10,19 @@ using Microsoft.AspNetCore.Mvc;
 namespace FlyNest.App.Controllers.Admin;
 
 [AllowAnonymous] //TODO : Need to remove
-public class TourPackageController(ITourPackageRepository repository, IMapper mapper, IFileStorageService fileStorageService) : Controller
+public class TourPackageController : Controller
 {
-    private readonly ITourPackageRepository _repository = repository;
-    private readonly IFileStorageService _fileStorageService = fileStorageService;
-    private readonly IMapper _mapper = mapper;
+    private readonly ITourPackageRepository _repository;
+    private readonly IFileStorageService _fileStorageService;
+    private readonly IMapper _mapper;
+
+    public TourPackageController(ITourPackageRepository repository, IFileStorageService fileStorageService, IMapper mapper)
+    {
+        _repository = repository;
+        _fileStorageService = fileStorageService;
+        _mapper = mapper;
+        CommonVariables.PictureLocation = "images/tourPackage";
+    }
 
     public async Task<IActionResult> Index()
     {
@@ -49,7 +58,6 @@ public class TourPackageController(ITourPackageRepository repository, IMapper ma
         {
             if (ModelState.IsValid)
             {
-
                 if (viewModel.ImageOneFile != null)
                 {
                     viewModel.ImageOne = await _fileStorageService.SaveImageAsync(viewModel.ImageOneFile);
@@ -74,17 +82,11 @@ public class TourPackageController(ITourPackageRepository repository, IMapper ma
             var existing = await _repository.FirstOrDefaultAsync(viewModel.Id);
             if (ModelState.IsValid)
             {
-                viewModel.ImageOne = viewModel.ImageOneFile != null
-    ? await _fileStorageService.UpdateImageAsync(existing.ImageOne, viewModel.ImageOneFile)
-    : existing.ImageOne;
+                viewModel.ImageOne = viewModel.ImageOneFile != null ? await _fileStorageService.UpdateImageAsync(existing.ImageOne, viewModel.ImageOneFile) : existing.ImageOne;
 
-                viewModel.ImageTwo = viewModel.ImageOneFile != null
-    ? await _fileStorageService.UpdateImageAsync(existing.ImageTwo, viewModel.ImageOneFile)
-    : existing.ImageTwo;
+                viewModel.ImageTwo = viewModel.ImageOneFile != null ? await _fileStorageService.UpdateImageAsync(existing.ImageTwo, viewModel.ImageOneFile) : existing.ImageTwo;
 
-                viewModel.ImageThree = viewModel.ImageOneFile != null
-    ? await _fileStorageService.UpdateImageAsync(existing.ImageThree, viewModel.ImageOneFile)
-    : existing.ImageThree;
+                viewModel.ImageThree = viewModel.ImageOneFile != null ? await _fileStorageService.UpdateImageAsync(existing.ImageThree, viewModel.ImageOneFile) : existing.ImageThree;
 
                 var package = _mapper.Map<TourPackage>(viewModel);
 

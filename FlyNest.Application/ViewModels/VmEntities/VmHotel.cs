@@ -1,9 +1,7 @@
 using FlyNest.SharedKernel.Entities.BaseEntities;
-using JetBrains.Annotations;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace FlyNest.Application.ViewModels.VmEntities;
@@ -36,11 +34,8 @@ public class VmHotel : BaseEntity
     [DisplayName("Location Map")]
     public string LocationMap { get; set; }
 
-    [CanBeNull]
-    public List<IFormFile> File { get; set; }
-
-    [NotMapped]
-    public string Image { get; set; }
+    [Display(Name = "Hotel Images")]
+    public IFormFileCollection ImageFiles { get; set; }
 
     public ICollection<VmHotelImages> HotelImages { get; set; } = new List<VmHotelImages>();
 }

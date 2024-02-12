@@ -1,18 +1,33 @@
 ﻿using AutoMapper;
 using FlyNest.Application.Interfaces.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
+using FlyNest.SharedKernel.Core.Default;
+using FlyNest.SharedKernel.Core.FileExtentions;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlyNest.App.Controllers.Admin;
 
-public class AirlineController(IAirlineRepository airlineRepository, IMapper mapper) : Controller
+public class AirlineController : Controller
 {
+    private readonly IAirlineRepository _repository;
+    private readonly IFileStorageService _fileStorageService;
+    private readonly IMapper _mapper;
+
+    public AirlineController(IAirlineRepository repository, IMapper mapper, IFileStorageService fileStorageService)
+    {
+        _repository = repository;
+        _mapper = mapper;
+        _fileStorageService = fileStorageService;
+        CommonVariables.PictureLocation = "images/airline";
+    }
+
+
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var list = await airlineRepository.GetAllAsync();
-        return View(mapper.Map<List<VmAirline>>(list));
+        var list = await _repository.GetAllAsync();
+        return View(_mapper.Map<List<VmAirline>>(list));
     }
 
     [HttpGet]
@@ -21,38 +36,32 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
         return id switch
         {
             0 => View(new VmAirline()),
-            _ => View(mapper.Map<VmAirline>(await airlineRepository.FirstOrDefaultAsync(id)))
+            _ => View(_mapper.Map<VmAirline>(await _repository.FirstOrDefaultAsync(id)))
         };
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddEdit(long id, VmAirline airline, IFormFile pictureFile)
+    public async Task<IActionResult> AddEdit(long id, VmAirline viewModel)
     {
-        switch(id)
+        switch (id)
         {
             case 0:
                 try
                 {
-                    if(ModelState.IsValid)
+                    if (ModelState.IsValid)
                     {
-                        if(pictureFile != null && pictureFile.Length > 0)
+                        if (viewModel.LogoFile != null)
                         {
-                            var path = Path.Combine(
-                                Directory.GetCurrentDirectory(),
-                                "wwwroot/images/airline",
-                                pictureFile.FileName);
-                            await using(var stream = new FileStream(path, FileMode.Create))
-                            {
-                                pictureFile.CopyTo(stream);
-                            }
-                            airline.Logo = $"{pictureFile.FileName}";
+                            viewModel.Logo = await _fileStorageService.SaveImageAsync(viewModel.LogoFile);
                         }
-                        await airlineRepository.InsertAsync(mapper.Map<Airline>(airline));
+
+                        await _repository.InsertAsync(_mapper.Map<Airline>(viewModel));
                         TempData["SuccessMessage"] = $" Airline added successfully.";
                         return RedirectToAction("Index");
                     }
-                } catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     TempData["ErrorMessage"] = $"Error adding Airline : {ex.Message}";
                 }
@@ -61,32 +70,24 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
             default:
                 try
                 {
-                    if(ModelState.IsValid)
+                    var existing = await _repository.FirstOrDefaultAsync(viewModel.Id);
+                    if (ModelState.IsValid)
                     {
-                        if(pictureFile != null && pictureFile.Length > 0)
-                        {
-                            var path = Path.Combine(
-                                Directory.GetCurrentDirectory(),
-                                "wwwroot/images/airline",
-                                pictureFile.FileName);
-                            await using(var stream = new FileStream(path, FileMode.Create))
-                            {
-                                pictureFile.CopyTo(stream);
-                            }
-                            airline.Logo = $"{pictureFile.FileName}";
-                        }
+                        viewModel.Logo = viewModel.LogoFile != null ? await _fileStorageService.UpdateImageAsync(existing.Logo, viewModel.LogoFile) : existing.Logo;
 
-                        await airlineRepository.UpdateAsync(mapper.Map<Airline>(airline));
+                        var airline = _mapper.Map<Airline>(viewModel);
+                        await _repository.UpdateAsync(existing.Id, airline);
+
                         TempData["SuccessMessage"] = $" Airline update successfully.";
                         return RedirectToAction("Index");
                     }
-                } catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     TempData["ErrorMessage"] = $"Error updating Airline : {ex.Message}";
                 }
                 break;
         }
-
 
         return View(new VmAirline());
     }
@@ -94,9 +95,9 @@ public class AirlineController(IAirlineRepository airlineRepository, IMapper map
 
     public async Task<IActionResult> Delete(long id)
     {
-        if(id > 0)
+        if (id > 0)
         {
-            await airlineRepository.DeleteAsync(id);
+            await _repository.DeleteAsync(id);
             TempData["SuccessMessage"] = $" Item remove successfully";
             return RedirectToAction("Index");
         }

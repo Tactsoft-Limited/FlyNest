@@ -22,9 +22,11 @@
 <section class="content ">
     <div class="card w-4 ">
         <div class="card-header">
-            <h3 class="card-title">Create Airline  </h3>
+            <h3 class="card-title">Create Airline</h3>
             <div class="card-body">
-                <form asp-action="AddEdit" asp-controller="Airline" role="form" enctype="multipart/form-data">
+                <form asp-action="AddEdit" asp-controller="Airline" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Id" type="hidden" />
                     <div class="modal-body form-horizontal">
                         <div class="row">
                             <div class="col-md-6">
@@ -47,13 +49,11 @@
                                 <input asp-for="EstablishedDate" type="date" class="form-control" />
                                 <span asp-validation-for="EstablishedDate" class="text-danger"></span>
                             </div>
-                            <div class="col-md-6">
-                                <label class=" col-form-label">Logo</label>
-                                <input type="file" asp-for="Logo" class="form-control" name="pictureFile" accept="image/*" id="FileUpload" onchange="PreviewImage()" />
-                                <span asp-validation-for="Logo" class="text-danger"></span>
-                                <div class="mt-3" style="text-align: end;">
-                                    <img src="~/images/airline/@Model.Logo" alt="img" id="UploadFile" class="img-thumbnail" style="width:120px;" />
-                                </div>
+                            <div class="form-group col-md-6">
+                                <label asp-for="LogoFile" class="control-label"></label>
+                                <input asp-for="LogoFile" class="form-control" type="file" onchange="previewImage(this, 'imageOnePreview')" />
+                                <span asp-validation-for="LogoFile" class="text-danger"></span>
+                                <img class="mt-4" id="imageOnePreview" src="#" alt="Image One Preview" style="display: none; width: 100%; max-height: 150px;" />
                             </div>
                         </div>
                         <div class="form-group mt-2">
@@ -67,20 +67,25 @@
 </section>
 
 @section Scripts {
- <script>
-        function PreviewImage() {
-            var input = document.getElementById('FileUpload');
-            var image = document.getElementById('UploadFile');
+    <script>
+        function previewImage(input, previewId) {
+            var preview = document.getElementById(previewId);
+            var file = input.files[0];
+            var reader = new FileReader();
 
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
 
-                reader.onload = function (e) {
-                    image.src = e.target.result;
-                };
-
-                reader.readAsDataURL(input.files[0]);
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
             }
         }
     </script>
 }
+
+
