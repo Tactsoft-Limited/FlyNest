@@ -13,20 +13,22 @@ namespace FlyNest.App.Controllers.Admin;
 public class TourPackageController : Controller
 {
     private readonly ITourPackageRepository _repository;
+    private readonly ICountryRepository _countryRepository;
     private readonly IFileStorageService _fileStorageService;
     private readonly IMapper _mapper;
 
-    public TourPackageController(ITourPackageRepository repository, IFileStorageService fileStorageService, IMapper mapper)
+    public TourPackageController(ITourPackageRepository repository, IFileStorageService fileStorageService, IMapper mapper, ICountryRepository countryRepository)
     {
+        CommonVariables.PictureLocation = "images/tourPackage";
         _repository = repository;
         _fileStorageService = fileStorageService;
         _mapper = mapper;
-        CommonVariables.PictureLocation = "images/tourPackage";
+        _countryRepository = countryRepository;
     }
 
     public async Task<IActionResult> Index()
     {
-        var packageList = await _repository.GetAllAsync();
+        var packageList = await _repository.GetAllAsync(x => x.Country);
         return View(_mapper.Map<List<VmTourPackage>>(packageList));
     }
 
@@ -39,13 +41,19 @@ public class TourPackageController : Controller
     [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
+        var viewModel = new VmTourPackage
+        {
+            CountryDropdown = _countryRepository.Dropdown(),
+        };
         switch (id)
         {
             case 0:
-                return View(new VmTourPackage());
+                return View(viewModel);
             default:
                 var data = await _repository.FirstOrDefaultAsync(id);
-                return View(_mapper.Map<VmTourPackage>(data));
+                var mappedViewModel = _mapper.Map<VmTourPackage>(data);
+                mappedViewModel.CountryDropdown = viewModel.CountryDropdown;
+                return View(mappedViewModel);
         }
     }
 

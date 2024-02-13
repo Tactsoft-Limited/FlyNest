@@ -77,10 +77,10 @@
                         @Html.DisplayFor(model => model.PackagePrice)
                     </dd>
                     <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Countries)
+                        @Html.DisplayNameFor(model => model.CountryName)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.Countries)
+                        @Html.DisplayFor(model => model.CountryName)
                     </dd>
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.PackageType)
@@ -92,20 +92,32 @@
                         @Html.DisplayNameFor(model => model.ImageOne)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ImageOne)
+                        @if (!string.IsNullOrEmpty(Model.ImageOne))
+                        {
+                            <img src="~/images/tourPackage/@Url.Content(Model.ImageTwo)" alt="Image One" style="max-width: 100px; max-height: 100px;" />
+                        }
                     </dd>
+
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.ImageTwo)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ImageTwo)
+                        @if (!string.IsNullOrEmpty(Model.ImageTwo))
+                        {
+                           <img src="~/images/tourPackage/@Url.Content(Model.ImageTwo)" alt="Image One" style="max-width: 100px; max-height: 100px;" />
+                        }
                     </dd>
+
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.ImageThree)
                     </dt>
                     <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ImageThree)
+                        @if (!string.IsNullOrEmpty(Model.ImageThree))
+                        {
+                           <img src="~/images/tourPackage/@Url.Content(Model.ImageTwo)" alt="Image One" style="max-width: 100px; max-height: 100px;" />
+                        }
                     </dd>
+
                     <dt class="col-sm-2">
                         @Html.DisplayNameFor(model => model.Id)
                     </dt>

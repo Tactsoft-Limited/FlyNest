@@ -1,6 +1,7 @@
 ﻿using FlyNest.SharedKernel.Core.Default;
 using FlyNest.SharedKernel.Entities.BaseEntities;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace FlyNest.Application.ViewModels.VmEntities;
@@ -17,7 +18,10 @@ public class VmTourPackage : BaseEntity
     public string Inclusion { get; set; }
     public string Exclusion { get; set; }
     public double PackagePrice { get; set; }
-    public string Countries { get; set; }
+    public long CountryId { get; set; }
+
+    [Display(Name = "Country")]
+    public string CountryName { get; set; }
     public PackageType PackageType { get; set; }
 
     public string ImageOne { get; set; }
@@ -26,5 +30,7 @@ public class VmTourPackage : BaseEntity
     public IFormFile ImageTwoFile { get; set; }
     public string ImageThree { get; set; }
     public IFormFile ImageThreeFile { get; set; }
+
+    public IEnumerable<SelectListItem> CountryDropdown { get; set; } = new List<SelectListItem>();
 
 }

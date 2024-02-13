@@ -10,6 +10,7 @@ public class TourPackageConfiguration : IEntityTypeConfiguration<TourPackage>
     {
         builder.ToTable(nameof(TourPackage));
         builder.HasKey(x => x.Id);
+        builder.HasOne(x => x.Country).WithMany(x => x.TourPackages).HasForeignKey(x => x.CountryId);
         builder.Property(x => x.Title).HasMaxLength(100);
         builder.Property(x => x.TourDescription).HasMaxLength(300);
     }

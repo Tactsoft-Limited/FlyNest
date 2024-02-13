@@ -24,6 +24,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : AuditableEntity
 
     public async Task<List<T>> GetAllAsync() { return await _context.Set<T>().Where(x => !x.IsDelete).ToListAsync(); }
 
+
     public IQueryable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
     {
         IQueryable<T> query = _context.Set<T>().Where(x => !x.IsDelete);

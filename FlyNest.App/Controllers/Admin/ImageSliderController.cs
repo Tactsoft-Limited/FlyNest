@@ -93,7 +93,6 @@ public class ImageSliderController : Controller
         return View(new VmAirline());
     }
 
-    [HttpGet]
     public async Task<IActionResult> Delete(long id)
     {
         if (id > 0)

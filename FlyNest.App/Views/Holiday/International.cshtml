@@ -57,8 +57,10 @@
 </div>
 <!-- =========== Hero Section End =========== -->
 <!-- =========== International Package area start =========== -->
-<div class="p-destination">
-    <div class="section-title">
+
+<div class="p-destination my-4">
+
+    <div class="section-title mx-4">
         <h2 class="text-center">International Packages</h2>
         <p class="text-justify mt-3">
             Embark on a journey beyond Bangladesh's borders to explore diverse cultures and enchanting landscapes in neighboring countries and beyond. Our expertise lies in arranging worldwide tour packages, with a specialization in destinations like Dubai, Qatar, Saudi Arabia, Maldives, Sri Lanka, Nepal, India, Uzbekistan, Thailand, Singapore, Malaysia, Cambodia, Vietnam, China, Indonesia, and the Philippines. Additionally, we provide packages to European countries including Turkey, Italy, Switzerland, France, Germany, Belgium, and also offer comprehensive USA tour packages
@@ -66,238 +68,22 @@
     </div>
 
 
-    <div class="row g-4 mt-4">
+    <div class="row g-4 mx-4">
 
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Nepal" asp-controller="Holiday">
-                    <img src="~/images/popular-destination/nepal.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Nepal</h6>
-
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                    <a asp-action="GetPackagesByCountry" asp-route-id="@item.Id" asp-controller="Holiday">
+                        <img src="~/images/countries/@item.Image" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content">
+                        <h6 class="text-white fw-bold">@item.Name</h6>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Maldives" asp-controller="Holiday">
-                    <img src="~/images/popular-destination/maldives.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Maldives</h6>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Srilanka" asp-controller="Holiday">
-                    <img src="~/images/outbound/srilanka.webp" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Srilanka</h6>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Dubai" asp-controller="Holiday">
-                    <img src="~/images/popular-destination/dubai.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Dubai</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Abudhabi" asp-controller="Holiday">
-                    <img src="~/images/outbound/abudubai.jpeg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Abudubai</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Qatar" asp-controller="Holiday">
-                    <img src="~/images/popular-destination/qatar.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Qatar</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="SaudiArabia" asp-controller="Outbound">
-                    <img src="~/images/popular-destination/saudia.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Saudi Arabia</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Uzbekistan" asp-controller="Holiday">
-                    <img src="~/images/outbound/Uzbekistahan.jpeg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Uzbekistahan</h6>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Thailand" asp-controller="Holiday">
-                    <img src="~/images/popular-destination/thailand.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Thailand</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Vietnam" asp-controller="Holiday">
-                    <img src="~/images/outbound/Viatnam.jpeg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Vietnam</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        @*  <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card">
-        <a asp-action="Cambodia" asp-controller="Outbound">
-        <img src="~/images/outbound/cambodia.jpeg" alt="">
-        </a>
-        <div class="overlay"></div>
-        <div class="content">
-        <h6 class="text-white fw-bold">Cambodia</h6>
-
-        </div>
-        </div>
-        </div> *@
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Singapore" asp-controller="Holiday">
-                    <img src="~/images/outbound/Singapure.jpeg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Singapore</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Malaysia" asp-controller="Holiday">
-                    <img src="~/images/popular-destination/Malaysia.jpg" alt=""/>
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Malaysia</h6>
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="India" asp-controller="Holiday">
-                    <img src="~/images/popular-destination/india.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">India</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Europe" asp-controller="Holiday">
-                    <img src="~/images/outbound/europe/finland.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Europe</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="Turkey" asp-controller="Holiday">
-                    <img src="~/images/outbound/turkey.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold">Turkey</h6>
-
-                </div>
-            </div>
-        </div>
-        <!-- Single -->
-
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-                <a asp-action="UUCE" asp-controller="Holiday">
-                    <img src="~/images/outbound/UUCE/usa.jpeg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content">
-                    <h6 class="text-white fw-bold"> USA ,Uk ,Canada , Europe</h6>
-
-                </div>
-            </div>
-        </div>
-
+        }
     </div>
 </div>
-</div>
-
-
 <!-- =========== International Package area ends =========== -->

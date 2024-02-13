@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FlyNest.App.Controllers
+namespace FlyNest.App.Controllers;
+
+[AllowAnonymous]
+public class HotelsController : Controller
 {
-    [AllowAnonymous]
-    public class HotelsController : Controller
+
+    public ActionResult Index()
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
+        return View();
     }
 }
 

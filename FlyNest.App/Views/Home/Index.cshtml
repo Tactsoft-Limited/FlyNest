@@ -18,47 +18,22 @@
 <div class="hero-section-slider">
     <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false">
         <div class="carousel-inner">
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <img src="~/images/slider/slide-5.jpeg" class="d-block w-100 fit-image" alt="Slide 1">
-                <div class="overlay"></div>
-                <div class="carousel-caption d-none d-md-block mb-50">
-                    <div class="title mt-100">
-                        <h1 class="animate__animated animate__fadeInTopLeft">Welcome to Renaissance Holidays.</h1>
-                    </div>
-                    <div class="text-area mt-10">
-                        <h3 class="animate__animated animate__fadeInTopRight">Find Flights, Visa, Hotels and Holidays</h3>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <img src="~/images/slider/slider-4.jpeg" class="d-block w-100 fit-image" alt="Slide 2">
-                <div class="overlay"></div>
-                <div class="carousel-caption d-none d-md-block mb-50">
-                    <div class="title mt-100">
-                        <h1 class="animate__animated animate__fadeInTopLeft">Welcome to Renaissance Holidays.</h1>
-                    </div>
-                    <div class="text-area mt-10">
-                        <h3 class="animate__animated animate__fadeInTopRight">Find Flights, Visa, Hotels and Holidays</h3>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item">
-                <img src="~/images/slider/slide-6.jpeg" class="d-block w-100 fit-image" alt="Slide 3">
-                <div class="overlay"></div>
-                <div class="carousel-caption d-none d-md-block mb-50">
-                    <div class="title mt-100">
-                        <h1 class="animate__animated animate__fadeInTopLeft">Welcome to Renaissance Holidays.</h1>
-                    </div>
-                    <div class="text-area mt-10">
-                        <h3 class="animate__animated animate__fadeInTopRight">Find Flights, Visa, Hotels and Holidays</h3>
+            @foreach (var (index, item) in Model.ImageSlider.Select((value, i) => (i, value)))
+            {
+                <div class="carousel-item @(index == 0 ? "active" : "")">
+                    <img src="~/images/slider/@item.Image" class="d-block w-100 fit-image" alt="Slide @(index + 1)">
+                    <div class="overlay"></div>
+                    <div class="carousel-caption d-none d-md-block mb-50">
+                        <div class="title mt-100">
+                            <h1 class="animate__animated animate__fadeInTopLeft">@item.Title</h1>
+                        </div>
+                        <div class="text-area mt-10">
+                            <h3 class="animate__animated animate__fadeInTopRight">@item.SubTitle</h3>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>

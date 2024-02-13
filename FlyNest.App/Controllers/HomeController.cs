@@ -1,6 +1,7 @@
 using AutoMapper;
 using FlyNest.App.Models;
 using FlyNest.Application.Interfaces.Entities;
+using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Application.ViewModels.VmEntities.Search;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Authorization;
@@ -17,19 +18,22 @@ namespace FlyNest.App.Controllers
         IHotelRepository hotelRepository,
         IFlightReservationRepository flightReservationRepository,
         IMapper mapper,
-        IHotelReservationRepository hotelReservationRepository) : Controller
+        IHotelReservationRepository hotelReservationRepository,
+        IImageSliderRepository sliderRepository) : Controller
     {
         private readonly IFlightReservationRepository _flightReservationRepository = flightReservationRepository;
         private readonly IHotelReservationRepository _hotelReservationRepository = hotelReservationRepository;
         private readonly IAirportRepository _airportRepository = airportRepository;
         private readonly IFlightRepository _flightRepository = flightRepository;
         private readonly IHotelRepository _hotelRepository = hotelRepository;
+        private readonly IImageSliderRepository _sliderRepository = sliderRepository;
         private readonly ILogger<HomeController> _logger = logger;
         private readonly IMapper _mapper = mapper;
 
         public IActionResult Index()
         {
             var viewModel = new VmReservation(); // Initialize ViewModel
+            viewModel.ImageSlider = _mapper.Map<List<VmImageSlider>>(_sliderRepository.GetAll().OrderBy(x => x.Priority).Where(x => x.IsActive == true));
             return View(viewModel);
         }
 

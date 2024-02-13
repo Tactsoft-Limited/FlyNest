@@ -12,9 +12,9 @@ public class TourPackage : AuditableEntity
     public string Inclusion { get; set; }
     public string Exclusion { get; set; }
     public double PackagePrice { get; set; }
-    public string Countries { get; set; }
+    public long? CountryId { get; set; }
+    public Country Country { get; set; }
     public PackageType PackageType { get; set; }
-
     public string ImageOne { get; set; }
     public string ImageTwo { get; set; }
     public string ImageThree { get; set; }

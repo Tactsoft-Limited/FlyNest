@@ -48,9 +48,15 @@ public class MapperProfile : Profile
         CreateMap<HotelReservation, VmHotelReservation>();
         CreateMap<VmHotelReservation, HotelReservation>();
 
-        CreateMap<VmTourPackage, TourPackage>().ReverseMap();
+        CreateMap<VmTourPackage, TourPackage>()
+            .ForMember(d => d.Country, opt => opt.Ignore());
+
+        CreateMap<TourPackage, VmTourPackage>()
+            .ForMember(d => d.CountryDropdown, opt => opt.Ignore())
+            .ForMember(d => d.CountryName, opt => opt.MapFrom(src => src.Country.Name));
 
         CreateMap<VmImageSlider, ImageSlider>().ReverseMap();
+        CreateMap<VmCountry, Country>().ReverseMap();
 
 
         AllowNullCollections = true;

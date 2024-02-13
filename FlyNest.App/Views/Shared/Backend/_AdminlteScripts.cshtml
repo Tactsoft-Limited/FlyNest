@@ -53,14 +53,12 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                toastr.success('Item will be deleted shortly.');
                 deleteItem(element);
             }
         });
 
         return false;
     }
-
     function deleteItem(element) {
         var deleteUrl = element.getAttribute("href");
         window.location.href = deleteUrl;
