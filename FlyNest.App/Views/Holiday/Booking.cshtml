@@ -53,6 +53,95 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="card-header p-3">
+                    <h5>
+                        Customer Details
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label class="mb-2" for="customerName">Customer Name</label>
+                            <input type="text" class="form-control mb-2" id="customerName" placeholder="Enter Your Name">
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-2" for="email">Email address</label>
+                            <input type="email" class="form-control mb-2" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label class="mb-2" for="phone">Phone</label>
+                            <input type="text" class="form-control mb-2" id="phone" placeholder="Enter Phone">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-md-0 mt-sm-0 mt-xl-0 mt-2 ">
+            <div class="card">
+                <div class="card-header mb-3">
+                    <h5 class="text-center">Your Price Summary </h5>
+                </div>
+                <div class="card-header mt-2 d-flex justify-content-between">
+                    <div>
+                        <h6>Details</h6>
+                    </div>
+                    <div>
+                        <h6>Amount</h6>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h6>
+                                <b> 1 Deluxe Couple X 2 nights</b>
+                            </h6>
+                            <p class="mt-2">
+                                Discount
+                            </p>
+                        </div>
+                        <div>
+                            <h6>
+                                <b>5555</b>
+                            </h6>
+                            <p class="my-2">
+                                <b>1000</b>
+                            </p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between mt-2">
+                        <div>
+                            <h6>Total Amount</h6>
+                        </div>
+                        <div>
+                            <h6>4555</h6>
+                        </div>
+                    </div>
+                    <div class="my-3">
+                        <div class="form-check">
+                            
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div>
+                                    <input type="checkbox" class="form-check-input me-2" id="exampleCheck1">
+                                    
+                                </div>
+                                <div>
+                                    <label class="form-check-label" for="exampleCheck1">
+                                        Agree to the  <a asp-controller="Policy" asp-action="TermsAndConditions">Terms & Condition</a>
+                                        and
+                                        <a asp-controller="Policy" asp-action="PrivacyPolicy"> Privacy Policy</a>
+                                    </label>
+                                   </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="button">Pay Now </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
