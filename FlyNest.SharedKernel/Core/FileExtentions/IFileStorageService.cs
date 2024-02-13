@@ -11,4 +11,6 @@ public interface IFileStorageService
     Task<string> UpdateImageAsync(string existingFileName, IFormFile newImageFile);
 
     Task<string> UpdateDocumentAsync(string existingFileName, IFormFile newDocumentFile);
+
+    void RemoveFile(string fileName);
 }

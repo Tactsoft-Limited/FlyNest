@@ -7,54 +7,55 @@
     .fs-7 {
         font-size: .8rem !important
     }
+
+    .fit-image {
+        object-fit: cover;
+        height: 100%;
+    }
 </style>
 
 <!-- =========== Hero Section Start =========== -->
 <div class="hero-section-slider">
-    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false">
         <div class="carousel-inner">
-            <div class="carousel-item active" id="carousel-item1">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <img src="~/images/slider/slide-5.jpeg" class="d-block w-100 fit-image" alt="Slide 1">
                 <div class="overlay"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
-                                <h1>Welcome to Renaissance Holidays.</h1>
-                            </div>
-                            <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
-                                <h3>Find Flights, Visa, Hotels and Holidays</h3>
-                            </div>
-                        </div>
+                <div class="carousel-caption d-none d-md-block mb-50">
+                    <div class="title mt-100">
+                        <h1 class="animate__animated animate__fadeInTopLeft">Welcome to Renaissance Holidays.</h1>
+                    </div>
+                    <div class="text-area mt-10">
+                        <h3 class="animate__animated animate__fadeInTopRight">Find Flights, Visa, Hotels and Holidays</h3>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item" id="carousel-item2">
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <img src="~/images/slider/slider-4.jpeg" class="d-block w-100 fit-image" alt="Slide 2">
                 <div class="overlay"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
-                                <h1>Welcome to Renaissance Holidays.</h1>
-                            </div>
-                            <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
-                                <h3>Find Flights, Visa, Hotels and Holidays</h3>
-                            </div>
-                        </div>
+                <div class="carousel-caption d-none d-md-block mb-50">
+                    <div class="title mt-100">
+                        <h1 class="animate__animated animate__fadeInTopLeft">Welcome to Renaissance Holidays.</h1>
+                    </div>
+                    <div class="text-area mt-10">
+                        <h3 class="animate__animated animate__fadeInTopRight">Find Flights, Visa, Hotels and Holidays</h3>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item" id="carousel-item3">
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <img src="~/images/slider/slide-6.jpeg" class="d-block w-100 fit-image" alt="Slide 3">
                 <div class="overlay"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="title mt-100" data-aos="fade-down" data-aos-duration="2000">
-                                <h1>Welcome to Renaissance Holidays.</h1>
-                            </div>
-                            <div class="text-area mt-10" data-aos="fade-left" data-aos-duration="2000">
-                                <h3>Find Flights, Visa, Hotels and Holidays</h3>
-                            </div>
-                        </div>
+                <div class="carousel-caption d-none d-md-block mb-50">
+                    <div class="title mt-100">
+                        <h1 class="animate__animated animate__fadeInTopLeft">Welcome to Renaissance Holidays.</h1>
+                    </div>
+                    <div class="text-area mt-10">
+                        <h3 class="animate__animated animate__fadeInTopRight">Find Flights, Visa, Hotels and Holidays</h3>
                     </div>
                 </div>
             </div>
@@ -616,56 +617,56 @@
                 </div>
             </div>
             @* <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a asp-action="Viatnam" asp-controller="Outbound">
-                        <img src="~/images/outbound/Viatnam.jpeg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Viatnam</h6>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <a asp-action="Viatnam" asp-controller="Outbound">
+                            <img src="~/images/outbound/Viatnam.jpeg" alt="">
+                        </a>
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h6 class="text-white fw-bold">Viatnam</h6>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a asp-action="Cambodia" asp-controller="Outbound">
-                        <img src="~/images/outbound/cambodia.jpeg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Cambodia</h6>
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <a asp-action="Cambodia" asp-controller="Outbound">
+                            <img src="~/images/outbound/cambodia.jpeg" alt="">
+                        </a>
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h6 class="text-white fw-bold">Cambodia</h6>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a asp-action="Singapure" asp-controller="Outbound">
-                        <img src="~/images/outbound/Singapure.jpeg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Singapure</h6>
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <a asp-action="Singapure" asp-controller="Outbound">
+                            <img src="~/images/outbound/Singapure.jpeg" alt="">
+                        </a>
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h6 class="text-white fw-bold">Singapure</h6>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a asp-action="Malaysia" asp-controller="Outbound">
-                        <img src="~/images/outbound/Malaysia.jpeg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content">
-                        <h6 class="text-white fw-bold">Malaysia</h6>
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <a asp-action="Malaysia" asp-controller="Outbound">
+                            <img src="~/images/outbound/Malaysia.jpeg" alt="">
+                        </a>
+                        <div class="overlay"></div>
+                        <div class="content">
+                            <h6 class="text-white fw-bold">Malaysia</h6>
+                        </div>
                     </div>
-                </div>
-            </div> *@
+                </div> *@
             <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="card">
@@ -682,18 +683,18 @@
 
             @* <!-- Single -->
 
-            <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-            <a href="#">
-            <img src="~/images/popular-destination/qatar.jpg" alt="">
-            </a>
-            <div class="overlay"></div>
-            <div class="content">
-            <h6 class="text-white fw-bold">Qatar</h6>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                <a href="#">
+                <img src="~/images/popular-destination/qatar.jpg" alt="">
+                </a>
+                <div class="overlay"></div>
+                <div class="content">
+                <h6 class="text-white fw-bold">Qatar</h6>
 
-            </div>
-            </div>
-            </div> *@
+                </div>
+                </div>
+                </div> *@
 
         </div>
     </div>
@@ -757,18 +758,18 @@
             </div>
             <!-- Single -->
             @* <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-            <a href="#">
-            <img src="~/images/inbound/saint-martin.jpg" alt="">
-            </a>
-            <div class="overlay"></div>
-            <div class="content">
-            <h6 class="text-white fw-bold">Saint Martin</h6>
-            <span class="text-white">2 Nights | 3 Days </span>
-            <p class="text-white"> 5900 BDT </p>
-            </div>
-            </div>
-            </div> *@
+                <div class="card">
+                <a href="#">
+                <img src="~/images/inbound/saint-martin.jpg" alt="">
+                </a>
+                <div class="overlay"></div>
+                <div class="content">
+                <h6 class="text-white fw-bold">Saint Martin</h6>
+                <span class="text-white">2 Nights | 3 Days </span>
+                <p class="text-white"> 5900 BDT </p>
+                </div>
+                </div>
+                </div> *@
             <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
                 <div class="card">
@@ -1101,115 +1102,115 @@
 <!-- =========== Search Airlines Start =========== -->
 <!-- =========== Best Hotels Start =========== -->
 @* <div class="b-hotels">
-    <div class="container">
-        <div class="heading">
-            <h2>Best Hotels for Your Next Trip</h2>
-        </div>
-        <p class="mt-2">
-            Luxurious or budget-friendly hotels, villas or resorts, browse accommodations at ShareTrip that meet the need. Book Long-term or short-term accommodation from our hotel deals.
-        </p>
-        <div class="row g-2 mt-4" id="b-hotels">
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
-                    <div class="card">
-                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                        <div class="card-body">
-                            <h6 class="fw-bold">Dubai</h6>
-                            <div class="mt-1">
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span class="fw-bold">5</span>
-                                <span>(100 reviews)</span>
+        <div class="container">
+            <div class="heading">
+                <h2>Best Hotels for Your Next Trip</h2>
+            </div>
+            <p class="mt-2">
+                Luxurious or budget-friendly hotels, villas or resorts, browse accommodations at ShareTrip that meet the need. Book Long-term or short-term accommodation from our hotel deals.
+            </p>
+            <div class="row g-2 mt-4" id="b-hotels">
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <a href="#">
+                        <div class="card">
+                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                            <div class="card-body">
+                                <h6 class="fw-bold">Dubai</h6>
+                                <div class="mt-1">
+                                    <span><i class="bi bi-star-fill"></i></span>
+                                    <span class="fw-bold">5</span>
+                                    <span>(100 reviews)</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
-                    <div class="card">
-                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                        <div class="card-body">
-                            <h6 class="fw-bold">Dubai</h6>
-                            <div class="mt-1">
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span class="fw-bold">5</span>
-                                <span>(100 reviews)</span>
+                    </a>
+                </div>
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <a href="#">
+                        <div class="card">
+                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                            <div class="card-body">
+                                <h6 class="fw-bold">Dubai</h6>
+                                <div class="mt-1">
+                                    <span><i class="bi bi-star-fill"></i></span>
+                                    <span class="fw-bold">5</span>
+                                    <span>(100 reviews)</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
-                    <div class="card">
-                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                        <div class="card-body">
-                            <h6 class="fw-bold">Dubai</h6>
-                            <div class="mt-1">
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span class="fw-bold">5</span>
-                                <span>(100 reviews)</span>
+                    </a>
+                </div>
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <a href="#">
+                        <div class="card">
+                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                            <div class="card-body">
+                                <h6 class="fw-bold">Dubai</h6>
+                                <div class="mt-1">
+                                    <span><i class="bi bi-star-fill"></i></span>
+                                    <span class="fw-bold">5</span>
+                                    <span>(100 reviews)</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
-                    <div class="card">
-                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                        <div class="card-body">
-                            <h6 class="fw-bold">Dubai</h6>
-                            <div class="mt-1">
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span class="fw-bold">5</span>
-                                <span>(100 reviews)</span>
+                    </a>
+                </div>
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <a href="#">
+                        <div class="card">
+                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                            <div class="card-body">
+                                <h6 class="fw-bold">Dubai</h6>
+                                <div class="mt-1">
+                                    <span><i class="bi bi-star-fill"></i></span>
+                                    <span class="fw-bold">5</span>
+                                    <span>(100 reviews)</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
-                    <div class="card">
-                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                        <div class="card-body">
-                            <h6 class="fw-bold">Dubai</h6>
-                            <div class="mt-1">
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span class="fw-bold">5</span>
-                                <span>(100 reviews)</span>
+                    </a>
+                </div>
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <a href="#">
+                        <div class="card">
+                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                            <div class="card-body">
+                                <h6 class="fw-bold">Dubai</h6>
+                                <div class="mt-1">
+                                    <span><i class="bi bi-star-fill"></i></span>
+                                    <span class="fw-bold">5</span>
+                                    <span>(100 reviews)</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="#">
-                    <div class="card">
-                        <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                        <div class="card-body">
-                            <h6 class="fw-bold">Dubai</h6>
-                            <div class="mt-1">
-                                <span><i class="bi bi-star-fill"></i></span>
-                                <span class="fw-bold">5</span>
-                                <span>(100 reviews)</span>
+                    </a>
+                </div>
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <a href="#">
+                        <div class="card">
+                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
+                            <div class="card-body">
+                                <h6 class="fw-bold">Dubai</h6>
+                                <div class="mt-1">
+                                    <span><i class="bi bi-star-fill"></i></span>
+                                    <span class="fw-bold">5</span>
+                                    <span>(100 reviews)</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
 
 
+            </div>
         </div>
-    </div>
-</div> *@
+    </div> *@
 <!-- =========== Best Hotels End =========== -->
 <!-- =========== Top Routes Start =========== -->
 <div class="top-routes">
@@ -1604,143 +1605,143 @@
                 </div>
             </div>
             @* <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-            <a href="#">
-            <img src="~/images/tourist-visa/china.jpg" alt="">
-            </a>
-            <div class="overlay"></div>
-            <div class="content text-center">
-            <h6 class="text-white fw-bold">China</h6>
-            </div>
-            </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="card">
-            <a href="#">
-            <img src="~/images/tourist-visa/vietnam.jpg" alt="">
-            </a>
-            <div class="overlay"></div>
-            <div class="content text-center">
-            <h6 class="text-white fw-bold">Vietnam</h6>
-            </div>
-            </div>
-            </div> *@
+                <div class="card">
+                <a href="#">
+                <img src="~/images/tourist-visa/china.jpg" alt="">
+                </a>
+                <div class="overlay"></div>
+                <div class="content text-center">
+                <h6 class="text-white fw-bold">China</h6>
+                </div>
+                </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="card">
+                <a href="#">
+                <img src="~/images/tourist-visa/vietnam.jpg" alt="">
+                </a>
+                <div class="overlay"></div>
+                <div class="content text-center">
+                <h6 class="text-white fw-bold">Vietnam</h6>
+                </div>
+                </div>
+                </div> *@
         </div>
     </div>
 </div>
 <!-- =========== Tourist Visa Processing End =========== -->
 <!-- =========== Tour Package Start =========== -->
 @* <div class="container tour-package">
-    <div class="heading">
-        <h2>Tour Package</h2>
-    </div>
-    <p class="mt-2">
-        Renaissance Holidays arranges attractive tour packages worldwide. We take people to the most
-        historical places in the
-        world. We provide national and international budget tour packages as well as luxury tour packages. Privae,
-        Group and
-        customized tour packages are available at Renaissance Holidays.
-    </p>
-    <h5 class="fw-bold mt-4">Our Tour Package Service Includes:</h5>
-    <div class="row g-4 mt-4 justify-content-center">
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <div class="photo">
-                    <a href="#">
-                        <img src="~/images/cc-2.jpg" alt="">
-                    </a>
+        <div class="heading">
+            <h2>Tour Package</h2>
+        </div>
+        <p class="mt-2">
+            Renaissance Holidays arranges attractive tour packages worldwide. We take people to the most
+            historical places in the
+            world. We provide national and international budget tour packages as well as luxury tour packages. Privae,
+            Group and
+            customized tour packages are available at Renaissance Holidays.
+        </p>
+        <h5 class="fw-bold mt-4">Our Tour Package Service Includes:</h5>
+        <div class="row g-4 mt-4 justify-content-center">
+            <div class="col-lg-3 col-md-4">
+                <div class="card">
+                    <div class="photo">
+                        <a href="#">
+                            <img src="~/images/cc-2.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="text-white text-center fw-bold w-100">Round Air Ticket</a>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <a href="#" class="text-white text-center fw-bold w-100">Round Air Ticket</a>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="card">
+                    <div class="photo">
+                        <a href="#">
+                            <img src="~/images/tour-package/hotel.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="text-white text-center fw-bold w-100">Hotel Reservation</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="card">
+                    <div class="photo">
+                        <a href="#">
+                            <img src="~/images/tour-package/at.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="text-white text-center fw-bold w-100">Airport Transfer</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="card">
+                    <div class="photo">
+                        <a href="#">
+                            <img src="~/images/tour-package/ss.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="text-white text-center fw-bold w-100">Sightseeing</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="card">
+                    <div class="photo">
+                        <a href="#">
+                            <img src="~/images/tour-package/vp.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="text-white text-center fw-bold w-100">Visa Processing</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="card">
+                    <div class="photo">
+                        <a href="#">
+                            <img src="~/images/tour-package/b-f.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="text-white text-center fw-bold w-100">Breakfast</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="card">
+                    <div class="photo">
+                        <a href="#">
+                            <img src="~/images/tour-package/tg.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="text-white text-center fw-bold w-100">Tour Guide</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="card">
+                    <div class="photo">
+                        <a href="#">
+                            <img src="~/images/tour-package/dt.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="#" class="text-white text-center fw-bold w-100">Day Tour</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <div class="photo">
-                    <a href="#">
-                        <img src="~/images/tour-package/hotel.jpg" alt="">
-                    </a>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="text-white text-center fw-bold w-100">Hotel Reservation</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <div class="photo">
-                    <a href="#">
-                        <img src="~/images/tour-package/at.jpg" alt="">
-                    </a>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="text-white text-center fw-bold w-100">Airport Transfer</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <div class="photo">
-                    <a href="#">
-                        <img src="~/images/tour-package/ss.jpg" alt="">
-                    </a>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="text-white text-center fw-bold w-100">Sightseeing</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <div class="photo">
-                    <a href="#">
-                        <img src="~/images/tour-package/vp.jpg" alt="">
-                    </a>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="text-white text-center fw-bold w-100">Visa Processing</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <div class="photo">
-                    <a href="#">
-                        <img src="~/images/tour-package/b-f.jpg" alt="">
-                    </a>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="text-white text-center fw-bold w-100">Breakfast</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <div class="photo">
-                    <a href="#">
-                        <img src="~/images/tour-package/tg.jpg" alt="">
-                    </a>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="text-white text-center fw-bold w-100">Tour Guide</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4">
-            <div class="card">
-                <div class="photo">
-                    <a href="#">
-                        <img src="~/images/tour-package/dt.jpg" alt="">
-                    </a>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="text-white text-center fw-bold w-100">Day Tour</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> *@
+    </div> *@
 
 
 

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmImageSlider>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Image Slider</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Image Slider</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Image List</h3>
+            <div class="card-tools">
+                <a asp-action="AddEdit" asp-controller="ImageSlider" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Image</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Title)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Priority)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="vertical-align: middle;">
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Html.DisplayFor(modelItem => item.SubTitle)
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Html.DisplayFor(modelItem => item.Priority)
+                            </td>
+                            <td style="vertical-align: middle;">
+                                @Html.DisplayFor(modelItem => item.IsActive)
+                            </td>
+                            <td style="vertical-align: middle;">
+                                <img src="~/images/slider/@Html.DisplayFor(modelItem => item.Image)" height="80" width="220" alt="Image">
+                            </td>
+                            <td style="vertical-align: middle; width:140px;">
+                                <a href="@Url.Action("AddEdit", new { id = item.Id })" class="btn btn-link btn-sm" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                |
+                                <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-link btn-sm" title="Details">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                |
+                                <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-link btn-sm" title="Delete" onclick="confirmAndDelete('@item.Id', '@item.Title')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        async function confirmAndDelete(itemId, itemName) {
+            const isConfirmed = await confirmWithSwal(`Are you sure you want to delete "${itemName}"?`);
+
+            if (isConfirmed) {
+                // If the user clicks "Yes, delete it!", proceed with the deletion
+                window.location.href = '@Url.Action("Delete", new { id = "__id__" })'.replace('__id__', itemId);
+            }
+        }
+
+        function confirmWithSwal(message) {
+            return new Promise((resolve) => {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: message,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    resolve(result.isConfirmed);
+                });
+            });
+        }
+    </script>
+}

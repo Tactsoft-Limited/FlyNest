@@ -50,6 +50,8 @@ public class MapperProfile : Profile
 
         CreateMap<VmTourPackage, TourPackage>().ReverseMap();
 
+        CreateMap<VmImageSlider, ImageSlider>().ReverseMap();
+
 
         AllowNullCollections = true;
     }

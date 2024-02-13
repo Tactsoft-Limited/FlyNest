@@ -539,46 +539,25 @@ Bacic Setup End
         position: absolute;
     }
 
-#carousel-item1 {
-    background-image: url('../images/slider/slide-5.jpeg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+        .hero-section-slider .carousel-inner .carousel-item .overlay {
+            position: absolute;
+            border: none;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-99);
+            opacity: .4;
+        }
 
-#carousel-item2 {
-    background-image: url('../images/slider/slider-4.jpeg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+        .hero-section-slider .carousel-inner .carousel-item h1 {
+            font-weight: var(--text-bold);
+            font-size: var(--size-xxl);
+            color: var(--color-white);
+        }
 
-#carousel-item3 {
-    background-image: url('../images/slider/slide-6.jpeg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.hero-section-slider .carousel-inner .carousel-item .overlay {
-    position: absolute;
-    border: none;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-99);
-    opacity: .4;
-}
-
-.hero-section-slider .carousel-inner .carousel-item h1 {
-    font-weight: var(--text-bold);
-    font-size: var(--size-xxl);
-    color: var(--color-white);
-}
-
-.hero-section-slider .carousel-inner .carousel-item h3 {
-    font-size: var(--size-md);
-    color: var(--color-white);
-}
+        .hero-section-slider .carousel-inner .carousel-item h3 {
+            font-size: var(--size-md);
+            color: var(--color-white);
+        }
 
 
 /*
@@ -2402,7 +2381,7 @@ Bacic Setup End
    Package Details Start
 =================================*/
 
-.package-details img{
+.package-details img {
     height: 50vh;
 }
 /*
@@ -2717,6 +2696,7 @@ Bacic Setup End
     .all-country-area .single-image img {
         height: auto;
     }
+
     .payment-method {
         height: 9rem;
         width: 100%;

@@ -17,6 +17,8 @@ public class FileStorageService : IFileStorageService
         EnsureDirectoryExists(_documentsPath);
     }
 
+
+
     public async Task<string> SaveImageAsync(IFormFile imageFile)
     { return await SaveFileAsync(imageFile, _imagesPath); }
 
@@ -29,7 +31,15 @@ public class FileStorageService : IFileStorageService
     public async Task<string> UpdateDocumentAsync(string existingFileName, IFormFile newDocumentFile)
     { return await UpdateFileAsync(existingFileName, newDocumentFile, _documentsPath); }
 
-    private async Task<string> SaveFileAsync(IFormFile file, string folderPath)
+    public void RemoveFile(string fileName)
+    {
+        if (!string.IsNullOrEmpty(fileName))
+        {
+            DeleteFile(fileName, _imagesPath);
+        }
+    }
+
+    private static async Task<string> SaveFileAsync(IFormFile file, string folderPath)
     {
         if (file == null || file.Length == 0)
         {
@@ -47,7 +57,7 @@ public class FileStorageService : IFileStorageService
         return fileName;
     }
 
-    private async Task<string> UpdateFileAsync(string existingFileName, IFormFile newFile, string folderPath)
+    private static async Task<string> UpdateFileAsync(string existingFileName, IFormFile newFile, string folderPath)
     {
         if (newFile == null || newFile.Length == 0)
         {
@@ -61,10 +71,10 @@ public class FileStorageService : IFileStorageService
         return await SaveFileAsync(newFile, folderPath);
     }
 
-    private string GenerateUniqueFileName(IFormFile file)
+    private static string GenerateUniqueFileName(IFormFile file)
     { return $"{Guid.NewGuid()}{Path.GetExtension(file.FileName)}"; }
 
-    private void DeleteFile(string fileName, string folderPath)
+    private static void DeleteFile(string fileName, string folderPath)
     {
         var filePath = Path.Combine(folderPath, fileName);
         if (File.Exists(filePath))
@@ -73,7 +83,7 @@ public class FileStorageService : IFileStorageService
         }
     }
 
-    private void EnsureDirectoryExists(string folderPath)
+    private static void EnsureDirectoryExists(string folderPath)
     {
         if (!Directory.Exists(folderPath))
         {

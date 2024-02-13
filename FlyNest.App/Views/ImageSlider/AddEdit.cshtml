@@ -1,0 +1,104 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmImageSlider
+
+@{
+    ViewData["Title"] = "AddEdit";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Image Slider</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Image Slider</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Image List</h3>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddEdit" asp-controller="ImageSlider" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" type="hidden" class="form-control" />
+                <div class="modal-body form-horizontal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="from-group mb-2">
+                                <label asp-for="Title" class="control-label"></label>
+                                <input asp-for="Title" class="form-control" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="from-group mb-2">
+                                <label asp-for="SubTitle" class="control-label"></label>
+                                <input asp-for="SubTitle" class="form-control" />
+                                <span asp-validation-for="SubTitle" class="text-danger"></span>
+                            </div>
+                            <div class="from-group mb-2">
+                                <label asp-for="Priority" class="control-label"></label>
+                                <input asp-for="Priority" class="form-control" />
+                                <span asp-validation-for="Priority" class="text-danger"></span>
+                            </div>
+                            <div class="form-group my-3 form-switch">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="from-group mb-2">
+                                <label asp-for="ImageFile" class="control-label"></label>
+                                <input asp-for="ImageFile" class="form-control" type="file" onchange="previewImage(this, 'imageOnePreview')" />
+                                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                                @if (!string.IsNullOrEmpty(Model.Image))
+                                {
+                                    <img class="mt-4" id="imageOnePreview" src="~/images/slider/@Model.Image" alt="Image One Preview" style="width: 80%; max-height: 150px; float: right;" />
+                                }
+                                else
+                                {
+                                    <img class="mt-4" id="imageOnePreview" src="#" alt="Image One Preview" style="display: none; width: 80%; max-height: 150px; float: right;" />
+                                }
+                            </div>
+                        </div>
+                        <div class="from-group d-flex justify-content-end">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        function previewImage(input, previewId) {
+            var preview = document.getElementById(previewId);
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        }
+    </script>
+}
+
