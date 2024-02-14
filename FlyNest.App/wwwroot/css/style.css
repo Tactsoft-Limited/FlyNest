@@ -1635,6 +1635,10 @@ Bacic Setup End
     opacity: .5;
 }
 
+.visa-bredcumb {
+    background-image: url('../images/visa-processing/visa-from-bangladesh.jpg');
+}
+
 .bredcumb-section .bredcumb-text h3 {
     font-size: var(--size-xl);
     color: var(--color-white);
@@ -1691,6 +1695,102 @@ Bacic Setup End
 
 /*
    About us Area End
+=================================*/
+
+
+
+
+/*
+   Visa Processing Area Start
+=================================*/
+
+
+.visa-processing {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+    .visa-processing .heading h2 {
+        font-weight: var(--text-bold);
+        color: var(--primary-color);
+    }
+
+    .visa-processing p {
+        font-size: var(--size-sm);
+    }
+
+    .visa-processing .offer-card {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+        .visa-processing .offer-card a {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+            .visa-processing .offer-card a img {
+                width: 100%;
+                height: 100%;
+                border-radius: 6px;
+            }
+
+        .visa-processing .offer-card .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /*background-color: var(--primary-color);*/
+            background: rgba(58, 186, 192, .7);
+            border-radius: 6px;
+            display: none;
+        }
+
+
+        .visa-processing .offer-card:hover .overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slide-down .4s;
+        }
+
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.visa-processing .offer-card .overlay .content {
+    padding: 20px 20px;
+    color: white;
+}
+
+    .visa-processing .offer-card .overlay .content p {
+        font-size: var(--size-md);
+        text-align: justify-all;
+    }
+
+    .visa-processing .offer-card .overlay .content a {
+        font-size: var(--size-md);
+        color: white;
+        text-decoration: underline;
+    }
+
+
+
+
+/*
+   Visa Processing Area End
 =================================*/
 
 
