@@ -27,7 +27,7 @@
             <div class="card-body">
                 <form asp-action="AddEdit" asp-controller="TourPackage" method="post" enctype="multipart/form-data">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input asp-for="Id" type="hidden"  />
+                    <input asp-for="Id" type="hidden" />
                     <div class="modal-body form-horizontal">
                         <div class="row">
                             <div class="col-md-6">
@@ -71,8 +71,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="CountryId" class="control-label"></label>
-                                    <select asp-for="CountryId" asp-items="@Model.CountryDropdown" class="form-control" >
-
+                                    <select asp-for="CountryId" asp-items="@Model.CountryDropdown" class="form-control">
                                     </select>
                                     <span asp-validation-for="CountryId" class="text-danger"></span>
                                 </div>
@@ -93,23 +92,23 @@
                         <div class="row py-4">
                             <div class="form-group col-md-4">
                                 <label asp-for="ImageOneFile" class="control-label"></label>
-                                <input asp-for="ImageOneFile" class="form-control" type="file" onchange="previewImage(this, 'imageOnePreview')" />
+                                <input asp-for="ImageOneFile" class="form-control" type="file" onchange="previewImage(this, 'imageOnePreview', '@Model.ImageOneFile')" />
                                 <span asp-validation-for="ImageOneFile" class="text-danger"></span>
-                                <img class="mt-4" id="imageOnePreview" src="#" alt="Image One Preview" style="display: none; width: 100%; max-height: 150px;" />
+                                <img class="mt-4" id="imageOnePreview" src="~/images/tourPackage/@Model.ImageOne" alt="Image One Preview" style="width: 100%; max-height: 150px; @(string.IsNullOrEmpty(@Model.ImageOne) ? "display: none;" : "")" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label asp-for="ImageTwoFile" class="control-label"></label>
-                                <input asp-for="ImageTwoFile" class="form-control" type="file" onchange="previewImage(this, 'imageTwoPreview')" />
+                                <input asp-for="ImageTwoFile" class="form-control" type="file" onchange="previewImage(this, 'imageTwoPreview', '@Model.ImageTwoFile')" />
                                 <span asp-validation-for="ImageTwoFile" class="text-danger"></span>
-                                <img class="mt-4" id="imageTwoPreview" src="#" alt="Image Two Preview" style="display: none; width: 100%; max-height: 150px;" />
+                                <img class="mt-4" id="imageTwoPreview" src="~/images/tourPackage/@Model.ImageTwo" alt="Image Two Preview" style="width: 100%; max-height: 150px; @(string.IsNullOrEmpty(Model.ImageTwo) ? "display: none;" : "")" />
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label asp-for="ImageThreeFile" class="control-label"></label>
-                                <input asp-for="ImageThreeFile" class="form-control" type="file" onchange="previewImage(this, 'imageThreePreview')" />
+                                <input asp-for="ImageThreeFile" class="form-control" type="file" onchange="previewImage(this, 'imageThreePreview', '@Model.ImageThreeFile')" />
                                 <span asp-validation-for="ImageThreeFile" class="text-danger"></span>
-                                <img class="mt-4" id="imageThreePreview" src="#" alt="Image Three Preview" style="display: none; width: 100%; max-height: 150px;" />
+                                <img class="mt-4" id="imageThreePreview" src="~/images/tourPackage/@Model.ImageThree" alt="Image Three Preview" style="width: 100%; max-height: 150px; @(string.IsNullOrEmpty(Model.ImageThree) ? "display: none;" : "")" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -124,7 +123,7 @@
 
 @section Scripts {
     <script>
-        function previewImage(input, previewId) {
+        function previewImage(input, previewId, existingImagePath) {
             var preview = document.getElementById(previewId);
             var file = input.files[0];
             var reader = new FileReader();
@@ -136,12 +135,16 @@
 
             if (file) {
                 reader.readAsDataURL(file);
+            } else if (existingImagePath) {
+                preview.src = existingImagePath;
+                preview.style.display = 'block';
             } else {
                 preview.src = '#';
                 preview.style.display = 'none';
             }
         }
     </script>
+
 }
 
 

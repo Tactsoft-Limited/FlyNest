@@ -92,9 +92,9 @@ public class TourPackageController : Controller
             {
                 viewModel.ImageOne = viewModel.ImageOneFile != null ? await _fileStorageService.UpdateImageAsync(existing.ImageOne, viewModel.ImageOneFile) : existing.ImageOne;
 
-                viewModel.ImageTwo = viewModel.ImageOneFile != null ? await _fileStorageService.UpdateImageAsync(existing.ImageTwo, viewModel.ImageOneFile) : existing.ImageTwo;
+                viewModel.ImageTwo = viewModel.ImageOneFile != null ? await _fileStorageService.UpdateImageAsync(existing.ImageTwo, viewModel.ImageTwoFile) : existing.ImageTwo;
 
-                viewModel.ImageThree = viewModel.ImageOneFile != null ? await _fileStorageService.UpdateImageAsync(existing.ImageThree, viewModel.ImageOneFile) : existing.ImageThree;
+                viewModel.ImageThree = viewModel.ImageOneFile != null ? await _fileStorageService.UpdateImageAsync(existing.ImageThree, viewModel.ImageThreeFile) : existing.ImageThree;
 
                 var package = _mapper.Map<TourPackage>(viewModel);
 
