@@ -37,5 +37,15 @@ public class HolidayController(ITourPackageRepository packageRepository, ICountr
         return View(_mapper.Map<VmTourPackage>(details));
     }
 
+    public IActionResult Umrah()
+    {
+        var package = _packageRepository.GetAll().Where(x => x.PackageType == PackageType.Umrah).ToList();
+        return View(_mapper.Map<List<VmTourPackage>>(package));
+    }
 
+    public IActionResult ExploreBD()
+    {
+        var package = _packageRepository.GetAll().Where(x => x.PackageType == PackageType.ExploreBD).ToList();
+        return View(_mapper.Map<List<VmTourPackage>>(package));
+    }
 }
