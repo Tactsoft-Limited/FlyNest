@@ -19,6 +19,15 @@ public class HolidayController(ITourPackageRepository packageRepository, ICountr
     {
         return View();
     }
+    public async Task<IActionResult> Booking(long id)
+    {
+        var details = await _packageRepository.FirstOrDefaultAsync(id, x => x.Country);
+        return View(_mapper.Map<VmTourPackage>(details));
+    }
+    public IActionResult Details()
+    {
+        return View();
+    }
     public IActionResult International()
     {
         var countries = _countryRepository.GetAll();

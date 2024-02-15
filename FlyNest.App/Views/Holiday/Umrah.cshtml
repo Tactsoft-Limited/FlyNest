@@ -6,7 +6,7 @@
 }
 
 <!-- =========== Breadcumb Start =========== -->
-<div class="bredcumb-section nepal-breadcrumb">
+<div class="bredcumb-section umrah-breadcrumb">
     <div class="overlay"></div>
     <div class="bredcumb-text position-absolute h-100 w-100 d-flex justify-content-center align-items-center">
         <div class="text-center">
@@ -14,7 +14,7 @@
                 <h3 class="fw-bold">Umrah</h3>
             </div>
             <div class="mt-10">
-                <a asp-action="International" asp-controller="Holiday">Umrah Packages</a>
+                <a asp-action="Umrah" asp-controller="Holiday">Umrah Packages</a>
                 <span><i class="bi bi-chevron-right mx-1" style="color: var(--primary-color);"></i></span>
                 <span>Umrah</span>
             </div>
@@ -88,7 +88,7 @@
                             </div>
                             <div style="min-height:125px" class="card-body">
                                 <h6 class="card-title text-secondary">
-                                    <span class="me-2"><i class="fa-solid fa-location-arrow"></i> </span> @item.CountryName
+                                    <span class="me-2"><i class="fa-solid fa-location-arrow"></i> </span> @item.PackageType
                                 </h6>
                                 <p class="card-text">
                                     @item.Title

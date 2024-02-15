@@ -1540,7 +1540,12 @@ Bacic Setup End
 .management-breadcrumb {
     background-image: url('../images/management/management.jpg');
 }
-
+.umrah-breadcrumb {
+    background-image: url('../images/umrah.jpg');
+}
+.cox-breadcrumb {
+    background-image: url('../images/cox-bazar.jpg');
+}
 .our-mission {
     background-image: url('../images/slider/slide-6.jpeg');
 }
