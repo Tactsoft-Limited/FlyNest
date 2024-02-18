@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FlyNest.Application.Interfaces.Entities;
+using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.SharedKernel.Core.Default;
 using FlyNest.SharedKernel.Core.FileExtentions;
@@ -106,5 +107,22 @@ public class TourPackageController : Controller
         }
         return View(viewModel);
     }
+
+    //public async Task<IActionResult> Delete(long id)
+    //{
+    //    if (id > 0)
+    //    {
+    //        var existing = _mapper.Map<VmImageSlider>(await _imageSliderRepository.FirstOrDefaultAsync(id));
+    //        if (existing.Image != null)
+    //        {
+    //            _fileStorageService.RemoveFile(existing.Image);
+    //        }
+    //        await _imageSliderRepository.DeleteAsync(id);
+    //        TempData["SuccessMessage"] = $" Item remove successfully";
+    //        return RedirectToAction("Index");
+    //    }
+    //    TempData["ErrorMessage"] = $"Error delete : Item not found";
+    //    return RedirectToAction("Index");
+    //}
 
 }

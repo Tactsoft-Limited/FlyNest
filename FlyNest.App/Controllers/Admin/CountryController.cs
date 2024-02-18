@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FlyNest.Application.Interfaces.Entities;
+using FlyNest.Application.Repositories.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.SharedKernel.Core.Default;
 using FlyNest.SharedKernel.Core.FileExtentions;
@@ -88,23 +89,20 @@ public class CountryController : Controller
     }
 
     // GET: CountryController/Delete/5
-    public ActionResult Delete(int id)
+    public async Task<IActionResult> Delete(long id)
     {
-        return View();
-    }
-
-    // POST: CountryController/Delete/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
-    {
-        try
+        if (id > 0)
         {
-            return RedirectToAction(nameof(Index));
+            var existing = _mapper.Map<VmCountry>(await _countryRepository.FirstOrDefaultAsync(id));
+            if (existing.Image != null)
+            {
+                _fileStorageService.RemoveFile(existing.Image);
+            }
+            await _countryRepository.DeleteAsync(id);
+            TempData["SuccessMessage"] = $" Item remove successfully";
+            return RedirectToAction("Index");
         }
-        catch
-        {
-            return View();
-        }
+        TempData["ErrorMessage"] = $"Error delete : Item not found";
+        return RedirectToAction("Index");
     }
 }
