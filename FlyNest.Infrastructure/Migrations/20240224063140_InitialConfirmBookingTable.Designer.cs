@@ -4,6 +4,7 @@ using FlyNest.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyNest.Infrastructure.Migrations
 {
     [DbContext(typeof(FlyNestDbContext))]
-    partial class FlyNestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240224063140_InitialConfirmBookingTable")]
+    partial class InitialConfirmBookingTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
