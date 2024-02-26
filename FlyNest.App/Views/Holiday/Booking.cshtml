@@ -1,13 +1,12 @@
-﻿@{
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmConfirmBooking;
+@{
     ViewData["Title"] = "Booking";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 <div class="my-3">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-header p-3">
                     <h5>
@@ -22,142 +21,238 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-2">
-                            <div class="single-payment">
-                                <img class="img-fluid payment-method" src="~/images/payment/small-bkash.png" />
+                            <div class="single-payment" data-method="abbank">
+                                <img class="img-fluid payment-method" src="~/images/payment/abbank.png" />
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="single-payment">
-                                <img class="img-fluid payment-method" src="~/images/payment/small-nagad.png" />
+                            <div class="single-payment" data-method="bbl">
+                                <img class="img-fluid payment-method" src="~/images/payment/bbl.png" />
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="single-payment">
-                                <img class="img-fluid payment-method" src="~/images/payment/dbbl.jpg" />
+                            <div class="single-payment" data-method="bkash">
+                                <img class="img-fluid payment-method" src="~/images/payment/bkash.png" />
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="single-payment">
-                                <img class="img-fluid payment-method" src="~/images/payment/small-brb.png" />
+                            <div class="single-payment" data-method="cbl">
+                                <img class="img-fluid payment-method" src="~/images/payment/cbl.png" />
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="single-payment">
-                                <img class="img-fluid payment-method" src="~/images/payment/small-mastercard.png" />
+                            <div class="single-payment" data-method="cblvisa">
+                                <img class="img-fluid payment-method" src="~/images/payment/cblvisa.png" />
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <div class="single-payment">
-                                <img class="img-fluid payment-method" src="~/images/payment/small-upay.png" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="card-header p-3">
-                    <h5>
-                        Customer Details
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <label class="mb-2" for="customerName">Customer Name</label>
-                            <input type="text" class="form-control mb-2" id="customerName" placeholder="Enter Your Name">
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="dbbl">
+                                <img class="img-fluid payment-method" src="~/images/payment/dbbl.png" />
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="mb-2" for="email">Email address</label>
-                            <input type="email" class="form-control mb-2" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="dbl">
+                                <img class="img-fluid payment-method" src="~/images/payment/dbl.png" />
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="mb-2" for="phone">Phone</label>
-                            <input type="text" class="form-control mb-2" id="phone" placeholder="Enter Phone">
+
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="dinerclub">
+                                <img class="img-fluid payment-method" src="~/images/payment/dinerclub.png" />
+                            </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-md-0 mt-sm-0 mt-xl-0 mt-2 ">
-            <div class="card">
-                <div class="card-header mb-3">
-                    <h5 class="text-center">Your Price Summary </h5>
-                </div>
-                <div class="card-header mt-2 d-flex justify-content-between">
-                    <div>
-                        <h6>Details</h6>
-                    </div>
-                    <div>
-                        @* <h6>Amount</h6> *@
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <h6>
-                                <b> @Model.Title </b>
-                            </h6>
-                            @* <p class="mt-2">
-                                Discount
-                            </p> *@
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="ebl">
+                                <img class="img-fluid payment-method" src="~/images/payment/ebl.png" />
+                            </div>
                         </div>
-                        <div>
-                            <h6>
-                                <b> @Model.PackagePrice </b>
-                            </h6>
-                            <p class="my-2">
-                                @* <b>1000</b> *@
-                            </p>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="hsbc">
+                                <img class="img-fluid payment-method" src="~/images/payment/hsbc.png" />
+                            </div>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="d-flex justify-content-between mt-2">
-                        <div>
-                            <h6>Total Amount</h6>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="lb">
+                                <img class="img-fluid payment-method" src="~/images/payment/lb.png" />
+                            </div>
                         </div>
-                        <div>
-                            <h6> @Model.PackagePrice </h6>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="mastercard">
+                                <img class="img-fluid payment-method" src="~/images/payment/mastercard.png" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="my-3">
-                        <div class="form-check">
-                            
-                            <div class="d-flex justify-content-center align-items-center">
-                                <div>
-                                    <input type="checkbox" class="form-check-input me-2" id="exampleCheck1">
-                                    
-                                </div>
-                                <div>
-                                    <label class="form-check-label" for="exampleCheck1">
-                                        Agree to the  <a asp-controller="Policy" asp-action="TermsAndConditions">Terms & Condition</a>
-                                        and
-                                        <a asp-controller="Policy" asp-action="PrivacyPolicy"> Privacy Policy</a>
-                                    </label>
-                                   </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="midlandbank">
+                                <img class="img-fluid payment-method" src="~/images/payment/midlandbank.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="mtb">
+                                <img class="img-fluid payment-method" src="~/images/payment/mtb.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="nagad">
+                                <img class="img-fluid payment-method" src="~/images/payment/nagad.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="nccbl">
+                                <img class="img-fluid payment-method" src="~/images/payment/nccbl.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="scbl">
+                                <img class="img-fluid payment-method" src="~/images/payment/scbl.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="upay">
+                                <img class="img-fluid payment-method" src="~/images/payment/upay.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="visa">
+                                <img class="img-fluid payment-method" src="~/images/payment/visa.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="IBBL">
+                                <img class="img-fluid payment-method" src="~/images/payment/IBBL.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="SureCash">
+                                <img class="img-fluid payment-method" src="~/images/payment/SureCash.png" />
+                            </div>
+                        </div><div class="col-md-2">
+                            <div class="single-payment" data-method="sibl">
+                                <img class="img-fluid payment-method" src="~/images/payment/sibl.png" />
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="single-payment" data-method="Ibblibanking">
+                                <img class="img-fluid payment-method" src="~/images/payment/Ibblibanking.png" />
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="button">Pay Now </button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-5 mt-md-0 mt-sm-0 mt-xl-0 mt-2 ">
+            <form asp-action="Booking" asp-controller="Holiday" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" value="0" />
+                <input type="hidden" asp-for="TourPackageId" />
+                <input type="hidden" asp-for="PackageTitle" />
+                <input type="hidden" asp-for="PackagePrice" />
+                <input type="hidden" asp-for="PaymentMethod" />
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="text-left">Price Summary </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between my-2">
+                            <h6> @Model.PackageTitle  <span class="badge badge-dark" style="color:black;">price per person</span></h6>
+                            <h6><b> @Model.PackagePrice </b>  </h6>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label asp-for="TotalPerson" class="col-sm-7 col-form-label"></label>
+                            <div class="col-sm-5" style="height: 45px !important;">
+                                <input asp-for="TotalPerson" class="form-control form-control-sm" required />
+                                <span asp-validation-for="TotalPerson" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="TotalAmount" class="col-sm-7 col-form-label"></label>
+                            <div class="col-sm-5" style="height: 45px !important;">
+                                <input asp-for="TotalAmount" class="form-control form-control-sm" required readonly />
+                                <span asp-validation-for="TotalAmount" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="mt-2">
+                            @*<div class="card-title mt-3">Contact Details</div><hr /><br />*@
+                            <div class="form-group row">
+                                <label asp-for="ClientName" class="col-sm-4 col-form-label"></label>
+                                <div class="col-sm-8" style="height: 45px !important;">
+                                    <input asp-for="ClientName" class="form-control form-control-sm" required placeholder="Your full name" />
+                                    <span asp-validation-for="ClientName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="ClientEmail" class="col-sm-4 col-form-label"></label>
+                                <div class="col-sm-8" style="height: 45px !important;">
+                                    <input asp-for="ClientEmail" class="form-control form-control-sm" placeholder="Email address"/>
+                                    <span asp-validation-for="ClientEmail" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="ClientPhone" class="col-sm-4 col-form-label"></label>
+                                <div class="col-sm-8" style="height: 45px !important;">
+                                    <input asp-for="ClientPhone" class="form-control form-control-sm" placeholder="Contact number"/>
+                                    <span asp-validation-for="ClientPhone" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="my-3" style="font-size:13px;">
+                                <div class="form-check">
+                                    <input asp-for="TramAndCondition" type="checkbox" class="form-check-input me-2">
+                                    <label class="form-check-label" asp-for="TramAndCondition">
+                                        Agree to the <a asp-controller="Policy" asp-action="TermsAndConditions">Terms & Condition</a>,
+                                        <a asp-controller="Policy" asp-action="PrivacyPolicy">Privacy Policy</a>
+                                        and
+                                        <a asp-controller="Policy" asp-action="ReturnAndRefund">Refund Policy</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-grid gap-2">
+                                <input class="btn btn-primary" type="submit" value="Pay Now" id="payNowBtn" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         var paymentMethodImages = document.querySelectorAll('.single-payment');
-
+        var paymentMethodInput = document.getElementById('PaymentMethod');
         paymentMethodImages.forEach(function (image) {
             image.addEventListener('click', function () {
                 paymentMethodImages.forEach(function (img) {
                     img.classList.remove('selected-payment');
                 });
                 this.classList.add('selected-payment');
+                paymentMethodInput.value = this.dataset.method;
             });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var totalPersonInput = document.getElementById('TotalPerson');
+        var totalAmountInput = document.getElementById('TotalAmount');
+        totalAmountInput.value = parseFloat('@Model.PackagePrice').toFixed(2);
+        totalPersonInput.addEventListener('input', function () {
+            var packagePrice = parseFloat('@Model.PackagePrice');
+            var totalPerson = parseFloat(totalPersonInput.value);
+            var totalAmount = packagePrice * totalPerson;
+            totalAmountInput.value = totalAmount.toFixed(2);
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var checkBox = document.getElementById("TramAndCondition");
+        var payNowBtn = document.getElementById("payNowBtn");
+        checkBox.addEventListener("change", function () {
+            payNowBtn.disabled = !checkBox.checked;
         });
     });
 </script>

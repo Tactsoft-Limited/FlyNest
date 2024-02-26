@@ -35,7 +35,7 @@ public class TourPackageController : Controller
 
     public async Task<IActionResult> Details(long id)
     {
-        var tourPackage = await _repository.FirstOrDefaultAsync(id);
+        var tourPackage = await _repository.FirstOrDefaultAsync(id, x => x.Country);
         return View(_mapper.Map<VmTourPackage>(tourPackage));
     }
 
@@ -108,21 +108,20 @@ public class TourPackageController : Controller
         return View(viewModel);
     }
 
-    //public async Task<IActionResult> Delete(long id)
-    //{
-    //    if (id > 0)
-    //    {
-    //        var existing = _mapper.Map<VmImageSlider>(await _imageSliderRepository.FirstOrDefaultAsync(id));
-    //        if (existing.Image != null)
-    //        {
-    //            _fileStorageService.RemoveFile(existing.Image);
-    //        }
-    //        await _imageSliderRepository.DeleteAsync(id);
-    //        TempData["SuccessMessage"] = $" Item remove successfully";
-    //        return RedirectToAction("Index");
-    //    }
-    //    TempData["ErrorMessage"] = $"Error delete : Item not found";
-    //    return RedirectToAction("Index");
-    //}
+    public async Task<IActionResult> Delete(long id)
+    {
+        if (id > 0)
+        {
+            var existing = _mapper.Map<VmTourPackage>(await _repository.FirstOrDefaultAsync(id));
+            new[] { existing.ImageOne, existing.ImageTwo, existing.ImageThree }
+            .Where(img => img != null).ToList().ForEach(async img => await _fileStorageService.RemoveFileAsync(img));
+
+            await _repository.DeleteAsync(id);
+            TempData["SuccessMessage"] = $" Item remove successfully";
+            return RedirectToAction("Index");
+        }
+        TempData["ErrorMessage"] = $"Error delete : Item not found";
+        return RedirectToAction("Index");
+    }
 
 }

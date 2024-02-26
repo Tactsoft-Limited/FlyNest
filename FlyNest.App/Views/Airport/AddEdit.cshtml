@@ -25,6 +25,7 @@
             <h3 class="card-title">Create Airport  </h3>
             <div class="card-body">
                 <form asp-action="AddEdit" asp-controller="Airport" role="form" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="modal-body form-horizontal">
                         <div class="row">
 

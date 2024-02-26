@@ -458,7 +458,7 @@ Bacic Setup End
     position: fixed;
     right: 0%;
     bottom: 50%;
-    width: 260px;
+    width: 65px;
     height: 60px;
     z-index: 999;
     /* overflow: hidden; */
@@ -485,9 +485,9 @@ Bacic Setup End
 
 .messenger-links {
     position: absolute;
-    left: 0px;
-    top: 10px;
-    width: 240px;
+    left: 15px !important;
+    top: -89px;
+    height: 150px;
     transform: scale(0);
     transform-origin: 100% 50%;
     -webkit-transition: all 0.3s;
@@ -903,7 +903,7 @@ Bacic Setup End
     .explore-bd .overlay {
         position: absolute;
         width: 100%;
-        height: 30%;
+        height: 20%;
         left: 0;
         bottom: 0;
         opacity: .6;
@@ -1540,12 +1540,15 @@ Bacic Setup End
 .management-breadcrumb {
     background-image: url('../images/management/management.jpg');
 }
+
 .umrah-breadcrumb {
     background-image: url('../images/umrah.jpg');
 }
+
 .cox-breadcrumb {
     background-image: url('../images/cox-bazar.jpg');
 }
+
 .our-mission {
     background-image: url('../images/slider/slide-6.jpeg');
 }
@@ -1553,7 +1556,6 @@ Bacic Setup End
 .our-vission {
     background-image: url('../images/slider/slider-4.jpeg');
 }
-
 
 .about-bredcumb {
     background-image: url('../images/slider/slide-5.jpeg');
@@ -1567,69 +1569,6 @@ Bacic Setup End
     background-image: url('../images/terms-and-condition.jpg');
 }
 
-.nepal-breadcrumb {
-    background-image: url('../images/outbound/nepal.webp');
-}
-
-.dubai-breadcrumb {
-    background-image: url('../images/outbound/dubai-image.jpg');
-}
-
-.maldives-breadcrumb {
-    background-image: url('../images/outbound/maldives.jpg');
-}
-
-.india-breadcrumb {
-    background-image: url('../images/outbound/india.jpg');
-}
-
-.thailand-breadcrumb {
-    background-image: url('../images/popular-destination/thailand.jpg')
-}
-
-.malaysia-breadcrumb {
-    background-image: url('../images/popular-destination/Malaysia.jpg')
-}
-
-.singapore-breadcrumb {
-    background-image: url('../images/popular-destination/Singapore.jpg')
-}
-
-.vietnam-breadcrumb {
-    background-image: url('../images/popular-destination/vietnam.jpeg')
-}
-
-.turkey-breadcrumb {
-    background-image: url('../images/popular-destination/turkey.jpg')
-}
-
-.saudi-breadcrumb {
-    background-image: url('../images/outbound/saudi-image.jpeg');
-}
-
-.qatar-breadcrumb {
-    background-image: url('../images/outbound/qatar-image.jpg');
-}
-
-.srilanka-breadcrumb {
-    background-image: url('../images/outbound/srilanka-image.jpg');
-}
-
-.abudhabi-breadcrumb {
-    background-image: url('../images/outbound/abudhabi-image.jpg');
-}
-
-.uzbekistan-breadcrumb {
-    background-image: url('../images/outbound/uzbekistan-image.jpg');
-}
-
-.uuce-breadcrumb {
-    background-image: url('../images/outbound/UUCE/uuce-bg.jpg');
-}
-
-.europe-breadcrumb {
-    background-image: url('../images/outbound/europe/europe-bg.jpg');
-}
 
 .bredcumb-section .overlay {
     position: absolute;

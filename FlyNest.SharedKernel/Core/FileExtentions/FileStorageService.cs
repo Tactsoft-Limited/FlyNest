@@ -39,6 +39,14 @@ public class FileStorageService : IFileStorageService
         }
     }
 
+    public async Task RemoveFileAsync(string fileName)
+    {
+        if (!string.IsNullOrEmpty(fileName))
+        {
+            await Task.Run(() => DeleteFile(fileName, _imagesPath));
+        }
+    }
+
     private static async Task<string> SaveFileAsync(IFormFile file, string folderPath)
     {
         if (file == null || file.Length == 0)

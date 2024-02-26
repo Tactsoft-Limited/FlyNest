@@ -1,0 +1,118 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmConfirmBooking>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Confirm Booking</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Confirm Booking</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Confirm Booking List</h3>
+            <div class="card-tools">
+                @*<a asp-action="AddEdit" asp-controller="Country" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Country</a>*@
+            </div>
+        </div>
+        <div class="card-body table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PackageTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PackagePrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TransactionId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalPerson)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalAmount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClientName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClientEmail)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ClientPhone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PaymentMethod)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TramAndCondition)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink(item.PackageTitle, "Details", "TourPackage", new { id = item.TourPackageId }, null)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PackagePrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TransactionId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPerson)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalAmount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClientName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClientEmail)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClientPhone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PaymentMethod)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TramAndCondition)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</section>

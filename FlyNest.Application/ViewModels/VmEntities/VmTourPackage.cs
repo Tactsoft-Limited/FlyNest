@@ -22,8 +22,8 @@ public class VmTourPackage : BaseEntity
 
     [Display(Name = "Country")]
     public string CountryName { get; set; }
+    public string CountryImage { get; set; }
     public PackageType PackageType { get; set; }
-
     public string ImageOne { get; set; }
     public IFormFile ImageOneFile { get; set; }
     public string ImageTwo { get; set; }

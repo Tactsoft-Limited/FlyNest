@@ -20,11 +20,11 @@
                     </a>
                 </li>
                 @*<li class="nav-item">
-                    <a asp-action="Index" asp-controller="Airport" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Airport" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class="nav-icon fas fa-plane"></i>
-                        <p>Airport</p>
-                    </a>
-                </li>*@
+            <a asp-action="Index" asp-controller="Airport" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Airport" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                <i class="nav-icon fas fa-plane"></i>
+                <p>Airport</p>
+            </a>
+        </li>*@
                 <li class="nav-item">
                     <a asp-action="Index" asp-controller="FlightReservation" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "FlightReservation" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                         <i class=" nav-icon fas fa-plane-departure"></i>
@@ -38,18 +38,47 @@
                         <p>Hotel Reservation</p>
                     </a>
                 </li>
-                @*<li class="nav-item">
-                    <a asp-action="Index" asp-controller="Room" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class="nav-icon fas fa-bed"></i>
-                        <p>Room</p>
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="TourPackage" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "TourPackage" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-umbrella-beach"></i>
+                        <p>Tour Package</p>
                     </a>
-                </li>*@
-                @*<li class="nav-item">
-                    <a asp-action="Index" asp-controller="Baggage" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
-                        <i class=" nav-icon fas fa-suitcase"></i>
-                        <p>Baggage</p>
+                </li>
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="ImageSlider" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "ImageSlider" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-images"></i>
+                        <p>Image Slider</p>
                     </a>
-                </li>*@
+                </li>
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Country" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Country" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-globe"></i>
+                        <p>Country</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="ConfirmBooking" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "ConfirmBooking" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fas fa-calendar-check"></i>
+                        <p>Confirm Booking</p>
+                    </a>
+                </li>
+
+                @*<li class="nav-item">
+            <a asp-action="Index" asp-controller="Room" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                <i class="nav-icon fas fa-bed"></i>
+                <p>Room</p>
+            </a>
+        </li>*@
+                @*<li class="nav-item">
+            <a asp-action="Index" asp-controller="Baggage" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                <i class=" nav-icon fas fa-suitcase"></i>
+                <p>Baggage</p>
+            </a>
+        </li>*@
 
                 <li class="nav-header text-uppercase">Permission Management</li>
                 <li class="nav-item">

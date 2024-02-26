@@ -18,5 +18,8 @@ public class TourPackage : AuditableEntity
     public string ImageOne { get; set; }
     public string ImageTwo { get; set; }
     public string ImageThree { get; set; }
+
+
+    public ICollection<ConfirmBooking> ConfirmBookings { get; set; } = new HashSet<ConfirmBooking>();
 }
 

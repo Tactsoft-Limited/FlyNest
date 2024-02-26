@@ -8,11 +8,11 @@ public static class DefaultApplicationRoles
     public const string SuperAdmin = "SuperAdmin";
     public const string Admin = "Admin";
     public const string Moderator = "Moderator";
-    public const string Basic = "Basic";
+    public const string User = "User";
 
     public static List<Role> GetDefaultRoles()
     {
-        var roles = new List<Role> { new(SuperAdmin), new(Admin), new(Moderator), new(Basic) };
+        var roles = new List<Role> { new(SuperAdmin), new(Admin), new(Moderator), new(User) };
         return roles;
     }
 

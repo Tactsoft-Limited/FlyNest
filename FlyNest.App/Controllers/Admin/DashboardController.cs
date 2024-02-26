@@ -7,10 +7,14 @@ namespace FlyNest.App.Controllers.Admin;
 
 public class DashboardController(
     IFlightReservationRepository flightReservationRepository,
-    IHotelReservationRepository hotelReservationRepository) : Controller
+    IHotelReservationRepository hotelReservationRepository,
+    ITourPackageRepository tourPackageRepository,
+    ICountryRepository countryRepository) : Controller
 {
     private readonly IFlightReservationRepository _flightReservationRepository = flightReservationRepository;
     private readonly IHotelReservationRepository _hotelReservationRepository = hotelReservationRepository;
+    private readonly ITourPackageRepository _tourPackageRepository = tourPackageRepository;
+    private readonly ICountryRepository _countryRepository = countryRepository;
 
     public async Task<IActionResult> Index()
     {
@@ -18,6 +22,8 @@ public class DashboardController(
         {
             TotalFlightReserve = await _flightReservationRepository.GetAll().CountAsync(),
             TotalHotelReserve = await _hotelReservationRepository.GetAll().CountAsync(),
+            TotalTourPackage = await _tourPackageRepository.GetAll().CountAsync(),
+            TotalCountry = await _countryRepository.GetAll().CountAsync(),
         };
         return View(dashboard);
     }

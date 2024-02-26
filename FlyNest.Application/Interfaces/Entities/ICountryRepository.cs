@@ -7,4 +7,5 @@ namespace FlyNest.Application.Interfaces.Entities;
 public interface ICountryRepository : IBaseRepository<Country>
 {
     IEnumerable<SelectListItem> Dropdown();
+    string GetCountryNameById(long id);
 }

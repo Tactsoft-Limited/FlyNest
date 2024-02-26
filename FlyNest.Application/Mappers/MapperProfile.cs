@@ -53,10 +53,13 @@ public class MapperProfile : Profile
 
         CreateMap<TourPackage, VmTourPackage>()
             .ForMember(d => d.CountryDropdown, opt => opt.Ignore())
-            .ForMember(d => d.CountryName, opt => opt.MapFrom(src => src.Country.Name));
+            .ForMember(d => d.CountryName, opt => opt.MapFrom(src => src.Country.Name))
+            .ForMember(d => d.CountryImage, opt => opt.MapFrom(src => src.Country.Image));
 
         CreateMap<VmImageSlider, ImageSlider>().ReverseMap();
         CreateMap<VmCountry, Country>().ReverseMap();
+
+        CreateMap<VmConfirmBooking, ConfirmBooking>().ReverseMap();
 
 
         AllowNullCollections = true;

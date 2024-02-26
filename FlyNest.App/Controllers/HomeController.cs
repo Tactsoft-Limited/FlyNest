@@ -3,6 +3,7 @@ using FlyNest.App.Models;
 using FlyNest.Application.Interfaces.Entities;
 using FlyNest.Application.ViewModels.VmEntities;
 using FlyNest.Application.ViewModels.VmEntities.Search;
+using FlyNest.SharedKernel.Core.Default;
 using FlyNest.SharedKernel.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,9 @@ namespace FlyNest.App.Controllers
         IFlightReservationRepository flightReservationRepository,
         IMapper mapper,
         IHotelReservationRepository hotelReservationRepository,
-        IImageSliderRepository sliderRepository) : Controller
+        IImageSliderRepository sliderRepository,
+        ICountryRepository countryRepository,
+        ITourPackageRepository tourPackageRepository) : Controller
     {
         private readonly IFlightReservationRepository _flightReservationRepository = flightReservationRepository;
         private readonly IHotelReservationRepository _hotelReservationRepository = hotelReservationRepository;
@@ -27,13 +30,19 @@ namespace FlyNest.App.Controllers
         private readonly IFlightRepository _flightRepository = flightRepository;
         private readonly IHotelRepository _hotelRepository = hotelRepository;
         private readonly IImageSliderRepository _sliderRepository = sliderRepository;
+        private readonly ICountryRepository _countryRepository = countryRepository;
+        private readonly ITourPackageRepository _tourPackageRepository = tourPackageRepository;
         private readonly ILogger<HomeController> _logger = logger;
         private readonly IMapper _mapper = mapper;
 
         public IActionResult Index()
         {
-            var viewModel = new VmReservation(); // Initialize ViewModel
-            viewModel.ImageSlider = _mapper.Map<List<VmImageSlider>>(_sliderRepository.GetAll().OrderBy(x => x.Priority).Where(x => x.IsActive == true));
+            var viewModel = new VmReservation
+            {
+                ImageSlider = _mapper.Map<List<VmImageSlider>>(_sliderRepository.GetAll().OrderBy(x => x.Priority).Where(x => x.IsActive == true)),
+                CountryList = _mapper.Map<List<VmCountry>>(_countryRepository.GetAll().OrderBy(x => x.Id).Take(8)),
+                ExploreBDList = _mapper.Map<List<VmTourPackage>>(_tourPackageRepository.GetAll().Where(x => x.PackageType == PackageType.ExploreBD).Take(8))
+            };
             return View(viewModel);
         }
 
@@ -43,8 +52,7 @@ namespace FlyNest.App.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _flightReservationRepository.InsertAsync(
-                    _mapper.Map<FlightReservation>(viewModel.FlightReservation));
+                await _flightReservationRepository.InsertAsync(_mapper.Map<FlightReservation>(viewModel.FlightReservation));
                 TempData["SuccessMessage"] = $" Flight booking successfully completed.";
                 return RedirectToAction("Index");
             }
