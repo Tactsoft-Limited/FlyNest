@@ -45,6 +45,7 @@ public class SSLCommerzGateway
     {
         public string StoreId { get; set; }
         public string StoreSecret { get; set; }
+        public string AppUrl { get; set; }
     }
 
 }

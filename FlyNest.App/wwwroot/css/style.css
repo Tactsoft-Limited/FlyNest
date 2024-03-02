@@ -445,78 +445,51 @@ Bacic Setup End
 /*
     Fixed Social area start
 =================================*/
-/*.fixed-area {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #263238;
-}*/
-.messenger {
-    display: block;
+.chat-icon {
     position: fixed;
-    right: 0%;
-    bottom: 50%;
-    width: 65px;
-    height: 60px;
+    top: 70%;
+    right: -2%;
+    transform: translate(-50%, -50%);
     z-index: 999;
-    /* overflow: hidden; */
 }
 
-.messenger-btn {
-    padding: 14px;
-    display: block;
-    width: 60px;
-    height: 60px;
-    border-radius: 60px;
-    background-color: #9fbce0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: pointer;
-    z-index: 2;
-}
-
-    .messenger-btn img {
-        width: 32px;
-        height: 32px;
+    .chat-icon ul {
+        list-style: none;
     }
 
-.messenger-links {
-    position: absolute;
-    left: 15px !important;
-    top: -89px;
-    height: 150px;
-    transform: scale(0);
-    transform-origin: 100% 50%;
-    -webkit-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    z-index: 0;
-}
+        .chat-icon ul li {
+            width: 50px !important;
+            height: 50px !important;
+            margin: 10px 0px;
+        }
 
-    .messenger-links.show {
-        left: 100px;
-        transform: scale(1);
-    }
+            .chat-icon ul li a {
+                width: 50px !important;
+                height: 50px !important;
+                position: relative;
+                cursor: pointer;
+                border-radius: 3px;
+                box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            }
 
-    .messenger-links a {
-        width: 40px;
-        margin-left: 4px;
-    }
+                .chat-icon ul li a .svg-inline--fa {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    font-size: 30px;
+                    color: #fff;
+                }
 
-    .messenger-links img {
-        max-width: 40px;
-        -webkit-transition: all 0.3s;
-        -o-transition: all 0.3s;
-        transition: all 0.3s;
-    }
+            .chat-icon ul li.messenger {
+                background: #3b5998;
+            }
 
-    .messenger-links a:hover img {
-        transform: scale(1.1);
-        text-decoration: none;
-    }
+            .chat-icon ul li.whatsapp {
+                background: #4dc247;
+            }
+
+
 
 /*
     Fixed Social area end
@@ -574,7 +547,7 @@ Bacic Setup End
     margin: auto;
     border: 1px solid var(--color-white);
     background-color: var(--color-white);
-    padding: 25px 30px 35px 30px;
+    padding: 0px 15px;
     border-radius: 8px;
     margin-top: -50px !important;
     position: relative;
@@ -583,8 +556,16 @@ Bacic Setup End
 }
 
     .search-area .search-trip-type {
-        margin-bottom: 30px;
+        margin-bottom: 15px;
     }
+
+        .search-area .search-trip-type .nav-tabs .nav-item .nav-link {
+            font-size: var(--size-md);
+            color: var(--color-99);
+            font-weight: var(--text-bold);
+            display: inline-block;
+            margin-right: 12px;
+        }
 
         .search-area .search-trip-type .nav-tabs .nav-item .nav-link {
             font-size: var(--size-md);
@@ -639,9 +620,6 @@ Bacic Setup End
     }
 
     .search-area .tab-content .tab-pane form button {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        width: 100%;
         color: var(--color-white);
         border-radius: 8px !important;
     }
@@ -2532,7 +2510,7 @@ Bacic Setup End
     }
 
         .main-footer .footer-widgets-single .footer-menu li {
-            line-height: 35px;
+            line-height: 25px;
         }
 
             .main-footer .footer-widgets-single .footer-menu li a {
@@ -2698,10 +2676,11 @@ Bacic Setup End
     border: 1px solid var(--primary-color);
     border-radius: 50% !important;
     bottom: 35px;
-    right: 35px;
+    right: 10px;
     width: 40px;
     height: 40px;
     transition: .7s ease;
+    z-index: 2;
 }
 
     #scroll-bottom-top i {

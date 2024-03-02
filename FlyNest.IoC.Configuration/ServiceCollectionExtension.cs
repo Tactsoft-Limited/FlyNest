@@ -20,18 +20,18 @@ public static class ServiceCollectionExtension
         services.ApplicationServices(configuration);
         services.AddAuthorizationBuilder().AddPolicy("DebugPolicy", policy => policy.RequireAssertion(context => true));
 
-        //services.AddSingleton(configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
-        //services.AddScoped<IEmailSender, EmailSender>();
+
 
         services.Configure<SSLCommerzSetting>(configuration.GetSection("SSLCommerzSetting"));
+        services.Configure<MailSetting>(configuration.GetSection("MailSetting"));
+
+        services.AddScoped<MailService, MailService>();
         services.AddScoped<IFileStorageService, FileStorageService>();
-        services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie(
-                options =>
-                {
-                    options.ExpireTimeSpan = TimeSpan.Zero; // Expire the cookie when the browser is closed
-                    options.SlidingExpiration = false; // Disable sliding expiration
-                });
+        services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+        {
+            options.ExpireTimeSpan = TimeSpan.Zero;
+            options.SlidingExpiration = false;
+        });
         services.AddSession();
 
         return services;

@@ -1,9 +1,8 @@
-﻿using FlyNest.Application.Repositories.Helpers;
-using FlyNest.Application.ViewModels.Account;
+﻿using FlyNest.Application.ViewModels.Account;
+using FlyNest.SharedKernel.Core.EmailService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using static FlyNest.SharedKernel.Entities.Identities.IdentityModel;
@@ -14,13 +13,14 @@ namespace FlyNest.App.Controllers;
 [Route("[controller]/[action]")]
 public class AccountController(
     UserManager<User> userManager,
+    MailService emailSender,
     SignInManager<User> signInManager,
-    IEmailSender emailSender,
+
     ILogger<AccountController> logger) : Controller
 {
     private readonly UserManager<User> _userManager = userManager;
     private readonly SignInManager<User> _signInManager = signInManager;
-    private readonly IEmailSender _emailSender = emailSender;
+    private readonly MailService _emailSender = emailSender;
     private readonly ILogger _logger = logger;
 
     [TempData]
@@ -49,8 +49,10 @@ public class AccountController(
                 // You can customize this part based on your needs
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code }, protocol: HttpContext.Request.Scheme);
-                await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+
+                var message = new Message([user.Email], "Email Confirmation", $"<div style=\"text-align: justify; font-weight:100; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px;\"> <h2 style=\"color: #007BFF;\">Email Confirmation</h2> <p>Dear {user.Email},</p> <p>Thank you for registering with our service. To complete your registration, please click the link below to confirm your email address:</p> <p> <a href='{callbackUrl}' style=\"display: inline-block; padding: 10px 20px; background-color: #007BFF; color: #fff; text-decoration: none; border-radius: 3px;\"> Confirm Email </a> </p> <p>If you did not request this confirmation, please ignore this email.</p> <p>Thank you!</p><p><img width=\"100\" height=\"60\" src=\"~/images/logo.png\"></p> </div>", null);
+                await _emailSender.SendEmailAsync(message);
+                await _userManager.AddToRoleAsync(user, "User");
 
                 TempData["SuccessMessage"] = "Registration successful. Please check your email to confirm your account.";
                 return RedirectToAction(nameof(Login));
@@ -79,11 +81,7 @@ public class AccountController(
     {
         if (ModelState.IsValid)
         {
-            var result = await _signInManager.PasswordSignInAsync(
-                model.Email,
-                model.Password,
-                model.RememberMe,
-                lockoutOnFailure: false);
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
 
             switch (result.Succeeded)
             {
@@ -334,10 +332,10 @@ public class AccountController(
             }
             var code = await _userManager.GeneratePasswordResetTokenAsync(user);
             var callbackUrl = Url.Action(user.Id.ToString(), code, Request.Scheme);
-            var result = _emailSender.SendEmailAsync(
-                model.Email,
-                "Reset Password",
-                $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+
+            var message = new Message(new string[] { user.Email }, "Reset Password", $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>", null);
+            var result = _emailSender.SendEmailAsync(message);
+
             return RedirectToAction(nameof(ForgotPasswordConfirmation));
         }
         return View(model);

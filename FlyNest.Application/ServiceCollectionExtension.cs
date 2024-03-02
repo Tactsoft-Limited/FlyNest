@@ -2,7 +2,7 @@
 using FlyNest.Application.Repositories.Helpers;
 using FlyNest.Infrastructure.Interfaces.BaseRepo;
 using FlyNest.Infrastructure.Interfaces.Helpers;
-using Microsoft.AspNetCore.Identity.UI.Services;
+using FlyNest.SharedKernel.Core.EmailService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,15 +14,13 @@ public static class ServiceCollectionExtension
     {
         ArgumentNullException.ThrowIfNull(configuration);
 
-        services.Scan(
-            scan => scan.FromAssemblyOf<IApplication>()
-                .AddClasses(classes => classes.AssignableTo<IApplication>())
-                .AddClasses(classes => classes.AssignableTo(typeof(IBaseRepository<>)))
-                .AsSelfWithInterfaces()
-                .WithScopedLifetime());
+        services.Scan(scan => scan.FromAssemblyOf<IApplication>()
+        .AddClasses(classes => classes.AssignableTo<IApplication>())
+        .AddClasses(classes => classes.AssignableTo(typeof(IBaseRepository<>)))
+        .AsSelfWithInterfaces()
+        .WithScopedLifetime());
 
         services.AddScoped<IUserResolverService, UserResolverService>();
-        services.AddScoped<IEmailSender, EmailSender>();
 
         services.AddValidatorsFromAssembly(typeof(IApplication).Assembly);
         services.AddAutoMapper(x => x.AddMaps(typeof(IApplication).Assembly));

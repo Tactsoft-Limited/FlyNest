@@ -122,7 +122,7 @@ public class HolidayController(ITourPackageRepository packageRepository, ICountr
             };
 
             //string ApiUrl = "https://sandbox.sslcommerz.com/gwprocess/v4/api.php";
-            string ApiUrl = "https://securepay.sslcommerz.com/gwprocess/v4/api.php";
+            string ApiUrl = _sslConfig.AppUrl;
 
             var client = new HttpClient();
             var wr = new HttpRequestMessage(HttpMethod.Post, ApiUrl)

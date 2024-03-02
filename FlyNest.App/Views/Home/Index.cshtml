@@ -1,4 +1,5 @@
 ﻿@model FlyNest.Application.ViewModels.VmEntities.Search.VmReservation
+@using FlyNest.SharedKernel.Core.Default
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -12,6 +13,259 @@
         object-fit: cover;
         height: 100%;
     }
+
+    .trav_engine {
+        position: relative;
+        width: 220px;
+        z-index: 3;
+    }
+
+    #txtTotalTravelers {
+        padding-top: 5px;
+    }
+
+    .trav_toggle {
+        width: 210px;
+        box-sizing: border-box;
+        line-height: 32px;
+        font-size: 0;
+        position: absolute;
+        top: 5px !important;
+    }
+
+    .trav_form {
+        border: 1px solid #ddd;
+        width: 220px;
+        box-sizing: border-box;
+        float: left;
+        position: absolute;
+    }
+
+    .trav_item {
+        border-bottom: 1px solid #eaeaea;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        float: left;
+        background-color: #FFF;
+    }
+
+    .trav_inner1 {
+        width: 40%;
+        float: left;
+        font-size: 15px;
+        line-height: 17px;
+        color: #333333;
+        box-sizing: border-box;
+    }
+
+        .trav_inner1 span {
+            font-size: 11px;
+            display: block;
+            color: #888888;
+        }
+
+    .trav_inner2 {
+        width: 60%;
+        float: left;
+        font-size: 13px;
+        line-height: 30px;
+        color: #666;
+        box-sizing: border-box;
+        display: flex;
+    }
+
+    .minus, .plus {
+        border: 1px solid #ddd;
+        width: 36px;
+        text-decoration: none;
+        font-size: 18px;
+        height: 34px;
+        text-align: center;
+        box-sizing: border-box;
+        float: left;
+        background: #ddd;
+        background: rgb(255,255,255);
+        background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 48%, rgba(255,255,255,1) 100%);
+        background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 48%,rgba(255,255,255,1) 100%);
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 48%,rgba(255,255,255,1) 100%);
+    }
+
+    .minus {
+        border-radius: 50% 0 0 50%;
+    }
+
+    .plus {
+        border-radius: 0 50% 50% 0;
+    }
+
+    .txt_trav {
+        outline: none;
+        border: 1px solid #ddd;
+        height: 34px;
+        width: 36px;
+        float: left;
+        text-align: center;
+        line-height: 34px;
+        box-sizing: border-box;
+        border-left: 0;
+        border-right: 0;
+        font-size: 16px;
+        color: #444;
+    }
+
+    .txt_Traveler {
+        border: 1px solid #ddd;
+        width: 220px;
+        box-sizing: border-box;
+        padding: 10px;
+        outline: none;
+    }
+
+    .trav_done {
+        padding: 0px;
+        display: block;
+        border-radius: 2px;
+        background: #f2f2f2;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        color: #444;
+        width: 70px;
+        margin: 0 auto;
+        text-align: center;
+        cursor: default;
+    }
+
+    .trav_toggle.open {
+        background: url(https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/down4-512.png) no-repeat right 3px;
+        background-size: 15px;
+    }
+
+    .trav_toggle.close {
+        background: url(https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/up4-512.png) no-repeat right 3px;
+        background-size: 15px;
+    }
+
+    /****  floating-Lable style start ****/
+    .floating-label {
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    .floating-input, .floating-select {
+        font-size: 14px;
+        padding: 4px 4px;
+        display: block;
+        width: 100%;
+        height: 30px;
+        background-color: transparent;
+        border: none;
+        border: 1px solid #757575;
+    }
+
+        .floating-input:focus, .floating-select:focus {
+            outline: none;
+            border-bottom: 2px solid #5264AE;
+        }
+
+    .floating-label-placeholder {
+        color: #999;
+        font-size: 14px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 5px;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .floating-input:focus ~ .floating-label-placeholder, .floating-input:not(:placeholder-shown) ~ .floating-label-placeholder {
+        top: -13px;
+        background-color: #fff;
+        font-size: 14px;
+        color: #5264AE;
+    }
+
+    .floating-select:focus ~ .floating-label-placeholder, .floating-select:not([value=""]):valid ~ .floating-label-placeholder {
+        top: -18px;
+        font-size: 14px;
+        color: #5264AE;
+    }
+
+    /* active state */
+    .floating-input:focus ~ .bar:before, .floating-input:focus ~ .bar:after, .floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
+        width: 50%;
+    }
+
+    *, *:before, *:after {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .floating-textarea {
+        min-height: 30px;
+        max-height: 260px;
+        overflow: hidden;
+        overflow-x: hidden;
+    }
+
+    /* highlighter */
+    .highlight {
+        position: absolute;
+        height: 50%;
+        width: 100%;
+        top: 15%;
+        left: 0;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    /* active state */
+    .floating-input:focus ~ .highlight, .floating-select:focus ~ .highlight {
+        -webkit-animation: inputHighlighter 0.3s ease;
+        -moz-animation: inputHighlighter 0.3s ease;
+        animation: inputHighlighter 0.3s ease;
+    }
+
+
+    /* animation */
+    @@-webkit-keyframes inputHighlighter {
+        from {
+            background: #5264AE;
+        }
+
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+
+    @@-moz-keyframes inputHighlighter {
+        from {
+            background: #5264AE;
+        }
+
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+
+    @@keyframes inputHighlighter {
+        from {
+            background: #5264AE;
+        }
+
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+
+    /****  floating-Lable style end ****/
 </style>
 
 <!-- =========== Hero Section Start =========== -->
@@ -81,123 +335,133 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        <div class="row g-2">
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <select asp-for="FlightReservation.FlightType" class="form-control floating-control">
-                                        <option value="One-Way">One-Way</option>
-                                        <option value="Round-Trip">Round-Trip</option>
-                                        <option value="Round-Trip">Multi City</option>
-                                    </select>
-                                    <label asp-for="FlightReservation.FlightType"></label>
-                                    <span asp-validation-for="FlightReservation.FlightType" class="text-danger fs-7"></span>
+                        <div class="row g-2 d-flex justify-content-between">
+                            <div class="col-md-6">
+                                <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                                    @foreach (var flightType in Enum.GetValues(typeof(FlightType)).Cast<FlightType>())
+                                    {
+                                        var spacedFlightTypeString = System.Text.RegularExpressions.Regex.Replace(flightType.ToString(), "([a-z])([A-Z])", "$1 $2");
+
+                                        <input type="radio" asp-for="FlightReservation.FlightType" id="@flightType.ToString()" value="@flightType.ToString()" class="btn-check" autocomplete="off">
+                                        <label class="btn btn-outline-dark" for="@flightType.ToString()">@spacedFlightTypeString</label>
+                                    }
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <select asp-for="FlightReservation.FlightClass" class="form-control floating-control">
+                            <div class="col-md-6 d-flex justify-content-between">
+                                <div class="col-md-6">
+                                    <div class="trav_engine">
+                                        <input type="text" id="txtTotalTravelers" class="floating-input" placeholder=" " value="1 Traveler(s)" readonly="readonly" />
+                                        <div class="trav_toggle open">
+                                            <a href="javascript:void(0)">Open</a>
+                                        </div>
+                                        <div class="trav_form" style="display:none;">
+                                            <div class="trav_item">
+                                                <div class="trav_inner1">
+                                                    Adults
+                                                    <span>12+ yrs</span>
+                                                </div>
+                                                <div class="trav_inner2">
+                                                    <a href="javascript:void(0)" class="minus" onclick="javascript:process(-1)">-</a>
+                                                    <input asp-for="FlightReservation.Adult" type="text" value="1" id="ddlAdult" class="txt_trav" readonly="readonly" onkeypress="return false;">
+                                                    <a href="javascript:void(0)" class="plus" onclick="javascript:process(1)">+</a>
+                                                </div>
+                                            </div>
+                                            <div class="trav_item">
+                                                <div class="trav_inner1">
+                                                    Children
+                                                    <span>2 - 11 yrs</span>
+                                                </div>
+                                                <div class="trav_inner2">
+                                                    <a href="javascript:void(0)" class="minus" onclick="javascript:process2(-1)">-</a>
+                                                    <input asp-for="FlightReservation.Child" type="text" value="0" id="ddlChild" class="txt_trav" readonly="readonly" onkeypress="return false;">
+                                                    <a href="javascript:void(0)" class="plus" onclick="javascript:process2(1)">+</a>
+                                                </div>
+                                            </div>
+                                            <div class="trav_item">
+                                                <div class="trav_inner1">
+                                                    Infants
+                                                    <span>under 2 yrs</span>
+                                                </div>
+                                                <div class="trav_inner2">
+                                                    <a href="javascript:void(0)" class="minus" onclick="javascript:process3(-1)">-</a>
+                                                    <input asp-for="FlightReservation.Infants" type="text" value="0" id="ddlInfant" class="txt_trav" readonly="readonly" onkeypress="return false;">
+                                                    <a href="javascript:void(0)" class="plus" onclick="javascript:process3(1)">+</a>
+                                                </div>
+
+                                            </div>
+                                            <div class="trav_item">
+                                                <span class="trav_done">Done</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <select asp-for="FlightReservation.FlightClass" class="floating-input" placeholder=" ">
                                         <option value="Economy">Economy</option>
                                         <option value="Premium Economy">Premium Economy</option>
                                         <option value="Business">Business</option>
                                         <option value="First">First</option>
                                     </select>
-                                    <label asp-for="FlightReservation.FlightClass"></label>
-                                    <span asp-validation-for="FlightReservation.FlightClass" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.DepartureCity" class="form-control " placeholder="">
-                                    <label asp-for="FlightReservation.DepartureCity"></label>
-                                    <span asp-validation-for="FlightReservation.DepartureCity" class="text-danger fs-7"></span>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-12 col-sm-12">
-                                <div class="form-floating">
-                                    <input asp-for="FlightReservation.ArrivalCity" class="form-control " placeholder="">
-                                    <label asp-for="FlightReservation.ArrivalCity"></label>
-                                    <span asp-validation-for="FlightReservation.ArrivalCity" class="text-danger fs-7"></span>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="show_input" style="display: none;">
-                            <div class="row g-2">
-                                <div class="col-lg-3 col-md-12 col-sm-12">
-                                    <div class="form-floating">
-                                        <input asp-for="FlightReservation.FromDate" class="form-control " placeholder="">
-                                        <label asp-for="FlightReservation.FromDate"></label>
-                                        <span asp-validation-for="FlightReservation.FromDate" class="text-danger fs-7"></span>
-                                    </div>
+                        <div class="row g-2 mt-3">
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="floating-label">
+                                    <input asp-for="FlightReservation.DepartureCity" class="floating-input" placeholder=" " required>
+                                    <label class="floating-label-placeholder" asp-for="FlightReservation.DepartureCity"></label>
                                 </div>
-                                <div class="col-lg-3 col-md-12 col-sm-12">
-                                    <div class="form-floating">
-                                        <input asp-for="FlightReservation.ToDate" class="form-control " placeholder="">
-                                        <label asp-for="FlightReservation.ToDate"></label>
-                                        <span asp-validation-for="FlightReservation.ToDate" class="text-danger fs-7"></span>
-                                    </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="floating-label">
+                                    <input asp-for="FlightReservation.ArrivalCity" class="floating-input" placeholder=" " required>
+                                    <label class="floating-label-placeholder" asp-for="FlightReservation.ArrivalCity"></label>
                                 </div>
-                                <div class="col-lg-2 col-md-12 col-sm-12">
-                                    <div class="form-floating">
-                                        <input asp-for="FlightReservation.Adult" class="form-control " placeholder="">
-                                        <label asp-for="FlightReservation.Adult"></label>
-                                        <span asp-validation-for="FlightReservation.Adult" class="text-danger fs-7"></span>
-                                    </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="floating-label">
+                                    <input asp-for="FlightReservation.FromDate" class="floating-input" placeholder=" " required>
+                                    <label class="floating-label-placeholder" asp-for="FlightReservation.FromDate"></label>
                                 </div>
-                                <div class="col-lg-2 col-md-12 col-sm-12">
-                                    <div class="form-floating">
-                                        <input asp-for="FlightReservation.Child" class="form-control " placeholder="">
-                                        <label asp-for="FlightReservation.Child"></label>
-                                        <span asp-validation-for="FlightReservation.Child" class="text-danger fs-7"></span>
-                                    </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="floating-label">
+                                    <input asp-for="FlightReservation.ToDate" id="toDateInput" class="floating-input" placeholder=" " required>
+                                    <label class="floating-label-placeholder" asp-for="FlightReservation.ToDate"></label>
                                 </div>
-                                <div class="col-lg-2 col-md-12 col-sm-12">
-                                    <div class="form-floating">
-                                        <input asp-for="FlightReservation.Infants" class="form-control " placeholder="">
-                                        <label asp-for="FlightReservation.Infants"></label>
-                                        <span asp-validation-for="FlightReservation.Infants" class="text-danger fs-7"></span>
-                                    </div>
-                                </div>
+                            </div>
 
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="floating-label">
+                                    <input asp-for="FlightReservation.ClientName" class="floating-input" placeholder=" " required>
+                                    <label class="floating-label-placeholder" asp-for="FlightReservation.ClientName"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="floating-label">
+                                    <input asp-for="FlightReservation.EmailAddress" class="floating-input" placeholder=" " required>
+                                    <label class="floating-label-placeholder" asp-for="FlightReservation.EmailAddress"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="floating-label">
+                                    <input asp-for="FlightReservation.ContactNumber" class="floating-input" placeholder=" " required>
+                                    <label class="floating-label-placeholder" asp-for="FlightReservation.ContactNumber"></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12 col-sm-12">
+                                <div class="floating-label">
+                                    <input asp-for="FlightReservation.AlternativeContact" class="floating-input" placeholder=" " required>
+                                    <label class="floating-label-placeholder" asp-for="FlightReservation.AlternativeContact"></label>
+                                </div>
+                            </div>
+                            <input hidden asp-for="FlightReservation.Status" value="Pending">
 
-
-                                <div class="col-lg-3 col-md-12 col-sm-12">
-                                    <div class="form-floating">
-                                        <input asp-for="FlightReservation.ClientName" class="form-control " placeholder="Your name">
-                                        <label asp-for="FlightReservation.ClientName"></label>
-                                        <span asp-validation-for="FlightReservation.ClientName" class="text-danger fs-7"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-12 col-sm-12">
-                                    <div class="form-floating">
-                                        <input asp-for="FlightReservation.EmailAddress" class="form-control " placeholder="Email address">
-                                        <label asp-for="FlightReservation.EmailAddress"></label>
-                                        <span asp-validation-for="FlightReservation.EmailAddress" class="text-danger fs-7"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-12 col-sm-12">
-                                    <div class="form-floating">
-                                        <input asp-for="FlightReservation.ContactNumber" class="form-control " placeholder="Mobile Number">
-                                        <label asp-for="FlightReservation.ContactNumber"></label>
-                                        <span asp-validation-for="FlightReservation.ContactNumber" class="text-danger fs-7"></span>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <div class="form-floating">
-                                            <input asp-for="FlightReservation.AlternativeContact" class="form-control " placeholder="">
-                                            <label asp-for="FlightReservation.AlternativeContact"></label>
-                                        </div>
-                                        <span asp-validation-for="FlightReservation.AlternativeContact" class="text-danger fs-7"></span>
-                                    </div>
-                                    <input hidden asp-for="FlightReservation.Status" value="Pending">
-                                </div>
-
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <label></label>
-                                        <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-ticket me-2"></i> Book A Flight</button>
-                                    </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="floating-label" style="float:right;">
+                                    <label></label>
+                                    <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-ticket me-2"></i> Book A Flight</button>
                                 </div>
                             </div>
                         </div>
@@ -210,97 +474,109 @@
             @using (Html.BeginForm("CreateHotelReservation", "Home", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-
                 <div class="row g-2">
-
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input asp-for="HotelReservation.CityName" class="form-control" placeholder="">
-                                <label asp-for="HotelReservation.CityName"></label>
+                    <div class="col-md-12 d-flex justify-content-end">
+                        <div class="trav_engine">
+                            <input type="text" id="txtTotalTravelers" class="floating-input" placeholder=" " value="1 Traveler(s)" readonly="readonly" />
+                            <div class="trav_toggle open">
+                                <a href="javascript:void(0)">Open</a>
                             </div>
-                            <span asp-validation-for="HotelReservation.CityName" class="text-danger fs-7"></span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input asp-for="HotelReservation.PreferenceHotel" class="form-control" placeholder="">
-                                <label asp-for="HotelReservation.PreferenceHotel"></label>
+                            <div class="trav_form" style="display:none;">
+                                <div class="trav_item">
+                                    <div class="trav_inner1">
+                                        Adults
+                                        <span>12+ yrs</span>
+                                    </div>
+                                    <div class="trav_inner2">
+                                        <a href="javascript:void(0)" class="minus" onclick="javascript:process(-1)">-</a>
+                                        <input asp-for="HotelReservation.Adult" type="text" value="1" id="ddlAdult" class="txt_trav" readonly="readonly" onkeypress="return false;">
+                                        <a href="javascript:void(0)" class="plus" onclick="javascript:process(1)">+</a>
+                                    </div>
+                                </div>
+                                <div class="trav_item">
+                                    <div class="trav_inner1">
+                                        Children
+                                        <span>2 - 11 yrs</span>
+                                    </div>
+                                    <div class="trav_inner2">
+                                        <a href="javascript:void(0)" class="minus" onclick="javascript:process2(-1)">-</a>
+                                        <input asp-for="HotelReservation.Child" type="text" value="0" id="ddlChild" class="txt_trav" readonly="readonly" onkeypress="return false;">
+                                        <a href="javascript:void(0)" class="plus" onclick="javascript:process2(1)">+</a>
+                                    </div>
+                                </div>
+                                <div class="trav_item">
+                                    <div class="trav_inner1">
+                                        Infants
+                                        <span>under 2 yrs</span>
+                                    </div>
+                                    <div class="trav_inner2">
+                                        <a href="javascript:void(0)" class="minus" onclick="javascript:process3(-1)">-</a>
+                                        <input type="text" value="0" id="ddlInfant" class="txt_trav" readonly="readonly" onkeypress="return false;">
+                                        <a href="javascript:void(0)" class="plus" onclick="javascript:process3(1)">+</a>
+                                    </div>
+
+                                </div>
+                                <div class="trav_item">
+                                    <span class="trav_done">Done</span>
+                                </div>
                             </div>
-                            <span asp-validation-for="HotelReservation.PreferenceHotel" class="text-danger fs-7"></span>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-group">
-                            <div class="form-floating">
-                                <input asp-for="HotelReservation.FromDate" class="form-control" placeholder="">
-                                <label asp-for="HotelReservation.FromDate"></label>
-                            </div>
-                            <span asp-validation-for="HotelReservation.FromDate" class="text-danger fs-7"></span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-floating">
-                            <input asp-for="HotelReservation.ToDate" class="form-control" placeholder="">
-                            <label asp-for="HotelReservation.ToDate"></label>
-                            <span asp-validation-for="HotelReservation.ToDate" class="text-danger fs-7"></span>
-                        </div>
-                    </div>
-
+                </div>
+                <div class="row g-2 mt-2">
 
                     <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-floating">
-                            <input asp-for="HotelReservation.Adult" class="form-control" placeholder="">
-                            <label asp-for="HotelReservation.Adult"></label>
-                            <span asp-validation-for="HotelReservation.Adult" class="text-danger fs-7"></span>
+                        <div class="floating-label">
+                            <input asp-for="HotelReservation.CityName" class="floating-input" placeholder="">
+                            <label class="floating-label-placeholder" asp-for="HotelReservation.CityName"></label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-floating">
-                            <input asp-for="HotelReservation.Child" class="form-control" placeholder="">
-                            <label asp-for="HotelReservation.Child"></label>
-                            <span asp-validation-for="HotelReservation.Child" class="text-danger fs-7"></span>
+                        <div class="floating-label">
+                            <input asp-for="HotelReservation.PreferenceHotel" class="floating-input" placeholder="">
+                            <label class="floating-label-placeholder" asp-for="HotelReservation.PreferenceHotel"></label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                    </div>
-
-
-                    <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-floating">
-                            <input asp-for="HotelReservation.ClientName" class="form-control form-control-sm" placeholder="Your name">
-                            <label asp-for="HotelReservation.ClientName"></label>
-                            <span asp-validation-for="HotelReservation.ClientName" class="text-danger fs-7"></span>
+                        <div class="floating-label">
+                            <input asp-for="HotelReservation.FromDate" class="floating-input" placeholder="">
+                            <label class="floating-label-placeholder" asp-for="HotelReservation.FromDate"></label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-floating">
-                            <input asp-for="HotelReservation.EmailAddress" class="form-control form-control-sm" placeholder="Email address">
-                            <label asp-for="HotelReservation.EmailAddress"></label>
-                            <span asp-validation-for="HotelReservation.EmailAddress" class="text-danger fs-7"></span>
+                        <div class="floating-label">
+                            <input asp-for="HotelReservation.ToDate" class="floating-input" placeholder="">
+                            <label class="floating-label-placeholder" asp-for="HotelReservation.ToDate"></label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-floating">
-                            <input asp-for="HotelReservation.ContactNumber" class="form-control form-control-sm" placeholder="Mobile Number">
-                            <label asp-for="HotelReservation.ContactNumber"></label>
-                            <span asp-validation-for="HotelReservation.ContactNumber" class="text-danger fs-7"></span>
+                        <div class="floating-label">
+                            <input asp-for="HotelReservation.ClientName" class="floating-input" placeholder=" ">
+                            <label class="floating-label-placeholder" asp-for="HotelReservation.ClientName"></label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
-                        <div class="form-floating">
-                            <input asp-for="HotelReservation.AlternativeContact" class="form-control form-control-sm" placeholder="Alternative Number">
-                            <label asp-for="HotelReservation.AlternativeContact"></label>
-                            <span asp-validation-for="HotelReservation.AlternativeContact" class="text-danger fs-7"></span>
+                        <div class="floating-label">
+                            <input asp-for="HotelReservation.EmailAddress" class="floating-input" placeholder=" ">
+                            <label class="floating-label-placeholder" asp-for="HotelReservation.EmailAddress"></label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="floating-label">
+                            <input asp-for="HotelReservation.ContactNumber" class="floating-input" placeholder=" ">
+                            <label class="floating-label-placeholder" asp-for="HotelReservation.ContactNumber"></label>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12">
+                        <div class="floating-label">
+                            <input asp-for="HotelReservation.AlternativeContact" class="floating-input" placeholder=" ">
+                            <label class="floating-label-placeholder" asp-for="HotelReservation.AlternativeContact"></label>
                         </div>
                         <input hidden asp-for="HotelReservation.Status" value="Pending">
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="form-group">
+                        <div class="floating-label" style="float:right;">
                             <label></label>
                             <button type="submit" class="btn btn-success btn-sm"><i class="fas fa-ticket me-2"></i> Book A Hotel</button>
                         </div>
@@ -314,11 +590,11 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <div class="row g-2">
                             <div class="col-lg-6 col-md-12 col-sm-12">
-                                <input type="text" class="form-control"
+                                <input type="text" class="floating-input"
                                        placeholder="Destination (Ex.  Cox's Bazar)">
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12">
-                                <input type="date" class="form-control">
+                                <input type="date" class="floating-input">
                             </div>
                         </div>
                     </div>
@@ -347,16 +623,16 @@
                         <div class="row g-2">
                             <div class="col-lg-3 col-md-12 col-sm-12">
 
-                                <input type="text" class="form-control" placeholder="Location (Ex.  Cox's Bazar)">
+                                <input type="text" class="floating-input" placeholder="Location (Ex.  Cox's Bazar)">
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="date" class="form-control">
+                                <input type="date" class="floating-input">
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="date" class="form-control">
+                                <input type="date" class="floating-input">
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="text" class="form-control" placeholder="Traveller (Ex.  2)">
+                                <input type="text" class="floating-input" placeholder="Traveller (Ex.  2)">
                             </div>
                         </div>
                     </div>
@@ -522,387 +798,113 @@
 </div>
 
 <!-- =========== Explore Bangladesh End =========== -->
-<!-- =========== Search Airlines Start =========== -->
-
-<div class="s-airlines">
+<!-- =========== Tourist Visa Processing Start =========== -->
+<div class="tourist-visa-processing">
     <div class="container">
         <div class="heading">
-            <h2>Search Top Airlines</h2>
+            <h2>Tourist Visa Processing</h2>
         </div>
         <p class="mt-2">
-            Renaissance user-friendly platform connects you to top airlines instantly. Enjoy a comfortable and hassle-free journey on any destination and get tickets of top airlines easily
+            Renaissance Holidays provides worldwide visa services. Our expert guidance will help you
+            navigate the complexities of visa applica-
+            tions, ensuring a seamless travel experience. We offer a wide range of visas, including tourist visas,
+            business visas, medical visas and
+            student visas. We provide guaranteed visas for certain countries and we can process visas for many other
+            countries as well.
         </p>
-        <div class="row g-2 mt-4">
-            <!-- Single -->
+        <div class="row g-4 mt-4 justify-content-center">
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/biman-bangladesh.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Air Astra</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a href="javascript:void(0)">
+                        <img src="~/images/tourist-visa/usa.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">USA</h6>
                     </div>
-                </a>
+                </div>
             </div>
-            <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">US-Bangla Airlines</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a href="javascript:void(0)">
+                        <img src="~/images/tourist-visa/australia.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Australia</h6>
                     </div>
-                </a>
+                </div>
             </div>
-            <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">NOVOAIR</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a href="javascript:void(0)">
+                        <img src="~/images/tourist-visa/canada.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Canada</h6>
                     </div>
-                </a>
+                </div>
             </div>
-            <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Biman Bangladesh Airlines</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a href="javascript:void(0)">
+                        <img src="~/images/tourist-visa/uk.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">UK</h6>
                     </div>
-                </a>
+                </div>
             </div>
-            <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Qatar Airways</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a href="javascript:void(0)">
+                        <img src="~/images/tourist-visa/dubai.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Dubai</h6>
                     </div>
-                </a>
+                </div>
             </div>
-            <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Turkish Airlines</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a href="javascript:void(0)">
+                        <img src="~/images/tourist-visa/thailand.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Thailand</h6>
                     </div>
-                </a>
+                </div>
             </div>
-            <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Singapore Airlines</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a href="javascript:void(0)">
+                        <img src="~/images/tourist-visa/singapore.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Singapore</h6>
                     </div>
-                </a>
+                </div>
             </div>
-            <!-- Single -->
             <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Emirates</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
+                <div class="card">
+                    <a href="javascript:void(0)">
+                        <img src="~/images/tourist-visa/malaysia.jpg" alt="">
+                    </a>
+                    <div class="overlay"></div>
+                    <div class="content text-center">
+                        <h6 class="text-white fw-bold">Malaysia</h6>
                     </div>
-                </a>
+                </div>
             </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Malaysia Airlines</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Vistara</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Etihad Airways</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- Single -->
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <a href="javascript:void(0)">
-                    <div class="card">
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <div class="d-flex gap-3 align-items-center">
-                                <div class="logo">
-                                    <!-- <img src="~/images/s-airlines/airastra.png" alt=""> -->
-                                    <i class="bi bi-airplane-engines"></i>
-                                </div>
-                                <div class="name">
-                                    <h6 class="fw-bold">Cathay Pacific Airways</h6>
-                                </div>
-                            </div>
-                            <div>
-                                <i class="bi bi-chevron-right fw-bold"></i>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
         </div>
     </div>
 </div>
-
-<!-- =========== Search Airlines Start =========== -->
-<!-- =========== Best Hotels Start =========== -->
-@* <div class="b-hotels">
-        <div class="container">
-            <div class="heading">
-                <h2>Best Hotels for Your Next Trip</h2>
-            </div>
-            <p class="mt-2">
-                Luxurious or budget-friendly hotels, villas or resorts, browse accommodations at ShareTrip that meet the need. Book Long-term or short-term accommodation from our hotel deals.
-            </p>
-            <div class="row g-2 mt-4" id="b-hotels">
-                <!-- Single -->
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <a href="javascript:void(0)">
-                        <div class="card">
-                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Dubai</h6>
-                                <div class="mt-1">
-                                    <span><i class="bi bi-star-fill"></i></span>
-                                    <span class="fw-bold">5</span>
-                                    <span>(100 reviews)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- Single -->
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <a href="javascript:void(0)">
-                        <div class="card">
-                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Dubai</h6>
-                                <div class="mt-1">
-                                    <span><i class="bi bi-star-fill"></i></span>
-                                    <span class="fw-bold">5</span>
-                                    <span>(100 reviews)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- Single -->
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <a href="javascript:void(0)">
-                        <div class="card">
-                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Dubai</h6>
-                                <div class="mt-1">
-                                    <span><i class="bi bi-star-fill"></i></span>
-                                    <span class="fw-bold">5</span>
-                                    <span>(100 reviews)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- Single -->
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <a href="javascript:void(0)">
-                        <div class="card">
-                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Dubai</h6>
-                                <div class="mt-1">
-                                    <span><i class="bi bi-star-fill"></i></span>
-                                    <span class="fw-bold">5</span>
-                                    <span>(100 reviews)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- Single -->
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <a href="javascript:void(0)">
-                        <div class="card">
-                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Dubai</h6>
-                                <div class="mt-1">
-                                    <span><i class="bi bi-star-fill"></i></span>
-                                    <span class="fw-bold">5</span>
-                                    <span>(100 reviews)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- Single -->
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <a href="javascript:void(0)">
-                        <div class="card">
-                            <img src="~/images/popular-destination/pd-1.jpg" alt="">
-                            <div class="card-body">
-                                <h6 class="fw-bold">Dubai</h6>
-                                <div class="mt-1">
-                                    <span><i class="bi bi-star-fill"></i></span>
-                                    <span class="fw-bold">5</span>
-                                    <span>(100 reviews)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-            </div>
-        </div>
-    </div> *@
-<!-- =========== Best Hotels End =========== -->
+<!-- =========== Tourist Visa Processing End =========== -->
 <!-- =========== Top Routes Start =========== -->
 <div class="top-routes">
     <div class="container">
@@ -942,15 +944,15 @@
                         <div class="col-lg-4 col-md-6 col-sm-12">
                             <a href="javascript:void(0)">
                                 <div class="card">
-                                    <div class="d-flex gap-2 align-items-center justify-content-between">
-                                        <div>
+                                    <div class="d-flex gap-2 align-items-center justify-content-e">
+                                        <div class="col-md-5">
                                             <h6>Dhaka</h6>
                                             <span>Hazrat Shahjalal...</span>
                                         </div>
-                                        <div class="icon">
+                                        <div class="col-md-2 icon">
                                             <i class="bi bi-airplane-engines"></i>
                                         </div>
-                                        <div>
+                                        <div class="col-md-5">
                                             <h6>Cox's Bazar</h6>
                                             <span>Cox's Bazar Airport</span>
                                         </div>
@@ -963,16 +965,16 @@
                             <a href="javascript:void(0)">
                                 <div class="card">
                                     <div class="d-flex gap-2 align-items-center justify-content-between">
-                                        <div>
+                                        <div class="col-md-5">
                                             <h6>Dhaka</h6>
                                             <span>Hazrat Shahjalal...</span>
                                         </div>
-                                        <div class="icon">
+                                        <div class="col-md-2 icon">
                                             <i class="bi bi-airplane-engines"></i>
                                         </div>
-                                        <div>
-                                            <h6>Cox's Bazar</h6>
-                                            <span>Cox's Bazar Airport</span>
+                                        <div class="col-md-5">
+                                            <h6>Chittagong</h6>
+                                            <span>Shah Amanat Inte...</span>
                                         </div>
                                     </div>
                                 </div>
@@ -983,76 +985,76 @@
                             <a href="javascript:void(0)">
                                 <div class="card">
                                     <div class="d-flex gap-2 align-items-center justify-content-between">
-                                        <div>
+                                        <div class="col-md-5">
                                             <h6>Dhaka</h6>
                                             <span>Hazrat Shahjalal...</span>
                                         </div>
-                                        <div class="icon">
+                                        <div class="col-md-2 icon">
                                             <i class="bi bi-airplane-engines"></i>
                                         </div>
-                                        <div>
-                                            <h6>Cox's Bazar</h6>
-                                            <span>Cox's Bazar Airport</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="javascript:void(0)">
-                                <div class="card">
-                                    <div class="d-flex gap-2 align-items-center justify-content-between">
-                                        <div>
-                                            <h6>Dhaka</h6>
-                                            <span>Hazrat Shahjalal...</span>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="bi bi-airplane-engines"></i>
-                                        </div>
-                                        <div>
-                                            <h6>Cox's Bazar</h6>
-                                            <span>Cox's Bazar Airport</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="javascript:void(0)">
-                                <div class="card">
-                                    <div class="d-flex gap-2 align-items-center justify-content-between">
-                                        <div>
-                                            <h6>Dhaka</h6>
-                                            <span>Hazrat Shahjalal...</span>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="bi bi-airplane-engines"></i>
-                                        </div>
-                                        <div>
-                                            <h6>Cox's Bazar</h6>
-                                            <span>Cox's Bazar Airport</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- Single -->
-                        <div class="col-lg-4 col-md-6 col-sm-12">
-                            <a href="javascript:void(0)">
-                                <div class="card">
-                                    <div class="d-flex gap-2 align-items-center justify-content-between">
-                                        <div>
-                                            <h6>Dhaka</h6>
-                                            <span>Hazrat Shahjalal...</span>
-                                        </div>
-                                        <div class="icon">
-                                            <i class="bi bi-airplane-engines"></i>
-                                        </div>
-                                        <div>
+                                        <div class="col-md-5">
                                             <h6>Sylhet</h6>
+                                            <span>Osmany Internati...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="javascript:void(0)">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div class="col-md-5">
+                                            <h6>Dhaka</h6>
                                             <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="col-md-2 icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6>Jessore</h6>
+                                            <span>Jessore Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="javascript:void(0)">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div class="col-md-5">
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="col-md-2 icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6>Barisal</h6>
+                                            <span>Barisal Airport</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Single -->
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <a href="javascript:void(0)">
+                                <div class="card">
+                                    <div class="d-flex gap-2 align-items-center justify-content-between">
+                                        <div class="col-md-5">
+                                            <h6>Dhaka</h6>
+                                            <span>Hazrat Shahjalal...</span>
+                                        </div>
+                                        <div class="col-md-2 icon">
+                                            <i class="bi bi-airplane-engines"></i>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <h6>Rajshahi</h6>
+                                            <span>Shah Mokhdum Airport</span>
                                         </div>
                                     </div>
                                 </div>
@@ -1192,356 +1194,97 @@
     </div>
 </div>
 <!-- =========== Top Routes End =========== -->
-<!-- =========== Tourist Visa Processing Start =========== -->
-<div class="tourist-visa-processing">
-    <div class="container">
-        <div class="heading">
-            <h2>Tourist Visa Processing</h2>
-        </div>
-        <p class="mt-2">
-            Renaissance Holidays provides worldwide visa services. Our expert guidance will help you
-            navigate the complexities of visa applica-
-            tions, ensuring a seamless travel experience. We offer a wide range of visas, including tourist visas,
-            business visas, medical visas and
-            student visas. We provide guaranteed visas for certain countries and we can process visas for many other
-            countries as well.
-        </p>
-        <div class="row g-4 mt-4 justify-content-center">
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="javascript:void(0)">
-                        <img src="~/images/tourist-visa/usa.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content text-center">
-                        <h6 class="text-white fw-bold">USA</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="javascript:void(0)">
-                        <img src="~/images/tourist-visa/australia.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content text-center">
-                        <h6 class="text-white fw-bold">Australia</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="javascript:void(0)">
-                        <img src="~/images/tourist-visa/canada.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content text-center">
-                        <h6 class="text-white fw-bold">Canada</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="javascript:void(0)">
-                        <img src="~/images/tourist-visa/uk.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content text-center">
-                        <h6 class="text-white fw-bold">UK</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="javascript:void(0)">
-                        <img src="~/images/tourist-visa/dubai.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content text-center">
-                        <h6 class="text-white fw-bold">Dubai</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="javascript:void(0)">
-                        <img src="~/images/tourist-visa/thailand.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content text-center">
-                        <h6 class="text-white fw-bold">Thailand</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="javascript:void(0)">
-                        <img src="~/images/tourist-visa/singapore.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content text-center">
-                        <h6 class="text-white fw-bold">Singapore</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                    <a href="javascript:void(0)">
-                        <img src="~/images/tourist-visa/malaysia.jpg" alt="">
-                    </a>
-                    <div class="overlay"></div>
-                    <div class="content text-center">
-                        <h6 class="text-white fw-bold">Malaysia</h6>
-                    </div>
-                </div>
-            </div>
-            @* <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                <a href="javascript:void(0)">
-                <img src="~/images/tourist-visa/china.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content text-center">
-                <h6 class="text-white fw-bold">China</h6>
-                </div>
-                </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                <div class="card">
-                <a href="javascript:void(0)">
-                <img src="~/images/tourist-visa/vietnam.jpg" alt="">
-                </a>
-                <div class="overlay"></div>
-                <div class="content text-center">
-                <h6 class="text-white fw-bold">Vietnam</h6>
-                </div>
-                </div>
-                </div> *@
-        </div>
-    </div>
-</div>
-<!-- =========== Tourist Visa Processing End =========== -->
-<!-- =========== Tour Package Start =========== -->
-@* <div class="container tour-package">
-        <div class="heading">
-            <h2>Tour Package</h2>
-        </div>
-        <p class="mt-2">
-            Renaissance Holidays arranges attractive tour packages worldwide. We take people to the most
-            historical places in the
-            world. We provide national and international budget tour packages as well as luxury tour packages. Privae,
-            Group and
-            customized tour packages are available at Renaissance Holidays.
-        </p>
-        <h5 class="fw-bold mt-4">Our Tour Package Service Includes:</h5>
-        <div class="row g-4 mt-4 justify-content-center">
-            <div class="col-lg-3 col-md-4">
-                <div class="card">
-                    <div class="photo">
-                        <a href="javascript:void(0)">
-                            <img src="~/images/cc-2.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="javascript:void(0)" class="text-white text-center fw-bold w-100">Round Air Ticket</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="card">
-                    <div class="photo">
-                        <a href="javascript:void(0)">
-                            <img src="~/images/tour-package/hotel.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="javascript:void(0)" class="text-white text-center fw-bold w-100">Hotel Reservation</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="card">
-                    <div class="photo">
-                        <a href="javascript:void(0)">
-                            <img src="~/images/tour-package/at.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="javascript:void(0)" class="text-white text-center fw-bold w-100">Airport Transfer</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="card">
-                    <div class="photo">
-                        <a href="javascript:void(0)">
-                            <img src="~/images/tour-package/ss.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="javascript:void(0)" class="text-white text-center fw-bold w-100">Sightseeing</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="card">
-                    <div class="photo">
-                        <a href="javascript:void(0)">
-                            <img src="~/images/tour-package/vp.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="javascript:void(0)" class="text-white text-center fw-bold w-100">Visa Processing</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="card">
-                    <div class="photo">
-                        <a href="javascript:void(0)">
-                            <img src="~/images/tour-package/b-f.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="javascript:void(0)" class="text-white text-center fw-bold w-100">Breakfast</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="card">
-                    <div class="photo">
-                        <a href="javascript:void(0)">
-                            <img src="~/images/tour-package/tg.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="javascript:void(0)" class="text-white text-center fw-bold w-100">Tour Guide</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="card">
-                    <div class="photo">
-                        <a href="javascript:void(0)">
-                            <img src="~/images/tour-package/dt.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <a href="javascript:void(0)" class="text-white text-center fw-bold w-100">Day Tour</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> *@
 
+@section Scripts{
+    <script>
+        var roundTripRadio = document.getElementById('RoundTrip');
+        var toDateInput = document.getElementById('toDateInput');
 
+        // Function to enable or disable toDateInput based on the roundTripRadio selection
+        function toggleToDateInput() {
+            toDateInput.disabled = !roundTripRadio.checked;
+        }
 
-<script>
-    document.getElementById('FlightReservation_FlightType').onchange = function () {
-        var nextInputGroup = document.getElementById('show_input');
-        nextInputGroup.style.display = this.value ? 'block' : 'none';
-    };
+        // Initial state
+        toggleToDateInput();
 
-    document.addEventListener("DOMContentLoaded", function () {
-        var flightTabLink = document.getElementById('flight-tab');
-        var showInput = document.getElementById('show_input');
-        flightTabLink.addEventListener('click', function () {
-            showInput.style.display = 'none';
+        // Add an event listener to the roundTripRadio
+        roundTripRadio.addEventListener('change', toggleToDateInput);
+    </script>
+    <script>
+
+        $(document).ready(function () {
+
+            if ($('div.trav_toggle').length > 0) {
+                $('div.trav_toggle').click(function () {
+                    if ($(this).hasClass('open')) {
+                        $(this).removeClass('open');
+                        $(this).addClass('close');
+                        $(this).next().slideDown(100);
+                        return false;
+                    } else {
+                        $(this).removeClass('close');
+                        $(this).addClass('open');
+                        $(this).next().slideUp(100);
+                        return false;
+                    }
+                });
+            }
+            $('.trav_done').click(function () {
+                if ($('div.trav_toggle').hasClass('close')) {
+                    $('div.trav_toggle').removeClass('close');
+                    $('div.trav_toggle').addClass('open');
+                    $('div.trav_toggle').next().slideUp(100);
+                }
+            });
         });
-    });
-</script>
 
-<!-- =========== Tour Package End =========== -->
-<!-- In your layout or view header -->
-@*@section Scripts {
-        <script>
-            $(document).ready(function () {
-                $('.js-select2').select2({
-                    placeholder: 'This is my placeholder',
-                    width: 'element', // Automatically sets the width
-                    height: 'element',
-                    templateResult: formatAirport, // Custom formatting function
-                    templateSelection: formatAirport, // Use the same formatting function for selection
-                    escapeMarkup: function (markup) {
-                        return markup;
-                    }
-                });
-
-                function formatAirport(airport) {
-                    if (!airport.id) {
-                        return airport.text;
-                    }
-
-                    var airportInfo = airport.text.split('-');
-                    var formattedText = '<div class="col-md-12 airport-info">' +
-                        '<div class="left-side">' +
-                        '<span>' + airportInfo[0] + '</span>' +
-                        '</div>' +
-                        '<div class="right-side">' +
-                        '<div class="upper-part">' +
-                        '<span>' + airportInfo[1] + '</span>' +
-                        '</div>' +
-                        '<div class="lower-part badge">' +
-                        '<span class="text-muted truncate">' + airportInfo[2] + ', ' + airportInfo[3] + '</span>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
-                    return $(formattedText);
-
-
-                    //var formattedText = '<div class="col-md-12">' +
-                    //    '<span>' + airportInfo[0] + '</span>' +
-                    //    '<span>' + airportInfo[1] + '</span>' +
-                    //    '<span class="text-muted">' + airportInfo[2] + '</span>' +
-                    //    '<span class="text-muted">' + airportInfo[3] + '</span>' +
-                    //    '</div>';
-
-                    //return $(formattedText);
+        function process(v) {
+            var Adult = parseInt(document.getElementById("ddlAdult").value);
+            var Child = parseInt(document.getElementById("ddlChild").value);
+            var Infant = parseInt(document.getElementById("ddlInfant").value);
+            Adult += v;
+            var total = Adult + Child;
+            if (total <= 9 && Adult >= 1) {
+                document.getElementById("ddlAdult").value = Adult;
+                if (Infant > Adult) {
+                    document.getElementById("ddlInfant").value = Adult;
                 }
+                var TotTravelers = Adult + Child + Infant;
+                document.getElementById("txtTotalTravelers").value = (TotTravelers + " Traveler(s)");
+            }
+        }
 
-                function formatAirportSelection(airport) {
-                    return airport.text;
-                }
-            });
-        </script>
-        <script>
-            $(document).ready(function () {
-                $('.hotel-js-select2').select2({
-                    placeholder: 'This is my placeholder',
-                    width: 'element', // Automatically sets the width
-                    height: 'element',
-                    templateResult: formatHotel, // Custom formatting function
-                    templateSelection: formatHotel, // Use the same formatting function for selection
-                    escapeMarkup: function (markup) {
-                        return markup;
-                    }
-                });
 
-                function formatHotel(hotel) {
-                    if (!hotel.id) {
-                        return hotel.text;
-                    }
+        function process2(s) {
+            var Adult = parseInt(document.getElementById("ddlAdult").value);
+            var Child = parseInt(document.getElementById("ddlChild").value);
+            var Infant = parseInt(document.getElementById("ddlInfant").value);
+            Child += s;
+            var total = Adult + Child;
+            if (total <= 9 && Child >= 0) {
+                document.getElementById("ddlChild").value = Child;
+                var TotTravelers = Adult + Child + Infant;
+                document.getElementById("txtTotalTravelers").value = (TotTravelers + " Traveler(s)");
+            }
+        }
 
-                    var hotelInfo = hotel.text.split('-');
-                    var formattedText = '<div class="col-md-12 airport-info">' +
-                        '<div class="left-side">' +
-                        '<i class="fas fa-hotel"></i>' +
-                        '</div>' +
-                        '<div class="right-side">' +
-                        '<div class="upper-part">' +
-                        '<span>' + hotelInfo[0] + '</span>' +
-                        '</div>' +
-                        '<div class="lower-part badge">' +
-                        '<span class="text-muted truncate">' + hotelInfo[1] + ', ' + hotelInfo[2] + '</span>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
-                    return $(formattedText);
-                }
 
-                function formatAirportSelection(hotel) {
-                    return hotel.text;
-                }
-            });
-        </script>
-    }*@
+        function process3(sh) {
+            var Adult = parseInt(document.getElementById("ddlAdult").value);
+            var Infant = parseInt(document.getElementById("ddlInfant").value);
+            var Child = parseInt(document.getElementById("ddlChild").value);
+            Infant += sh;
+            if (Infant <= Adult && Infant >= 0) {
+                document.getElementById("ddlInfant").value = Infant;
+                var TotTravelers = Adult + Child + Infant;
+                document.getElementById("txtTotalTravelers").value = (TotTravelers + " Traveler(s)");
+            }
+        }
+
+
+    </script>
+
+}
+
+

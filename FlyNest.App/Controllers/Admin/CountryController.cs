@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol.Core.Types;
+using Serilog.Sinks.File;
 
 namespace FlyNest.App.Controllers.Admin;
 
@@ -35,9 +36,10 @@ public class CountryController : Controller
     }
 
     // GET: CountryController/Details/5
-    public ActionResult Details(int id)
+    public async Task<ActionResult> Details(int id)
     {
-        return View();
+        var country = await _countryRepository.FirstOrDefaultAsync(id);
+        return View(_mapper.Map<VmCountry>(country));
     }
 
     [HttpGet]

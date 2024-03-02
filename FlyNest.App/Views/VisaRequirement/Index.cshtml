@@ -1,0 +1,87 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmVisaRequirement>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Visa Requirement</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Visa Requirement</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Visa Requirement List</h3>
+            <div class="card-tools">
+                <a asp-action="AddEdit" asp-controller="VisaRequirement" class="btn btn-info btn-sm"><i class="fas fa-plus-square"></i> Add New</a>
+            </div>
+        </div>
+        <div class="card-body">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.CountryName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.BasicDocument)
+                        </th>
+                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.VisaFee)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Others)
+                        </th>
+                        
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                           
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CountryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BasicDocument)
+                            </td>
+                            
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VisaFee)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Others)
+                            </td>
+                           
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+

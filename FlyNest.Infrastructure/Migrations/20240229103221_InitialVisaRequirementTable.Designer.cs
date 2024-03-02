@@ -4,6 +4,7 @@ using FlyNest.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlyNest.Infrastructure.Migrations
 {
     [DbContext(typeof(FlyNestDbContext))]
-    partial class FlyNestDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240229103221_InitialVisaRequirementTable")]
+    partial class InitialVisaRequirementTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,7 +80,7 @@ namespace FlyNest.Infrastructure.Migrations
                             AirlineName = "Biman Bangladesh Airlines",
                             ContactInfo = "Balaka Bhaban Kurmitola, Dhaka, Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 443, DateTimeKind.Unspecified).AddTicks(5835), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 556, DateTimeKind.Unspecified).AddTicks(6370), new TimeSpan(0, 6, 0, 0, 0)),
                             EstablishedDate = new DateOnly(1, 1, 1),
                             IsDelete = false,
                             UpdateNo = 0,
@@ -89,7 +92,7 @@ namespace FlyNest.Infrastructure.Migrations
                             AirlineName = "US-Bangla Airlines",
                             ContactInfo = "77 Sohrawardi Avenue, Baridhara Diplomatic Zone, Dhaka, Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 443, DateTimeKind.Unspecified).AddTicks(5881), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 556, DateTimeKind.Unspecified).AddTicks(6410), new TimeSpan(0, 6, 0, 0, 0)),
                             EstablishedDate = new DateOnly(1, 1, 1),
                             IsDelete = false,
                             UpdateNo = 0,
@@ -101,7 +104,7 @@ namespace FlyNest.Infrastructure.Migrations
                             AirlineName = "Novoair",
                             ContactInfo = "House-50, Road-11, Block-F, Banani, Dhaka, Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 443, DateTimeKind.Unspecified).AddTicks(5883), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 556, DateTimeKind.Unspecified).AddTicks(6412), new TimeSpan(0, 6, 0, 0, 0)),
                             EstablishedDate = new DateOnly(1, 1, 1),
                             IsDelete = false,
                             UpdateNo = 0,
@@ -113,7 +116,7 @@ namespace FlyNest.Infrastructure.Migrations
                             AirlineName = "Regent Airways",
                             ContactInfo = "Balaka Bhaban Kurmitola, Dhaka, Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 443, DateTimeKind.Unspecified).AddTicks(5885), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 556, DateTimeKind.Unspecified).AddTicks(6414), new TimeSpan(0, 6, 0, 0, 0)),
                             EstablishedDate = new DateOnly(1, 1, 1),
                             IsDelete = false,
                             UpdateNo = 0,
@@ -175,7 +178,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "DAC",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(193), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(770), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Hazrat Shahjalal International Airport",
                             UpdateNo = 0
@@ -187,7 +190,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "CGP",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(227), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(800), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Shah Amanat International Airport",
                             UpdateNo = 0
@@ -199,7 +202,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "JSR",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(230), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(802), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Jashore Airport",
                             UpdateNo = 0
@@ -211,7 +214,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "ZYL",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(233), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(805), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Osmany International Airport",
                             UpdateNo = 0
@@ -223,7 +226,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "CLA",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(235), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(807), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Comilla Airport",
                             UpdateNo = 0
@@ -235,7 +238,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "IRD",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(238), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(809), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Ishurdi Airport",
                             UpdateNo = 0
@@ -247,7 +250,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "CXB",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(240), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(811), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Cox's Bazar Airport",
                             UpdateNo = 0
@@ -259,7 +262,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "SPD",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(243), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(813), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Saidpur Airport",
                             UpdateNo = 0
@@ -271,7 +274,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "RJH",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(245), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(815), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Shah Makhdum Airport",
                             UpdateNo = 0
@@ -283,7 +286,7 @@ namespace FlyNest.Infrastructure.Migrations
                             Code = "BZL",
                             CountryName = "Bangladesh",
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 444, DateTimeKind.Unspecified).AddTicks(248), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 557, DateTimeKind.Unspecified).AddTicks(817), new TimeSpan(0, 6, 0, 0, 0)),
                             IsDelete = false,
                             Name = "Barishal Airport",
                             UpdateNo = 0
@@ -444,6 +447,9 @@ namespace FlyNest.Infrastructure.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("ExchangeRate")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -577,7 +583,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(14, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 465, DateTimeKind.Unspecified).AddTicks(2738), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 576, DateTimeKind.Unspecified).AddTicks(9525), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 1L,
                             DepatureDate = new DateOnly(2024, 1, 1),
                             DepatureTime = new TimeOnly(11, 0, 0),
@@ -598,7 +604,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(14, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 465, DateTimeKind.Unspecified).AddTicks(2781), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 576, DateTimeKind.Unspecified).AddTicks(9575), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 1L,
                             DepatureDate = new DateOnly(2024, 1, 1),
                             DepatureTime = new TimeOnly(11, 0, 0),
@@ -619,7 +625,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(13, 30, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 465, DateTimeKind.Unspecified).AddTicks(2787), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 576, DateTimeKind.Unspecified).AddTicks(9579), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 1L,
                             DepatureDate = new DateOnly(2024, 1, 1),
                             DepatureTime = new TimeOnly(11, 0, 0),
@@ -640,7 +646,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(19, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 465, DateTimeKind.Unspecified).AddTicks(2791), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 576, DateTimeKind.Unspecified).AddTicks(9586), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 7L,
                             DepatureDate = new DateOnly(2024, 1, 5),
                             DepatureTime = new TimeOnly(16, 30, 0),
@@ -661,7 +667,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(19, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 465, DateTimeKind.Unspecified).AddTicks(2796), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 576, DateTimeKind.Unspecified).AddTicks(9589), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 7L,
                             DepatureDate = new DateOnly(2024, 1, 5),
                             DepatureTime = new TimeOnly(16, 30, 0),
@@ -682,7 +688,7 @@ namespace FlyNest.Infrastructure.Migrations
                             ArrivalTime = new TimeOnly(19, 0, 0),
                             BaggageId = 1L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 23, 10, 0, 465, DateTimeKind.Unspecified).AddTicks(2799), new TimeSpan(0, 6, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 16, 32, 18, 576, DateTimeKind.Unspecified).AddTicks(9592), new TimeSpan(0, 6, 0, 0, 0)),
                             DepatureAirportId = 7L,
                             DepatureDate = new DateOnly(2024, 1, 5),
                             DepatureTime = new TimeOnly(16, 30, 0),
@@ -1543,7 +1549,7 @@ namespace FlyNest.Infrastructure.Migrations
                             BasicDocument = "Seven (07) Months Valid Passport with the last one Old Passport if have one (if an OLD passport is Lost then a GD copy with a translated notary must be required). Recent 2 copy photographs taken in the last 6 months (white background only, photo size 35 mm X 45 mm). Personal / Company Bank statement of the last 06 months with Bank Solvency Certificate (Minimum balance BDT 60,000 for each applicant). Visiting Card.",
                             CountryId = 12L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 17, 10, 0, 485, DateTimeKind.Unspecified).AddTicks(4321), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 10, 32, 18, 596, DateTimeKind.Unspecified).AddTicks(6111), new TimeSpan(0, 0, 0, 0, 0)),
                             ForBusinessPerson = "Renewal Trade license copy with notary public (English Translated). Memorandum for Limited Company. Office Pad / Company Letter Head Pad.",
                             ForJobHolder = "No Objection Certificate (NOC) from Employer (with an official Cell phone and TnT numbers). Visiting card. Mandatory official ID card copy. In the case of a Personal Account Statement (Savings Account) - need to provide the Salary Certificate/Payslip last 03 months. BMDC certificate for Doctor. BAR Council Certificate for Advocate. Retirement certificate for Retired Person. For Govt. employees - GO is required with an English translation notary must be required.",
                             ForMedical = " In case of medical treatment, a copy of the appointment letter from a hospital in Thailand and if applicable, an original letter from a local doctor/hospital if the applicant is a first-time traveler. Recent case summary of the patient’s medical reports issued by the local hospital. Copy of recent certificate of acceptance for treatment/invitation letter from the receiving hospital in Thailand confirming the patient’s condition and the necessity of transfer to Thailand. The letter should mention the accompanying person's name(s) & relation, who will travel with the patient by Air Ambulance. Booking confirmation letter (such as Med letter & Action Plan) of an Air Ambulance.",
@@ -1559,7 +1565,7 @@ namespace FlyNest.Infrastructure.Migrations
                             BasicDocument = "Seven (07) Months Valid Passport with Old Passport if have one. Visiting Card. Recent 2 copy photographs taken in the last 3 months (white background only, photo size 35 mm X 50 mm, Matt paper). Bank Statements last six months with a bank solvency certificate (Minimum balance BDT 60,000 for each applicant). Vaccine certificate copy (double dose). Hotel Booking Copy. Air Ticket Booking Copy.",
                             CountryId = 16L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 17, 10, 0, 485, DateTimeKind.Unspecified).AddTicks(4325), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 10, 32, 18, 596, DateTimeKind.Unspecified).AddTicks(6115), new TimeSpan(0, 0, 0, 0, 0)),
                             ForBusinessPerson = "Renewal Trade license copy with notary public ( English Translated ). Memorandum for Limited Company. The blank page of the office pad.",
                             ForJobHolder = "No Objection Certificate (NOC). BMDC certificate for Doctor. BAR Council Certificate for Advocate.",
                             ForMedical = "",
@@ -1575,7 +1581,7 @@ namespace FlyNest.Infrastructure.Migrations
                             BasicDocument = "Recent Valid Passport & All Previous passports. Last Indian visa copy (if any). NID copy (Both Side). Recent 1 Copy Photo (2\"x2\", white background, glossy/matte paper). Latest Utility (Electricity/Gas/Water) bill copy. NOC from the company - (If doing any job). Salary Certificate. Trade License- If Business. Visiting card/Employee ID card (Both Side). Bank statement of last 06 months/Dollar endorsement certificate (at least USD $200). Student ID Card copy (Both Side) and Birth Certificate (If Student). Previous SAARC visited country name  & year of visit - if any. Previous NON-SAARC visited country name - if any.",
                             CountryId = 17L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 17, 10, 0, 485, DateTimeKind.Unspecified).AddTicks(4327), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 10, 32, 18, 596, DateTimeKind.Unspecified).AddTicks(6117), new TimeSpan(0, 0, 0, 0, 0)),
                             ForBusinessPerson = " Profession proof. Tin, Tax certificate. Invitation letter. IRC/ERC. LC / Dual party Agreement. Association certificate.",
                             ForJobHolder = "",
                             ForMedical = "Medical Invitation letter from India with a specific date. All Medical original documents. Profession proof.",
@@ -1591,7 +1597,7 @@ namespace FlyNest.Infrastructure.Migrations
                             BasicDocument = "Valid passport copy (Must be clear). Confirm Air Ticket. Confirm Hotel.",
                             CountryId = 7L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 17, 10, 0, 485, DateTimeKind.Unspecified).AddTicks(4329), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 10, 32, 18, 596, DateTimeKind.Unspecified).AddTicks(6120), new TimeSpan(0, 0, 0, 0, 0)),
                             ForBusinessPerson = "",
                             ForJobHolder = "",
                             ForMedical = "",
@@ -1607,7 +1613,7 @@ namespace FlyNest.Infrastructure.Migrations
                             BasicDocument = "Seven (07) months valid passport with an old passport if you have one. Visiting card. NID / Birth certificate copy. Recent 2 copy photographs taken in the last 3 months (matt paper, white background only). 35 mm in width x 45mm in height. For First time visit to Singapore - Bank Statement and Solvency certificate are required (with a minimum BDT 80,000 ending balance). V39A Invitation. Confirmed Hotel booking copy. Air ticket booking copy.",
                             CountryId = 15L,
                             CreatedBy = 1L,
-                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 17, 10, 0, 485, DateTimeKind.Unspecified).AddTicks(4332), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedDate = new DateTimeOffset(new DateTime(2024, 2, 29, 10, 32, 18, 596, DateTimeKind.Unspecified).AddTicks(6122), new TimeSpan(0, 0, 0, 0, 0)),
                             ForBusinessPerson = "Renewal trade license copy with notary public ( English Translated ). Memorandum for limited company / Form XII. The blank page of office pad.",
                             ForJobHolder = "No objection certificate (NOC). BMDC certificate for Doctor . BAR Council certificate for Advocate. Retirement document for Retired Person.",
                             ForMedical = "",

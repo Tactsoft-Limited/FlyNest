@@ -41,7 +41,7 @@ public class VmHotelReservation : BaseEntity
     [Display(Name = "Child")]
     public int? Child { get; set; }
 
-    [Display(Name = "ClientName Name")]
+    [Display(Name = "Client Name")]
     [Required]
     public string ClientName { get; set; }
 

@@ -12,3 +12,10 @@ public enum PackageType
     Umrah = 2,
     ExploreBD = 3
 }
+
+public enum FlightType
+{
+    OneWay = 1,
+    RoundTrip,
+    MultiCity
+}
