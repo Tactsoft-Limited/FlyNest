@@ -1,0 +1,107 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmVisaRequirement
+
+@{
+    ViewData["Title"] = "AddEdit";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Visa Requirement</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Visa Requirement</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Create Visa Requirement</h3>
+            @*<div class="card-tools">
+                    <a asp-action="AddEdit" asp-controller="Visa Requirement" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Visa Requirement</a>
+                </div>*@
+        </div>
+        <form asp-action="AddEdit" asp-controller="Faq" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" type="hidden" class="form-control" />
+                <div class="modal-body form-horizontal">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="CountryId" class="control-label"></label>
+                            <select asp-for="CountryId" asp-items="@Model.CountryDropdown" class="form-control">
+                                <option>Select Country</option>
+                            </select>
+                            <span asp-validation-for="CountryId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="MaxStay" class="control-label"></label>
+                            <input asp-for="MaxStay" class="form-control" />
+                            <span asp-validation-for="MaxStay" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="Validity" class="control-label"></label>
+                            <input asp-for="Validity" class="form-control" />
+                            <span asp-validation-for="Validity" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="VisaFee" class="control-label"></label>
+                            <input asp-for="VisaFee" class="form-control" />
+                            <span asp-validation-for="VisaFee" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="BasicDocument" class="control-label"></label>
+                            <textarea asp-for="BasicDocument" class="form-control"></textarea>
+                            <span asp-validation-for="BasicDocument" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ForBusinessPerson" class="control-label"></label>
+                            <textarea asp-for="ForBusinessPerson" class="form-control" ></textarea>
+                            <span asp-validation-for="ForBusinessPerson" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ForJobHolder" class="control-label"></label>
+                            <textarea asp-for="ForJobHolder" class="form-control"></textarea>
+                            <span asp-validation-for="ForJobHolder" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ForStudent" class="control-label"></label>
+                            <textarea asp-for="ForStudent" class="form-control"></textarea>
+                            <span asp-validation-for="ForStudent" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ForMedical" class="control-label"></label>
+                            <textarea asp-for="ForMedical" class="form-control"></textarea>
+                            <span asp-validation-for="ForMedical" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Others" class="control-label"></label>
+                            <textarea asp-for="Others" class="form-control" ></textarea>
+                            <span asp-validation-for="Others" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-end">
+                <input type="submit" value="Save" class="btn btn-primary btn-sm mr-3" />
+                <a asp-action="Index" class="btn btn-default btn-sm">Back to List</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+
