@@ -55,13 +55,13 @@ public class VmSearchFlight
     [Display(Name = "Guest")]
     public int NumberOfGuest { get; set; }
 
-    public IEnumerable<SelectListItem> ArrivalAirportDropdown { get; set; } = new List<SelectListItem>();
+    public IEnumerable<SelectListItem> ArrivalAirportDropdown { get; set; } = [];
 
-    public IEnumerable<SelectListItem> DepatureAirportDropdown { get; set; } = new List<SelectListItem>();
+    public IEnumerable<SelectListItem> DepatureAirportDropdown { get; set; } = [];
 
-    public IEnumerable<SelectListItem> HotelDropdown { get; set; } = new List<SelectListItem>();
+    public IEnumerable<SelectListItem> HotelDropdown { get; set; } = [];
 
-    public IList<VmHotel> HotelList { get; set; } = new List<VmHotel>();
+    public IList<VmHotel> HotelList { get; set; } = [];
 
-    public IList<VmFlight> FlightList { get; set; } = new List<VmFlight>();
+    public IList<VmFlight> FlightList { get; set; } = [];
 }
