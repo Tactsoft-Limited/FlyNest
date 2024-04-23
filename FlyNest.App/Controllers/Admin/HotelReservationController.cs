@@ -18,7 +18,7 @@ public class HotelReservationController(IHotelReservationRepository hotelReserva
     }
 
     // GET: Flight/Details/5
-    public async Task<IActionResult> DetailsAsync(long id)
+    public async Task<IActionResult> Details(long id)
     {
         var hotel = await _hotelReservationRepository.FirstOrDefaultAsync(id);
         return hotel == null ? NotFound() : View(_mapper.Map<VmHotelReservation>(hotel));
