@@ -43,11 +43,11 @@ public class BaseRepository<T> : IBaseRepository<T> where T : AuditableEntity
         return await query.ToListAsync();
     }
 
-    public T FirstOrDefault(long id) { return _context.Set<T>().Find(id); }
+    public T FirstOrDefault(long? id) { return _context.Set<T>().Find(id); }
 
-    public async Task<T> FirstOrDefaultAsync(long id) { return await _context.Set<T>().FindAsync(id); }
+    public async Task<T> FirstOrDefaultAsync(long? id) { return await _context.Set<T>().FindAsync(id); }
 
-    public T FirstOrDefault(long id, params Expression<Func<T, object>>[] includeProperties)
+    public T FirstOrDefault(long? id, params Expression<Func<T, object>>[] includeProperties)
     {
         IQueryable<T> query = _context.Set<T>().Where(x => !x.IsDelete);
 
@@ -56,7 +56,7 @@ public class BaseRepository<T> : IBaseRepository<T> where T : AuditableEntity
         return query.FirstOrDefault(x => x.Id == id);
     }
 
-    public async Task<T> FirstOrDefaultAsync(long id, params Expression<Func<T, object>>[] includeProperties)
+    public async Task<T> FirstOrDefaultAsync(long? id, params Expression<Func<T, object>>[] includeProperties)
     {
         IQueryable<T> query = _context.Set<T>().Where(x => !x.IsDelete);
 
