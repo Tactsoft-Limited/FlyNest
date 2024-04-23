@@ -81,13 +81,15 @@ public class HolidayController(ITourPackageRepository packageRepository, ICountr
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Booking(VmConfirmBooking checkout)
+    public async Task<IActionResult> Booking(VmConfirmBooking checkout)
     {
 
         if (ModelState.IsValid)
         {
             var storeId = _sslConfig.StoreId;
             var storePass = _sslConfig.StoreSecret;
+            //var storeId = "testbox";
+            //var storePass = "qwerty";
             var baseUrl = $"{Request.Scheme}://{Request.Host}";
             var postData = new MultipartFormDataContent
             {
@@ -112,9 +114,11 @@ public class HolidayController(ITourPackageRepository packageRepository, ICountr
                 { new StringContent("Bangladesh"), "cus_country" },
                 { new StringContent($"{checkout.ClientPhone}"), "cus_phone" },
 
-                // Misc Information
+                // Shipment Information
                 { new StringContent("NO"), "shipping_method" },
                 { new StringContent($"{checkout.TotalPerson}"), "num_of_item" },
+
+                //Product Information
                 { new StringContent("Tour Package"), "product_category" },
                 { new StringContent($"{checkout.PackageTitle}"), "product_name" },
                 { new StringContent("physical-goods"), "product_profile" },
@@ -132,36 +136,55 @@ public class HolidayController(ITourPackageRepository packageRepository, ICountr
             var r = client.Send(wr);
             var response = r.Content.ReadAsStream();
             SSLCommerzInitRes res = JsonSerializer.Deserialize<SSLCommerzInitRes>(response);
-            return Redirect(res?.GatewayPageURL);
-
+            if (res.status == "SUCCESS")
+            {
+                await _confirmBookingRepository.InsertAsync(_mapper.Map<ConfirmBooking>(checkout));
+                return Redirect(res?.GatewayPageURL);
+            }
         }
         return View(checkout);
     }
 
     [HttpPost]
-    public IActionResult PaymentSuccess()
+    public async Task<IActionResult> PaymentSuccess()
     {
         if (!(!String.IsNullOrEmpty(Request.Form["status"]) && Request.Form["status"] == "VALID"))
         {
             ViewBag.SuccessInfo = "There some error while processing your payment. Please try again.";
             return View();
         }
-
+        var id = await _confirmBookingRepository.GetIdByTranIdAsync(Request.Form["tran_id"]);
+        var paymentInfo = await _confirmBookingRepository.FirstOrDefaultAsync(id);
+        paymentInfo.PaymentStatus = "success";
+        await _confirmBookingRepository.UpdateAsync(id, paymentInfo);
         ViewBag.TranId = Request.Form["tran_id"];
         ViewBag.Amount = Request.Form["amount"];
         ViewBag.TranDate = $"{Request.Form["tran_date"]:MMMM dd, yyyy hh:mm tt}";
-
         return View();
     }
+
     [HttpPost]
-    public IActionResult PaymentFailed()
+    public async Task<IActionResult> PaymentFailed()
     {
+        var id = await _confirmBookingRepository.GetIdByTranIdAsync(Request.Form["tran_id"]);
+        var paymentInfo = await _confirmBookingRepository.FirstOrDefaultAsync(id);
+        paymentInfo.PaymentStatus = Request.Form["status"];
+        await _confirmBookingRepository.UpdateAsync(id, paymentInfo);
+        ViewBag.TranId = Request.Form["tran_id"];
+        ViewBag.TranId = Request.Form["status"];
         ViewBag.FailInfo = "There some error while processing your payment. Please try again.";
         return View();
     }
+
     [HttpPost]
-    public IActionResult PaymentCancel()
+    public async Task<IActionResult> PaymentCancel()
     {
+        var id = await _confirmBookingRepository.GetIdByTranIdAsync(Request.Form["tran_id"]);
+        var paymentInfo = await _confirmBookingRepository.FirstOrDefaultAsync(id);
+        paymentInfo.PaymentStatus = Request.Form["status"];
+        await _confirmBookingRepository.UpdateAsync(id, paymentInfo);
+        ViewBag.Status = Request.Form["status"];
+        ViewBag.TranId = Request.Form["tran_id"];
         ViewBag.CancelInfo = "Your payment has been cancel";
         return View();
     }
