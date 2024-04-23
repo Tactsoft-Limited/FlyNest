@@ -11,6 +11,9 @@ public class VisaRequirementConfiguration : IEntityTypeConfiguration<VisaRequire
         builder.ToTable(nameof(VisaRequirement));
         builder.HasKey(x => x.Id);
         builder.HasOne(x => x.Country).WithMany(x => x.VisaRequirements).HasForeignKey(x => x.CountryId);
+        builder.Property(x => x.Title).HasMaxLength(100);
+        builder.Property(x => x.Validity).HasMaxLength(85);
+        builder.Property(x => x.MaxStay).HasMaxLength(85);
         builder.HasData(new VisaRequirement
         {
             Id = 1,
@@ -22,6 +25,8 @@ public class VisaRequirementConfiguration : IEntityTypeConfiguration<VisaRequire
             ForMedical = " In case of medical treatment, a copy of the appointment letter from a hospital in Thailand and if applicable, an original letter from a local doctor/hospital if the applicant is a first-time traveler. Recent case summary of the patient’s medical reports issued by the local hospital. Copy of recent certificate of acceptance for treatment/invitation letter from the receiving hospital in Thailand confirming the patient’s condition and the necessity of transfer to Thailand. The letter should mention the accompanying person's name(s) & relation, who will travel with the patient by Air Ambulance. Booking confirmation letter (such as Med letter & Action Plan) of an Air Ambulance.",
             VisaFee = "BDT 4,900 (Non-refundable)",
             Others = "Note: Marriage Certificate Copy or Nikahnama or the contract of marriage (if the spouse's name is not mentioned in the Applicant's passport). Note: Delivery Time (8 to 15) working days (Depend on Embassy). Note: Visa validity 3 months, single entry. Note: Visa rate can be changed without prior notice. Note: Visa issuance rights reserved by the Embassy.",
+            Validity = "90 Days",
+            MaxStay = "30 Days",
             CreatedBy = 1,
             CreatedDate = DateTimeOffset.UtcNow
         }, new VisaRequirement
@@ -35,6 +40,8 @@ public class VisaRequirementConfiguration : IEntityTypeConfiguration<VisaRequire
             ForMedical = string.Empty,
             VisaFee = "BDT 3,900 ( Non-refundable )",
             Others = "Note: Marriage Certificate Copy (For family application only) One Country Visit is required - Except India, Nepal, Sri Lanka, Maldives, Bhutan, and UAE. Note: Delivery Time (25 to 30) working days Minimum. Note: Visa validity 6 months, Single entry - E-Visa. Note: Visa rate can be changed without prior notice. Note: Visa issuance rights are reserved by the Embassy.",
+            Validity = "90 Days",
+            MaxStay = "30 Days",
             CreatedBy = 1,
             CreatedDate = DateTimeOffset.UtcNow
         }, new VisaRequirement
@@ -48,6 +55,8 @@ public class VisaRequirementConfiguration : IEntityTypeConfiguration<VisaRequire
             ForMedical = "Medical Invitation letter from India with a specific date. All Medical original documents. Profession proof.",
             VisaFee = "ST processing & Embassy BDT 1,500/-",
             Others = string.Empty,
+            Validity = "90 Days",
+            MaxStay = "30 Days",
             CreatedBy = 1,
             CreatedDate = DateTimeOffset.UtcNow
         }, new VisaRequirement
@@ -61,6 +70,8 @@ public class VisaRequirementConfiguration : IEntityTypeConfiguration<VisaRequire
             ForMedical = string.Empty,
             VisaFee = "Per person BDT 3,400/- (Non-refundable)",
             Others = "Note: Delivery time (1-2 Working days)",
+            Validity = "90 Days",
+            MaxStay = "30 Days",
             CreatedBy = 1,
             CreatedDate = DateTimeOffset.UtcNow
         }, new VisaRequirement
@@ -74,6 +85,8 @@ public class VisaRequirementConfiguration : IEntityTypeConfiguration<VisaRequire
             ForMedical = string.Empty,
             VisaFee = "Visa Fee Per Person: BDT 3,900 (Without LOI support) and BDT 4,100 with LOI support. (Non-refundable)",
             Others = "Note: Marriage certificate copy (if spouse's name is not mentioned in the Passport). Note: Visa rate can change without prior notice. Note: Delivery time (7 to 10) working days. Note: Visa validity is 60 days. Note: Visa issuance rights are reserved by the Embassy.",
+            Validity = "90 Days",
+            MaxStay = "30 Days",
             CreatedBy = 1,
             CreatedDate = DateTimeOffset.UtcNow
         });
