@@ -148,6 +148,7 @@
                 <input type="hidden" asp-for="PackageTitle" />
                 <input type="hidden" asp-for="PackagePrice" />
                 <input type="hidden" asp-for="PaymentMethod" />
+                <input type="hidden" asp-for="PaymentStatus" />
                 <div class="card">
                     <div class="card-header">
                         <h5 class="text-left">Price Summary </h5>
@@ -176,6 +177,13 @@
                         <div class="mt-2">
                             @*<div class="card-title mt-3">Contact Details</div><hr /><br />*@
                             <div class="form-group row">
+                                <label asp-for="TravelDate" class="col-sm-4 col-form-label"></label>
+                                <div class="col-sm-8" style="height: 45px !important;">
+                                    <input asp-for="TravelDate" class="form-control form-control-sm" required placeholder="Your full name" />
+                                    <span asp-validation-for="TravelDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label asp-for="ClientName" class="col-sm-4 col-form-label"></label>
                                 <div class="col-sm-8" style="height: 45px !important;">
                                     <input asp-for="ClientName" class="form-control form-control-sm" required placeholder="Your full name" />
@@ -185,14 +193,14 @@
                             <div class="form-group row">
                                 <label asp-for="ClientEmail" class="col-sm-4 col-form-label"></label>
                                 <div class="col-sm-8" style="height: 45px !important;">
-                                    <input asp-for="ClientEmail" class="form-control form-control-sm" placeholder="Email address"/>
+                                    <input asp-for="ClientEmail" class="form-control form-control-sm" placeholder="Email address" />
                                     <span asp-validation-for="ClientEmail" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label asp-for="ClientPhone" class="col-sm-4 col-form-label"></label>
                                 <div class="col-sm-8" style="height: 45px !important;">
-                                    <input asp-for="ClientPhone" class="form-control form-control-sm" placeholder="Contact number"/>
+                                    <input asp-for="ClientPhone" class="form-control form-control-sm" placeholder="Contact number" />
                                     <span asp-validation-for="ClientPhone" class="text-danger"></span>
                                 </div>
                             </div>

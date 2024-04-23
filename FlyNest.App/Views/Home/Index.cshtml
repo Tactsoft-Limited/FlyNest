@@ -153,20 +153,41 @@
     }
 
     .floating-input, .floating-select {
-        font-size: 14px;
-        padding: 4px 4px;
-        display: block;
-        width: 100%;
-        height: 30px;
-        background-color: transparent;
-        border: none;
-        border: 1px solid #757575;
+        font-size: 14px !important;
+        padding: 4px 4px !important;
+        display: inline-block !important;
+        width: 100% !important;
+        height: 30px !important;
+        background-color: transparent !important;
+        border: 1px solid #ccc !important;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
     }
 
-        .floating-input:focus, .floating-select:focus {
-            outline: none;
-            border-bottom: 2px solid #5264AE;
+    .select2-container--default
+    .select2-selection--single,
+    .select2-selection
+    .select2-selection--single {
+        font-size: 14px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        padding: 4px 4px !important;
+        height: 30px !important;
+        width: 100% !important;
+    }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #444;
+            line-height: initial !important;
         }
+
+    .floating-input:focus, .floating-select:focus {
+        outline: none;
+        border-bottom: 2px solid #5264AE;
+    }
 
     .floating-label-placeholder {
         color: #999;
@@ -269,6 +290,7 @@
 </style>
 
 <!-- =========== Hero Section Start =========== -->
+<!-- =========== Hero Section Start =========== -->
 <div class="hero-section-slider">
     <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false">
         <div class="carousel-inner">
@@ -292,6 +314,7 @@
     </div>
 </div>
 <!-- =========== Hero Section End =========== -->
+<!-- =========== Hero Section End =========== -->
 <!-- =========== Search Area Start =========== -->
 <div class="search-area">
     <div class="search-trip-type d-flex justify-content-center">
@@ -307,12 +330,6 @@
                 <button class="nav-link" id="hotel-tab" data-bs-toggle="tab" data-bs-target="#hotel-tab-pane"
                         type="button" role="tab" aria-controls="hotel-tab-pane" aria-selected="false">
                     <i class="bi bi-buildings"></i> Hotel
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="holiday-tab" data-bs-toggle="tab" data-bs-target="#holiday-tab-pane"
-                        type="button" role="tab" aria-controls="holiday-tab-pane" aria-selected="false">
-                    <i class="bi bi-tree"></i> Holiday
                 </button>
             </li>
             <li class="nav-item" role="presentation">
@@ -527,7 +544,7 @@
 
                     <div class="col-lg-3 col-md-12 col-sm-12">
                         <div class="floating-label">
-                            <input asp-for="HotelReservation.CityName" class="floating-input" placeholder="">
+                            <input asp-for="HotelReservation.CityName" class="floating-input" placeholder="" required>
                             <label class="floating-label-placeholder" asp-for="HotelReservation.CityName"></label>
                         </div>
                     </div>
@@ -539,19 +556,19 @@
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
                         <div class="floating-label">
-                            <input asp-for="HotelReservation.FromDate" class="floating-input" placeholder="">
+                            <input asp-for="HotelReservation.FromDate" class="floating-input" placeholder="" required>
                             <label class="floating-label-placeholder" asp-for="HotelReservation.FromDate"></label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
                         <div class="floating-label">
-                            <input asp-for="HotelReservation.ToDate" class="floating-input" placeholder="">
+                            <input asp-for="HotelReservation.ToDate" class="floating-input" placeholder="" required>
                             <label class="floating-label-placeholder" asp-for="HotelReservation.ToDate"></label>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
                         <div class="floating-label">
-                            <input asp-for="HotelReservation.ClientName" class="floating-input" placeholder=" ">
+                            <input asp-for="HotelReservation.ClientName" class="floating-input" placeholder=" " required>
                             <label class="floating-label-placeholder" asp-for="HotelReservation.ClientName"></label>
                         </div>
                     </div>
@@ -563,7 +580,7 @@
                     </div>
                     <div class="col-lg-3 col-md-12 col-sm-12">
                         <div class="floating-label">
-                            <input asp-for="HotelReservation.ContactNumber" class="floating-input" placeholder=" ">
+                            <input asp-for="HotelReservation.ContactNumber" class="floating-input" placeholder=" " required>
                             <label class="floating-label-placeholder" asp-for="HotelReservation.ContactNumber"></label>
                         </div>
                     </div>
@@ -584,63 +601,36 @@
                 </div>
             }
         </div>
-        <div class="tab-pane fade" id="holiday-tab-pane" role="tabpanel" aria-labelledby="holiday-tab" tabindex="0">
-            <form action="">
-                <div class="row g-2 mt-2">
-                    <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="row g-2">
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                                <input type="text" class="floating-input"
-                                       placeholder="Destination (Ex.  Cox's Bazar)">
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12">
-                                <input type="date" class="floating-input">
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="d-flex justify-content-between mt-4">
-                        <div>
-                            <button type="button" id="addMoreFlight">
-                                <i class="bi bi-plus-lg"></i> Add more
-                                Flight
-                            </button>
-                        </div>
-                        <div>
-                            <button type="submit" class="btn btn-warning">
-                                <i class="bi bi-search"></i>
-                                Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
         <div class="tab-pane fade" id="visa-tab-pane" role="tabpanel" aria-labelledby="visa-tab" tabindex="0">
-            <form>
-                <div class="row g-2 mt-2">
+
+            @using (Html.BeginForm("VisaProcessRequest", "Home", FormMethod.Get))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row g-2 mt-2 mb-4">
                     <div class="col-lg-11 col-md-12 col-sm-12">
                         <div class="row g-2">
                             <div class="col-lg-3 col-md-12 col-sm-12">
-
-                                <input type="text" class="floating-input" placeholder="Location (Ex.  Cox's Bazar)">
+                                <select class="form-control form-control-sm" asp-for="VmVisaProcessRequest.CountryId" asp-items="@Model.CountryDropdown">
+                                    <option>Select Country</option>
+                                </select>
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="date" class="floating-input">
+                                <input asp-for="VmVisaProcessRequest.FromDate" class="floating-input">
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="date" class="floating-input">
+                                <input asp-for="VmVisaProcessRequest.ToDate" class="floating-input">
                             </div>
                             <div class="col-lg-3 col-md-12 col-sm-12">
-                                <input type="text" class="floating-input" placeholder="Traveller (Ex.  2)">
+                                <input asp-for="VmVisaProcessRequest.TotalTraveller" class="floating-input" placeholder="Traveller (Ex.  2)">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-1 col-md-12 col-sm-12">
-                        <button type="submit" class="btn btn-warning"><i class="bi bi-search"></i></button>
+                        <button type="submit" class="btn btn-success btn-sm"><i class="bi bi-search"></i></button>
                     </div>
                 </div>
-            </form>
+            }
         </div>
     </div>
 
@@ -1197,19 +1187,18 @@
 
 @section Scripts{
     <script>
+        $('.floating-select').select2();
+    </script>
+    <script>
         var roundTripRadio = document.getElementById('RoundTrip');
         var toDateInput = document.getElementById('toDateInput');
+        var oneWay = document.getElementById('OneWay');
 
-        // Function to enable or disable toDateInput based on the roundTripRadio selection
         function toggleToDateInput() {
             toDateInput.disabled = !roundTripRadio.checked;
         }
-
-        // Initial state
-        toggleToDateInput();
-
-        // Add an event listener to the roundTripRadio
         roundTripRadio.addEventListener('change', toggleToDateInput);
+        oneWay.addEventListener('change', toggleToDateInput);
     </script>
     <script>
 

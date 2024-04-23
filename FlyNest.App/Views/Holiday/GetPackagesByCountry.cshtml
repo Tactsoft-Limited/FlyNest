@@ -10,6 +10,7 @@
     @{
         var imageUrl = Model.FirstOrDefault()?.CountryImage?.ToString();
         var countryName = Model.FirstOrDefault()?.CountryName?.ToString();
+        var CountryId = Model.FirstOrDefault()?.CountryId;
     }
 
     <img style=" object-fit: cover; height: 250px; width: 100%; position: absolute;" src="~/images/countries/@(string.IsNullOrEmpty(imageUrl) ? "default-image.jpg" : $"{imageUrl}")" alt="Banner Image" class="banner-image">
@@ -17,7 +18,7 @@
     <div class="bredcumb-text position-absolute h-100 w-100 d-flex justify-content-center align-items-center">
         <div class="text-center">
             <div class="page-title">
-                <h3 class="fw-bold">@countryName</h3>
+                <a class="text-decoration-none" asp-action="CountryDetails" asp-controller="Home" asp-route-Id="@CountryId"><h3 class="fw-bold">@countryName</h3></a>
             </div>
             <div class="mt-10">
                 <a asp-action="International" asp-controller="Holiday">International Packages</a>

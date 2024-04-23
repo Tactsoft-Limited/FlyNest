@@ -1,0 +1,57 @@
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmImageGallery>
+
+@{
+    ViewData["Title"] = "ImageGallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .thumbnail {
+        max-height: 400px;
+        max-width: 400px;
+    }
+
+        .thumbnail img {
+            height: 200px;
+        }
+
+    .jumbotron {
+        color: #2b5863;
+        background: #ecf0f1;
+    }
+
+    .navbar-inverse {
+        background: #1e1121;
+    }
+
+        .navbar-inverse .navbar-nav > li > a {
+            color: white;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: white;
+        }
+</style>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1><i class="fa fa-camera-retro" aria-hidden="true"></i> The Image Gallery</h1>
+        <p>Images that are so beautiful that it is hard to imagine they are free!</p>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-sm-6 mt-3">
+                <div class="thumbnail">
+                    <div class="card">
+                        <img src="~/images/gallery/@item.ImageUrl">
+                        <div class="card-footer d-flex justify-content-between">
+                            <span>@item.EventTitle</span>
+                            <span>@item.EventDate.ToShortDateString()</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

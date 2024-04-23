@@ -28,14 +28,14 @@
                 <li class="nav-item">
                     <a asp-action="Index" asp-controller="FlightReservation" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "FlightReservation" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                         <i class=" nav-icon fas fa-plane-departure"></i>
-                        <p>Flight Reservation</p>
+                        <p>Flight Request</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a asp-action="Index" asp-controller="HotelReservation" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "HotelReservation" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                         <i class="nav-icon fas fa-hotel"></i>
-                        <p>Hotel Reservation</p>
+                        <p>Hotel Request</p>
                     </a>
                 </li>
 
@@ -63,7 +63,7 @@
                 <li class="nav-item">
                     <a asp-action="Index" asp-controller="ConfirmBooking" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "ConfirmBooking" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                         <i class="nav-icon fas fa-calendar-check"></i>
-                        <p>Confirm Booking</p>
+                        <p>Package Booking</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -72,7 +72,25 @@
                         <p>Visa Requirement</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="VisaRequest" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "VisaRequest" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon fa-solid fa-envelope-open-text"></i>
+                        <p>Visa Request</p>
+                    </a>
+                </li>
 
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="ImageGallery" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "ImageGallery" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon far fa-images"></i>
+                        <p>Gallery</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Faq" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Faq" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
+                        <i class="nav-icon far fa-question-circle"></i>
+                        <p>FAQ</p>
+                    </a>
+                </li>
                 @*<li class="nav-item">
             <a asp-action="Index" asp-controller="Room" class="nav-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Investment" && ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")">
                 <i class="nav-icon fas fa-bed"></i>

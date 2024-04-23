@@ -1,4 +1,4 @@
-﻿@model FlyNest.Application.ViewModels.VmEntities.VmCountry
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmHotelReservation
 
 @{
     ViewData["Title"] = "Details";
@@ -10,103 +10,90 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Country</h1>
+                <h1>Hotel Reservation</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
-                    <li class="breadcrumb-item active">Country</li>
+                    <li class="breadcrumb-item active">Hotel Reservation</li>
                 </ol>
             </div>
         </div>
     </div>
 </section>
-
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Country List</h3>
+            <h3 class="card-title">Hotel Reservation List</h3>
             <div class="card-tools">
-                <a asp-action="AddEdit" asp-controller="Country" class="btn btn-link btn-sm">
+                <a asp-action="AddEdit" asp-controller="HotelReservation" class="btn btn-link btn-sm disabled">
                     <i class="far fa-plus-square"></i> Add
                 </a> |
 
-                <a asp-action="AddEdit" asp-controller="Country" asp-route-Id="@Model.Id" class="btn btn-link btn-sm text-success" title="Edit">
+                <a asp-action="AddEdit" asp-controller="HotelReservation" asp-route-Id="@Model.Id" class="btn btn-link btn-sm text-success" title="Edit">
                     <i class="fas fa-edit"></i> Edit
                 </a> |
 
-                <a asp-action="Index" asp-controller="Country" class="btn btn-link btn-sm text-info" title="Back to list">
+                <a asp-action="Index" asp-controller="HotelReservation" class="btn btn-link btn-sm text-info" title="Back to list">
                     <i class="fas fa-list"></i> List
                 </a>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body table-responsive">
             <dl class="row">
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.CityName)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Name)
+                    @Html.DisplayFor(model => model.CityName)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CapitalCity)
+                    @Html.DisplayNameFor(model => model.PreferenceHotel)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.CapitalCity)
+                    @Html.DisplayFor(model => model.PreferenceHotel)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.LocalTime)
+                    @Html.DisplayNameFor(model => model.Adult)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.LocalTime)
+                    @Html.DisplayFor(model => model.Adult)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.TelephoneCode)
+                    @Html.DisplayNameFor(model => model.Child)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.TelephoneCode)
+                    @Html.DisplayFor(model => model.Child)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.BankTime)
+                    @Html.DisplayNameFor(model => model.ClientName)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.BankTime)
+                    @Html.DisplayFor(model => model.ClientName)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.EmbassyAddress)
+                    @Html.DisplayNameFor(model => model.EmailAddress)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.EmbassyAddress)
+                    @Html.DisplayFor(model => model.EmailAddress)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Description)
+                    @Html.DisplayNameFor(model => model.ContactNumber)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Description)
+                    @Html.DisplayFor(model => model.ContactNumber)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Language)
+                    @Html.DisplayNameFor(model => model.AlternativeContact)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Language)
+                    @Html.DisplayFor(model => model.AlternativeContact)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Currency)
+                    @Html.DisplayNameFor(model => model.Status)
                 </dt>
                 <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Currency)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.TourismPlace)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.TourismPlace)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Image)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Image)
+                    @Html.DisplayFor(model => model.Status)
                 </dd>
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.Id)
@@ -118,3 +105,4 @@
         </div>
     </div>
 </section>
+

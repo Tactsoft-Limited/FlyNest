@@ -11,12 +11,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Confirm Booking</h1>
+                <h1>Package Booking</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
-                    <li class="breadcrumb-item active">Confirm Booking</li>
+                    <li class="breadcrumb-item active">Package Booking</li>
                 </ol>
             </div>
         </div>
@@ -26,23 +26,23 @@
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Confirm Booking List</h3>
+            <h3 class="card-title">Package Booking List</h3>
             <div class="card-tools">
                 @*<a asp-action="AddEdit" asp-controller="Country" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add Country</a>*@
             </div>
         </div>
-        <div class="card-body table-responsive">
-            <table class="table">
+        <div class="card-body">
+            <table class="table nowrap" id="dataTable">
                 <thead>
                     <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TransactionId)
+                        </th>
                         <th>
                             @Html.DisplayNameFor(model => model.PackageTitle)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.PackagePrice)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.TransactionId)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.TotalPerson)
@@ -65,7 +65,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.TramAndCondition)
                         </th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,15 +73,16 @@
                     {
                         <tr>
                             <td>
+                                @Html.DisplayFor(modelItem => item.TransactionId)
+                            </td>
+                            <td>
                                 @Html.ActionLink(item.PackageTitle, "Details", "TourPackage", new { id = item.TourPackageId }, null)
                             </td>
 
                             <td>
                                 @Html.DisplayFor(modelItem => item.PackagePrice)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TransactionId)
-                            </td>
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.TotalPerson)
                             </td>
@@ -103,10 +104,18 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.TramAndCondition)
                             </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            <td style="vertical-align: middle; width:140px;">
+                                <a href="@Url.Action("AddEdit", new { id = item.Id })" class="btn btn-link btn-sm text-success" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                |
+                                <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-link btn-sm text-primary" title="Details">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                                |
+                                <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-link btn-sm text-danger" title="Delete" onclick="return confirmAndDelete(this);">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
                             </td>
                         </tr>
                     }

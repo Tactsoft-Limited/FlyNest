@@ -1,0 +1,184 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.Search.VmReservation
+
+@{
+    ViewData["Title"] = "VisaRequest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+@if (Model != null && Model.VmVisaRequirement != null && Model.VmVisaRequirement.Country != null)
+{
+    <div class="container">
+        <h1 class="text-center m-4">Visa Processing</h1>
+        <div class="row">
+            <div class="col-md-8">
+                <h2>@Model.VmVisaRequirement.Country.Name</h2>
+                <h2>@Model.VmVisaRequirement.Country.CapitalCity</h2>
+                <h2>@Model.VmVisaRequirement.Country.Currency</h2>
+                <h2>@Model.VmVisaRequirement.Country.Description</h2>
+                <h2>@Model.VmVisaRequirement.Country.EmbassyAddress</h2>
+                <h2>@Model.VmVisaRequirement.Country.Language</h2>
+                <h2>@Model.VmVisaRequirement.Country.BankTime</h2>
+                <h2>@Model.VmVisaRequirement.Country.LocalTime</h2>
+                <h2>@Model.VmVisaRequirement.Country.TelephoneCode</h2>
+
+                <div class="row">
+                    @if (!string.IsNullOrWhiteSpace(Model.VmVisaRequirement.BasicDocument))
+                    {
+                        <div class="col-md-12 mt-3">
+                            <h3>Basic Document</h3>
+                            <ul>
+                                @foreach (var sentence in Model.VmVisaRequirement.BasicDocument.Split('.'))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(sentence))
+                                    {
+                                        <li class="mx-3">&#9758; @sentence.Trim()</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.VmVisaRequirement.ForBusinessPerson))
+                    {
+                        <div class="col-md-12 mt-3">
+                            <h5>For Business Person</h5>
+                            <ul>
+                                @foreach (var sentence in Model.VmVisaRequirement.ForBusinessPerson.Split('.'))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(sentence))
+                                    {
+                                        <li class="mx-3"> &#9758; @sentence.Trim()</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.VmVisaRequirement.ForJobHolder))
+                    {
+
+                        <div class="col-md-12 mt-3">
+                            <h5>For Job Holder </h5>
+                            <ul>
+                                @foreach (var sentence in Model.VmVisaRequirement.ForJobHolder.Split('.'))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(sentence))
+                                    {
+                                        <li class="mx-3"> &#9758; @sentence.Trim()</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.VmVisaRequirement.ForStudent))
+                    {
+                        <div class="col-md-12 mt-3">
+                            <h5>For Student </h5>
+                            <ul>
+                                @foreach (var sentence in Model.VmVisaRequirement.ForStudent.Split('.'))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(sentence))
+                                    {
+                                        <li class="mx-3"> &#9758; @sentence.Trim()</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.VmVisaRequirement.ForMedical))
+                    {
+                        <div class="col-md-12 mt-3">
+                            <h5>For Medical </h5>
+                            <ul>
+                                @foreach (var sentence in Model.VmVisaRequirement.ForMedical.Split('.'))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(sentence))
+                                    {
+                                        <li class="mx-3"> &#9758; @sentence.Trim()</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.VmVisaRequirement.VisaFee))
+                    {
+                        <div class="col-md-12 mt-3">
+                            <h5>Visa Fee </h5>
+                            <ul>
+                                @foreach (var sentence in Model.VmVisaRequirement.VisaFee.Split('.'))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(sentence))
+                                    {
+                                        <li class="mx-3"> &#9758; @sentence.Trim()</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+
+
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.VmVisaRequirement.Others))
+                    {
+                        <div class="col-md-12 mt-3">
+                            <h5>Others </h5>
+                            <ul>
+                                @foreach (var sentence in Model.VmVisaRequirement.Others.Split('.'))
+                                {
+                                    if (!string.IsNullOrWhiteSpace(sentence))
+                                    {
+                                        <li class="mx-3"> &#9758; @sentence.Trim()</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Looking for Expert Visa Guidance?</h5>
+                        <p class="card-text">Don't know where to begin? Share your details, and our experienced visa consultants will assist you on every step..</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between mt-3">
+                        <a asp-action="ServiceRequest" asp-controller="Home" class="btn btn-primary btn-sm">Request Now</a>
+                        <a href="tel:+8801958618221"><i class="fa-solid fa-phone"></i> +880 1958-618221</a>
+                    </div>
+                </div>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.VmVisaRequirement.Title</h5>
+                        <div class="card-text row">
+                            <div class="col-md-6 mt-2">
+                                <p><strong>Validity:</strong> @Model.VmVisaRequirement.Validity</p>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <p><strong>Max Stay:</strong> @Model.VmVisaRequirement.MaxStay</p>
+                            </div>
+                            <div class="col-md-12 my-3">
+                                <p>@Model.VmVisaRequirement.VisaFee</p>
+                            </div>
+                            <div class="col-12">
+                                <p style="font-size:11px;" class="badge badge-warning text-warning p-0">
+                                    <i class="fa-solid fa-circle-exclamation"></i> Please contact the Visa department for document processing.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-route-id="@Model.VmVisaRequirement.Id" asp-action="VisaBooking" asp-controller="Home" class="btn btn-primary btn-sm">Select Offer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h1>No data found.</h1>
+}
+

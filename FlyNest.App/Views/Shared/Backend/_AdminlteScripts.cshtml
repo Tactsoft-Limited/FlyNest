@@ -8,6 +8,23 @@
 <script src="~/lib/select2/js/select2.min.js"></script>
 <script src="~/lib/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="~/lib/font-awesome/js/all.min.js"></script>
+<script src="~/lib/datatables.net/dataTables.min.js"></script>
+<script src="~/lib/datatables.net-bs5/dataTables.bootstrap5.min.js"></script>
+<script src="~/lib/datatables-responsive/dataTables.responsive.min.js"></script>
+<script src="~/lib/datatables.net-responsive-bs5/responsive.bootstrap5.min.js"></script>
+
+<script>
+    $('#dataTable').DataTable({
+        pageLength: 5,
+        lengthMenu: [[5, 10, 20, 50, 100], [5, 10, 20, 50, 100]],
+        responsive: true,
+        select: {
+            selector: 'td:not(:first-child)',
+            style: 'os'
+        }
+    });
+
+</script>
 <script>
     $.widget.bridge('uibutton', $.ui.button)
     $(function () {

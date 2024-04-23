@@ -1,0 +1,70 @@
+﻿@model FlyNest.Application.ViewModels.VmEntities.VmFaq
+
+@{
+    ViewData["Title"] = "AddEdit";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>FAQ</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="Dashboard" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">FAQ</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Create FAQ</h3>
+            @*<div class="card-tools">
+                <a asp-action="AddEdit" asp-controller="FAQ" class="btn btn-info btn-sm"><i class="bi bi-plus-square"></i>Add FAQ</a>
+            </div>*@
+        </div>
+        <form asp-action="AddEdit" asp-controller="Faq" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" type="hidden" class="form-control" />
+                <div class="modal-body form-horizontal">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="Category" class="control-label"></label>
+                            <select asp-for="Category" class="form-control">
+                                <option>Select Category</option>
+                                <option value="Flights">Flights</option>
+                                <option value="Hotel">Hotel</option>
+                                <option value="Holiday">Holiday</option>
+                                <option value="Visa">Visa</option>
+                                <option value="Package">Package</option>
+                            </select>
+                            <span asp-validation-for="Category" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label asp-for="Question" class="control-label"></label>
+                            <textarea asp-for="Question" rows="4" class="form-control"></textarea>
+                            <span asp-validation-for="Question" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label asp-for="Answer" class="control-label"></label>
+                            <textarea asp-for="Answer" rows="4" class="form-control"></textarea>
+                            <span asp-validation-for="Answer" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-end">
+                <input type="submit" value="Save" class="btn btn-primary btn-sm mr-3" /> 
+                <a asp-action="Index" class="btn btn-default btn-sm">Back to List</a>
+            </div>
+        </form>
+    </div>
+</section>
