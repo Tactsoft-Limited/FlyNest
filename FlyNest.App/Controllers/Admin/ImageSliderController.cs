@@ -32,6 +32,13 @@ public class ImageSliderController : Controller
     }
 
     [HttpGet]
+    public async Task<IActionResult> Details(long id)
+    {
+        var imageSlider = await _imageSliderRepository.FirstOrDefaultAsync(id);
+        return View(_mapper.Map<VmImageSlider>(imageSlider));
+    }
+
+    [HttpGet]
     public async Task<IActionResult> AddEdit(long id)
     {
         return id switch
