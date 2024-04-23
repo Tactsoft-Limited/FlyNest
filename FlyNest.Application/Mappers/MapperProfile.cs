@@ -61,7 +61,10 @@ public class MapperProfile : Profile
 
         CreateMap<VmConfirmBooking, ConfirmBooking>().ReverseMap();
         CreateMap<VmVisaRequirement, VisaRequirement>().ReverseMap();
+        CreateMap<VmVisaRequest, VisaRequest>().ReverseMap();
 
+        CreateMap<ImageGallery, VmImageGallery>().ReverseMap();
+        CreateMap<Faq, VmFaq>().ReverseMap();
 
         AllowNullCollections = true;
     }
