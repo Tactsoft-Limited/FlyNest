@@ -15,7 +15,9 @@ public class ConfirmBooking : AuditableEntity
     public double TotalAmount { get; set; }
     public string ClientName { get; set; }
     public string ClientEmail { get; set; }
+    public DateTime TravelDate { get; set; }
     public string ClientPhone { get; set; }
     public string PaymentMethod { get; set; }
     public bool TramAndCondition { get; set; }
+    public string PaymentStatus { get; set; }
 }
