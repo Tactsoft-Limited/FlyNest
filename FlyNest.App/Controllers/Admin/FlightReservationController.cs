@@ -18,7 +18,7 @@ public class FlightReservationController(IFlightReservationRepository flightRese
     }
 
     // GET: Flight/Details/5
-    public async Task<IActionResult> DetailsAsync(long id)
+    public async Task<IActionResult> Details(long id)
     {
         var flight = await _flightReservationRepository.FirstOrDefaultAsync(id);
         return flight == null ? NotFound() : View(_mapper.Map<VmFlightReservation>(flight));
