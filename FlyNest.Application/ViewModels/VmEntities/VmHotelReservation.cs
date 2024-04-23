@@ -5,14 +5,6 @@ namespace FlyNest.Application.ViewModels.VmEntities;
 
 public class VmHotelReservation : BaseEntity
 {
-    public VmHotelReservation()
-    {
-        FromDate = DateOnly.FromDateTime(DateTime.Now);
-        ToDate = DateOnly.FromDateTime(DateTime.Now);
-        Adult = 1;
-        Child = 0;
-    }
-
 
     [Display(Name = "City Name")]
     [Required]
