@@ -4,54 +4,65 @@
     ViewData["Title"] = "ImageGallery";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .thumbnail {
-        max-height: 400px;
-        max-width: 400px;
-    }
 
-        .thumbnail img {
-            height: 200px;
-        }
 
-    .jumbotron {
-        color: #2b5863;
-        background: #ecf0f1;
-    }
 
-    .navbar-inverse {
-        background: #1e1121;
-    }
-
-        .navbar-inverse .navbar-nav > li > a {
-            color: white;
-        }
-
-        .navbar-inverse .navbar-brand {
-            color: white;
-        }
-</style>
-
-<div class="container">
-    <div class="jumbotron">
-        <h1><i class="fa fa-camera-retro" aria-hidden="true"></i> The Image Gallery</h1>
-        <p>Images that are so beautiful that it is hard to imagine they are free!</p>
+<!-- =========== Breadcumb Start =========== -->
+<div class="bredcumb-section image-gallery">
+    <div class="overlay"></div>
+    <div class="bredcumb-text position-absolute h-100 w-100 d-flex justify-content-center align-items-center">
+        <div class="text-center">
+            <div class="page-title">
+                <h3 class="fw-bold">Gallery</h3>
+            </div>
+            <div class="mt-10">
+                <a href="index.html">Home</a>
+                <span><i class="bi bi-chevron-right mx-1" style="color: var(--primary-color);"></i></span>
+                <span>Gallery</span>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-lg-4 col-sm-6 mt-3">
-                <div class="thumbnail">
+</div>
+<!-- =========== Breadcumb End =========== -->
+<!-- =========== Photo Gallery Start =========== -->
+<div class="container mt-5 mb-5">
+    <div class="p-gallery">
+        <div class="row g-3">
+
+            @foreach (var item in Model)
+            {
+                <!-- Single -->
+                <div class="col-lg-3 col-md-4 col-sm-12">
                     <div class="card">
-                        <img src="~/images/gallery/@item.ImageUrl">
-                        <div class="card-footer d-flex justify-content-between">
-                            <span>@item.EventTitle</span>
-                            <span>@item.EventDate.ToShortDateString()</span>
+                        <a class="pd-3" href="~/images/gallery/@item.ImageUrl">
+                            <img src="~/images/gallery/@item.ImageUrl">
+                        </a>
+                        <div class="card-body d-flex justify-content-between">
+                            <span class="d-block">@item.EventTitle</span>
+                            <span class="d-block">@item.EventDate.ToShortDateString()</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+
+            }
+
+
+        </div>
     </div>
 </div>
+<!-- =========== Photo Gallery End =========== -->
 
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            $('.pd-3').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+            });
+            /* ====Magnific-Popup End==== */
+        })
+    </script>
+}
