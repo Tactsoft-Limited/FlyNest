@@ -62,6 +62,14 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+.truncate {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: var(--size-sm);
+}
+
 /*
 CSS INDEX
 -------------------------------------
@@ -1530,6 +1538,10 @@ Bacic Setup End
     background-image: url('../images/slider/slide-6.jpeg');
 }
 
+.image-gallery {
+    background-image: url('../images/slider/slider-3.jpg');
+}
+
 .our-vission {
     background-image: url('../images/slider/slider-4.jpeg');
 }
@@ -1712,6 +1724,35 @@ Bacic Setup End
 
 /*
    Visa Processing Area End
+=================================*/
+
+
+
+/*
+   Gallery Start
+=================================*/
+.p-gallery .card {
+    border: none;
+    border-radius: 0px;
+}
+
+    .p-gallery .card:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        transition: .6s;
+    }
+
+    .p-gallery .card img {
+        width: 100%;
+        height: 300px;
+    }
+
+    .p-gallery .card .card-body span {
+        font-size: var(--size-sm);
+        opacity: .8;
+    }
+
+/*
+   Gallery End
 =================================*/
 
 
@@ -2438,6 +2479,8 @@ Bacic Setup End
 =================================*/
 
 
+
+
 /*
    Footer Start
 =================================*/
@@ -2454,53 +2497,57 @@ Bacic Setup End
         margin-bottom: 25px;
     }
 
-    .main-footer .footer-widgets-single .office-address span,
-    i {
-        font-size: var(--size-md);
+    .main-footer .footer-widgets-single .office-address {
+        margin-left: -12px !important;
     }
 
-    .main-footer .footer-widgets-single .office-address i {
-        float: left;
-        padding-left: 10px;
-        color: var(--primary-color);
+        .main-footer .footer-widgets-single .office-address span,
+        i {
+            font-size: var(--size-md);
+        }
+
+        .main-footer .footer-widgets-single .office-address i {
+            float: left;
+            padding-left: 10px;
+            color: var(--primary-color);
+        }
+
+    .main-footer .footer-widgets-single .footer-social {
+        margin-top: 40px !important;
     }
 
-    .main-footer .footer-widgets-single .footer-social a {
-        position: relative;
-        width: 30px;
-        height: 30px;
-        font-size: var(--size-md);
-        border-radius: 2px;
-    }
-
-        .main-footer .footer-widgets-single .footer-social a i {
-            color: var(--color-white);
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .main-footer .footer-widgets-single .footer-social a {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            font-size: var(--size-md);
+            border-radius: 2px;
         }
 
-        .main-footer .footer-widgets-single .footer-social a.facebook {
-            background-color: #3b5998;
-        }
+            .main-footer .footer-widgets-single .footer-social a i {
+                color: var(--color-white);
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
 
-        .main-footer .footer-widgets-single .footer-social a.twitter {
-            background-color: #00acee;
-        }
+            .main-footer .footer-widgets-single .footer-social a.facebook {
+                background-color: #3b5998;
+            }
 
-        .main-footer .footer-widgets-single .footer-social a.youtube {
-            background-color: #FE0000 !important;
-        }
+            .main-footer .footer-widgets-single .footer-social a.twitter {
+                background-color: #00acee;
+            }
 
-        .main-footer .footer-widgets-single .footer-social a.instagram {
-            background: radial-gradient(circle farthest-corner at 32% 106%, #ffe17d 0, #ffcd69 10%, #fa9137 28%, #eb4141 42%, transparent 82%), linear-gradient(135deg, #234bd7 12%, #c33cbe 58%);
-        }
+            .main-footer .footer-widgets-single .footer-social a.instagram {
+                background: radial-gradient(circle farthest-corner at 32% 106%, #ffe17d 0, #ffcd69 10%, #fa9137 28%, #eb4141 42%, transparent 82%), linear-gradient(135deg, #234bd7 12%, #c33cbe 58%);
+            }
 
-        .main-footer .footer-widgets-single .footer-social a.linkedin {
-            background-color: #0A66C2;
-        }
+            .main-footer .footer-widgets-single .footer-social a.linkedin {
+                background-color: #0A66C2;
+            }
 
     .main-footer .footer-widgets-single .footer-menu {
         list-style-type: none;
@@ -2509,7 +2556,7 @@ Bacic Setup End
     }
 
         .main-footer .footer-widgets-single .footer-menu li {
-            line-height: 25px;
+            line-height: 35px;
         }
 
             .main-footer .footer-widgets-single .footer-menu li a {
@@ -2523,11 +2570,37 @@ Bacic Setup End
                     transition: .6s;
                 }
 
+    .main-footer .c-map {
+        width: 100%;
+        height: 200px;
+        position: relative;
+    }
+
+        .main-footer .c-map iframe {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
     .main-footer .footer-middle h5 {
         color: var(--color-white);
         font-size: var(--size-md);
         padding-right: 10px;
     }
+
+    .main-footer .footer-widgets-single .payment-way {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        grid-column-gap: 20px;
+        grid-row-gap: 7px;
+        grid-auto-flow: dense;
+    }
+
+        .main-footer .footer-widgets-single .payment-way .p-item img {
+            width: 50px;
+            height: 30px;
+            border-radius: 5px;
+        }
 
     .main-footer .footer-middle span a {
         color: #6F6F6F;
@@ -2554,14 +2627,37 @@ Bacic Setup End
         content: "";
     }
 
-    .main-footer .footer-bottom {
-        padding: 20px 0px;
-        margin-top: 20px;
-        border-top: 1px solid #6F6F6F;
+    .main-footer .footer-middle h6 {
+        font-size: var(--size-sm);
+        /*    color: var(--color-white);*/
     }
 
+    .main-footer .footer-middle {
+        padding: 20px 0px;
+        margin-top: 40px;
+        border-top: 1px solid var(--color-99);
+        border-bottom: 1px solid var(--color-99);
+    }
+
+    .main-footer .footer-bottom {
+        padding: 30px 0px;
+    }
+
+        .main-footer .footer-bottom .all-payment-way {
+            width: 100%;
+            height: 55px;
+            position: relative;
+        }
+
+            .main-footer .footer-bottom .all-payment-way img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                object-fit: cover;
+            }
+
         .main-footer .footer-bottom .copyright p {
-            font-size: var(--size-md);
+            font-size: var(--size-sm);
             text-align: end;
         }
 
@@ -2570,11 +2666,10 @@ Bacic Setup End
                 opacity: .6;
             }
 
-
-
 /*
    Footer End
 =================================*/
+
 /*=================================
     Preloader Start
 =================================*/

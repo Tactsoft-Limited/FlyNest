@@ -29,6 +29,43 @@
         padding-bottom: 10px;
         margin-bottom: 12px;
     }
+
+    /*
+    Login Page Start
+    --------------------------------*/
+    .login-section .login-form-body {
+        width: 70%;
+    }
+
+    /*
+    Registration Page Start
+    --------------------------------*/
+    .registration-section .registration-form-body {
+        width: 70%;
+    }
+
+    /*
+     Hotel Search Area Start
+    --------------------------------*/
+    .hotel-search .content .s-result {
+        margin-top: 25px;
+    }
+
+    .hotel-search .content .tab-content .card .card-body .photo {
+        height: 200px;
+    }
+
+    .hotel-search .content .tab-content .card .card-body .h-details {
+        padding-left: 20px;
+    }
+
+
+    /*
+     Footer Start
+    --------------------------------*/
+    .main-footer .footer-widgets-single .payment-way {
+        grid-column-gap: 15px !important;
+    }
 }
 
 
@@ -92,8 +129,9 @@
             padding-right: 4px;
         }
 
-    .search-area .dropdown {
-        display: none !important;
+    #trav-toggle {
+        display: flex;
+        flex-direction: column !important;
     }
 
     .search-area .trip-type {
@@ -112,9 +150,9 @@
         }
 
     .search-area .tab-content .tab-pane form input {
-        padding-top: 15px;
-        padding-bottom: 0px;
-        margin-bottom: 0px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
     }
 
         .search-area .tab-content .tab-pane form input::placeholder {
@@ -207,6 +245,83 @@
         .m-message-area .card .card-body p {
             font-size: var(--size-sm);
         }
+
+    /*
+    Login Page Start
+    --------------------------------*/
+    .login-section .login-form-body {
+        width: 100%;
+        padding: 30px 15px;
+    }
+
+    /*
+    Registration Page Start
+    --------------------------------*/
+    .registration-section .registration-form-body {
+        width: 100%;
+    }
+
+    /*
+     Hotel Search Area Start
+    --------------------------------*/
+    .hotel-search .content .s-result {
+        flex-direction: column;
+    }
+
+        .hotel-search .content .s-result .nav {
+            margin-top: 15px;
+        }
+
+    .hotel-search .content .tab-content .card .card-body .h-name a {
+        padding-top: 0;
+        font-size: 18px;
+    }
+
+    .hotel-search .content .tab-content .card .card-body .h-details {
+        text-align: center !important;
+    }
+
+    .hotel-search .content .tab-content .card .card-body .rating span i {
+        font-size: var(--size-sm);
+    }
+
+    .hotel-search .content .tab-content .card .card-body .h-location span i {
+        font-size: var(--size-sm);
+    }
+
+    .hotel-search .content .tab-content .card .card-body .h-location a {
+        font-size: var(--size-sm);
+    }
+
+    .hotel-search .content .tab-content .card .card-body .h-component span {
+        font-size: var(--size-sm);
+    }
+
+    .hotel-search .content .tab-content .card .card-body .h-location,
+    .h-component {
+        justify-content: center;
+    }
+
+    .hotel-search .content .tab-content .card .card-body .h-price-area {
+        text-align: center !important;
+        margin-top: 0 !important;
+        padding-right: 0;
+    }
+
+    /*
+     Pagination Start
+    --------------------------------*/
+    .pagination-area {
+        flex-direction: column;
+    }
+
+
+    /*
+     Footer Start
+    --------------------------------*/
+    .main-footer .footer-widgets-single .payment-way {
+        grid-column-gap: 10px !important;
+    }
 }
 
 
@@ -223,5 +338,21 @@
 
     .mobile-navigation {
         display: block;
+    }
+
+    /*
+    Search Area Start
+    --------------------------------*/
+    #trav-toggle {
+        display: flex;
+        flex-direction: column !important;
+    }
+
+
+    /*
+     Footer Start
+    --------------------------------*/
+    .main-footer .footer-widgets-single .payment-way {
+        grid-column-gap: 10px !important;
     }
 }
