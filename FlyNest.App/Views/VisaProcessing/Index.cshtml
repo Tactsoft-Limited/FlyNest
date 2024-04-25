@@ -1,7 +1,10 @@
-﻿@{
+﻿@model IEnumerable<FlyNest.Application.ViewModels.VmEntities.VmVisaRequirement>
+
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="bredcumb-section visa-bredcumb">
     <div class="overlay"></div>
     <div class="bredcumb-text position-absolute h-100 w-100 d-flex justify-content-center align-items-center">
@@ -20,216 +23,25 @@
 
 <div class="visa-processing">
     <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/philiphines.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Philiphines</h5>
+        @foreach (var item in Model)
+        {
+
+            <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="my-3">
+                    <div class="offer-card">
+                        <a href="#">
+                            <img src="~/images/visa-processing/philiphines.jpg" class="img-fluid" alt="">
+                        </a>
+                        <div class="overlay">
+                            <div class="content">
+                                <h5 class="fw-bold">Philiphines</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/maldives.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Maldives</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/nepal.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Nepal</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/qatar.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Qatar</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/singapore.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Singapore</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/sri-lanka.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Sri Lanka</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/hailand.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Thailand</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/vietnam.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Vietnam</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/uzbekistan.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Uzbekistan</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/umrah.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Umrah</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/cambodia.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Cambodia</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/china.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">China</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/dubai.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Dubai</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/kazakhstan.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">Kazakhstan</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-12">
-            <div class="my-3">
-                <div class="offer-card">
-                    <a href="#">
-                        <img src="~/images/visa-processing/india.jpg" class="img-fluid" alt="">
-                    </a>
-                    <div class="overlay">
-                        <div class="content">
-                            <h5 class="fw-bold">India</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+        }
+
     </div>
 </div>
+
